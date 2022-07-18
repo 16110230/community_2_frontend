@@ -1,3 +1,3 @@
 export class AppService {
-    arrays = []
+    arrays = ['1']
 }
