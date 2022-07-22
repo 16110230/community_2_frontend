@@ -1,0 +1,57 @@
+<div class="grid" [ngStyle]="{'min-height': '100vh'}">
+    <div class="sm:col-6 col-12" id="login" >
+        
+        <div class="flex justify-content-center align-items-center" id="container-quote" [ngStyle]="{'min-height': '100vh'}">
+            <span class="text-white text-5xl" >
+                Selamat datang di komunitas Lawencon
+            </span>            
+        </div>
+
+        <div class="flex justify-content-center align-items-center mt-6" id="container-logo">
+            <img id="login-logo" src="../../../../assets/img/lunity-logo.png" alt="">
+        </div>
+
+    </div>
+    <div class="sm:col-6 col-12" [ngStyle]="{'min-height': '100vh'}" >
+        <div class="flex justify-content-center align-items-center" [ngStyle]="{'min-height': '100vh'}">
+            <div [ngStyle]="{'width': '75%'}">
+            <form>  
+                <span class="icon-round" [ngStyle]="{'background-color': 'var(--blue-500)'}">
+                    <i class="pi pi-upload text-white"></i>
+                </span>
+                <span>Sign Up</span>
+
+                <div class="mt-2">
+                    <label for="phoneNo">Phone Number</label><span class="text-red-500">*</span>
+                </div>                
+                <input class="mt-2" type="text" [ngStyle]="{'width': '100%'}" name="phoneNo" id="phoneNo" pInputText />
+
+                <div class="mt-2">
+                    <label for="company">Company</label><span class="text-red-500">*</span>
+                </div>                
+                <input class="mt-2" type="text" [ngStyle]="{'width': '100%'}" name="company" id="company" pInputText />
+
+                <select class="w-100" name="company" id="comapny">
+                    <option *ngFor="let data of userRoles.data; let i = index"  [value]="[data.roleCode]" >{{data?.roleName}}</option>
+                </select>        
+
+                <div class="mt-2">
+                    <label class="mt-2" for="password">Password</label><span class="text-red-500">*</span>
+                </div>                                
+                <input class="mt-2" type="password" [ngStyle]="{'width': '100%'}" name="password" id="password" pInputText />
+
+                <button class="mt-4" pButton type="button" [ngStyle]="{'width': '100%'}" label="SIGN UP" ></button>
+                
+                <div class="flex justify-content-center mt-4">
+                    <span>or</span>
+                </div>
+                
+                <div class="flex justify-content-center mt-4">
+                    <span>No Account yet?</span>
+                    <span class="text-primary ml-1"> Sign Up </span>
+                </div>
+            </form>     
+            </div>
+        </div>
+    </div>
+</div>
