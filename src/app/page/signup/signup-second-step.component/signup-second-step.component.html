@@ -28,17 +28,13 @@
 
                 <div class="mt-2">
                     <label for="company">Company</label><span class="text-red-500">*</span>
-                </div>                
-                <input class="mt-2" type="text" [ngStyle]="{'width': '100%'}" name="company" id="company" pInputText />
-
-                <select class="w-100" name="company" id="comapny">
-                    <option *ngFor="let data of userRoles.data; let i = index"  [value]="[data.roleCode]" >{{data?.roleName}}</option>
-                </select>        
+                </div>                                
+                <p-dropdown name="company" id="company" [options]="companys" optionLabel="name" optionValue="id"></p-dropdown>
 
                 <div class="mt-2">
-                    <label class="mt-2" for="password">Password</label><span class="text-red-500">*</span>
+                    <label class="mt-2" for="industry">Industry</label><span class="text-red-500">*</span>
                 </div>                                
-                <input class="mt-2" type="password" [ngStyle]="{'width': '100%'}" name="password" id="password" pInputText />
+                <p-dropdown name="industry" id="industry" [options]="industrys" optionLabel="name" optionValue="id"></p-dropdown>
 
                 <button class="mt-4" pButton type="button" [ngStyle]="{'width': '100%'}" label="SIGN UP" ></button>
                 
