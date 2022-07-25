@@ -16,7 +16,7 @@ const routes: Routes = [
         component: SignupSecondStepComponent
     },
     {
-        path: 'veryfi',
+        path: 'verify',
         component: SignupVerifyComponent
     }
 
