@@ -4,6 +4,14 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+table {
+  border: none;
+}
+
+.table-custom thead {
+  background-color: #ebebeb;
+}
+
 #login {
   background-image: url("./assets/img/hannah-busing-eco.jpg");
   background-repeat: no-repeat;
@@ -28,4 +36,56 @@
   aspect-ratio: 1/1;
   border-radius: 50%;
   display: inline-block;
+}
+
+.menu-item-custom span {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.menu-button-custom {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.side-menu-bar-custom {
+  border-radius: 0px 15px 15px 0px;
+  box-shadow: 1px 4px 5px #5e5e5e;
+}
+
+.card-custom {
+  width: 200px;
+  height: 110px;
+
+  background: linear-gradient(
+    0deg,
+    rgba(244, 244, 244, 1) 0%,
+    rgba(186, 186, 186, 1) 100%
+  );
+  border-radius: 15px;
+  box-shadow: 1px 4px 5px #5e5e5e;
+  cursor: pointer;
+}
+.card-custom-icon {
+  text-align: center;
+}
+.custom-card-header {
+  height: 50px;
+  overflow: hidden;
+}
+
+.form-create-custom textarea {
+  width: 100%;
+}
+
+#menu-side-custom {
+  width: 240px;
+  height: 80vh;
+  overflow: auto;
+  position: sticky;
+  top: 0;
+}
+#x {
+  border: solid 1px rgba(186, 186, 186, 0);
 }

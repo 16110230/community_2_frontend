@@ -5,23 +5,27 @@ import { Component, OnInit } from "@angular/core";
     templateUrl: './signup-second-step.component.html'
 })
 export class SignupSecondStepComponent implements OnInit {
-    companys: {}[] = []
-    industrys: {}[] = []
+    companys = [
+        {
+            id: 1,
+            companyName: "PT.Lawencon International"
+        }
+    ]
+    industrys = [
+        {
+            id: 1,
+            industryName: "Technoligy Information"
+        }
+    ]
+    positions = [
+        {
+            id: 1,
+            positionName: "HR"
+        }
+    ]
 
     ngOnInit() {
-        this.companys = [
-            {
-                id: 1,
-                name: "PT.Lawencon International"
-            }
-        ]
 
-        this.industrys = [
-            {
-                id: 1,
-                name: "Technoligy Information"
-            }
-        ]
     }
 
 }

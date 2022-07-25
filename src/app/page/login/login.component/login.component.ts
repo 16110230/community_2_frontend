@@ -6,5 +6,14 @@ import { Component } from "@angular/core";
 })
 
 export class LoginComponent {
+    loginReq = {
+        username: "",
+        password: ""
+    }
 
+    constructor() { }
+
+    login(): void {
+
+    }
 }
