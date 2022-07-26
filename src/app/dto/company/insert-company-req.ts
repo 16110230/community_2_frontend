@@ -1,9 +1,7 @@
-export interface UpdateCompanyReq {
-	id? : string 
+export interface InsertCompanyReq{
 	companyName? : string
 	companyCode? : string
+	email? : string
 	address? : string
-	Email? : string
-	version? : number
 	isActive? : boolean
 }
