@@ -104,6 +104,27 @@ table {
   display: block;
 }
 
+.photo-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-profile {
+  /* min-width: 200px; */
+  max-width: 300px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.photo-profile img {
+  width: 100%;
+}
+
 #menu-side-custom {
   width: 240px;
   height: 80vh;
