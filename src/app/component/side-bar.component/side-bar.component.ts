@@ -22,32 +22,32 @@ export class SideBarComponent implements OnInit {
                     label: 'Dashboar',
                     icon: 'pi pi-home',
                     command: () => {
-                        this.router.navigate([])
+                        this.router.navigate(['/admin'])
                     }
                 }]
             },
             {
-                label: 'Component',
+                label: 'Manage',
                 items: [
                     {
                         label: 'Users',
                         icon: 'pi pi-user',
                         command: () => {
-                            this.router.navigate([])
+                            this.router.navigate(['/admin/user'])
                         }
                     },
                     {
                         label: 'Thread',
                         icon: 'pi pi-image',
                         command: () => {
-                            this.router.navigate([])
+                            this.router.navigate(['/admin/thread'])
                         }
                     },
                     {
                         label: 'Event',
                         icon: 'pi pi-image',
                         command: () => {
-                            this.router.navigate([])
+                            this.router.navigate(['/admin/event'])
                         }
                     },
                     {
@@ -60,24 +60,35 @@ export class SideBarComponent implements OnInit {
                 ]
             },
             {
-                label: 'Company',
+                label: 'Article',
+                items: [
+                    {
+                        label: 'Article',
+                        command: () => {
+                            this.router.navigate(['admin/article'])
+                        }
+                    }
+                ]
+            },
+            {
+                label: 'Organization',
                 items: [
                     {
                         label: 'Comapany',
                         command: () => {
-                            this.router.navigate([])
+                            this.router.navigate(['/admin/organization/company'])
                         }
                     },
                     {
                         label: 'Industry',
                         command: () => {
-                            this.router.navigate([])
+                            this.router.navigate(['/admin/organization/industry'])
                         }
                     },
                     {
                         label: 'Position',
                         command: () => {
-                            this.router.navigate([])
+                            this.router.navigate(['/admin/organization/position'])
                         }
                     }
                 ]
