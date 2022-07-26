@@ -1,9 +1,9 @@
-export interface UpdateCompanyReq {
-	id? : string 
+export interface CompanyDto{
+    id? : string
 	companyName? : string
 	companyCode? : string
 	address? : string
-	Email? : string
+	email? : string
 	version? : number
 	isActive? : boolean
 }
