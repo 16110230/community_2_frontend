@@ -79,6 +79,31 @@ table {
   width: 100%;
 }
 
+.check-status-custom-true {
+  width: 30px;
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+  border: 2px solid #3b82f3;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.check-status-custom-false {
+  width: 30px;
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+  border: 2px solid #444444;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.block {
+  display: block;
+}
+
 #menu-side-custom {
   width: 240px;
   height: 80vh;

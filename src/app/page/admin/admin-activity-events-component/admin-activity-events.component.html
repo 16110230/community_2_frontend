@@ -7,20 +7,22 @@
          
         <div class="m-5">
             <p-card >  
-                <h4 class="mb-5">Pending Event Invoices</h4>              
-                <p-table [value]="invoices" responsiveLayout="scroll">
+                <h4 class="mb-5">Events List</h4>              
+                <p-table responsiveLayout="scroll">
                     <ng-template pTemplate="header">
                         <tr>
                             <th>No</th>
-                            <th>Invoice</th>
+                            <th>Title</th>
                             <th>User</th>
-                            <th>Order Date</th>
-                            <th>Amount</th>
-                            <th>Photo</th>
-                            <th>Validate</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Limit</th>
+                            <th>Active</th>
+                            <th>View</th>
+                            <th></th>
                         </tr>
                     </ng-template>
-                    <ng-template pTemplate="body" let-i="rowIndex" let-data>
+                    <!-- <ng-template pTemplate="body" let-i="rowIndex" let-data>
                         <tr>
                             <td>{{i+1}}</td>
                             <td>{{data.id}}</td>
@@ -34,7 +36,7 @@
                                 <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-success"></button>
                             </td>
                         </tr>
-                    </ng-template>
+                    </ng-template> -->
                 </p-table>                
             </p-card>
             
