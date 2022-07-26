@@ -1,4 +1,4 @@
-export class PojoActivity {
+export class ActivityDto {
     id!: number
     activityTitle?: string
     activityContent?: string
