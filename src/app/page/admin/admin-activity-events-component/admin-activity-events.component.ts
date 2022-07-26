@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { PojoActivity } from "src/app/dto/activity/activity-dto";
+import { ActivityDto } from "src/app/dto/activity/activity-dto";
 
 @Component({
     selector: "app-admin-activity-events",
@@ -7,7 +7,7 @@ import { PojoActivity } from "src/app/dto/activity/activity-dto";
 })
 export class AdminActivityEventComponent implements OnInit {
 
-    activitys: PojoActivity[] = []
+    activitys: ActivityDto[] = []
 
     ngOnInit() {
         this.activitys = [
