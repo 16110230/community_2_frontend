@@ -12,6 +12,10 @@ table {
   background-color: #ebebeb;
 }
 
+.grid {
+  margin: 0px !important;
+}
+
 #login {
   background-image: url("./assets/img/hannah-busing-eco.jpg");
   background-repeat: no-repeat;

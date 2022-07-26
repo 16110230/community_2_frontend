@@ -1,0 +1,58 @@
+#home-bg {
+    object-fit: cover;
+    width: 100%;
+}
+
+.container-home {
+    height: 10.5vh;
+    background-image: url('../../../../assets/img/home-bg.jpg') !important;
+}
+
+.container-search > input {
+    border-radius: 23px;
+}
+
+.title {
+    font-size: 20px;
+}
+
+img {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.content-card-header-pic {
+    width: 10vh;
+    height: 10vh;
+}
+
+.header-date {
+    font-size: 12px;
+    color: rgb(143, 143, 143);
+}
+
+.content-card-body > p {
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.content-card-footer-pic {
+    width: 6vh;
+    height: 6vh;
+}
+
+.content-card-footer-pic-abs {
+    width: 6vh;
+    height: 6vh;
+    position: absolute;
+    left: 10%;
+    border: 0.5px solid white;
+}
+
+.icon-like-filled {
+    color: red;
+}
+
+.icon-bookmark-filled {
+    color: blue;
+}

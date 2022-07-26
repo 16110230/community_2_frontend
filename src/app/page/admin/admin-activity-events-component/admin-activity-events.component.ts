@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { PojoActivity } from "src/app/pojo/pojo.activity-event/pojoActivity";
+import { PojoActivity } from "src/app/dto/activity/activity-dto";
 
 @Component({
     selector: "app-admin-activity-events",
