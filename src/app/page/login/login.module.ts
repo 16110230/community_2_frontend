@@ -4,7 +4,8 @@ import { FormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 import { CardModule } from "primeng/card";
 import { InputTextModule } from "primeng/inputtext";
-import { LoginComponent } from "./login.component/login.component";
+import { LoginComponent } from "./login/login.component";
+
 
 
 
