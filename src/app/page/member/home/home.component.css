@@ -93,3 +93,11 @@
 .pi-plus {
     font-size: 12px;
 }
+
+.form-title {
+    font-size: 20px;
+}
+
+textarea {
+    resize: none;
+}

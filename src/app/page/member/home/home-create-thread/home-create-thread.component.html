@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="grid">
+        <div class="col-9">
+            <p-card styleClass="mx-5 mt-2">
+                <form action="">
+                    <div class="grid">
+                        <div class="col-1">
+                            <button pButton pRipple icon="pi pi-caret-left" class="p-button-danger p-button-sm"
+                                label="Back"></button>
+                        </div>
+                        <div class="col-10 flex flex-row justify-content-center">
+                            <span class="form-title">New Thread</span>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="row-title">
+                                <label for="threadTitle">Thread Title</label>
+                                <input pInputText type="text" class="w-full my-3" name="threadTitle">
+                            </div>
+                            <div class="row-description">
+                                <label for="threadContent">Description</label>
+                                <textarea pInputTextarea class="w-full my-3" name="threadContent" id="threadContent" rows="3"></textarea>
+                            </div>
+                            <div class="row-category">
+                                <label for="category" class="block">Category</label>
+                                <p-dropdown [options]="categories" [(ngModel)]="category" placeholder="Select category" 
+                                [showClear]="true" styleClass="my-3" [style]="{'width': '50%'}" [ngModelOptions]="{standalone: true}">
+                                    <ng-template let-category>
+
+                                    </ng-template>
+                                </p-dropdown>
+                            </div>
+                            <div class="row-polling">
+                                <div class="grid">
+                                    <div class="col-10 p-0" *ngFor="let polling of pollings.controls; let i = index">
+                                        <label for="pollingDetailsName">Polling Option {{i+1}}</label>
+                                        <input pInputText type="text" class="w-full my-3" name="pollingDetailsName" [formControl]="polling">
+                                    </div>
+                                    <div class="col flex flex-row align-items-center">
+                                        <button pButton pRipple class="p-button-sm p-button-success mt-3" icon="pi pi-plus" (click)="addNewPolling()"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row-file">
+                                <label for="file" class="block">Upload File</label>
+                                <p-fileUpload #fubauto styleClass="my-3 p-button-sm" mode="basic" name="file" accept="image/*" [auto]="true" chooseLabel="Browse" 
+                                chooseIcon="pi pi-upload" [customUpload]="true" (uploadHandler)="change($event)"></p-fileUpload>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </p-card>
+        </div>
+    </div>
+
+</div>
