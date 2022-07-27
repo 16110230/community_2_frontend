@@ -9,6 +9,7 @@ import { MenuModule } from "primeng/menu";
 import { SidebarModule } from "primeng/sidebar";
 import { TableModule } from "primeng/table";
 import { SharedModule } from "src/app/component/shared.module";
+import { ImageModule } from 'primeng/image';
 import { AdminInvoiceCoursePendingComponent } from "./admin-invoice-course-pending/admin-invoice-course-pending.component";
 import { AdminInvoiceCourseComponent } from "./admin-invoice-course/admin-invoice-course.component";
 import { AdminInvoiceEventPendingComponent } from "./admin-invoice-event-pending/admin-invoice-event-pending.component";
@@ -30,6 +31,7 @@ import { AdminInvoiceRouting } from "./admin-invoice.routing";
         SidebarModule,
         MenuModule,
         TableModule,
+        ImageModule,
         AdminInvoiceRouting
     ],
     declarations: [

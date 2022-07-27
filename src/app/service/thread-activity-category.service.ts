@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { BASE_URL } from "../constant/constant";
 import { DeleteResDto } from "../dto/delete-res-dto";
 import { InsertResDto } from "../dto/insert-res-dto";
 import { InsertThreadActivityCategoryReq } from "../dto/thread-activity-category/insert-thread-activity-category-req";
@@ -17,22 +18,22 @@ export class ThreadActivityCategoryService {
     constructor(private http : HttpClient) {}
 
     getAll() : Observable<ShowThreadActivityCategories> {
-        return this.http.get<ShowThreadActivityCategories>(`http://localhost:1221/thread-activity-categories`)
+        return this.http.get<ShowThreadActivityCategories>(`${BASE_URL}/thread-activity-categories`)
     }
 
     getById(id : number) : Observable<ShowThreadActivityById> {
-        return this.http.get<ShowThreadActivityById>(`http://localhost:1221/thread-activity-categories/${id}`)
+        return this.http.get<ShowThreadActivityById>(`${BASE_URL}/thread-activity-categories/${id}`)
     }
 
     insert(data : InsertThreadActivityCategoryReq) : Observable<InsertResDto> {
-        return this.http.post<InsertResDto>(`http://localhost:1221/thread-activity-categories`, data)
+        return this.http.post<InsertResDto>(`${BASE_URL}/thread-activity-categories`, data)
     }
 
     update(data : UpdateThreadActivityCategory) : Observable<UpdateResDto> {
-        return this.http.put<UpdateResDto>(`http://localhost:1221/thread-activity-categories`, data)
+        return this.http.put<UpdateResDto>(`${BASE_URL}/thread-activity-categories`, data)
     }
 
     delete(id : number) : Observable<DeleteResDto> {
-        return this.http.delete<DeleteResDto>(`http://localhost:1221/thread-activity-categories/${id}`)
+        return this.http.delete<DeleteResDto>(`${BASE_URL}/thread-activity-categories/${id}`)
     }
 }

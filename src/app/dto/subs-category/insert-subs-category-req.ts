@@ -1,4 +1,4 @@
-export interface InsertSubsCaregory{
+export interface InsertSubsCaregoryReq{
 	description? : string
 	price? : number
     isActive? : boolean

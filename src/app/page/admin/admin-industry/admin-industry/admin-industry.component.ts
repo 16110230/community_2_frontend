@@ -30,10 +30,10 @@ export class AdminIndustryComponent {
     ) { }
 
     goTo() {
-        this.router.navigate(['/admin/organization/industry/create'])
+        this.router.navigate(['/admin/industry/create'])
     }
     editAt(id: number) {
-        this.router.navigate([`/admin/organization/industry/update/${id}`])
+        this.router.navigate([`/admin/industry/update/${id}`])
     }
 
 }
