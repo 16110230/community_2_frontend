@@ -11,6 +11,7 @@ import { MenuModule } from "primeng/menu";
 import { SidebarModule } from "primeng/sidebar";
 import { TableModule } from "primeng/table";
 import { SharedModule } from "src/app/component/shared.module";
+import { AdminThreadUpdateComponent } from "./admin-thread-update/admin-thread-update.component";
 import { AdminThreadRouting } from "./admin-thread.routing";
 import { AdminThreadComponents } from "./admin-thread/admin-thread.component";
 
@@ -30,10 +31,12 @@ import { AdminThreadComponents } from "./admin-thread/admin-thread.component";
         ConfirmDialogModule
     ],
     declarations: [
-        AdminThreadComponents
+        AdminThreadComponents,
+        AdminThreadUpdateComponent
     ],
     exports: [
-        AdminThreadComponents
+        AdminThreadComponents,
+        AdminThreadUpdateComponent
     ],
     providers: [
         ConfirmationService,

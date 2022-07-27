@@ -1,10 +1,10 @@
-<div class="flex flex-row bg-blue-100 ">
-    <div id="menu-side-custom">
+<div class="flex flex-row bg-blue-custom">
+    <div id="menu-side-custom" class="flex">
         <side-bar-custom></side-bar-custom>
     </div>
-
-    <div class="flex-grow-1">
-         
+    
+    <!-- end of sidebar -->
+    <div class="flex-1">
         <div class="m-5">
             <p-card >  
                 <h4 class="mb-5">Pending Event Invoices</h4>              
@@ -28,7 +28,9 @@
                             <td>{{data.orderDate}}</td>
                             <td>{{data.amount}}</td>
                             <td>
-                                <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded"></button>
+                                <!-- <img src="../../../../../assets/img/Screenshot_2018_11_22_20_41_14_33.jpg" alt=""> -->
+                                <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded" (click)="viewImage(data.file)" ></button>                                
+
                             </td>
                             <td>
                                 <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-success"></button>
@@ -40,5 +42,14 @@
             
         </div> 
     </div>
+</div>
+<div *ngIf="imageViewFull" id="image-view-frame">
+    <div id="image-view-btn-close" (click)="closeViewImage()">
+        <span>X</span>
+    </div>
+    <img [src]="imageSource" alt="">
+    <!-- <div id="image-view">
+        
+    </div> -->
 </div>
 

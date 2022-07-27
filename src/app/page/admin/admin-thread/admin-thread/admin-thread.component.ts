@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { ConfirmationService } from "primeng/api";
 
 @Component({
@@ -24,6 +25,7 @@ export class AdminThreadComponents {
     ]
 
     constructor(
+        private router: Router,
         private confirmationService: ConfirmationService
     ) { }
 
@@ -34,5 +36,9 @@ export class AdminThreadComponents {
                 //Actual logic to perform a confirmation
             }
         });
+    }
+
+    goTo(id: number) {
+        this.router.navigate([`/admin/thread/update/${id}`])
     }
 }

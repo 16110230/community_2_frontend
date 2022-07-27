@@ -20,10 +20,18 @@
                     <label for="description">Description</label><br>
                     <textarea id="description" name="activityContent" class="mt-2 mb-5" rows="5" pInputTextarea autoResize="autoResize" [(ngModel)]="insertReq.threadContent"></textarea>
 
-                    <label for="category">category</label><br>
-                    <div class="mt-2 mb-5">
-                        <p-dropdown  name="category" id="category" [options]="categorys" optionLabel="categoryName" optionValue="id" [(ngModel)]="insertReq.threadCategory" ></p-dropdown>
+                    <div class="grid">
+                        <div class="col-12 sm:col-6">
+                            <label for="category">category</label><br>
+                            <div class="mt-2 mb-5">
+                                <!-- <p-dropdown  name="category" id="category" [options]="categorys" optionLabel="categoryName" optionValue="id" [(ngModel)]="insertReq.threadCategory" ></p-dropdown> -->
+                            </div>
+                        </div>
+                        <div class="col-12 sm:col-6">
+                            <input type="file" accept=".jpg,.png">
+                        </div>
                     </div>
+                    
 
                     <div class="grid">
                         <div class="col-6 col-offset-6">

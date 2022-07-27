@@ -68,16 +68,26 @@ table {
 .card-custom {
   width: 240px;
   min-height: 110px;
-
-  background: linear-gradient(
-    0deg,
-    rgba(244, 244, 244, 1) 0%,
-    rgba(186, 186, 186, 1) 100%
-  );
   border-radius: 15px;
   box-shadow: 1px 4px 5px #00000088;
   cursor: pointer;
   padding: 20px;
+}
+
+.card-custom-1 {
+  background: linear-gradient(0deg, rgb(70, 209, 0) 0%, rgb(119, 255, 51) 100%);
+}
+
+.card-custom-2 {
+  background: linear-gradient(0deg, rgb(248, 99, 0) 0%, rgb(255, 145, 85) 100%);
+}
+
+.card-custom-3 {
+  background: linear-gradient(
+    0deg,
+    rgb(0, 120, 232) 0%,
+    rgb(75, 159, 255) 100%
+  );
 }
 .card-custom-icon {
   text-align: center;
@@ -88,6 +98,44 @@ table {
 .custom-card-header {
   height: 50px;
   overflow: hidden;
+}
+
+#image-view-frame {
+  transition: 0.5s;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#image-view-frame img {
+  height: 100%;
+}
+
+#image-view-btn-close {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+
+  width: 3%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 2px solid white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+#image-view-btn-close span {
+  color: white;
+  font-weight: 900;
+  font-size: 1rem;
 }
 
 .form-create-custom textarea {
