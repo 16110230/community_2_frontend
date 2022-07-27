@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { HomeComponent } from "./home.component";
+import { HomeComponent } from "./home-list/home.component";
 import { HomeRouting } from "./home.routing";
 import { InputTextModule } from "primeng/inputtext";
 import { CardModule } from 'primeng/card';

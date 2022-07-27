@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { HomeComponent } from "./home-list/home.component";
+import { ThreadDetailComponent } from "./thread-detail.component";
 
 const routes : Routes = [
     {
-        path: '',
-        component: HomeComponent
+        path: ':id',
+        component: ThreadDetailComponent
     }
 ]
 
@@ -17,4 +17,4 @@ const routes : Routes = [
         RouterModule
     ]
 })
-export class HomeRouting {}
+export class ThreadDetailRouting {}

@@ -7,6 +7,11 @@ const routes : Routes = [
         path: '',
         component: NavbarComponent,
         loadChildren : () => import('./home/home.module').then(m => m.HomeModule)
+    },
+    {
+        path: 'thread-detail',
+        component: NavbarComponent,
+        loadChildren : () => import('./thread-detail/thread-detail.module').then(m => m.ThreadDetailModule)
     }
 ]
 
