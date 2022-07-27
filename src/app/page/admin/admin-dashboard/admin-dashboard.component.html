@@ -7,7 +7,7 @@
     <div class="flex-1">
         <div class="m-5 " >            
             <div class="flex flex-wrap gap-4" >  
-                <div class="card-custom" *ngFor="let data of cards" (click)="cardGoTo(data.dest)">                    
+                <div *ngFor="let data of cards" class="card-custom {{data.classCustom}}" (click)="cardGoTo(data.dest)">                    
                     <table class="w-full">
                         <tr>
                             <td rowspan="2" class="card-custom-icon"><i class="{{data.icon}} text-5xl"></i></td>

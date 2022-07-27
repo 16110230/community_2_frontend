@@ -9,6 +9,8 @@ import { MenuModule } from "primeng/menu";
 import { SidebarModule } from "primeng/sidebar";
 import { TableModule } from "primeng/table";
 import { SharedModule } from "src/app/component/shared.module";
+import { AdminPositionCreateComponent } from "./admin-position-create/admin-position-create.component";
+import { AdminPositionUpdateComponent } from "./admin-position-update/admin-position-update.component";
 import { AdminPositionRouting } from "./admin-position.routing";
 import { AdminPositionComponent } from "./admin-position/admin-position.component";
 
@@ -28,10 +30,14 @@ import { AdminPositionComponent } from "./admin-position/admin-position.componen
         AdminPositionRouting
     ],
     declarations: [
-        AdminPositionComponent
+        AdminPositionComponent,
+        AdminPositionCreateComponent,
+        AdminPositionUpdateComponent
     ],
     exports: [
-        AdminPositionComponent
+        AdminPositionComponent,
+        AdminPositionCreateComponent,
+        AdminPositionUpdateComponent
     ]
 })
 export class AdminPositionModule { }

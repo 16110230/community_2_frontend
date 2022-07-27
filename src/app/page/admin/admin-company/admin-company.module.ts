@@ -9,6 +9,8 @@ import { MenuModule } from "primeng/menu";
 import { SidebarModule } from "primeng/sidebar";
 import { TableModule } from "primeng/table";
 import { SharedModule } from "src/app/component/shared.module";
+import { AdminCompanyCreateComponent } from "./admin-company-create/admin-company-create.component";
+import { AdminCompanyUpdateComponent } from "./admin-company-update/admin-company-update.component";
 import { AdminCompanyRouting } from "./admin-company.routing";
 import { AdminCompanyComponent } from "./admin-company/admin-company.component";
 
@@ -27,10 +29,14 @@ import { AdminCompanyComponent } from "./admin-company/admin-company.component";
         AdminCompanyRouting
     ],
     declarations: [
-        AdminCompanyComponent
+        AdminCompanyComponent,
+        AdminCompanyCreateComponent,
+        AdminCompanyUpdateComponent
     ],
     exports: [
-        AdminCompanyComponent
+        AdminCompanyComponent,
+        AdminCompanyCreateComponent,
+        AdminCompanyUpdateComponent
     ]
 })
 export class AdminCompanyModule { }

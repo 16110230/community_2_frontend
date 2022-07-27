@@ -8,13 +8,11 @@ import { DropdownModule } from 'primeng/dropdown';
 import { SidebarModule } from 'primeng/sidebar';
 import { MenuModule } from 'primeng/menu';
 import { TableModule } from 'primeng/table';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
-
 
 import { AdminRouting } from "./admin.routing";
 import { SharedModule } from "src/app/component/shared.module";
 import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
-import { ConfirmationService, MessageService } from "primeng/api";
+
 
 
 @NgModule({

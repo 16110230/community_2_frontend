@@ -19,8 +19,7 @@
                 <p-table [value]="companys" responsiveLayout="scroll">
                     <ng-template pTemplate="header">
                         <tr>
-                            <th>No</th>
-                            <th>ID</th>
+                            <th>No</th>                            
                             <th>Company Name</th>                            
                             <th>Active</th>                                                      
                             <th></th>                            
@@ -28,8 +27,7 @@
                     </ng-template>
                     <ng-template pTemplate="body" let-i="rowIndex" let-data>
                         <tr>
-                            <td>{{i+1}}</td>
-                            <td>{{data.id}}</td>
+                            <td>{{i+1}}</td>                            
                             <td>{{data.companyName}}</td>                    
                             <td>
                                 <div *ngIf="data.isActive" class="check-status-custom-true">
@@ -37,8 +35,8 @@
                                 </div>
                                 <div *ngIf="!data.isActive" class="check-status-custom-false"></div>
                             </td>
-                            <td>
-                                <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning" (click)="editAt(data.id)"></button>
+                            <td class="text-right">
+                                <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-4" (click)="editAt(data.id)"></button>
                                 <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
                             </td>
                         </tr>
