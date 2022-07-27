@@ -1,7 +1,9 @@
-export class UpdateReqComapny {
-    id!: number
-    companyName?: string
-    companyCode?: string
-    address?: string
-    isActive!: boolean
+export interface UpdateCompanyReq {
+	id? : string 
+	companyName? : string
+	companyCode? : string
+	address? : string
+	Email? : string
+	version? : number
+	isActive? : boolean
 }

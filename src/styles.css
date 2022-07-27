@@ -3,6 +3,9 @@
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
+.bg-blue-custom {
+  background-color: rgb(222, 238, 255);
+}
 
 body {
   background-color: #f0f4fa;
@@ -63,8 +66,8 @@ table {
 }
 
 .card-custom {
-  width: 200px;
-  height: 110px;
+  width: 240px;
+  min-height: 110px;
 
   background: linear-gradient(
     0deg,
@@ -72,11 +75,15 @@ table {
     rgba(186, 186, 186, 1) 100%
   );
   border-radius: 15px;
-  box-shadow: 1px 4px 5px #5e5e5e;
+  box-shadow: 1px 4px 5px #00000088;
   cursor: pointer;
+  padding: 20px;
 }
 .card-custom-icon {
   text-align: center;
+}
+.card-custom-count {
+  text-align: right;
 }
 .custom-card-header {
   height: 50px;
@@ -112,13 +119,35 @@ table {
   display: block;
 }
 
+.photo-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-profile {
+  /* min-width: 200px; */
+  max-width: 200px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.photo-profile img {
+  width: 100%;
+}
+
 #menu-side-custom {
-  width: 240px;
-  height: 80vh;
+  width: 224px;
+  height: 100vh;
   overflow: auto;
   position: sticky;
   top: 0;
 }
+
 #x {
   border: solid 1px rgba(186, 186, 186, 0);
 }
