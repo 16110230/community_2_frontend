@@ -1,0 +1,60 @@
+<div class="flex flex-row bg-blue-100 ">
+    <div id="menu-side-custom">
+        <side-bar-custom></side-bar-custom>
+    </div>
+    
+    <!-- end of sidebar -->
+    <div class="flex-grow-1">
+         
+        <div class="m-5">
+            <p-card >  
+                <div class="grid">
+                    <div class="col-10">
+                        <h4 class="mb-5">Articles List</h4>
+                    </div>
+                    <div class="col-2">
+                        <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded" (click)="goTo()"></button>
+                    </div>
+                </div>
+                              
+                <p-table [value]="articles" responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>No</th>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Active</th>
+                            <th>View</th>                            
+                            <th></th>                            
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-i="rowIndex" let-data>
+                        <tr>
+                            <td>{{i+1}}</td>
+                            <td>{{data.id}}</td>
+                            <td>{{data.title}}</td>
+                            <td>{{data.category}}</td>
+                            <td>
+                                <div *ngIf="data.isActive" class="check-status-custom-true">
+                                    <i class="pi pi-check font-bold text-blue-500"></i>
+                                </div>
+                                <div *ngIf="!data.isActive" class="check-status-custom-false"></div>
+                            </td>
+                            <td>
+                                <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded"></button>
+                            </td>
+                            <td>
+                                <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning" (click)="editAt(data.id)"></button>
+                                <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    
+                </p-table>                
+            </p-card>
+            
+        </div> 
+    </div>
+</div>
+
