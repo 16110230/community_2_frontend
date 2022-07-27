@@ -1,11 +1,10 @@
-<div class="flex flex-row bg-blue-100 ">
-    <div id="menu-side-custom">
+<div class="flex flex-row bg-blue-custom">
+    <div id="menu-side-custom" class="flex">
         <side-bar-custom></side-bar-custom>
     </div>
     
     <!-- end of sidebar -->
-    <div class="flex-grow-1">
-         
+    <div class="flex-1">
         <div class="m-5">
             <p-card >  
                 <div class="grid">
@@ -20,8 +19,7 @@
                 <p-table [value]="articles" responsiveLayout="scroll">
                     <ng-template pTemplate="header">
                         <tr>
-                            <th>No</th>
-                            <th>ID</th>
+                            <th>No</th>            
                             <th>Title</th>
                             <th>Category</th>
                             <th>Active</th>
@@ -32,7 +30,6 @@
                     <ng-template pTemplate="body" let-i="rowIndex" let-data>
                         <tr>
                             <td>{{i+1}}</td>
-                            <td>{{data.id}}</td>
                             <td>{{data.title}}</td>
                             <td>{{data.category}}</td>
                             <td>
@@ -44,8 +41,8 @@
                             <td>
                                 <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded"></button>
                             </td>
-                            <td>
-                                <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning" (click)="editAt(data.id)"></button>
+                            <td class="text-right">
+                                <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-4" (click)="editAt(data.id)"></button>
                                 <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
                             </td>
                         </tr>

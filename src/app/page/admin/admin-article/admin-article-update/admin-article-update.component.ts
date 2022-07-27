@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { UpdateThreadReq } from "src/app/dto/thread/update-thread-req";
 
 @Component({
     selector: "app-admin-article-update",
@@ -7,6 +8,9 @@ import { Router } from "@angular/router";
 })
 
 export class AdminArticleUpdateComponent {
+
+    updateReq: UpdateThreadReq = {}
+
     categorys = [
         {
             id: 1,
