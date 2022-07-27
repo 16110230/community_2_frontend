@@ -1,4 +1,4 @@
-export interface InsertActyivityType{
+export interface InsertActyivityTypeReq{
 	typeName? : string
 	typeCode? : string
 	isActive? : boolean
