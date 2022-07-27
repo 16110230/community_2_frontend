@@ -7,12 +7,20 @@
   background-color: rgb(222, 238, 255);
 }
 
+body {
+  background-color: #f0f4fa;
+}
+
 table {
   border: none;
 }
 
 .table-custom thead {
   background-color: #ebebeb;
+}
+
+.grid {
+  margin: 0px !important;
 }
 
 #login {
