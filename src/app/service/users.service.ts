@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { BASE_URL } from "../constant/constant";
 import { DeleteResDto } from "../dto/delete-res-dto";
 import { InsertResDto } from "../dto/insert-res-dto";
 import { UpdateResDto } from "../dto/update-res-dto";
@@ -17,22 +18,22 @@ export class UsersService {
     constructor(private http : HttpClient) {}
 
     getAll() : Observable<ShowUsers> {
-        return this.http.get<ShowUsers>(`http://localhost:1221/users`)
+        return this.http.get<ShowUsers>(`${BASE_URL}/users`)
     }
 
     getById(id : number) : Observable<ShowUserById> {
-        return this.http.get<ShowUserById>(`http://localhost:1221/users/${id}`)
+        return this.http.get<ShowUserById>(`${BASE_URL}/users/${id}`)
     }
 
     insert(data : InsertUserReq) : Observable<InsertResDto> {
-        return this.http.post<InsertResDto>(`http://localhost:1221`, data)
+        return this.http.post<InsertResDto>(`${BASE_URL}`, data)
     }
 
     update(data : UpdateUserReq) : Observable<UpdateResDto> {
-        return this.http.put<UpdateResDto>(`http://localhost:1221/users`, data)
+        return this.http.put<UpdateResDto>(`${BASE_URL}/users`, data)
     }
 
     delete(id : number) : Observable<DeleteResDto> {
-        return this.http.delete<DeleteResDto>(`http://localhost:1221/users/${id}`)
+        return this.http.delete<DeleteResDto>(`${BASE_URL}/users/${id}`)
     }
 }

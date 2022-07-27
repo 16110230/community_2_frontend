@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http"
 import { Injectable } from "@angular/core"
 import { Observable } from "rxjs"
+import { BASE_URL } from "../constant/constant"
 import { DeleteResDto } from "../dto/delete-res-dto"
 import { InsertResDto } from "../dto/insert-res-dto"
 import { UpdateResDto } from "../dto/update-res-dto"
@@ -16,18 +17,18 @@ export class UserPollingService {
     constructor(private http : HttpClient) {}
 
     getAll() : Observable<ShowUserPollings> {
-        return this.http.get<ShowUserPollings>(`http://localhost:1221/user-pollings`)
+        return this.http.get<ShowUserPollings>(`${BASE_URL}/user-pollings`)
     }
 
     getById(id : number) : Observable<ShowUserPollingById> {
-        return this.http.get<ShowUserPollingById>(`http://localhost:1221/user-pollings/${id}`)
+        return this.http.get<ShowUserPollingById>(`${BASE_URL}/user-pollings/${id}`)
     }
 
     insert(data : InsertUserPolling) : Observable<InsertResDto> {
-        return this.http.post<InsertResDto>(`http://localhost:1221/user-pollings`, data)
+        return this.http.post<InsertResDto>(`${BASE_URL}/user-pollings`, data)
     }
 
     delete(id : number) : Observable<DeleteResDto> {
-        return this.http.delete<DeleteResDto>(`http://localhost:1221/user-pollings/${id}`)
+        return this.http.delete<DeleteResDto>(`${BASE_URL}/user-pollings/${id}`)
     }
 }
