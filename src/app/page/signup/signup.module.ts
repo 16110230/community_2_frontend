@@ -4,10 +4,12 @@ import { FormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 import { CardModule } from "primeng/card";
 import { InputTextModule } from "primeng/inputtext";
-import { SignupFirstStepComponent } from "./signup-first-step.component/signup-first-step.component";
-import { SignupSecondStepComponent } from "./signup-second-step.component/signup-second-step.component";
-import { SignupVerifyComponent } from "./signup-verify.component/signup-verify.component";
+import { DropdownModule } from 'primeng/dropdown';
+
 import { SignupRouting } from "./signup.routing";
+import { SignupFirstStepComponent } from "./signup-first-step/signup-first-step.component";
+import { SignupSecondStepComponent } from "./signup-second-step/signup-second-step.component";
+import { SignupVerifyComponent } from "./signup-verify/signup-verify.component";
 
 
 
@@ -20,7 +22,8 @@ import { SignupRouting } from "./signup.routing";
         CommonModule,
         ButtonModule,
         CardModule,
-        InputTextModule
+        InputTextModule,
+        DropdownModule
 
     ],
     declarations: [

@@ -1,0 +1,46 @@
+<div class="grid" [ngStyle]="{'min-height': '100vh'}">
+    <div class="sm:col-6 col-12" id="login" >
+        
+        <div class="flex justify-content-center align-items-center" id="container-quote" [ngStyle]="{'min-height': '100vh'}">
+            <span class="text-white text-5xl" >
+                Selamat datang di komunitas Lawencon
+            </span>            
+        </div>
+
+        <div class="flex justify-content-center align-items-center mt-6" id="container-logo">
+            <img id="login-logo" src="../../../../assets/img/lunity-logo.png" alt="">
+        </div>
+    </div>
+
+
+    <div class="sm:col-6 col-12" [ngStyle]="{'min-height': '100vh'}" >
+        <div class="flex justify-content-center align-items-center" [ngStyle]="{'min-height': '100vh'}">
+            <div [ngStyle]="{'width': '75%'}">
+            <form>  
+                <span class="icon-round" [ngStyle]="{'background-color': 'var(--blue-500)'}">
+                    <i class="pi pi-file text-white"></i>
+                </span>
+                <span>Account Detail</span>            
+
+                <div class="mt-2">
+                    <label for="company">Company</label><span class="text-red-500">*</span>
+                </div>                                
+                <p-dropdown name="company" id="company" [options]="companys" optionLabel="companyName" optionValue="id"></p-dropdown>
+
+                <div class="mt-2">
+                    <label class="mt-2" for="industry">Industry</label><span class="text-red-500">*</span>
+                </div>                                
+                <p-dropdown name="industry" id="industry" [options]="industrys" optionLabel="industryName" optionValue="id"  ></p-dropdown>
+
+                <div class="mt-2">
+                    <label class="mt-2" for="position">Position</label><span class="text-red-500">*</span>
+                </div>                                
+                <p-dropdown name="position" id="position" [options]="positions" optionLabel="positionName" optionValue="id" ></p-dropdown>
+
+                <button class="mt-4" pButton type="button" [ngStyle]="{'width': '100%'}" label="NEXT" ></button>
+       
+            </form>     
+            </div>
+        </div>
+    </div>
+</div>

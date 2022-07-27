@@ -1,0 +1,41 @@
+<div class="flex flex-row bg-blue-100 ">
+    <div id="menu-side-custom">
+        <side-bar-custom></side-bar-custom>
+    </div>
+    
+    <!-- end of sidebar -->
+    <div class="flex-grow-1 ">
+         
+        <div class="m-5">
+            <p-card > 
+                <div class="grid mb-2">
+                    <div>
+                        <button pButton pRipple type="button" icon="pi pi-arrow-left" class="p-button-rounded p-button-success" (click)="goTo()"></button>
+                    </div>
+                </div>  
+                <h4 class="mb-5">Create Article</h4>                
+                <form class="form-create-custom">
+                    <label for="title">Title</label><br>
+                    <textarea id="title" class="mt-2 mb-5" rows="5" pInputTextarea autoResize="autoResize"></textarea>
+
+                    <label for="description">Description</label><br>
+                    <textarea id="description" class="mt-2 mb-5" rows="5" pInputTextarea autoResize="autoResize"></textarea>
+
+                    <label for="category">category</label><br>
+                    <div class="mt-2 mb-5">
+                        <p-dropdown  name="category" id="category" [options]="categorys" optionLabel="categoryName" optionValue="id"  ></p-dropdown>
+                    </div>
+
+                    <div class="grid">
+                        <div class="col-6 col-offset-6">
+                            <button pButton pRipple type="button" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>
+                        </div>
+                    </div>
+                    
+                </form>          
+            </p-card>
+            
+        </div> 
+    </div>
+</div>
+
