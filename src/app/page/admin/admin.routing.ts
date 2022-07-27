@@ -38,6 +38,10 @@ const routes: Routes = [
     {
         path: 'thread',
         loadChildren: () => import('./admin-thread/admin-thread.module').then((m) => m.AdminThreadModule)
+    },
+    {
+        path: 'activity-category',
+        loadChildren: () => import('./admin-activity-category/admin-activity-category.module').then((m) => m.AdminActivityCategoryModule)
     }
 
 ]
