@@ -9,7 +9,7 @@ import { LoginComponent } from "./page/login/login/login.component";
 
 const routes: Routes = [
     {
-        path: "",
+        path: "login",
         component: LoginComponent
     },
     {
@@ -19,6 +19,11 @@ const routes: Routes = [
     {
         path: "admin",
         loadChildren: () => import('./page/admin/admin.module').then((m) => m.AdminModule)
+    },
+    {
+        path : '',
+        redirectTo : 'login',
+        pathMatch : 'full'
     }
 ]
 

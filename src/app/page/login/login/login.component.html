@@ -31,9 +31,9 @@
                     <label class="mt-2" for="password">Password</label>
                 </div>
                                 
-                <input class="mt-2" type="text" [ngStyle]="{'width': '100%'}" name="password" id="password" pInputText [(ngModel)]="loginReq.userPassword"/>
+                <input class="mt-2" type="password" [ngStyle]="{'width': '100%'}" name="password" id="password" pInputText [(ngModel)]="loginReq.userPassword"/>
 
-                <button class="mt-4" pButton type="button" [ngStyle]="{'width': '100%'}" label="SIGN IN" ></button>
+                <button class="mt-4" pButton type="submit" [ngStyle]="{'width': '100%'}" label="SIGN IN" ></button>
                 
                 <div class="flex justify-content-center mt-4">
                     <span>or</span>
