@@ -2,10 +2,10 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
-    selector: "app-admin-activity-category",
-    templateUrl: "./admin-activity-category.component.html"
+    selector: "app-admin-activity-type",
+    templateUrl: "./admin-activity-type.component.html"
 })
-export class AdminActivityCategory implements OnInit, OnDestroy{
+export class AdminActivityType implements OnInit, OnDestroy{
     articles = [
         {
             id: 1,

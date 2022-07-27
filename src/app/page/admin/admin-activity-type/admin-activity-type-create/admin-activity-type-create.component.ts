@@ -1,13 +1,13 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { UpdateThreadReq } from "src/app/dto/thread/update-thread-req";
+import { InsertActyivityTypeReq } from "src/app/dto/activity-type/insert-activity-type-req";
 
 @Component({
-    selector: "app-admin-activity-category-update",
-    templateUrl: "./admin-activity-category-update.component.html"
+    selector: "app-admin-activity-type-create",
+    templateUrl: "./admin-activity-type-create.component.html"
 })
-export class AdminActivityCategoryUpdate{
-    updateReq: UpdateThreadReq = {}
+export class AdminActivityTypeCreate{
+    insertReq: InsertActyivityTypeReq = {}
 
     categorys = [
         {
@@ -21,7 +21,7 @@ export class AdminActivityCategoryUpdate{
     ]
 
     constructor(
-        private router: Router
+        private router: Router,
     ) { }
 
     goTo() {

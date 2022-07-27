@@ -3,10 +3,10 @@ import { Router } from "@angular/router";
 import { UpdateThreadReq } from "src/app/dto/thread/update-thread-req";
 
 @Component({
-    selector: "app-admin-activity-category-update",
-    templateUrl: "./admin-activity-category-update.component.html"
+    selector: "app-admin-activity-type-update",
+    templateUrl: "./admin-activity-type-update.component.html"
 })
-export class AdminActivityCategoryUpdate{
+export class AdminActivityTypeUpdate{
     updateReq: UpdateThreadReq = {}
 
     categorys = [
