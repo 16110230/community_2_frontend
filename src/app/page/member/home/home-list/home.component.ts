@@ -36,7 +36,12 @@ export class HomeComponent implements OnInit, OnDestroy{
     }
 
     trimChar(data : string) : string{
-        let result : string = data.substr(0, 100);
+        let result : string = data.substr(0, 100)+"...";
+        return result;
+    }
+
+    trimCharSubs(data : string) : string{
+        let result : string = data.substr(0, 200)+"...";
         return result;
     }
 

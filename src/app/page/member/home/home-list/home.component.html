@@ -21,7 +21,7 @@
                             <div class="content-card-header-dtl ml-3 flex flex-column justify-content-center">
                                 <div class="header-details mt-3">
                                     <h4>{{data.threadTitle}} </h4>
-                                    <span class="header-date">Upload at {{data.createdAt}} minutes ago by {{data.userName}}</span>
+                                    <span class="header-date">Upload at {{data.createdAt|timeAgo}} by {{data.userName}}</span>
                                 </div>
                             </div>
                         </div>
@@ -85,11 +85,8 @@
                                 </div>
                             </div>
                             <div class="content-card-body mt-2 px-4">
-                                <p>I need to show it on UI in such a way that input1, input2 and key, value for map of criteria 
-                                    is visible as the input field. The user fills all 4 input fields and clicks on the add button.
-                                    Then again same input fields should be editable for the user for the second input. This way 
-                                    he can build list and map and when he clicks on submit button array and map should have all 
-                                    the values filled before.
+                                <p>
+                                    {{trimCharSubs(data.threadContent)}}
                                 </p>
                             </div>
         
