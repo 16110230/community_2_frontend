@@ -11,6 +11,7 @@ import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FileUploadModule } from 'primeng/fileupload';
+import { TimeAgoPipe } from "src/app/pipe/time-ago.pipe";
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     ],
     declarations: [
         HomeComponent,
-        HomeCreateComponent
+        HomeCreateComponent,
+        TimeAgoPipe
     ],
     exports: [
         HomeComponent,
