@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
     selector: "app-admin-activity-type",
     templateUrl: "./admin-activity-type.component.html"
 })
-export class AdminActivityType implements OnInit, OnDestroy{
+export class AdminActivityType implements OnInit, OnDestroy {
     articles = [
         {
             id: 1,
@@ -28,14 +28,14 @@ export class AdminActivityType implements OnInit, OnDestroy{
     ) { }
 
     ngOnInit(): void {
-        throw new Error("Method not implemented.");
+
     }
 
     ngOnDestroy(): void {
-        throw new Error("Method not implemented.");
+
     }
 
-    initData():void{
+    initData(): void {
 
     }
 
