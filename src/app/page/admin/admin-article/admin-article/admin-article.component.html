@@ -25,6 +25,7 @@
                             <th>Active</th>
                             <th>View</th>                            
                             <th></th>                            
+                            <th></th>                            
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-i="rowIndex" let-data>
@@ -42,7 +43,9 @@
                                 <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded"></button>
                             </td>
                             <td class="text-right">
-                                <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-4" (click)="editAt(data.id)"></button>
+                                <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning" (click)="editAt(data.id)"></button>
+                            </td>
+                            <td class="text-right">                                
                                 <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
                             </td>
                         </tr>

@@ -35,7 +35,7 @@
                             <td>{{data.threadTitle}}</td>                            
                             <td>{{data.threadCategoryName}}</td>
                             <td>
-                                <button *ngIf="data.threadCategoryName === 'polling'" pButton pRipple type="button" label="detail" class="p-button-rounded" ></button>
+                                <button *ngIf="data.threadCategoryName === 'polling'" pButton pRipple type="button" label="detail" class="p-button-rounded" (click)="pollingTo(data.id)"></button>
                             </td>
                             <td>
                                 <div *ngIf="data.isActive" class="check-status-custom-true">
