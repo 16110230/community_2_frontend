@@ -12,23 +12,24 @@
                         <button pButton pRipple type="button" icon="pi pi-arrow-left" class="p-button-rounded p-button-success" (click)="goTo()"></button>
                     </div>
                 </div>  
-                <h4 class="mb-5">Update Article</h4>                
-                <form class="form-create-custom">
-                    <label for="title">Title</label><br>
-                    <textarea id="title" name="activityTitle" class="mt-2 mb-5" rows="5" pInputTextarea autoResize="autoResize" [(ngModel)]="updateReq.threadTitle"></textarea>
-
-                    <label for="description">Description</label><br>
-                    <textarea id="description" name="activityContent" class="mt-2 mb-5" rows="5" pInputTextarea autoResize="autoResize" [(ngModel)]="updateReq.threadContent"></textarea>
-
-                    <label for="category">Active</label><br>
-                    <div class="mt-2 mb-5">
-                        <input type="checkbox" name="isActive" id="" [(ngModel)]="updateReq.isActive">
-                    </div>
-
+                <h4 class="mb-5">Update Activity Category</h4>                
+                <form class="form-create-custom" (ngSubmit)="onUpdate()">
                     <div class="grid">
-                        <div class="col-6 col-offset-6">
-                            <button pButton pRipple type="button" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>
+                        <div class="col-12">
+                            <label for="name">Name</label><br>
+                            <input class="w-full mt-2" id="name" name="activityName" pInputText autoResize="autoResize" [(ngModel)]="update.categoryName" />
                         </div>
+                        <div class="col-12">
+                            <label for="code">Code</label><br>
+                            <input class="w-full mt-2" id="code" name="activityCode" pInputText autoResize="autoResize" [(ngModel)]="update.categoryCode" />
+                        </div>
+                        <div class="col">  
+                            <label for="isActive">Active</label> <br>                         
+                            <input class="mt-2" type="checkbox" name="isActive" id="" value="true" [(ngModel)]="update.isActive" >
+                        </div>
+                        <div class="col-12">
+                            <button pButton pRipple type="submit" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>
+                        </div>                 
                     </div>
                     
                 </form>          

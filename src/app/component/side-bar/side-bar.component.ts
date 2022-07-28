@@ -67,6 +67,7 @@ export class SideBarComponent implements OnInit {
                     {
                         label: 'Activity Category',
                         icon: 'pi pi-table',
+
                         command: () => {
                             this.router.navigate(['/admin/activity-category'])
                         }
@@ -74,6 +75,7 @@ export class SideBarComponent implements OnInit {
                     {
                         label: 'Activity Type',
                         icon: 'pi pi-table',
+
                         command: () => {
                             this.router.navigate(['/admin/activity-type'])
                         }

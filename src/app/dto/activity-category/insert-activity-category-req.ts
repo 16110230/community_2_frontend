@@ -1,5 +1,5 @@
 export interface InsertActivityCategoryReq{
-    categoryName? : string
-    categoryCode? : string
-    isActive? : boolean
+    categoryName : string
+    categoryCode : string
+    isActive : boolean
 }

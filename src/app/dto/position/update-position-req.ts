@@ -1,7 +1,7 @@
 export interface UpdatePositionReq{
-	id? : string
-	positionName? : string
-	positionCode? : string
-	isActive? : boolean
-	version? : number
+	id : string
+	positionName : string
+	positionCode : string
+	isActive : boolean
+	version : number
 } 
