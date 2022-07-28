@@ -56,6 +56,20 @@ export class SideBarComponent implements OnInit {
                         command: () => {
                             this.router.navigate(['/admin/activity/course'])
                         }
+                    },
+                    {
+                        label: 'Activity Category',
+                        icon: 'pi pi-image',
+                        command: () => {
+                            this.router.navigate(['/admin/activity-category'])
+                        }
+                    },
+                    {
+                        label: 'Activity Type',
+                        icon: 'pi pi-image',
+                        command: () => {
+                            this.router.navigate(['/admin/activity-type'])
+                        }
                     }
                 ]
             },

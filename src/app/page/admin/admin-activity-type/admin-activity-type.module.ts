@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 import { CardModule } from "primeng/card";
+import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { DropdownModule } from "primeng/dropdown";
 import { InputTextModule } from "primeng/inputtext";
 import { MenuModule } from "primeng/menu";
@@ -26,6 +27,7 @@ import { AdminActivityType } from "./admin-activity-type/admin-activity-type.com
         SidebarModule,
         MenuModule,
         TableModule,
+        ConfirmDialogModule,
         AdminActivityTypeRouting
     ],
     declarations: [

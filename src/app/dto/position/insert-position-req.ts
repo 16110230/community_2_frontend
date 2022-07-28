@@ -1,5 +1,5 @@
 export interface InsertPositionReq{
-	positionName? : string
-	positionCode? : string
-	isActive? : boolean
+	positionName : string
+	positionCode : string
+	isActive : boolean
 }

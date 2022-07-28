@@ -12,6 +12,7 @@ import { SharedModule } from "src/app/component/shared.module";
 import { AdminCompanyCreateComponent } from "./admin-company-create/admin-company-create.component";
 import { AdminCompanyUpdateComponent } from "./admin-company-update/admin-company-update.component";
 import { AdminCompanyRouting } from "./admin-company.routing";
+import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { AdminCompanyComponent } from "./admin-company/admin-company.component";
 
 @NgModule({
@@ -26,6 +27,7 @@ import { AdminCompanyComponent } from "./admin-company/admin-company.component";
         SidebarModule,
         MenuModule,
         TableModule,
+        ConfirmDialogModule,
         AdminCompanyRouting
     ],
     declarations: [
