@@ -16,7 +16,7 @@
         <div class="flex justify-content-center align-items-center" [ngStyle]="{'min-height': '100vh'}">
             <div [ngStyle]="{'width': '75%'}">
             <form (ngSubmit)="login()">
-                <span class="icon-round" [ngStyle]="{'background-color': 'var(--blue-500)'}">
+                <span class="icon-round mr-2 mb-3" [ngStyle]="{'background-color': 'var(--blue-500)'}">
                     <i class="pi pi-sign-in text-white"></i>
                 </span>
                 <span>Login Account</span> 
@@ -36,12 +36,10 @@
                 <button class="mt-4" pButton type="submit" [ngStyle]="{'width': '100%'}" label="SIGN IN" ></button>
                 
                 <div class="flex justify-content-center mt-4">
-                    <span>or</span>
-                </div>
-                
-                <div class="flex justify-content-center mt-4">
-                    <span>No Account yet?</span>
-                    <span class="text-primary ml-1"> Sign Up </span>
+                    <span>Don't have an account?</span>
+                    <a routerLink="/signup">
+                        <span class="text-primary ml-1" routerLink="/signup"> Sign Up </span>
+                    </a>
                 </div>
             </form>        
             </div>

@@ -1,30 +1,32 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { InsertActivityCategoryReq } from "src/app/dto/activity-category/insert-activity-category-req";
+import { ActivityCategoryService } from "src/app/service/activity-category.service";
 
 @Component({
     selector: "app-admin-activity-category-create",
     templateUrl: "./admin-activity-category-create.component.html"
 })
-export class AdminActivityCategoryCreate{
-    insertReq: InsertActivityCategoryReq = {}
-
-    categorys = [
-        {
-            id: 1,
-            categoryName: "category1"
-        },
-        {
-            id: 2,
-            categoryName: "category2"
-        }
-    ]
+export class AdminActivityCategoryCreate {
 
     constructor(
+        private activityCategoryService : ActivityCategoryService,
         private router: Router,
     ) { }
 
+    insert: InsertActivityCategoryReq = {
+        categoryName : "",
+        categoryCode : "",
+        isActive : false
+    }
+
+    onSubmit() : void {
+        this.activityCategoryService.insert(this.insert).subscribe(result => {
+            this.router.navigateByUrl('/admin/activity-category')
+        })
+    }
+
     goTo() {
-        this.router.navigate(['/admin/article'])
+        this.router.navigate(['/admin/activity-category'])
     }
 }

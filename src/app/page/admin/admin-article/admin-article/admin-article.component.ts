@@ -1,31 +1,35 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { ShowThreads } from "../../../../dto/thread/show-threads";
+import { ThreadDto } from "../../../../dto/thread/thread-dto";
+import { ThreadService } from "../../../../service/thread.service";
 
 @Component({
     selector: "app-admin-article",
     templateUrl: "./admin-article.component.html"
 })
-export class AdminArticleComponent {
-    articles = [
-        {
-            id: 1,
-            title: "this is title to express how long this title can be, and to see is table can handle long title",
-            category: "category1",
-            isActive: true
+export class AdminArticleComponent implements OnInit {
 
-        },
-        {
-            id: 2,
-            title: "this is title to express how long this title can be, and to see is table can handle long title",
-            category: "category1",
-            isActive: false
+    articles : ShowThreads = {} as ShowThreads;
+    articleData : ThreadDto[] = []
 
-        }
-    ]
 
     constructor(
+        private threadService : ThreadService,
         private router: Router
     ) { }
+
+    ngOnInit(): void {
+        this.articles.data = []
+        this.initData()
+    }
+
+    initData() {
+        this.threadService.getAll().subscribe(result => {
+            this.articles = result
+            this.articleData = result.data
+        })
+    }
 
     goTo() {
         this.router.navigate(['admin/article/create'])

@@ -36,6 +36,10 @@ const routes: Routes = [
         loadChildren: () => import('./admin-user/admin-user.module').then((m) => m.AdminUserModule)
     },
     {
+        path: 'user-role',
+        loadChildren: () => import('./admin-user-role/admin-user-role.module').then((m) => m.AdminUserRoleModule)
+    },
+    {
         path: 'thread',
         loadChildren: () => import('./admin-thread/admin-thread.module').then((m) => m.AdminThreadModule)
     },

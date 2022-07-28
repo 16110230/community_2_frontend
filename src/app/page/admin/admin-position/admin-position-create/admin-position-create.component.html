@@ -20,24 +20,23 @@
                 </div>
 
                 <!-- insert form -->
-                <form class="mb-5">
+                <form class="mb-5" (ngSubmit)="onSubmit()">
                     <div class="grid">
                         <div class="col-6">
                             <label for="name">Name</label>                            
-                            <input class="w-full" type="text"  name="positionName" id="name" pInputText />
+                            <input class="w-full" type="text"  name="positionName" id="name" pInputText [(ngModel)]="insert.positionName" />
                         </div>
                         <div class="col-6">
                             <label for="code">Code</label>                            
-                            <input class="w-full" type="text"  name="positionCode" id="code" pInputText />
+                            <input class="w-full" type="text"  name="positionCode" id="code" pInputText [(ngModel)]="insert.positionCode" />
                         </div>
-                        <div class="col-6">
-                            <label for="address">Address</label>                            
-                            <textarea id="address" name="address" class="w-full" rows="5" pInputTextarea autoResize="autoResize"></textarea>
-                        </div>
-                        <div class="col-6"></div>
-                        <div class="col-6"></div>                                                       
+                        <div class="col-6">  
+                            <label for="isActive">Active</label> <br>                         
+                            <input type="checkbox" name="isActive" id="" [(ngModel)]="insert.isActive" >
+                        </div>  
+                        <div class="col-6"></div>                                                    
                         <div class="col-6 justify-content-bottom">
-                            <button pButton pRipple type="button" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>                            
+                            <button pButton pRipple type="submit" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>                            
                         </div>
                     </div>
                 </form>                                                                                           
