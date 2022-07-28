@@ -16,41 +16,32 @@
         <div class="flex justify-content-center align-items-center" [ngStyle]="{'min-height': '100vh'}">
             <div [ngStyle]="{'width': '75%'}">
             <form>  
-                <span class="icon-round" [ngStyle]="{'background-color': 'var(--blue-500)'}">
+                <span class="icon-round mr-2 mb-3" [ngStyle]="{'background-color': 'var(--blue-500)'}">
                     <i class="pi pi-upload text-white"></i>
                 </span>
-                <span>Sign Up</span>
+                <span>Personal Information</span>
 
                 <div class="mt-2 w-full">
                     <label for="username">User Name</label><span class="text-red-500">*</span>
                 </div>                
-                <input class="mt-2 w-full" type="text"  name="usermame" id="username" pInputText />
+                <input class="mt-2 w-full" type="text"  name="usermame" id="username" [(ngModel)]="username" pInputText />
 
                 <div class="mt-2 w-full">
                     <label for="fullName">Full Name</label><span class="text-red-500">*</span>
                 </div>                
-                <input class="mt-2 w-full" type="text"  name="fullName" id="fullName" pInputText />
+                <input class="mt-2 w-full" type="text"  name="fullName" id="fullName" [(ngModel)]="fullName" pInputText />
 
                 <div class="mt-2 w-full">
                     <label for="email">Email</label><span class="text-red-500">*</span>
                 </div>                
-                <input class="mt-2 w-full" type="text" name="email" id="email" pInputText />                
+                <input class="mt-2 w-full" type="text" name="email" id="email" [(ngModel)]="email" pInputText />                
                 
                 <div class="mt-2 w-full">
-                    <label for="password">Password</label><span class="text-red-500">*</span>
+                    <label for="userPassword">Password</label><span class="text-red-500">*</span>
                 </div>                
-                <input class="mt-2 w-full" type="password"  name="password" id="password" pInputText />
+                <input class="mt-2 w-full" type="password"  name="userPassword" id="userPassword" [(ngModel)]="userPassword" pInputText />
 
-                <button class="mt-4 w-full" pButton type="button"  label="SIGN UP" ></button>
-
-                <div class="flex justify-content-center mt-4">
-                    <span>or</span>
-                </div>
-                
-                <div class="flex justify-content-center mt-4">
-                    <span>No Account yet?</span>
-                    <span class="text-primary ml-1"> Sign Up </span>
-                </div>
+                <button class="mt-4 w-full" pButton type="button"  label="NEXT" (click)="submit()"></button>
             </form>     
             </div>
         </div>
