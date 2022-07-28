@@ -5,6 +5,8 @@ import { Component, OnInit } from "@angular/core";
     templateUrl: "./admin-invoice-subscribe-pending.component.html"
 })
 export class AdminInvoiceSubscribePendingComponent {
+    imageSource = ""
+    imageViewFull = false
     invoices = [
         {
             id: 1234,
@@ -29,5 +31,13 @@ export class AdminInvoiceSubscribePendingComponent {
         }
     ]
 
+    viewImage(src: string) {
+        this.imageViewFull = !this.imageViewFull
+        this.imageSource = src
+    }
 
+    closeViewImage() {
+        this.imageSource = ""
+        this.imageViewFull = !this.imageViewFull
+    }
 }

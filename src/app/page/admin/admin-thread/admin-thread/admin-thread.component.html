@@ -20,10 +20,12 @@
                     <ng-template pTemplate="header">
                         <tr>
                             <th>No</th>                            
-                            <th>Title</th>                            
+                            <th class="text-center">Title</th>                            
                             <th>Category</th>
+                            <th class="text-center">Detail</th>
                             <th>Active</th>
                             <th>View</th>                            
+                            <th></th>                            
                             <th></th>                            
                         </tr>
                     </ng-template>
@@ -33,6 +35,9 @@
                             <td>{{data.threadTitle}}</td>                            
                             <td>{{data.threadCategoryName}}</td>
                             <td>
+                                <button *ngIf="data.threadCategoryName === 'polling'" pButton pRipple type="button" label="detail" class="p-button-rounded" ></button>
+                            </td>
+                            <td>
                                 <div *ngIf="data.isActive" class="check-status-custom-true">
                                     <i class="pi pi-check font-bold text-blue-500"></i>
                                 </div>
@@ -41,8 +46,10 @@
                             <td>
                                 <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded"></button>
                             </td>
-                            <td class="text-right">
+                            <td class="text-right">                                
                                 <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-4" (click)="goTo(data.id)"></button>                                
+                            </td>
+                            <td class="text-right">                                
                                 <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="confirm()"></button>                                
                             </td>
                         </tr>

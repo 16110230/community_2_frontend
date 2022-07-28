@@ -17,7 +17,7 @@
                             <th>Order Date</th>
                             <th>Amount</th>
                             <th>Photo</th>
-                            <th>Validate</th>
+                            <th class="text-center">Validate</th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-i="rowIndex" let-data>
@@ -27,13 +27,12 @@
                             <td>{{data.username}}</td>
                             <td>{{data.orderDate}}</td>
                             <td>{{data.amount}}</td>
-                            <td>
-                                <!-- <img src="../../../../../assets/img/Screenshot_2018_11_22_20_41_14_33.jpg" alt=""> -->
+                            <td>                                
                                 <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded" (click)="viewImage(data.file)" ></button>                                
-
                             </td>
-                            <td>
-                                <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-success"></button>
+                            <td class="text-center">
+                                <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-success mr-4"></button>
+                                <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
                             </td>
                         </tr>
                     </ng-template>
@@ -48,8 +47,5 @@
         <span>X</span>
     </div>
     <img [src]="imageSource" alt="">
-    <!-- <div id="image-view">
-        
-    </div> -->
 </div>
 

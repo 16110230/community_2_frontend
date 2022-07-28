@@ -33,6 +33,7 @@ export class AdminInvoiceCoursePendingComponent {
 
     viewImage(src: string) {
         this.imageViewFull = !this.imageViewFull
+        this.imageSource = src
     }
 
     closeViewImage() {

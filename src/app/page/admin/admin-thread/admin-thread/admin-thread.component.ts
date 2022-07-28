@@ -11,7 +11,7 @@ export class AdminThreadComponents {
         {
             id: 1,
             threadTitle: "this is title to express how long this title can be, and to see is table can handle long title",
-            threadCategoryName: "category1",
+            threadCategoryName: "polling",
             isActive: true
 
         },
