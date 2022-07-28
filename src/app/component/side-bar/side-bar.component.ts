@@ -19,7 +19,7 @@ export class SideBarComponent implements OnInit {
             {
                 label: 'Home',
                 items: [{
-                    label: 'Dashboar',
+                    label: 'Dashboard',
                     icon: 'pi pi-home',
                     command: () => {
                         this.router.navigate(['/admin'])

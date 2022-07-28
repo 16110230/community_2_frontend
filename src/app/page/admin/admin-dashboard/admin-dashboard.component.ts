@@ -1,13 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { MenuItem } from "primeng/api";
 
 @Component({
     selector: "app-admin-dashboard",
     templateUrl: "./admin-dashboard.component.html"
 })
 export class AdminDashboardComponent implements OnInit {
-    items!: MenuItem[]
+    targetId?= null
+
     threads = [
         {
             id: 1,
@@ -21,148 +21,79 @@ export class AdminDashboardComponent implements OnInit {
         }
     ]
 
-    cardsUser = [
+    cards = [
         {
             title: "Total Users",
             count: 304,
-            icon: "pi pi-users"
+            icon: "pi pi-users",
+            classCustom: "card-custom-1",
+            dest: "nogo"
         },
         {
             title: "Daily New User",
             count: 17,
-            icon: "pi pi-user"
-        }
-    ]
-
-    cardsActivity = [
+            icon: "pi pi-user",
+            classCustom: "card-custom-1",
+            dest: "nogo"
+        },
         {
             title: "Daily New Event",
             count: 4,
-            icon: "pi pi-calendar"
+            icon: "pi pi-calendar",
+            classCustom: "card-custom-2",
+            dest: "nogo"
         },
         {
             title: "Daily New Course",
             count: 3,
-            icon: "pi pi-calendar"
-        }
-    ]
-
-    cardsInvoice = [
+            icon: "pi pi-calendar",
+            classCustom: "card-custom-2",
+            dest: "nogo"
+        },
         {
             title: "Pending Subscribe Invoice",
             count: 13,
-            icon: "pi pi-align-justify"
+            icon: "pi pi-align-justify",
+            classCustom: "card-custom-3",
+            dest: "/admin/invoice/subscribe/pending"
         },
         {
             title: "Pending Event Invoice",
             count: 24,
-            icon: "pi pi-align-justify"
+            icon: "pi pi-align-justify",
+            classCustom: "card-custom-3",
+            dest: "/admin/invoice/event/pending"
         },
         {
             title: "Pending Course Invoice",
             count: 20,
-            icon: "pi pi-align-justify"
+            icon: "pi pi-align-justify",
+            classCustom: "card-custom-3",
+            dest: "/admin/invoice/course/pending"
         }
     ]
 
     constructor(private router: Router) { }
 
+
     ngOnInit() {
-        this.items = [
-            {
-                label: 'Home',
-                items: [{
-                    label: 'Dashboar',
-                    icon: 'pi pi-home',
-                    command: () => {
-                        this.router.navigate([])
-                    }
-                }]
-            },
-            {
-                label: 'Component',
-                items: [
-                    {
-                        label: 'Users',
-                        icon: 'pi pi-user',
-                        command: () => {
-                            this.router.navigate([])
-                        }
-                    },
-                    {
-                        label: 'Thread',
-                        icon: 'pi pi-image',
-                        command: () => {
-                            this.router.navigate([])
-                        }
-                    },
-                    {
-                        label: 'Event',
-                        icon: 'pi pi-image',
-                        command: () => {
-                            this.router.navigate([])
-                        }
-                    },
-                    {
-                        label: 'Course',
-                        icon: 'pi pi-image',
-                        command: () => {
-                            this.router.navigate([])
-                        }
-                    }
-                ]
-            },
-            {
-                label: 'Company',
-                items: [
-                    {
-                        label: 'Comapany',
-                        command: () => {
-                            this.router.navigate([])
-                        }
-                    },
-                    {
-                        label: 'Industry',
-                        command: () => {
-                            this.router.navigate([])
-                        }
-                    },
-                    {
-                        label: 'Position',
-                        command: () => {
-                            this.router.navigate([])
-                        }
-                    }
-                ]
-            },
-            {
-                label: 'Invoice',
-                items: [
-                    {
-                        label: 'Subscribe',
-                        icon: 'pi pi-align-center',
-                        command: () => {
-                            this.router.navigate([])
-                        }
-                    },
-                    {
-                        label: 'Event',
-                        icon: 'pi pi-align-center',
-                        command: () => {
-                            this.router.navigate([])
-                        }
-                    },
-                    {
-                        label: 'Course',
-                        icon: 'pi pi-align-center',
-                        command: () => {
-                            this.router.navigate([])
-                        }
-                    }
-                ]
-            }
-        ]
 
+    }
 
+    cardGoTo(dest: string) {
+        if (dest !== "nogo") { this.router.navigate([dest]) }
+
+    }
+
+    targetDelete(id: any): void {
+        this.targetId = id
+    }
+
+    executeDelete(): void {
+        // this.deleteSubscribe = this.employeeService.delete(this.targetId)
+        //     .subscribe(result => {
+        //         this.targetId = null
+        //         this.showData()
+        //     })
     }
 }

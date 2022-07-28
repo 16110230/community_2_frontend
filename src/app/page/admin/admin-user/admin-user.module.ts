@@ -9,6 +9,7 @@ import { MenuModule } from "primeng/menu";
 import { SidebarModule } from "primeng/sidebar";
 import { TableModule } from "primeng/table";
 import { SharedModule } from "src/app/component/shared.module";
+import { AdminUserUpdateComponent } from "./admin-user-update/admin-user-update.component";
 import { AdminUserRouting } from "./admin-user.routing";
 import { AdminUserComponents } from "./admin-user/admin-user.component";
 
@@ -27,10 +28,12 @@ import { AdminUserComponents } from "./admin-user/admin-user.component";
         AdminUserRouting
     ],
     declarations: [
-        AdminUserComponents
+        AdminUserComponents,
+        AdminUserUpdateComponent
     ],
     exports: [
-        AdminUserComponents
+        AdminUserComponents,
+        AdminUserUpdateComponent
     ]
 })
 export class AdminUserModule { }

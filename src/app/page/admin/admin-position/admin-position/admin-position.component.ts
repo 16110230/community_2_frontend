@@ -30,10 +30,10 @@ export class AdminPositionComponent {
     ) { }
 
     goTo() {
-        this.router.navigate(['/admin/organization/position/create'])
+        this.router.navigate(['/admin/position/create'])
     }
     editAt(id: number) {
-        this.router.navigate([`/admin/organization/position/update/${id}`])
+        this.router.navigate([`/admin/position/update/${id}`])
     }
 
 }

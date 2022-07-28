@@ -9,11 +9,10 @@ import { SidebarModule } from 'primeng/sidebar';
 import { MenuModule } from 'primeng/menu';
 import { TableModule } from 'primeng/table';
 
-
-
 import { AdminRouting } from "./admin.routing";
 import { SharedModule } from "src/app/component/shared.module";
 import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
+
 
 
 @NgModule({
@@ -29,6 +28,7 @@ import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.compo
         SidebarModule,
         MenuModule,
         TableModule
+
     ],
     declarations: [
         AdminDashboardComponent,

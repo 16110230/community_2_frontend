@@ -1,7 +1,7 @@
 <div class="grid" [ngStyle]="{'min-height': '100vh'}">
     <div class="sm:col-6 col-12" id="login" >
         
-        <div class="flex justify-content-center align-items-center" id="container-quote" [ngStyle]="{'min-height': '100vh'}">
+        <div class="flex justify-content-center align-items-center" id="container-quote" [ngStyle]="{'min-height': '95vh'}">
             <span class="text-white text-5xl" >
                 Selamat datang di komunitas Lawencon
             </span>            
@@ -12,7 +12,7 @@
         </div>
 
     </div>
-    <div class="sm:col-6 col-12" [ngStyle]="{'min-height': '100vh'}" >
+    <div class="sm:col-6 col-12 p-0" [ngStyle]="{'min-height': '100vh'}" >
         <div class="flex justify-content-center align-items-center" [ngStyle]="{'min-height': '100vh'}">
             <div [ngStyle]="{'width': '75%'}">
             <form (ngSubmit)="login()">
@@ -22,18 +22,18 @@
                 <span>Login Account</span> 
 
                 <div class="mt-2">
-                    <label for="email">Email</label>
+                    <label for="username">Username</label>
                 </div>
                 
-                <input class="mt-2" type="text" [ngStyle]="{'width': '100%'}" name="email" id="email" pInputText [(ngModel)]="loginReq.username" />
+                <input class="mt-2" type="text" [ngStyle]="{'width': '100%'}" name="username" id="username" pInputText [(ngModel)]="loginReq.username" />
 
                 <div class="mt-2">
                     <label class="mt-2" for="password">Password</label>
                 </div>
                                 
-                <input class="mt-2" type="text" [ngStyle]="{'width': '100%'}" name="password" id="password" pInputText [(ngModel)]="loginReq.password"/>
+                <input class="mt-2" type="password" [ngStyle]="{'width': '100%'}" name="password" id="password" pInputText [(ngModel)]="loginReq.userPassword"/>
 
-                <button class="mt-4" pButton type="button" [ngStyle]="{'width': '100%'}" label="SIGN IN" ></button>
+                <button class="mt-4" pButton type="submit" [ngStyle]="{'width': '100%'}" label="SIGN IN" ></button>
                 
                 <div class="flex justify-content-center mt-4">
                     <span>or</span>

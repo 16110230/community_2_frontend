@@ -1,0 +1,49 @@
+<div class="flex flex-row bg-blue-custom">
+    <div id="menu-side-custom" class="flex">
+        <side-bar-custom></side-bar-custom>
+    </div>
+    
+    <!-- end of sidebar -->
+    <div class="flex-1">
+        <div class="m-5">
+            <p-card >
+                <div class="grid mb-2">
+                    <div>
+                        <button pButton pRipple type="button" icon="pi pi-arrow-left" class="p-button-rounded p-button-success" (click)="goTo()"></button>
+                    </div>
+                </div>    
+                <div class="grid mb-5">
+                    <div class="col-10">
+                        <h4 >Create Company</h4>
+                    </div>
+                    <div class="col-2"></div>                                            
+                </div>
+
+                <!-- insert form -->
+                <form class="mb-5">
+                    <div class="grid">
+                        <div class="col-6">
+                            <label for="name">Name</label>                            
+                            <input class="w-full" type="text"  name="companyName" id="name" pInputText />
+                        </div>
+                        <div class="col-6">
+                            <label for="code">Code</label>                            
+                            <input class="w-full" type="text"  name="companyCode" id="code" pInputText />
+                        </div>
+                        <div class="col-6">
+                            <label for="address">Address</label>                            
+                            <textarea id="address" name="address" class="w-full" rows="5" pInputTextarea autoResize="autoResize"></textarea>
+                        </div>
+                        <div class="col-6"></div>
+                        <div class="col-6"></div>                                                       
+                        <div class="col-6 justify-content-bottom">
+                            <button pButton pRipple type="button" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>                            
+                        </div>
+                    </div>
+                </form>                                                                                           
+            </p-card>
+            
+        </div> 
+    </div>
+</div>
+
