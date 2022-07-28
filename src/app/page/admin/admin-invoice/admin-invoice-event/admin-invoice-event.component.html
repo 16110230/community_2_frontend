@@ -16,7 +16,7 @@
                             <th>User</th>
                             <th>Order Date</th>
                             <th>Amount</th>
-                            <th></th>
+                            <th>Status</th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-i="rowIndex" let-data>
@@ -26,7 +26,10 @@
                             <td>{{data.username}}</td>
                             <td>{{data.orderDate}}</td>
                             <td>{{data.amount}}</td>
-                            <td></td>
+                            <td class="">
+                                <span class="invoice-status-succsess-custom" *ngIf="data.isApproved">APPROVED</span>
+                                <span class="invoice-status-reject-custom" *ngIf="!data.isApproved">UNAPPROVED</span>
+                            </td>  
                         </tr>
                     </ng-template>
                 </p-table>                

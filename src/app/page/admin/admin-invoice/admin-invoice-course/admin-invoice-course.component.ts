@@ -11,21 +11,24 @@ export class AdminInvoiceCourseComponent {
             username: "jaka sugih",
             orderDate: "2022-07-25",
             amount: 40000,
-            file: "foto.jpg"
+            file: "foto.jpg",
+            isApproved: true
         },
         {
             id: 1235,
             username: "Putrimalu",
             orderDate: "2022-07-25",
             amount: 40000,
-            file: "foto.jpg"
+            file: "foto.jpg",
+            isApproved: false
         },
         {
             id: 1236,
             username: "tombokun",
             orderDate: "2022-07-25",
             amount: 40000,
-            file: "foto.jpg"
+            file: "foto.jpg",
+            isApproved: true
         }
     ]
 }

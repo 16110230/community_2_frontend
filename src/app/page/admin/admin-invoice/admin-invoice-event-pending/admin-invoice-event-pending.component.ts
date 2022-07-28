@@ -5,6 +5,8 @@ import { Component, OnInit } from "@angular/core";
     templateUrl: "./admin-invoice-event-pending.component.html"
 })
 export class AdminInvoiceEventPendingComponent {
+    imageSource = ""
+    imageViewFull = false
     invoices = [
         {
             id: 1234,
@@ -28,6 +30,14 @@ export class AdminInvoiceEventPendingComponent {
             file: "foto.jpg"
         }
     ]
+    viewImage(src: string) {
+        this.imageViewFull = !this.imageViewFull
+        this.imageSource = src
+    }
 
+    closeViewImage() {
+        this.imageSource = ""
+        this.imageViewFull = !this.imageViewFull
+    }
 
 }
