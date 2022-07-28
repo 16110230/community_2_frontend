@@ -13,7 +13,7 @@ const routes: Routes = [
         component: SignupFirstStepComponent
     },
     {
-        path: 'next',
+        path: 'detail',
         component: SignupSecondStepComponent
     },
     {

@@ -1,31 +1,72 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { Store } from "@ngrx/store";
+import { Observable, Subscription } from "rxjs";
+import { ShowCompanies } from "src/app/dto/company/show-companies";
+import { ShowIndustries } from "src/app/dto/industry/show-industries";
+import { ShowPositions } from "src/app/dto/position/show-positions";
+import { InsertRegister } from "src/app/dto/register/insert-register";
+import { AccountInfo } from "src/app/model/register/account-info";
+import { PersonalInfo } from "src/app/model/register/personal-info";
+import { CompanyService } from "src/app/service/company.service";
+import { IndustryService } from "src/app/service/industry.service";
+import { PositionService } from "src/app/service/position.service";
+import { RegisterService } from "src/app/service/register.service";
+import { addAccount, addCode } from "src/app/state/app.action";
+import { getPersonal } from "src/app/state/app.selector";
 
 @Component({
     selector: 'app-signup-nd',
     templateUrl: './signup-second-step.component.html'
 })
-export class SignupSecondStepComponent implements OnInit {
-    companys = [
-        {
-            id: 1,
-            companyName: "PT.Lawencon International"
-        }
-    ]
-    industrys = [
-        {
-            id: 1,
-            industryName: "Technoligy Information"
-        }
-    ]
-    positions = [
-        {
-            id: 1,
-            positionName: "HR"
-        }
-    ]
+export class SignupSecondStepComponent implements OnInit, OnDestroy {
+
+    constructor(private companyService : CompanyService, private industryService : IndustryService,
+        private positionService : PositionService,  private registerService : RegisterService, private store : Store,
+        private router : Router) {}
+
+    registerSubscription? : Subscription
+    companies : ShowCompanies = {} as ShowCompanies
+    industries : ShowIndustries = {} as ShowIndustries
+    positions : ShowPositions = {} as ShowPositions
+    sendMail : InsertRegister = new InsertRegister()
+
+    account : AccountInfo = new AccountInfo()
+    company = ''
+    industry : string = ''
+    position = ''
 
     ngOnInit() {
-
+        this.initData()
+        this.store.select(getPersonal).subscribe(res => { this.sendMail.email = res.email })
     }
 
+    initData = () : void => {
+        this.companyService.getAll()
+            .subscribe(res => { this.companies = res })
+
+        this.industryService.getAll()
+            .subscribe(res => { this.industries = res })
+
+        this.positionService.getAll()
+            .subscribe(res => { this.positions = res })
+    }
+
+    ngOnDestroy(): void {
+        this.registerSubscription?.unsubscribe()
+    }
+
+    submit = () : void => {
+        this.account.company = this.company
+        this.account.industry = this.industry
+        this.account.position = this.position
+
+        this.registerService.sendVerificationCode(this.sendMail)
+            .subscribe(res => {
+                this.store.dispatch(addCode({ payload: res.message }))
+                this.store.dispatch(addAccount({ payload: this.account }))
+                this.router.navigateByUrl('/signup/verify')
+        })
+
+    }
 }
