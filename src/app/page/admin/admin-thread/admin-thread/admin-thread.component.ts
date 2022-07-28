@@ -41,4 +41,8 @@ export class AdminThreadComponents {
     goTo(id: number) {
         this.router.navigate([`/admin/thread/update/${id}`])
     }
+
+    pollingTo(id: string) {
+        this.router.navigate([`/admin/thread/polling/${id}`])
+    }
 }
