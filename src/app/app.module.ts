@@ -23,11 +23,11 @@ import { StoreModule } from "@ngrx/store"
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({ app : appReducer }), 
+    StoreModule.forRoot({ app: appReducer }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [
-    { provide : HTTP_INTERCEPTORS, useClass : CustomInterceptor, multi : true }
+    { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
