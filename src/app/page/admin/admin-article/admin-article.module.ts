@@ -11,7 +11,6 @@ import { TableModule } from "primeng/table";
 import { SharedModule } from "src/app/component/shared.module";
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AdminArticleCreateComponent } from "./admin-article-create/admin-article-create.component";
 import { AdminArticleUpdateComponent } from "./admin-article-update/admin-article-update.component";
 import { AdminArticleRouting } from "./admin-article.routing";

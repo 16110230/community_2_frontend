@@ -20,11 +20,9 @@
                     <label for="description">Description</label><br>
                     <textarea id="description" class="mt-2 mb-5" rows="5" pInputTextarea autoResize="autoResize" name="description" [(ngModel)]="threadData.threadContent"></textarea>
 
-                    <label for="category">category</label><br>
-                    <div class="mt-2 mb-5">
-                        <p-dropdown  name="category" id="category" [options]="categories.data" optionLabel="categoryName" optionValue="id" [(ngModel)]="threadData.threadCategory"></p-dropdown>
-                    </div>
-                    
+                    <label for="category">Upload File</label><br>
+                    <p-fileUpload #fubauto styleClass="my-3 p-button-sm p-button-outlined" mode="basic" name="file" accept="image/*" [auto]="true" chooseLabel="Upload" 
+                                        chooseIcon="pi pi-upload" [customUpload]="true" (uploadHandler)="change($event)"></p-fileUpload>
 
                     <div class="grid">
                         <div class="col-6 col-offset-6">
