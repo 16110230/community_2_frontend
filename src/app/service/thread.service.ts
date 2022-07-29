@@ -25,7 +25,7 @@ export class ThreadService {
         return this.http.get<ShowThreads>(`${BASE_URL}/threads/article`)
     }
 
-    getById(id : number) : Observable<ShowThreadById> {
+    getById(id : string) : Observable<ShowThreadById> {
         return this.http.get<ShowThreadById>(`${BASE_URL}/threads/${id}`)
     }
 

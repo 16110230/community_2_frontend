@@ -45,10 +45,14 @@ export class HomeComponent implements OnInit, OnDestroy{
         return result;
     }
 
+    toDetail(id:string){
+        this.router.navigate([`/member/thread-detail/${id}`])
+    }
+
     ngOnInit(): void {
         this.initData()
     }
     ngOnDestroy(): void {
-        throw new Error("Method not implemented.");
+        
     }
 }
