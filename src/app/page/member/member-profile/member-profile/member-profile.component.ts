@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "app-member-profiel",
@@ -7,4 +8,16 @@ import { Component } from "@angular/core";
 })
 export class MemberProfileComponent {
 
+    constructor(
+        private router: Router
+    ) { }
+    goToEditProfile() {
+        this.router.navigate(['/member/profile/edit'])
+    }
+    goToTransaction() {
+        this.router.navigate(['/member/transaction'])
+    }
+    goToActivity() {
+        this.router.navigate(['/member/activity'])
+    }
 }

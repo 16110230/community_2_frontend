@@ -17,7 +17,27 @@ const routes: Routes = [
         path: 'thread-detail',
         component: NavbarComponent,
         loadChildren: () => import('./thread-detail/thread-detail.module').then(m => m.ThreadDetailModule)
-    }
+    },
+    {
+        path: 'transaction',
+        component: NavbarComponent,
+        loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule)
+    },
+    {
+        path: 'activity',
+        component: NavbarComponent,
+        loadChildren: () => import('./activity/activity.module').then(m => m.ActivityModule)
+    },
+    {
+        path: 'subscription',
+        component: NavbarComponent,
+        loadChildren: () => import('./subscription/subscription.module').then(m => m.SubscriptionModule)
+    },
+    {
+        path: 'send-validation',
+        component: NavbarComponent,
+        loadChildren: () => import('./send-validation/send-validation.module').then(m => m.SendValidationModule)
+    },
 ]
 
 @NgModule({
