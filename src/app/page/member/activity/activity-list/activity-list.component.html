@@ -1,0 +1,88 @@
+<div class="grid">
+    <div class="col-3 p-4">
+        <p-card>
+            <div class="activity-wrapper">
+                <div class="activity-type">
+                    <div class="grid">
+                        <div class="col-12">
+                            <span><b>Type</b></span>
+                        </div>
+                        <div class="col-12">
+                            <p-radioButton name="activity" value="event" inputId="event" styleClass="mx-2" [(ngModel)]="selectedType"></p-radioButton>
+                            <label for="event" class="activity-label">Event</label>
+                        </div>
+                        <div class="col-12">
+                            <p-radioButton name="activity" value="course" inputId="course" styleClass="mx-2" [(ngModel)]="selectedType"></p-radioButton>
+                            <label for="course" class="activity-label">Course</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="activity-category">
+                    <div class="grid">
+                        <div class="col-12">
+                            <span><b>Category</b></span>
+                        </div>
+                        <div class="col-12">
+                            <p-radioButton name="category" value="hr" inputId="hr" styleClass="mx-2" [(ngModel)]="selectedCategory"></p-radioButton>
+                            <label for="hr" class="activity-label">Human Resources</label>
+                        </div>
+                        <div class="col-12">
+                            <p-radioButton name="category" value="it" inputId="it" styleClass="mx-2" [(ngModel)]="selectedCategory"></p-radioButton>
+                            <label for="it" class="activity-label">Information Technology</label>
+                        </div>
+                        <div class="col-12">
+                            <p-radioButton name="category" value="business" inputId="business" styleClass="mx-2" [(ngModel)]="selectedCategory"></p-radioButton>
+                            <label for="business" class="activity-label">Bussiness</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-card>
+    </div>
+
+    <div class="col-9 p-4">
+        <p-card>
+            <div class="grid p-0">
+                <div class="col-3">
+                    <div class="article-card w-full">
+                        <div class="article-card-header">
+                            <img class="article-pic mb-3" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.png" alt="article-header-pic">
+                            <div class="article-card-header-title px-3">
+                                <h5>Tips menggunakan Hooks pada ReactJS</h5>
+                            </div>
+                        </div>
+                        <div class="article-card-content p-3">
+                            <p>Hooks merupakan fitur yang backwards-compatible. Laman ini menyediakan ikhtisar mengenai Hooks untuk pengguna React yang 
+                                berpengalaman. Laman ini merupakan ikhtisar yang singkat.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="article-card w-full">
+                        <div class="article-card-header">
+                            <img class="article-pic mb-3" src="https://i.pinimg.com/originals/93/42/1e/93421e8db0859ecb02642b9b5f59aa5d.png" alt="article-header-pic">
+                            <div class="article-card-header-title px-3">
+                                <h5>Tips menggunakan Hooks pada ReactJS</h5>
+                            </div>
+                        </div>
+                        <div class="article-card-content p-3">
+                            <p>Hooks merupakan fitur yang backwards-compatible. Laman ini menyediakan ikhtisar mengenai Hooks untuk pengguna React yang 
+                                berpengalaman. Laman ini merupakan ikhtisar yang singkat.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <p-card></p-card>
+                </div>
+
+                <div class="col-3">
+                    <p-card></p-card>
+                </div>
+            </div>
+        </p-card>
+    </div>
+</div>

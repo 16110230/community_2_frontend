@@ -17,6 +17,11 @@ const routes: Routes = [
         path: 'thread-detail',
         component: NavbarComponent,
         loadChildren: () => import('./thread-detail/thread-detail.module').then(m => m.ThreadDetailModule)
+    },
+    {
+        path: 'articles',
+        component: NavbarComponent,
+        loadChildren: () => import('./activity/activity.module').then(m => m.ActivityModule)
     }
 ]
 

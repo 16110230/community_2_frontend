@@ -10,6 +10,7 @@ import { SignupRouting } from "./signup.routing";
 import { SignupFirstStepComponent } from "./signup-first-step/signup-first-step.component";
 import { SignupSecondStepComponent } from "./signup-second-step/signup-second-step.component";
 import { SignupVerifyComponent } from "./signup-verify/signup-verify.component";
+import { SignupMainComponent } from "./signup-main/signup-main.component";
 
 
 
@@ -29,12 +30,14 @@ import { SignupVerifyComponent } from "./signup-verify/signup-verify.component";
     declarations: [
         SignupFirstStepComponent,
         SignupSecondStepComponent,
-        SignupVerifyComponent
+        SignupVerifyComponent,
+        SignupMainComponent
     ],
     exports: [
         SignupFirstStepComponent,
         SignupSecondStepComponent,
-        SignupVerifyComponent
+        SignupVerifyComponent,
+        SignupMainComponent
     ]
 })
 export class SignupModule { }

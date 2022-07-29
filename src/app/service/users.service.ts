@@ -26,7 +26,7 @@ export class UsersService {
     }
 
     insert(data : InsertUserReq) : Observable<InsertResDto> {
-        return this.http.post<InsertResDto>(`${BASE_URL}`, data)
+        return this.http.post<InsertResDto>(`${BASE_URL}/users`, data)
     }
 
     update(data : UpdateUserReq) : Observable<UpdateResDto> {
