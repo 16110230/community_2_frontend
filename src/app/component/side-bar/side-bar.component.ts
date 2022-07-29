@@ -30,6 +30,13 @@ export class SideBarComponent implements OnInit {
                 label: 'Manage',
                 items: [
                     {
+                        label: 'User Role',
+                        icon: 'pi pi-user',
+                        command: () => {
+                            this.router.navigate(['/admin/user-role'])
+                        }
+                    },
+                    {
                         label: 'Users',
                         icon: 'pi pi-user',
                         command: () => {
@@ -59,14 +66,16 @@ export class SideBarComponent implements OnInit {
                     },
                     {
                         label: 'Activity Category',
-                        icon: 'pi pi-image',
+                        icon: 'pi pi-table',
+
                         command: () => {
                             this.router.navigate(['/admin/activity-category'])
                         }
                     },
                     {
                         label: 'Activity Type',
-                        icon: 'pi pi-image',
+                        icon: 'pi pi-table',
+
                         command: () => {
                             this.router.navigate(['/admin/activity-type'])
                         }

@@ -1,12 +1,12 @@
 <div class="container">
-    <div class="grid">
+    <div class="grid px-7">
         <div class="col-9">
-            <p-card styleClass="mx-5 mt-2">
+            <p-card styleClass="mt-3">
                 <form action="">
                     <div class="grid">
                         <div class="col-1">
                             <button pButton pRipple icon="pi pi-caret-left" class="p-button-danger p-button-sm"
-                                label="Back"></button>
+                                label="Back" routerLink="/member"></button>
                         </div>
                         <div class="col-10 flex flex-row justify-content-center">
                             <span class="form-title">New Thread</span>
@@ -21,13 +21,22 @@
                                 <textarea pInputTextarea class="w-full my-3" name="threadContent" id="threadContent" rows="3"></textarea>
                             </div>
                             <div class="row-category">
-                                <label for="category" class="block">Category</label>
-                                <p-dropdown [options]="categories" [(ngModel)]="category" placeholder="Select category" 
-                                [showClear]="true" styleClass="my-3" [style]="{'width': '50%'}" [ngModelOptions]="{standalone: true}">
-                                    <ng-template let-category>
-
-                                    </ng-template>
-                                </p-dropdown>
+                                <div class="grid">
+                                    <div class="lg:col-6 sm:col-12">
+                                        <label for="category" class="block">Category</label>
+                                        <p-dropdown [options]="categories" [(ngModel)]="category" placeholder="Select category" 
+                                        [showClear]="true" styleClass="my-3" [style]="{'width': '80%'}" [ngModelOptions]="{standalone: true}">
+                                            <ng-template let-category>
+        
+                                            </ng-template>
+                                        </p-dropdown>
+                                    </div>
+                                    <div class="lg:col-6 sm:col-12">
+                                        <label for="file" class="block">File</label>
+                                        <p-fileUpload #fubauto styleClass="my-3 p-button-sm p-button-outlined" mode="basic" name="file" accept="image/*" [auto]="true" chooseLabel="Browse" 
+                                        chooseIcon="pi pi-upload" [customUpload]="true" (uploadHandler)="change($event)"></p-fileUpload>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row-polling">
                                 <div class="grid">
@@ -40,15 +49,52 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row-file">
-                                <label for="file" class="block">Upload File</label>
-                                <p-fileUpload #fubauto styleClass="my-3 p-button-sm" mode="basic" name="file" accept="image/*" [auto]="true" chooseLabel="Browse" 
-                                chooseIcon="pi pi-upload" [customUpload]="true" (uploadHandler)="change($event)"></p-fileUpload>
+                            <div class="row-submit flex flex-row justify-content-center">
+                                <button pButton pRipple type="submit" class="p-button-sm p-button-info" label="Submit"></button>
                             </div>
                         </div>
                     </div>
                 </form>
             </p-card>
+        </div>
+        
+        <div class="col-3">
+            <div class="grid">
+                <div class="title mb-4 pt-3">
+                    <span>Articles</span>
+                </div>
+                <div class="col-12 p-0 mb-2">
+        
+                    <div class="article-card">
+                        <div class="article-card-header">
+                            <img class="article-pic mb-3" src="https://i.pinimg.com/originals/93/42/1e/93421e8db0859ecb02642b9b5f59aa5d.png" alt="article-header-pic">
+                            <div class="article-card-header-title px-3">
+                                <h5>5 Fungsi Java Yang Perlu Diketahui</h5>
+                            </div>
+                        </div>
+                        <div class="article-card-content p-3">
+                            <p>Fungsi dari garbage collector mampu mengumpulkan “sampah” secara otomatis. Hal ini akan membuat programmer tidak perlu 
+                                dibebani dengan adanya memori yang rusak.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 p-0">
+                    <div class="article-card">
+                        <div class="article-card-header">
+                            <img class="article-pic mb-3" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.png" alt="article-header-pic">
+                            <div class="article-card-header-title px-3">
+                                <h5>Tips menggunakan Hooks pada ReactJS</h5>
+                            </div>
+                        </div>
+                        <div class="article-card-content p-3">
+                            <p>Hooks merupakan fitur yang backwards-compatible. Laman ini menyediakan ikhtisar mengenai Hooks untuk pengguna React yang 
+                                berpengalaman. Laman ini merupakan ikhtisar yang singkat.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

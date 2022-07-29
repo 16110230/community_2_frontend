@@ -17,27 +17,28 @@
         <div class="flex justify-content-center align-items-center" [ngStyle]="{'min-height': '100vh'}">
             <div [ngStyle]="{'width': '75%'}">
             <form>  
-                <span class="icon-round" [ngStyle]="{'background-color': 'var(--blue-500)'}">
+                <span class="icon-round mr-2 mb-3" [ngStyle]="{'background-color': 'var(--blue-500)'}">
                     <i class="pi pi-file text-white"></i>
                 </span>
                 <span>Account Detail</span>            
 
-                <div class="mt-2">
+                <div class="my-2">
                     <label for="company">Company</label><span class="text-red-500">*</span>
                 </div>                                
-                <p-dropdown name="company" id="company" [options]="companys" optionLabel="companyName" optionValue="id"></p-dropdown>
+                <p-dropdown name="company" id="company" [options]="companies.data" optionLabel="companyName" optionValue="id" styleClass="w-full" [(ngModel)]="company">
+                </p-dropdown>
 
-                <div class="mt-2">
+                <div class="my-2">
                     <label class="mt-2" for="industry">Industry</label><span class="text-red-500">*</span>
                 </div>                                
-                <p-dropdown name="industry" id="industry" [options]="industrys" optionLabel="industryName" optionValue="id"  ></p-dropdown>
+                <p-dropdown name="industry" id="industry" [options]="industries.data" optionLabel="industryName" optionValue="id" styleClass="w-full" [(ngModel)]="industry"></p-dropdown>
 
-                <div class="mt-2">
+                <div class="my-2">
                     <label class="mt-2" for="position">Position</label><span class="text-red-500">*</span>
                 </div>                                
-                <p-dropdown name="position" id="position" [options]="positions" optionLabel="positionName" optionValue="id" ></p-dropdown>
+                <p-dropdown name="position" id="position" [options]="positions.data" optionLabel="positionName" optionValue="id" styleClass="w-full" [(ngModel)]="position"></p-dropdown>
 
-                <button class="mt-4" pButton type="button" [ngStyle]="{'width': '100%'}" label="NEXT" ></button>
+                <button class="mt-4" pButton type="button" (click)="submit()" [ngStyle]="{'width': '100%'}" label="NEXT"></button>
        
             </form>     
             </div>

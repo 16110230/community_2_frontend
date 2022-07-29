@@ -187,6 +187,33 @@ table {
 .photo-profile img {
   width: 100%;
 }
+.invoice-status-succsess-custom {
+  color: #147b00;
+  background-color: #46ff21;
+  border-radius: 4px;
+  padding: 5px;
+  display: inline-block;
+}
+.invoice-status-reject-custom {
+  color: #7b0000;
+  background-color: #ff2121;
+  border-radius: 4px;
+  padding: 5px;
+  display: inline-block;
+}
+
+.polling-bar-custom {
+  height: 30px;
+  display: inline-block;
+  background-color: #2ee400;
+}
+
+.member-side-bar-custom {
+  background-color: #ffffff;
+  border-radius: 15px;
+  min-height: 100px;
+  width: 100%;
+}
 
 #menu-side-custom {
   width: 224px;
@@ -198,4 +225,8 @@ table {
 
 #x {
   border: solid 1px rgba(186, 186, 186, 0);
+}
+
+a {
+  text-decoration: none;
 }
