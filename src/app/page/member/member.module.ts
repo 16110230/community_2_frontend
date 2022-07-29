@@ -8,6 +8,6 @@ import { ThreadDetailModule } from "./thread-detail/thread-detail.module";
         MemberRouting,
         AdminModule,
         ThreadDetailModule
-    ]
+    ],
 })
 export class MemberModule {}

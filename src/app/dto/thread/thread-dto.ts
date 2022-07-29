@@ -2,7 +2,7 @@ export interface ThreadDto {
     id : string
     threadTitle : string
     threadContent : string
-    file : string
+    file? : string
     user : string 
     userName : string
     threadCategory : string
@@ -10,4 +10,6 @@ export interface ThreadDto {
     isActive : boolean
     version : number
     createdAt : string
+    countBook? : number
+    countLike? : number
 }
