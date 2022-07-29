@@ -30,10 +30,10 @@ export class UsersService {
     }
 
     update(data : UpdateUserReq) : Observable<UpdateResDto> {
-        return this.http.put<UpdateResDto>(`${BASE_URL}/users`, data)
+        return this.http.put<UpdateResDto>(`${BASE_URL}/users/update`, data)
     }
 
     delete(id : number) : Observable<DeleteResDto> {
-        return this.http.delete<DeleteResDto>(`${BASE_URL}/users/${id}`)
+        return this.http.delete<DeleteResDto>(`${BASE_URL}/users/delete/${id}`)
     }
 }

@@ -18,24 +18,22 @@
                     <div class="col-2"></div>                                            
                 </div>
                 
-                <form class="mb-5">
+                <form class="mb-5" (ngSubmit)="onSubmit()">
                     <div class="grid">
-                        <div class="col-6">
+                        <div class="col-12">
                             <label for="roleName">Role Name</label>                            
-                            <input class="w-full" type="text"  name="roleName" id="roleName" pInputText />
+                            <input class="w-full" type="text"  name="roleName" id="roleName" pInputText [(ngModel)]="insert.roleName" />
                         </div>
-                        <div class="col-6">
+                        <div class="col-12">
                             <label for="roleCode">Role Code</label>                            
-                            <input class="w-full" type="text"  name="roleCode" id="roleCode" pInputText />
+                            <input class="w-full" type="text"  name="roleCode" id="roleCode" pInputText [(ngModel)]="insert.roleCode" />
                         </div>                        
-                        <div class="col-6">
-                            <label for="isActive">Active</label>
-                            <input type="checkbox" name="isActive" id="isActive" >
-                        </div>  
-                        <div class="col-6"></div>                                                     
-                        <div class="col-6"></div>                                                     
+                        <div class="col-12">  
+                            <label for="isActive">Active</label> <br>                         
+                            <input type="checkbox" name="isActive" id="" [(ngModel)]="insert.isActive" >
+                        </div>                                                      
                         <div class="col-6 justify-content-bottom">
-                            <button pButton pRipple type="button" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>                            
+                            <button pButton pRipple type="submit" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>                            
                         </div>
                     </div>
                 </form>                                                                                           

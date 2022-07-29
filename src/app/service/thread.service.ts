@@ -33,6 +33,10 @@ export class ThreadService {
         return this.http.post<InsertResDto>(`${BASE_URL}/threads`, data)
     }
 
+    insertArticle(data : InsertThreadReq) : Observable<InsertResDto> {
+        return this.http.post<InsertResDto>(`${BASE_URL}/threads/article`, data)
+    }
+
     update(data : UpdateThreadReq) : Observable<UpdateResDto> {
         return this.http.put<UpdateResDto>(`${BASE_URL}/threads`, data)
     }

@@ -79,6 +79,14 @@ export class SideBarComponent implements OnInit {
                         command: () => {
                             this.router.navigate(['/admin/activity-type'])
                         }
+                    },
+                    {
+                        label: 'Thread Category',
+                        icon: 'pi pi-table',
+
+                        command: () => {
+                            this.router.navigate(['/admin/thread-category'])
+                        }
                     }
                 ]
             },

@@ -1,7 +1,7 @@
 export interface UsersDto {
     id : string
     fullName : string
-    userName : string
+    username : string
     email : string
     balance : number
     company : string
