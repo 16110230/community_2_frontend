@@ -1,5 +1,4 @@
-import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { PersonalInfo } from "src/app/model/register/personal-info";
 import { addPersonal } from "src/app/state/app.action";
@@ -9,6 +8,9 @@ import { addPersonal } from "src/app/state/app.action";
     templateUrl: './signup-first-step.component.html'
 })
 export class SignupFirstStepComponent {
+
+    @Output() newEvent = new EventEmitter<void>()
+
     username : string = ''
     fullName : string = ''
     userPassword : string = ''
@@ -16,7 +18,7 @@ export class SignupFirstStepComponent {
 
     data : PersonalInfo = new PersonalInfo()
 
-    constructor(private store : Store, private router : Router) {}
+    constructor(private store : Store) {}
 
     submit = () : void => {
         this.data.username = this.username
@@ -26,6 +28,7 @@ export class SignupFirstStepComponent {
 
         this.store.dispatch(addPersonal({ payload: this.data }))
 
-        this.router.navigateByUrl('/signup/detail')
+        this.newEvent.emit()
     }
+
 }
