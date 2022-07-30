@@ -26,14 +26,14 @@ export class UsersService {
     }
 
     insert(data : InsertUserReq) : Observable<InsertResDto> {
-        return this.http.post<InsertResDto>(`${BASE_URL}`, data)
+        return this.http.post<InsertResDto>(`${BASE_URL}/users`, data)
     }
 
     update(data : UpdateUserReq) : Observable<UpdateResDto> {
-        return this.http.put<UpdateResDto>(`${BASE_URL}/users`, data)
+        return this.http.put<UpdateResDto>(`${BASE_URL}/users/update`, data)
     }
 
     delete(id : number) : Observable<DeleteResDto> {
-        return this.http.delete<DeleteResDto>(`${BASE_URL}/users/${id}`)
+        return this.http.delete<DeleteResDto>(`${BASE_URL}/users/delete/${id}`)
     }
 }

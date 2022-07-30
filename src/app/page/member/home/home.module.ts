@@ -33,7 +33,8 @@ import { TimeAgoPipe } from "src/app/pipe/time-ago.pipe";
     ],
     exports: [
         HomeComponent,
-        HomeCreateComponent
+        HomeCreateComponent,
+        TimeAgoPipe
     ]
 })
 export class HomeModule { }

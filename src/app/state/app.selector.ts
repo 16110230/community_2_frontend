@@ -1,4 +1,6 @@
+import { state } from "@angular/animations";
 import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { AccountInfo } from "../model/register/account-info";
 import { PersonalInfo } from "../model/register/personal-info";
 
 const getPersonal = createSelector(
@@ -11,4 +13,9 @@ const getCode = createSelector(
     (state: { code: string }) => state.code
 )
 
-export { getPersonal, getCode }
+const getAccount = createSelector(
+    createFeatureSelector('app'),
+    (state : { account: AccountInfo }) => state.account
+)
+
+export { getPersonal, getCode, getAccount }

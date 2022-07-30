@@ -4,6 +4,7 @@ import { Subscription } from "rxjs";
 import { ShowThreadCategories } from "src/app/dto/thread-category/show-thread-categories";
 import { ThreadCategoryDto } from "src/app/dto/thread-category/thread-category-dto";
 import { InsertThreadReq } from "src/app/dto/thread/insert-thread-req";
+import { FileService } from "src/app/service/file.service";
 import { ThreadCategoryService } from "src/app/service/thread-category.service";
 import { ThreadService } from "src/app/service/thread.service";
 
@@ -17,14 +18,13 @@ export class AdminArticleCreateComponent implements OnDestroy, OnInit {
     threadData : InsertThreadReq = {
         threadTitle : "",
         threadContent : "",
-        threadCategory : "",
-        fileName : "",
-        fileExt : ""
+        threadCategory : ""
     }
 
     threadSubs? : Subscription
 
     constructor(
+        private fileService : FileService,
         private threadService : ThreadService, 
         private threadCategoryService : ThreadCategoryService, 
         private router: Router
@@ -43,7 +43,7 @@ export class AdminArticleCreateComponent implements OnDestroy, OnInit {
     }
 
     insertThread() : void {
-        this.threadSubs =this.threadService.insert(this.threadData)
+        this.threadSubs =this.threadService.insertArticle(this.threadData)
             .subscribe(result => {
                 this.router.navigateByUrl('/admin/article')
             })
@@ -55,5 +55,15 @@ export class AdminArticleCreateComponent implements OnDestroy, OnInit {
 
     ngOnDestroy(): void {
         this.threadSubs?.unsubscribe()
+    }
+
+    change(event : any) : void {
+        console.log(event.files[0]);
+        
+        const file = event.files[0]
+        this.fileService.uploadAsBase64(file).then(res => {
+            this.threadData.fileName = res[0]
+            this.threadData.fileExt = res[1]
+        })
     }
 }

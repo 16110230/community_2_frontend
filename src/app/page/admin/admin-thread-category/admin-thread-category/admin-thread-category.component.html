@@ -3,33 +3,35 @@
         <side-bar-custom></side-bar-custom>
     </div>
     
+    <!-- end of sidebar -->
     <div class="flex-1">
         <div class="m-5">
             <p-card >  
                 <div class="grid mb-5">
                     <div class="col-10">
-                        <h4 >User Role List</h4>
+                        <h4 >Thread Category List</h4>
                     </div>
                     <div class="col-2">
                         <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded" (click)="goTo()"></button>
                     </div>                                            
                 </div>                
                                              
-                <p-table [value]="roles.data" responsiveLayout="scroll">
+                <p-table [value]="threadCategories.data" responsiveLayout="scroll">
                     <ng-template pTemplate="header">
                         <tr>
                             <th>No</th>                            
-                            <th>Role Name</th>                            
-                            <th>Code Role</th>                                                      
-                            <th>Active</th>                            
-                            <th class="text-center">Action</th>                            
+                            <th>Name</th>                            
+                            <th>Code</th>                            
+                            <th>Active</th>                                                      
+                            <th class="text-center">Action</th>                                                      
+                            <th></th>                            
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-i="rowIndex" let-data>
                         <tr>
                             <td>{{i+1}}</td>                            
-                            <td>{{data.roleName}}</td>                    
-                            <td>{{data.roleCode}}</td>                    
+                            <td>{{data.categoryName}}</td>
+                            <td>{{data.categoryCode}}</td>                    
                             <td>
                                 <div *ngIf="data.isActive" class="check-status-custom-true">
                                     <i class="pi pi-check font-bold text-blue-500"></i>
@@ -38,15 +40,15 @@
                             </td>
                             <td class="text-center">
                                 <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-4" (click)="editAt(data.id)"></button>
-                                <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"(click)="confirm(data.id)"></button>
+                                <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="confirm(data.id)"></button>
                             </td>
                         </tr>
-                    </ng-template>                    
+                    </ng-template>
+                    
                 </p-table>                
-            </p-card>            
-        </div>
-        <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>       
+            </p-card>
+            <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>       
+        </div> 
     </div>
 </div>
 
- 

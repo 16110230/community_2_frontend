@@ -20,6 +20,10 @@ export class ThreadDetailsService {
         return this.http.get<ShowThreadDetails>(`${BASE_URL}/thread-details`)
     }
 
+    getAllByThread(id : string) : Observable<ShowThreadDetails> {
+        return this.http.get<ShowThreadDetails>(`${BASE_URL}/thread-details/thread/${id}`)
+    }
+
     getById(id : number) : Observable<ShowThreadDetailById> {
         return this.http.get<ShowThreadDetailById>(`${BASE_URL}/thread-details/${id}`)
     }

@@ -6,4 +6,5 @@ export interface ThreadDetailsDto {
     userName : string
     isACtive : boolean
     version : number
+    createdAt : string
 }

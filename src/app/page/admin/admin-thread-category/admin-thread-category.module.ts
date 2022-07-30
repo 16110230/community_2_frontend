@@ -10,10 +10,11 @@ import { MenuModule } from "primeng/menu";
 import { SidebarModule } from "primeng/sidebar";
 import { TableModule } from "primeng/table";
 import { SharedModule } from "src/app/component/shared.module";
-import { AdminUserRoleCreateComponent } from "./admin-user-role-create/admin-user-role-create.component";
-import { AdminUserRoleUpdateComponent } from "./admin-user-role-update/admin-user-role-update.component";
-import { AdminUserRoleRouting } from "./admin-user-role.routing";
-import { AdminUserRoleComponent } from "./admin-user-role/admin-user-role.component";
+import { AdminThreadCategoryCreateComponent } from "./admin-thread-category-create/admin-thread-category-create.component";
+import { AdminThreadCategoryUpdateComponent } from "./admin-thread-category-update/admin-thread-category-update.component";
+import { AdminThreadCategoryRouting } from "./admin-thread-category.routing";
+import { AdminThreadCategoryComponent } from "./admin-thread-category/admin-thread-category.component";
+
 
 @NgModule({
     imports: [
@@ -28,17 +29,17 @@ import { AdminUserRoleComponent } from "./admin-user-role/admin-user-role.compon
         MenuModule,
         TableModule,
         ConfirmDialogModule,
-        AdminUserRoleRouting
+        AdminThreadCategoryRouting
     ],
     declarations: [
-        AdminUserRoleComponent,
-        AdminUserRoleCreateComponent,
-        AdminUserRoleUpdateComponent
+        AdminThreadCategoryComponent,
+        AdminThreadCategoryCreateComponent,
+        AdminThreadCategoryUpdateComponent
     ],
     exports: [
-        AdminUserRoleComponent,
-        AdminUserRoleCreateComponent,
-        AdminUserRoleUpdateComponent
+        AdminThreadCategoryComponent,
+        AdminThreadCategoryCreateComponent,
+        AdminThreadCategoryUpdateComponent
     ]
 })
-export class AdminUserRoleModule { }
+export class AdminThreadCategoryModule { }

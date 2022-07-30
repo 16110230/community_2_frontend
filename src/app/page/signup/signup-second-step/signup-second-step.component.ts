@@ -1,13 +1,11 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { Observable, Subscription } from "rxjs";
+import { Subscription } from "rxjs";
 import { ShowCompanies } from "src/app/dto/company/show-companies";
 import { ShowIndustries } from "src/app/dto/industry/show-industries";
 import { ShowPositions } from "src/app/dto/position/show-positions";
 import { InsertRegister } from "src/app/dto/register/insert-register";
 import { AccountInfo } from "src/app/model/register/account-info";
-import { PersonalInfo } from "src/app/model/register/personal-info";
 import { CompanyService } from "src/app/service/company.service";
 import { IndustryService } from "src/app/service/industry.service";
 import { PositionService } from "src/app/service/position.service";
@@ -21,9 +19,10 @@ import { getPersonal } from "src/app/state/app.selector";
 })
 export class SignupSecondStepComponent implements OnInit, OnDestroy {
 
+    @Output() newEvent = new EventEmitter<void>()
+
     constructor(private companyService : CompanyService, private industryService : IndustryService,
-        private positionService : PositionService,  private registerService : RegisterService, private store : Store,
-        private router : Router) {}
+        private positionService : PositionService,  private registerService : RegisterService, private store : Store) {}
 
     registerSubscription? : Subscription
     companies : ShowCompanies = {} as ShowCompanies
@@ -65,8 +64,8 @@ export class SignupSecondStepComponent implements OnInit, OnDestroy {
             .subscribe(res => {
                 this.store.dispatch(addCode({ payload: res.message }))
                 this.store.dispatch(addAccount({ payload: this.account }))
-                this.router.navigateByUrl('/signup/verify')
         })
 
+        this.newEvent.emit()
     }
 }

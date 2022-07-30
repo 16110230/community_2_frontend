@@ -13,61 +13,51 @@
                     </div>
                 </div>  
                 <!-- insert form -->
-                <form class="mb-5">
+                <form class="mb-5" (ngSubmit)="onUpdate()">
                     <div class="grid">
-                        <div class="col-12 sm:col-6 photo-frame">
+                        <div class="col-12 sm:col-12 photo-frame">
                             <div class="photo-profile">
                                 <img src="../../../../assets/img/profile-1.jpg" alt="">
                             </div>
-                        </div>   
-                        <div class="col-12 sm:col-6 ">
-                            <label >Address</label>                            
-                            <textarea class="w-full" rows="5" pInputTextarea autoResize="autoResize" readonly></textarea>
-                        </div>                     
+                        </div>                    
                          
                         <div class="col-12 sm:col-6">
                             <div class="mt-3">
-                                <label >Name</label>                            
-                                <input class="w-full" type="text" pInputText readonly [value]="user.fullName"/>
+                                <label for="fullname" >Name</label>                            
+                                <input class="w-full" type="text" pInputText name="fullname" disabled [(ngModel)]="update.fullName"/>
                             </div>
                             <div class="mt-3">
-                                <label >UserName</label>                            
-                                <input class="w-full" type="text" pInputText readonly [value]="user.username"/>
+                                <label for="username" >UserName</label>                            
+                                <input class="w-full" type="text" pInputText disabled name="username" [(ngModel)]="update.username"/>
                             </div>
                             <div class="mt-3">
-                                <label >Email</label>                            
-                                <input class="w-full" type="text" pInputText readonly [value]="user.email"/>
+                                <label for="email">Email</label>                            
+                                <input class="w-full" type="email" pInputText disabled name="email" [(ngModel)]="update.email"/>
                             </div>                                                                                                                                 
                         </div>    
                         
                         <div class="col-12 sm:col-6 ">
                             <div class="mt-3">
-                                <label >Company</label>                            
-                                <input class="w-full" type="text" pInputText readonly [value]="user.companyName"/>
+                                <label for="company">Company</label>                            
+                                <input class="w-full" type="text" pInputText disabled name="company" [(ngModel)]="update.companyName"/>
                             </div>
                             
                             <div class="mt-3">
-                                <label >Industry</label>                            
-                                <input class="w-full" type="text" pInputText readonly [value]="user.industryName"/>
+                                <label for="industry" >Industry</label>                            
+                                <input class="w-full" type="text" pInputText disabled name="industry" [(ngModel)]="update.industryName"/>
                             </div>
                             
                             <div class="mt-3">
-                                <label >Position</label>                            
-                                <input class="w-full" type="text" pInputText readonly [value]="user.positionName"/>
+                                <label for="position">Position</label>                            
+                                <input class="w-full" type="text" pInputText disabled name="position" [(ngModel)]="update.positionName"/>
                             </div>
                         </div> 
-                        
-                        
-                        <div class="col-12 sm:col-6 "></div>
-                        <div class="col-12 sm:col-6 ">
-                            <form>
-                                <div>
-                                    <label for="isActive">Active</label>
-                                    <input type="checkbox" name="isActive" id="isActive" [value]="user.isActive">
-                                </div>                                 
-                                <button pButton pRipple type="button" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>                            
-                            </form>
-                            
+                        <div class="col-12 sm:col-12">
+                            <label for="isActive">Active</label>
+                            <input type="checkbox" name="isActive" id="isActive" [(ngModel)]="update.isActive">
+                        </div>  
+                        <div class="col-12 sm:col-6 ">                          
+                            <button pButton pRipple type="submit" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>                                                      
                         </div>
                                                              
                     </div>
