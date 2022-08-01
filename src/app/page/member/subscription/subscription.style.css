@@ -1,0 +1,79 @@
+.card-subscription {
+  width: 260px;
+  height: 500px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 1px 5px 5px #00000090;
+  overflow: hidden;
+}
+
+.card-subscription-header1 {
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #00be63 0%, #10c700 100%);
+}
+.card-subscription-price1 {
+  color: #00be63;
+}
+.card-subscription-button1 {
+  text-decoration: none;
+  border: none;
+  font-size: 1.125rem;
+  padding: 12px 20px;
+  border-radius: 25px;
+  color: #ffffff;
+  cursor: pointer;
+  background: linear-gradient(-45deg, #00be63 0%, #10c700 100%);
+}
+.card-subscription-header2 {
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #be0050 0%, #ab00c7 100%);
+}
+.card-subscription-price2 {
+  color: #be0050;
+}
+.card-subscription-button2 {
+  text-decoration: none;
+  border: none;
+  font-size: 1.125rem;
+  padding: 12px 20px;
+  border-radius: 25px;
+  color: #ffffff;
+  cursor: pointer;
+  background: linear-gradient(-45deg, #be0050 0%, #ab00c7 100%);
+}
+
+.card-subscription-button2 {
+  background: linear-gradient(-45deg, #be0050 0%, #ab00c7 100%);
+}
+
+.card-subscription-header3 {
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #2f2cc1 0%, #8a40e8 100%);
+}
+
+.card-subscription-button3 {
+  text-decoration: none;
+  border: none;
+  font-size: 1.125rem;
+  padding: 12px 20px;
+  border-radius: 25px;
+  color: #ffffff;
+  cursor: pointer;
+  background: linear-gradient(-45deg, #2f2cc1 0%, #8a40e8 100%);
+}
+.card-subscription-price3 {
+  color: #2f2cc1;
+}
+.card-subscription-content {
+  margin-top: 40px;
+  height: 160px;
+}

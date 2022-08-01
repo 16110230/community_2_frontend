@@ -10,8 +10,16 @@ import { SidebarModule } from "primeng/sidebar";
 import { TableModule } from "primeng/table";
 import { SharedModule } from "src/app/component/shared.module";
 import { TabViewModule } from 'primeng/tabview';
+import { CheckboxModule } from 'primeng/checkbox';
+import { FileUploadModule } from 'primeng/fileupload';
+import { HttpClientModule } from '@angular/common/http';
+
 import { MemberProfileRouting } from "./member-profile.routing";
 import { MemberProfileComponent } from "./member-profile/member-profile.component";
+import { MemberProfileEditComponent } from "./member-profile-edit/member-profile-edit.component";
+import { MemberProfileChangePassword } from "./member-profile-change-password/member-profile-change-password.component";
+import { MemberProfileActivityComponent } from "./member-profile-activity/activity.component";
+import { MemberProfileTransactionComponent } from "./member-profile-transaction/transaction.component";
 
 @NgModule({
     imports: [
@@ -26,13 +34,24 @@ import { MemberProfileComponent } from "./member-profile/member-profile.componen
         MenuModule,
         TableModule,
         TabViewModule,
+        CheckboxModule,
+        FileUploadModule,
+        HttpClientModule,
         MemberProfileRouting
     ],
     declarations: [
-        MemberProfileComponent
+        MemberProfileComponent,
+        MemberProfileEditComponent,
+        MemberProfileChangePassword,
+        MemberProfileActivityComponent,
+        MemberProfileTransactionComponent
     ],
     exports: [
-        MemberProfileComponent
+        MemberProfileComponent,
+        MemberProfileEditComponent,
+        MemberProfileChangePassword,
+        MemberProfileActivityComponent,
+        MemberProfileTransactionComponent
     ]
 })
 export class MemberProfileModule { }

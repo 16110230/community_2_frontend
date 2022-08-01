@@ -4,7 +4,8 @@ import { ActivityCreateComponent } from "./activity-create/activity-create.compo
 import { ActivityDetailsComponent } from "./activity-details/activity-details.component";
 import { ActivityListComponent } from "./activity-list/activity-list.component";
 
-const routes : Routes = [
+
+const routes: Routes = [
     {
         path: '',
         component: ActivityListComponent
@@ -23,8 +24,8 @@ const routes : Routes = [
     imports: [
         RouterModule.forChild(routes)
     ],
-    exports: [ 
+    exports: [
         RouterModule
     ]
 })
-export class ActivityRouting {}
+export class ActivityRouting { }
