@@ -23,6 +23,11 @@ table {
   margin: 0px !important;
 }
 
+.width-full {
+  width: 100%;
+  display: block;
+}
+
 #login {
   background-image: url("./assets/img/hannah-busing-eco.jpg");
   background-repeat: no-repeat;
@@ -167,12 +172,6 @@ table {
   display: block;
 }
 
-.photo-frame {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .photo-profile {
   /* min-width: 200px; */
   max-width: 200px;
@@ -186,6 +185,9 @@ table {
 }
 .photo-profile img {
   width: 100%;
+}
+.input-photo-div-custom {
+  height: 200px;
 }
 .invoice-status-succsess-custom {
   color: #147b00;

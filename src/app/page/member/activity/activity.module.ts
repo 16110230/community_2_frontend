@@ -12,6 +12,8 @@ import { InputTextareaModule } from "primeng/inputtextarea";
 import { DropdownModule } from "primeng/dropdown";
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
+import { SharedModule } from "src/app/component/shared.module";
+import { TableModule } from "primeng/table";
 
 @NgModule({
     imports: [
@@ -24,7 +26,8 @@ import { CheckboxModule } from 'primeng/checkbox';
         InputTextareaModule,
         DropdownModule,
         CalendarModule,
-        CheckboxModule
+        CheckboxModule,
+        TableModule
     ],
     declarations: [
         ActivityListComponent,
