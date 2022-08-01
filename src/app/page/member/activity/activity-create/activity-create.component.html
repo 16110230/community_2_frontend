@@ -2,7 +2,7 @@
     <div class="grid px-7">
         <div class="col-9">
             <p-card styleClass="mt-3">
-                <form action="">
+                <form (ngSubmit)="submit()">
                     <div class="grid">
                         <div class="col-1">
                             <button pButton pRipple icon="pi pi-caret-left" class="p-button-danger p-button-sm"
@@ -14,34 +14,31 @@
                         <div class="col-12 mt-3">
                             <div class="row-title">
                                 <label for="activityTitle">Title</label>
-                                <input type="text" name="activityTitle" id="activityTitle" pInputText class="w-full my-3">
+                                <input type="text" name="activityTitle" id="activityTitle" pInputText class="w-full my-3" [(ngModel)]="data.activityTitle" >
                             </div>
                             <div class="row-description">
                                 <label for="threadContent">Description</label>
-                                <textarea pInputTextarea class="w-full my-3" name="activityContent" id="activityContent" rows="3"></textarea>
+                                <textarea pInputTextarea class="w-full my-3" name="activityContent" id="activityContent" rows="3" [(ngModel)]="data.activityContent"></textarea>
                             </div>
                             <div class="row-category-price">
                                 <div class="grid">
                                     <div class="lg:col-5 sm:col-12">
-                                        <label for="category" class="block">Category</label>
-                                        <p-dropdown name="category" [options]="categories" [(ngModel)]="category" placeholder="Select category" 
-                                        [showClear]="true" styleClass="my-3" styleClass="w-full my-3">
-                                            <ng-template let-category>
-        
-                                            </ng-template>
+                                        <label for="category" class="block">Type</label>
+                                        <p-dropdown name="activityType" [options]="types.data" [(ngModel)]="data.activityType" placeholder="Select type" 
+                                        styleClass="my-3" styleClass="w-full my-3" optionLabel="typeName" optionValue="id">
                                         </p-dropdown>
                                     </div>
                                     <div class="lg:col-3 sm:col-12">
                                         <label for="file" class="block">Price</label>
-                                        <input type="number" pInputText class="my-3">
+                                        <input type="number" pInputText class="my-3" [(ngModel)]="data.fee" name="fee">
                                     </div>
                                     <div class="lg:col sm:col-12 ml-2">
                                         <div class="field-checkbox m-0">
-                                            <p-checkbox name="limit" [(ngModel)]="checked" [binary]="true" inputId="limit"></p-checkbox>
+                                            <p-checkbox name="isLimit" [(ngModel)]="data.isLimit" [binary]="true" inputId="limit"></p-checkbox>
                                             <label for="binary" class="ml-2">Limit Attendance</label>
                                         </div>
                                         <div class="field-attendance">
-                                            <input type="number" class="limit-input" pInputText [disabled]="checked == false">
+                                            <input type="number" class="limit-input" pInputText [disabled]="data.isLimit == false" name="quantity" [(ngModel)]="data.quantity">
                                         </div>
                                     </div>
                                 </div>
@@ -50,11 +47,11 @@
                                 <div class="grid">
                                     <div class="lg:col-6 sm:col-12">
                                         <label for="startDate" class="block">Start Date</label>
-                                        <p-calendar name="startDate" styleClass="w-full my-3" [(ngModel)]="startDate" [showTime]="true" [showSeconds]="true" inputId="startDate"></p-calendar>
+                                        <p-calendar name="startDate" styleClass="w-full my-3" [(ngModel)]="data.startedAt" [showTime]="true"></p-calendar>
                                     </div>
                                     <div class="lg:col-6 sm:col-12">
                                         <label for="endDate" class="block">End Date</label>
-                                        <p-calendar name="endDate" styleClass="w-full my-3" [(ngModel)]="endDate" [showTime]="true" [showSeconds]="true" inputId="endDate"></p-calendar>
+                                        <p-calendar name="endDate" styleClass="w-full my-3" [(ngModel)]="data.endedAt" [showTime]="true"></p-calendar>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +64,42 @@
             </p-card>
         </div>
         <div class="col-3">
-            
+            <div class="grid">
+                <div class="title mb-4 pt-3">
+                    <span>Articles</span>
+                </div>
+                <div class="col-12 p-0 mb-2">
+        
+                    <div class="article-card">
+                        <div class="article-card-header">
+                            <img class="article-pic mb-3" src="https://i.pinimg.com/originals/93/42/1e/93421e8db0859ecb02642b9b5f59aa5d.png" alt="article-header-pic">
+                            <div class="article-card-header-title px-3">
+                                <h5>5 Fungsi Java Yang Perlu Diketahui</h5>
+                            </div>
+                        </div>
+                        <div class="article-card-content p-3">
+                            <p>Fungsi dari garbage collector mampu mengumpulkan “sampah” secara otomatis. Hal ini akan membuat programmer tidak perlu 
+                                dibebani dengan adanya memori yang rusak.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 p-0">
+                    <div class="article-card">
+                        <div class="article-card-header">
+                            <img class="article-pic mb-3" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.png" alt="article-header-pic">
+                            <div class="article-card-header-title px-3">
+                                <h5>Tips menggunakan Hooks pada ReactJS</h5>
+                            </div>
+                        </div>
+                        <div class="article-card-content p-3">
+                            <p>Hooks merupakan fitur yang backwards-compatible. Laman ini menyediakan ikhtisar mengenai Hooks untuk pengguna React yang 
+                                berpengalaman. Laman ini merupakan ikhtisar yang singkat.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

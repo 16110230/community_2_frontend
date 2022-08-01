@@ -2,8 +2,10 @@ export interface ActivityDto {
     id?: number
     activityTitle?: string
     activityContent?: string
-    activityCategory?: number
+    activityCategory?: string
     activityCategoryName?: string
+    activityType : string
+    activityTypeName : string
     startedAt? : string
     endedAt?: string
     fee?: number
