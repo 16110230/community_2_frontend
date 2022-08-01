@@ -35,30 +35,23 @@
                         <div class="content-card-footer mt-3 px-4">
                             <div class="grid flex flex-row justify-content-between">
                                 <div class="activity-left flex flex-row align-items-center">
-                                    <img class="content-card-footer-pic"
-                                        src="https://asset.kompas.com/crops/xKK_XOF3WAba307pLcmU1RTaVb4=/0x0:3500x2333/750x500/data/photo/2019/09/09/5d76322e8b45a.jpg"
-                                        alt="prof-pic">
-                                    <img class="content-card-footer-pic pic-abs"
-                                        src="https://img.inews.co.id/media/600/files/networks/2022/03/15/48611_wulan.jpeg"
-                                        alt="prof-pic">
-                                    <a class="mr-2 ml-6" href="">
-                                        <span class="pi pi-heart"></span>
-                                        <span class="pi pi-heart-fill icon-like-filled"></span>
+                                    <a class="mr-2" href="">
+                                        <span class="pi pi-heart" *ngIf="!data.isLike"></span>
+                                        <span class="pi pi-heart-fill icon-like-filled" *ngIf="data.isLike"></span>
                                     </a>
-                                    <span class="mr-3">7</span>
+                                    <span class="mr-3">{{data.countLike}}</span>
                                     <a class="mr-2" (click)="toDetail(data.id)">
                                         <span class="pi pi-comment"></span>
                                     </a>
-                                    <span class="mr-3">8</span>
+                                    <span class="mr-3">{{data.countComment}}</span>
                                 </div>
     
                                 <div class="activity-right flex flex-row align-items-center">
                                     <div class="flex flex-row justify-content-between">
                                         <a class="mr-2" href="">
-                                            <span class="pi pi-bookmark"></span>
-                                            <span class="pi pi-bookmark-fill icon-bookmark-filled"></span>
+                                            <span class="pi pi-bookmark" *ngIf="!data.isBookmark"></span>
+                                            <span class="pi pi-bookmark-fill icon-bookmark-filled" *ngIf="data.isBookmark"></span>
                                         </a>
-                                        <span class="mr-3">8</span>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +66,7 @@
                             <div class="content-card-header-dtl ml-3 flex flex-column justify-content-center">
                                 <div class="header-details mt-3">
                                     <h4>{{data.threadTitle}}</h4>
-                                    <span class="header-date">Upload {{data.createdAt|timeAgo}} by Copi</span>
+                                    <span class="header-date">Upload {{data.createdAt|timeAgo}} by {{data.userName}}</span>
                                 </div>
                             </div>
                         </div>
@@ -93,30 +86,23 @@
                             <div class="content-card-footer mt-3 px-4">
                                 <div class="grid flex flex-row justify-content-between">
                                     <div class="activity-left flex flex-row align-items-center">
-                                        <img class="content-card-footer-pic"
-                                            src="https://asset.kompas.com/crops/xKK_XOF3WAba307pLcmU1RTaVb4=/0x0:3500x2333/750x500/data/photo/2019/09/09/5d76322e8b45a.jpg"
-                                            alt="prof-pic">
-                                        <img class="content-card-footer-pic pic-abs"
-                                            src="https://img.inews.co.id/media/600/files/networks/2022/03/15/48611_wulan.jpeg"
-                                            alt="prof-pic">
-                                        <a class="mr-2 ml-6" href="">
-                                            <span class="pi pi-heart"></span>
-                                            <span class="pi pi-heart-fill icon-like-filled"></span>
+                                        <a class="mr-2" href="">
+                                            <span class="pi pi-heart" *ngIf="!data.isLike"></span>
+                                            <span class="pi pi-heart-fill icon-like-filled" *ngIf="data.isLike"></span>
                                         </a>
-                                        <span class="mr-3">7</span>
+                                        <span class="mr-3">{{data.countLike}}</span>
                                         <a class="mr-2" href="">
                                             <span class="pi pi-comment"></span>
                                         </a>
-                                        <span class="mr-3">8</span>
+                                        <span class="mr-3">{{data.countComment}}</span>
                                     </div>
         
                                     <div class="activity-right flex flex-row align-items-center">
                                         <div class="flex flex-row justify-content-between">
                                             <a class="mr-2" href="">
-                                                <span class="pi pi-bookmark"></span>
-                                                <span class="pi pi-bookmark-fill icon-bookmark-filled"></span>
+                                                <span class="pi pi-bookmark" *ngIf="!data.isBookmark"></span>
+                                                <span class="pi pi-bookmark-fill icon-bookmark-filled" *ngIf="data.isBookmark"></span>
                                             </a>
-                                            <span class="mr-3">8</span>
                                         </div>
                                     </div>
                                 </div>

@@ -61,7 +61,6 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
             this.threadDetailService.getAllByThread(this.idParam).subscribe((result) => {
                 this.threadDetails = result
                 this.threadDetailsData = result.data
-                console.log(this.threadDetailsData);
                 
             })
         })
