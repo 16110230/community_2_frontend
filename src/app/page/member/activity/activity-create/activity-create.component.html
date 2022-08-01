@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="grid px-7">
+        <div class="col-9">
+            <p-card styleClass="mt-3">
+                <form action="">
+                    <div class="grid">
+                        <div class="col-1">
+                            <button pButton pRipple icon="pi pi-caret-left" class="p-button-danger p-button-sm"
+                                label="Back" routerLink="/member/articles"></button>
+                        </div>
+                        <div class="col-10 flex flex-row justify-content-center">
+                            <span class="form-title">New Activity</span>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="row-title">
+                                <label for="activityTitle">Title</label>
+                                <input type="text" name="activityTitle" id="activityTitle" pInputText class="w-full my-3">
+                            </div>
+                            <div class="row-description">
+                                <label for="threadContent">Description</label>
+                                <textarea pInputTextarea class="w-full my-3" name="activityContent" id="activityContent" rows="3"></textarea>
+                            </div>
+                            <div class="row-category-price">
+                                <div class="grid">
+                                    <div class="lg:col-5 sm:col-12">
+                                        <label for="category" class="block">Category</label>
+                                        <p-dropdown name="category" [options]="categories" [(ngModel)]="category" placeholder="Select category" 
+                                        [showClear]="true" styleClass="my-3" styleClass="w-full my-3">
+                                            <ng-template let-category>
+        
+                                            </ng-template>
+                                        </p-dropdown>
+                                    </div>
+                                    <div class="lg:col-3 sm:col-12">
+                                        <label for="file" class="block">Price</label>
+                                        <input type="number" pInputText class="my-3">
+                                    </div>
+                                    <div class="lg:col sm:col-12 ml-2">
+                                        <div class="field-checkbox m-0">
+                                            <p-checkbox name="limit" [(ngModel)]="checked" [binary]="true" inputId="limit"></p-checkbox>
+                                            <label for="binary" class="ml-2">Limit Attendance</label>
+                                        </div>
+                                        <div class="field-attendance">
+                                            <input type="number" class="limit-input" pInputText [disabled]="checked == false">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row-date">
+                                <div class="grid">
+                                    <div class="lg:col-6 sm:col-12">
+                                        <label for="startDate" class="block">Start Date</label>
+                                        <p-calendar name="startDate" styleClass="w-full my-3" [(ngModel)]="startDate" [showTime]="true" [showSeconds]="true" inputId="startDate"></p-calendar>
+                                    </div>
+                                    <div class="lg:col-6 sm:col-12">
+                                        <label for="endDate" class="block">End Date</label>
+                                        <p-calendar name="endDate" styleClass="w-full my-3" [(ngModel)]="endDate" [showTime]="true" [showSeconds]="true" inputId="endDate"></p-calendar>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-row justify-content-center">
+                                <button pButton pRipple type="submit" class="p-button-info p-button-sm" label="Save"></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </p-card>
+        </div>
+        <div class="col-3">
+            
+        </div>
+    </div>
+</div>

@@ -25,12 +25,16 @@ export class ThreadService {
         return this.http.get<ShowThreads>(`${BASE_URL}/threads/article`)
     }
 
-    getById(id : number) : Observable<ShowThreadById> {
+    getById(id : string) : Observable<ShowThreadById> {
         return this.http.get<ShowThreadById>(`${BASE_URL}/threads/${id}`)
     }
 
     insert(data : InsertThreadReq) : Observable<InsertResDto> {
         return this.http.post<InsertResDto>(`${BASE_URL}/threads`, data)
+    }
+
+    insertArticle(data : InsertThreadReq) : Observable<InsertResDto> {
+        return this.http.post<InsertResDto>(`${BASE_URL}/threads/article`, data)
     }
 
     update(data : UpdateThreadReq) : Observable<UpdateResDto> {

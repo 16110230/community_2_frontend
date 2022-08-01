@@ -1,0 +1,35 @@
+.activity-label {
+    font-size: 14px;
+}
+
+.p-card .p-card-content {
+    padding: 0px !important;
+}
+
+.prof-pic > img {
+    border-radius: 50%;
+    width: 9vh;
+    height: 9vh;
+    object-fit: cover;
+}
+
+.activity-owner {
+    font-size: 20px;
+}
+
+.activity-date {
+    font-size: 12px;
+    color: gray;
+}
+
+.details-title {
+    font-weight: 800;
+}
+
+.details-body {
+    font-size: 14px;
+}
+
+.field-attendance {
+    margin: 11.5px 0px;
+}

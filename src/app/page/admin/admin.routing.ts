@@ -50,7 +50,11 @@ const routes: Routes = [
     {
         path: 'activity-type',
         loadChildren: () => import('./admin-activity-type/admin-activity-type.module').then((m) => m.AdminActivityTypeModule)
-    }
+    },
+    {
+        path: 'thread-category',
+        loadChildren: () => import('./admin-thread-category/admin-thread-category.module').then((m) => m.AdminThreadCategoryModule)
+    },
 
 ]
 

@@ -1,17 +1,39 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
+import { InsertThreadCategoryReq } from "src/app/dto/thread-category/insert-thread-category-req";
+import { ThreadCategoryService } from "src/app/service/thread-category.service";
 
 @Component({
     selector: "app-admin-thread-category-create",
     templateUrl: "./admin-thread-category-create.component.html"
 })
-export class AdminThreadCategoryCreateComponent {
+export class AdminThreadCategoryCreateComponent implements OnDestroy {
 
     constructor(
+        private threadCategory : ThreadCategoryService,
         private router: Router
     ) { }
 
+    insert : InsertThreadCategoryReq = {
+        categoryName : "",
+        categoryCode : "",
+        isActive : false
+    }
+
+    threadCategorySubs? : Subscription
+
+    onSubmit() {
+        this.threadCategory.insert(this.insert).subscribe(result => {
+            this.router.navigateByUrl('/admin/thread-category')
+        })
+    }
+
     goTo() {
         this.router.navigate(['/admin/thread-category'])
+    }
+
+    ngOnDestroy(): void {
+        this.threadCategorySubs?.unsubscribe()
     }
 }

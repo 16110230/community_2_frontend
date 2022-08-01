@@ -1,0 +1,21 @@
+<div class="grid" [ngStyle]="{'min-height': '95vh'}">
+    <div class="sm:col-6 col-12" id="login" >
+        
+        <div class="flex justify-content-center align-items-center" id="container-quote" [ngStyle]="{'min-height': '100vh'}">
+            <span class="text-white text-5xl" >
+                Selamat datang di komunitas Lawencon
+            </span>            
+        </div>
+
+        <div class="flex justify-content-center align-items-center mt-6" id="container-logo">
+            <img id="login-logo" src="../../../../assets/img/lunity-logo.png" alt="">
+        </div>
+
+    </div>
+
+    <div class="sm:col-6 col-12">
+        <app-signup-st (submit)="changeComponent()" *ngIf="menu == 'first'"></app-signup-st>
+        <app-signup-nd (submit)="changeComponent()" *ngIf="menu == 'second'"></app-signup-nd>
+        <app-signup-last (submit)="changeComponent()" *ngIf="menu == 'last'"></app-signup-last>
+    </div>
+</div>

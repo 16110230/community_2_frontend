@@ -1,36 +1,43 @@
-import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { ActivityListComponent } from "./activity-list/activity-list.component";
+import { ActivityRouting } from "./activity.routing";
+import { CardModule } from 'primeng/card';
+import { RadioButtonModule } from 'primeng/radiobutton';
 import { FormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
-import { CardModule } from "primeng/card";
-import { DropdownModule } from "primeng/dropdown";
+import { ActivityDetailsComponent } from "./activity-details/activity-details.component";
+import { ActivityCreateComponent } from "./activity-create/activity-create.component";
 import { InputTextModule } from "primeng/inputtext";
-import { MenuModule } from "primeng/menu";
-import { SidebarModule } from "primeng/sidebar";
-import { TableModule } from "primeng/table";
+import { InputTextareaModule } from "primeng/inputtextarea";
+import { DropdownModule } from "primeng/dropdown";
+import { CalendarModule } from 'primeng/calendar';
+import { CheckboxModule } from 'primeng/checkbox';
 import { SharedModule } from "src/app/component/shared.module";
-import { ActivityRouting } from "./activity.routing";
-import { ActivityComponent } from "./activity/activity.component";
+import { TableModule } from "primeng/table";
 
 @NgModule({
     imports: [
-        SharedModule,
-        FormsModule,
-        CommonModule,
-        ButtonModule,
+        ActivityRouting,
         CardModule,
+        RadioButtonModule,
+        FormsModule,
+        ButtonModule,
         InputTextModule,
+        InputTextareaModule,
         DropdownModule,
-        SidebarModule,
-        MenuModule,
-        TableModule,
-        ActivityRouting
+        CalendarModule,
+        CheckboxModule,
+        TableModule
     ],
     declarations: [
-        ActivityComponent
+        ActivityListComponent,
+        ActivityDetailsComponent,
+        ActivityCreateComponent
     ],
     exports: [
-        ActivityComponent
+        ActivityListComponent,
+        ActivityDetailsComponent,
+        ActivityCreateComponent
     ]
 })
 export class ActivityModule { }

@@ -12,7 +12,7 @@ import { TableModule } from "primeng/table";
 import { TabViewModule } from "primeng/tabview";
 import { SharedModule } from "src/app/component/shared.module";
 import { TransactionRouting } from "./transaction.routing";
-import { TransactionComponent } from "./transaction/transaction.component";
+import { TransactionComponent } from "../member-profile/member-profile-transaction/transaction.component";
 
 @NgModule({
     imports: [

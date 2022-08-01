@@ -9,6 +9,11 @@ const routes: Routes = [
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
     },
     {
+        path: 'articles',
+        component: NavbarComponent,
+        loadChildren: () => import('./activity/activity.module').then(m => m.ActivityModule)
+    },
+    {
         path: 'profile',
         component: NavbarComponent,
         loadChildren: () => import('./member-profile/member-profile.module').then(m => m.MemberProfileModule)
@@ -17,11 +22,6 @@ const routes: Routes = [
         path: 'thread-detail',
         component: NavbarComponent,
         loadChildren: () => import('./thread-detail/thread-detail.module').then(m => m.ThreadDetailModule)
-    },
-    {
-        path: 'transaction',
-        component: NavbarComponent,
-        loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule)
     },
     {
         path: 'activity',
@@ -38,6 +38,7 @@ const routes: Routes = [
         component: NavbarComponent,
         loadChildren: () => import('./send-validation/send-validation.module').then(m => m.SendValidationModule)
     },
+
 ]
 
 @NgModule({

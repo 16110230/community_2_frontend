@@ -15,9 +15,9 @@ export class MemberProfileComponent {
         this.router.navigate(['/member/profile/edit'])
     }
     goToTransaction() {
-        this.router.navigate(['/member/transaction'])
+        this.router.navigate(['/member/profile/transaction'])
     }
     goToActivity() {
-        this.router.navigate(['/member/activity'])
+        this.router.navigate(['/member/profile/activity'])
     }
 }

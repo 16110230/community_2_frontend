@@ -18,6 +18,8 @@ import { MemberProfileRouting } from "./member-profile.routing";
 import { MemberProfileComponent } from "./member-profile/member-profile.component";
 import { MemberProfileEditComponent } from "./member-profile-edit/member-profile-edit.component";
 import { MemberProfileChangePassword } from "./member-profile-change-password/member-profile-change-password.component";
+import { MemberProfileActivityComponent } from "./member-profile-activity/activity.component";
+import { MemberProfileTransactionComponent } from "./member-profile-transaction/transaction.component";
 
 @NgModule({
     imports: [
@@ -40,12 +42,16 @@ import { MemberProfileChangePassword } from "./member-profile-change-password/me
     declarations: [
         MemberProfileComponent,
         MemberProfileEditComponent,
-        MemberProfileChangePassword
+        MemberProfileChangePassword,
+        MemberProfileActivityComponent,
+        MemberProfileTransactionComponent
     ],
     exports: [
         MemberProfileComponent,
         MemberProfileEditComponent,
-        MemberProfileChangePassword
+        MemberProfileChangePassword,
+        MemberProfileActivityComponent,
+        MemberProfileTransactionComponent
     ]
 })
 export class MemberProfileModule { }

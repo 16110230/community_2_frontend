@@ -9,18 +9,15 @@
                             alt="profile-picture">
                         <div class="content-card-header-dtl ml-3 flex flex-column justify-content-center">
                             <div class="header-details mt-3">
-                                <h4>What is best for bussiness, Java or PHP? (by cost and performance) </h4>
-                                <span class="header-date">Upload 8 minutes ago by Ardy Sitio</span>
+                                <h4>{{thread.data.threadTitle}}</h4>
+                                <span class="header-date">Upload {{thread.data.createdAt|timeAgo}} by {{thread.data.userName}}</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="content-card-body mt-2 px-4">
-                        <p>I have plan to make bussiness app, its online shop sell clothes and could use online
-                            transaction so its connected to bank.
-                            The problem is my budget is not big for insfrastructure, i need cheaper system but not mean
-                            the cheapest just cheaper in market
-                            and has good security. is any one can give me advice.
+                        <p>
+                            {{thread.data.threadContent}}
                         </p>
                     </div>
 
@@ -41,7 +38,7 @@
                                 <a class="mr-2" routerLink="/member/thread-detail/1">
                                     <span class="pi pi-comment"></span>
                                 </a>
-                                <span class="mr-3">8</span>
+                                <span class="mr-3">{{thread.data.countLike}}</span>
                             </div>
 
                             <div class="activity-right flex flex-row align-items-center">
@@ -50,7 +47,7 @@
                                         <span class="pi pi-bookmark"></span>
                                         <span class="pi pi-bookmark-fill icon-bookmark-filled"></span>
                                     </a>
-                                    <span class="mr-3">8</span>
+                                    <span class="mr-3">{{thread.data.countBook}}</span>
                                 </div>
                             </div>
                         </div>
@@ -58,48 +55,38 @@
                 </p-card>
 
                 <p-card styleClass="mt-3" header="Comments">
-                    <div class="comment-section mb-3">
+                    <div class="comment-section mb-3" *ngFor="let data of threadDetailsData">
                         <div class="comment-section-header">
                             <div class="comment-prof-pic flex flex-row">
                                 <img src="https://mmc.tirto.id/image/2020/02/12/billie-eilish-ap--2_ratio-16x9.jpg" alt="prof-pic">
                                 <div class="flex flex-column justify-content-center ml-2">
-                                    <span class="comment-full-name">Shifda Ichfan</span>
-                                    <span class="comment-time">2022-07-01 10:00:00</span>
+                                    <span class="comment-full-name">{{data.userName}}</span>
+                                    <span class="comment-time">{{data.createdAt|timeAgo}}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="comment-section-body mt-3">
-                            <p>Java is good but yea the price is big deal and PHP is cheaper rather than Java, so PHP might be fit for you</p>
+                            <p>
+                                {{data.threadDesc}}
+                            </p>
                         </div>
                     </div>
-                    <div class="comment-section mb-3">
-                        <div class="comment-section-header">
-                            <div class="comment-prof-pic flex flex-row">
-                                <img src="https://asset.kompas.com/crops/7SSUjMm0KgN81OBmlFsSMzIojOg=/0x0:1200x800/750x500/data/photo/2019/04/26/3002230863.jpg" alt="prof-pic">
-                                <div class="flex flex-column justify-content-center ml-2">
-                                    <span class="comment-full-name">Ardy Sitio</span>
-                                    <span class="comment-time">2022-07-08 04:32:12</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-section-body mt-3">
-                            <p>PHP might be the best decision u've ever made</p>
-                        </div>
-                    </div>
-
                     <div class="new-comment mt-5">
-                        <div class="comment-section-header">
-                            <div class="comment-prof-pic flex flex-row">
-                                <img src="https://media.thetab.com/blogs.dir/90/files/2022/06/screenshotter-theumbrellaacademye8weddingattheendoftheworld-2231-e1656342363954-1024x742.jpg" alt="prof-pic">
-                                <div class="flex flex-column justify-content-between ml-2">
-                                    <span class="comment-full-name">You</span>
-                                    <input class="comment-input" type="text" placeholder="Leave your thoughts here...">
+                        <form >
+                            <div class="comment-section-header">
+                                <div class="comment-prof-pic flex flex-row">
+                                    <img src="https://media.thetab.com/blogs.dir/90/files/2022/06/screenshotter-theumbrellaacademye8weddingattheendoftheworld-2231-e1656342363954-1024x742.jpg" alt="prof-pic">
+                                    <div class="flex flex-column justify-content-between ml-2">
+                                        <span class="comment-full-name">You</span>
+    threadDesc : string
+                                        <input class="comment-input" type="text" placeholder="Leave your thoughts here..." >
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex flex-row justify-content-end mr-4">
-                            <button pButton pRipple class="p-button-sm p-button-info p-button-rounded mt-3" label="Post"></button>
-                        </div>
+                            <div class="flex flex-row justify-content-end mr-4">
+                                <button pButton pRipple class="p-button-sm p-button-info p-button-rounded mt-3" label="Post"></button>
+                            </div>
+                        </form>
                     </div>
                 </p-card>
             </div>
@@ -110,33 +97,17 @@
                 <div class="title mb-4">
                     <span>Articles</span>
                 </div>
-                <div class="col-12 p-0 mb-2">
-        
+                <div class="col-12 p-0 mb-2" *ngFor="let data of articlesData">
                     <div class="article-card">
                         <div class="article-card-header">
                             <img class="article-pic mb-3" src="https://i.pinimg.com/originals/93/42/1e/93421e8db0859ecb02642b9b5f59aa5d.png" alt="article-header-pic">
                             <div class="article-card-header-title px-3">
-                                <h5>5 Fungsi Java Yang Perlu Diketahui</h5>
+                                <h5>{{data.threadTitle}}</h5>
                             </div>
                         </div>
                         <div class="article-card-content p-3">
-                            <p>Fungsi dari garbage collector mampu mengumpulkan “sampah” secara otomatis. Hal ini akan membuat programmer tidak perlu 
-                                dibebani dengan adanya memori yang rusak.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 p-0">
-                    <div class="article-card">
-                        <div class="article-card-header">
-                            <img class="article-pic mb-3" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.png" alt="article-header-pic">
-                            <div class="article-card-header-title px-3">
-                                <h5>Tips menggunakan Hooks pada ReactJS</h5>
-                            </div>
-                        </div>
-                        <div class="article-card-content p-3">
-                            <p>Hooks merupakan fitur yang backwards-compatible. Laman ini menyediakan ikhtisar mengenai Hooks untuk pengguna React yang 
-                                berpengalaman. Laman ini merupakan ikhtisar yang singkat.
+                            <p>
+                                {{trimChar(data.threadContent)}}
                             </p>
                         </div>
                     </div>

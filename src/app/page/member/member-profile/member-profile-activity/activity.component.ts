@@ -2,11 +2,10 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
-    selector: "app-member-transaction",
-    templateUrl: "./transaction.component.html"
+    selector: "app-member-activity",
+    templateUrl: "./activity.component.html"
 })
-export class TransactionComponent {
-
+export class MemberProfileActivityComponent {
     invoices = [
         {
             id: 1234,
@@ -40,9 +39,9 @@ export class TransactionComponent {
         this.router.navigate(['/member/profile/edit'])
     }
     goToTransaction() {
-        this.router.navigate(['/member/transaction'])
+        this.router.navigate(['/member/profile/transaction'])
     }
     goToActivity() {
-        this.router.navigate(['/member/activity'])
+        this.router.navigate(['/member/profile/activity'])
     }
 }
