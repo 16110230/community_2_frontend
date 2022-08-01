@@ -10,13 +10,9 @@
                         <div class="col-12">
                             <span><b>Type</b></span>
                         </div>
-                        <div class="col-12">
-                            <p-radioButton name="activity" value="event" inputId="event" styleClass="mx-2" [(ngModel)]="selectedType"></p-radioButton>
-                            <label for="event" class="activity-label">Event</label>
-                        </div>
-                        <div class="col-12">
-                            <p-radioButton name="activity" value="course" inputId="course" styleClass="mx-2" [(ngModel)]="selectedType"></p-radioButton>
-                            <label for="course" class="activity-label">Course</label>
+                        <div class="col-12" *ngFor="let data of types.data; let i=index">
+                            <p-radioButton name="type" [value]="data.id" inputId="event" styleClass="mx-2" [(ngModel)]="selectedType"></p-radioButton>
+                            <label for="event" class="activity-label">{{data.typeName}}</label>
                         </div>
                     </div>
                 </div>
@@ -25,22 +21,14 @@
                         <div class="col-12">
                             <span><b>Category</b></span>
                         </div>
-                        <div class="col-12">
-                            <p-radioButton name="category" value="hr" inputId="hr" styleClass="mx-2" [(ngModel)]="selectedCategory"></p-radioButton>
-                            <label for="hr" class="activity-label">Human Resources</label>
-                        </div>
-                        <div class="col-12">
-                            <p-radioButton name="category" value="it" inputId="it" styleClass="mx-2" [(ngModel)]="selectedCategory"></p-radioButton>
-                            <label for="it" class="activity-label">Information Technology</label>
-                        </div>
-                        <div class="col-12">
-                            <p-radioButton name="category" value="business" inputId="business" styleClass="mx-2" [(ngModel)]="selectedCategory"></p-radioButton>
-                            <label for="business" class="activity-label">Bussiness</label>
+                        <div class="col-12" *ngFor="let data of categories.data; let i=index">
+                            <p-radioButton name="category" [value]="data.id" styleClass="mx-2" [(ngModel)]="selectedCategory"></p-radioButton>
+                            <label for="hr" class="activity-label">{{data.categoryName}}</label>
                         </div>
                     </div>
                 </div>
                 <div class="flex flex-row justify-content-center">
-                    <button pButton pRipple class="p-button-sm p-button-success mt-3" label="Apply"></button>
+                    <button pButton pRipple type="button" (click)="filter()" class="p-button-sm p-button-success mt-3" label="Apply"></button>
                 </div>
             </div>
         </p-card>
@@ -49,19 +37,17 @@
     <div class="col-9 p-4">
         <p-card>
             <div class="grid p-0">
-                <div class="col-3">
+                <div class="col-3" *ngFor="let data of activities.data; let i=index">
                     <a routerLink="/member/articles/details/1">
                         <div class="article-card w-full">
                             <div class="article-card-header">
                                 <img class="article-pic mb-3" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.png" alt="article-header-pic">
                                 <div class="article-card-header-title px-3">
-                                    <h5>Tips menggunakan Hooks pada ReactJS</h5>
+                                    <h5>{{data.activityTitle}}</h5>
                                 </div>
                             </div>
                             <div class="article-card-content p-3">
-                                <p>Hooks merupakan fitur yang backwards-compatible. Laman ini menyediakan ikhtisar mengenai Hooks untuk pengguna React yang 
-                                    berpengalaman.
-                                </p>
+                                <p>{{data.activityContent}}</p>
                             </div>
                         </div>
                     </a>

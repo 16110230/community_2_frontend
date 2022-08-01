@@ -1,0 +1,21 @@
+<div class="invoice-card px-4">
+    <div class="invoice-header">
+        <span class="block details-title mb-2">Pelatihan Memblokir Steam, Epic Games, Paypal, etc</span>
+        <b>
+            <span class="text-red-500">Rp140.000,00</span>
+        </b>
+    </div>
+    <div class="invoice-body my-4">
+        <span>Follow this instruction to import invoice:</span>
+        <ol class="mt-2">
+            <li>Transfer to 552710231 (BCA) or 14552901234 (MANDIRI) - Ardy Sitio,</li>
+            <li>Screenshot or take a picture of transfer detail,</li>
+            <li>Upload the photo by click "Upload" below</li>
+            <p-fileUpload #fubauto styleClass="mb-3 p-button-sm p-button-outlined" mode="basic" name="file" accept="image/*" [auto]="true" chooseLabel="Upload" 
+                chooseIcon="pi pi-upload" [customUpload]="true" (uploadHandler)="change($event)"></p-fileUpload>
+            <li>Click "submit" and our team will validate your payment</li>
+        </ol>
+
+    </div>
+    <span>Thank you!</span>
+</div>
