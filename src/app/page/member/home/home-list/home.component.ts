@@ -26,12 +26,11 @@ export class HomeComponent implements OnInit, OnDestroy{
         this.threadService.getAll().subscribe((result) => {
             this.threads = result
             this.threadsData = result.data
-            console.log(this.threadsData)
+            
         })
         this.threadService.getAllArticles().subscribe((result) => {
             this.articles = result
             this.articlesData = result.data
-            console.log(this.articlesData)
         })
     }
 
