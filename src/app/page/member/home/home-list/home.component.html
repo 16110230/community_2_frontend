@@ -13,7 +13,7 @@
             </button>
             <div class="content-home">
                 <div *ngFor="let data of threadsData">
-                    <p-card styleClass="mb-3" *ngIf="data.threadCategoryName === 'free'">
+                    <p-card styleClass="mb-3" *ngIf="data.threadCategoryName === 'Regular'">
                         <div class="content-card-header flex flex-row px-4 mb-3">
                             <img class="content-card-header-pic"
                                 src="https://image.tmdb.org/t/p/w235_and_h235_face/6wsOvUn9YewNZ3IEEBWfiDVTYOc.jpg"
@@ -58,7 +58,7 @@
                         </div>
                     </p-card>
 
-                    <p-card *ngIf="data.threadCategoryName === 'subscribe'">
+                    <p-card *ngIf="data.threadCategoryName === 'Premium'">
                         <div class="content-card-header flex flex-row px-4 mb-3">
                             <img class="content-card-header-pic"
                                 src="https://thumb.zigi.id/frontend/thumbnail/2021/10/02/zigi-6158341e65999-caitlin-halderman_910_512.jpeg"

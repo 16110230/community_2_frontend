@@ -65,19 +65,18 @@
                         </div>
                     </div>
                     <div class="new-comment mt-5">
-                        <form >
+                        <form (ngSubmit)="onSubmit()">
                             <div class="comment-section-header">
                                 <div class="comment-prof-pic flex flex-row">
                                     <img src="https://media.thetab.com/blogs.dir/90/files/2022/06/screenshotter-theumbrellaacademye8weddingattheendoftheworld-2231-e1656342363954-1024x742.jpg" alt="prof-pic">
                                     <div class="flex flex-column justify-content-between ml-2">
                                         <span class="comment-full-name">You</span>
-    threadDesc : string
-                                        <input class="comment-input" type="text" placeholder="Leave your thoughts here..." >
+                                        <input class="comment-input" type="text" placeholder="Leave your thoughts here..." [(ngModel)]="insert.threadDesc" name="threadDesc">
                                     </div>
                                 </div>
                             </div>
                             <div class="flex flex-row justify-content-end mr-4">
-                                <button pButton pRipple class="p-button-sm p-button-info p-button-rounded mt-3" label="Post"></button>
+                                <button pButton pRipple class="p-button-sm p-button-info p-button-rounded mt-3" type="submit" label="Post"></button>
                             </div>
                         </form>
                     </div>

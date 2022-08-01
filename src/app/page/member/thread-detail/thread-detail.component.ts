@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
+import { InsertThreadDetailsReq } from "src/app/dto/thread-details/insert-thread-details-req";
 import { ShowThreadDetails } from "src/app/dto/thread-details/show-thread-details";
 import { ThreadDetailsDto } from "src/app/dto/thread-details/thread-details-dto";
 import { ShowThreadById } from "src/app/dto/thread/show-thread-by-id";
@@ -32,6 +33,12 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
             createdAt : ''
         }
     } 
+    insert: InsertThreadDetailsReq = {
+        thread : "",
+        threadDesc : "",
+        isActive : true
+
+    }
     threadData? : ThreadDto 
     threadDetails : ShowThreadDetails = {} as ShowThreadDetails
     threadDetailsData : ThreadDetailsDto[] = []
@@ -39,6 +46,8 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
     articlesData : ThreadDto[] = []
     subs? : Subscription
     idParam! : string
+    localStorage = JSON.parse(localStorage.getItem('data') || '{}')
+    nameUser = this.localStorage.data.username
 
     constructor(
         private activateRoute : ActivatedRoute,
@@ -78,6 +87,21 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
     trimCharSubs(data : string) : string{
         let result : string = data.substr(0, 200)+"...";
         return result;
+    }
+
+    onSubmit() : void {
+        this.activateRoute.params.subscribe(result => {
+            const resultTemp : any = result
+            this.idParam = resultTemp.id 
+            this.insert.thread = this.idParam
+            this.threadDetailService.insert(
+                this.insert
+                ).subscribe(result => {
+                    this.initData()
+                    this.insert.threadDesc = ''
+            })
+        })
+       
     }
 
     ngOnInit(): void {
