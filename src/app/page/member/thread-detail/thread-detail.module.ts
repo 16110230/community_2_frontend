@@ -6,6 +6,7 @@ import { ButtonModule } from "primeng/button";
 import { CommonModule } from "@angular/common";
 import { HomeModule } from "../home/home.module";
 import { FormsModule } from "@angular/forms";
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 @NgModule({
     imports: [
@@ -14,6 +15,7 @@ import { FormsModule } from "@angular/forms";
         ButtonModule,
         CommonModule,
         HomeModule,
+        InfiniteScrollModule,
         FormsModule
     ],
     declarations: [

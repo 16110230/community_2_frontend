@@ -1,12 +1,15 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
+import { BOOKMARK, LIKE } from "src/app/constant/constant";
+import { InsertThreadActivityReq } from "src/app/dto/thread-activity/insert-thread-activity-req";
 import { InsertThreadDetailsReq } from "src/app/dto/thread-details/insert-thread-details-req";
 import { ShowThreadDetails } from "src/app/dto/thread-details/show-thread-details";
 import { ThreadDetailsDto } from "src/app/dto/thread-details/thread-details-dto";
 import { ShowThreadById } from "src/app/dto/thread/show-thread-by-id";
 import { ShowThreads } from "src/app/dto/thread/show-threads";
 import { ThreadDto } from "src/app/dto/thread/thread-dto";
+import { ThreadActivityService } from "src/app/service/thread-activity.service";
 import { ThreadDetailsService } from "src/app/service/thread-details.service";
 import { ThreadService } from "src/app/service/thread.service";
 
@@ -39,6 +42,11 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
         isActive : true
 
     }
+    insertActivity : InsertThreadActivityReq = {
+        thread : "",
+        threadActivityCategory : "",
+        isActive : true
+    }
     threadData? : ThreadDto 
     threadDetails : ShowThreadDetails = {} as ShowThreadDetails
     threadDetailsData : ThreadDetailsDto[] = []
@@ -52,6 +60,7 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
     constructor(
         private activateRoute : ActivatedRoute,
         private threadService : ThreadService, 
+        private threadActivityServcie : ThreadActivityService,
         private threadDetailService : ThreadDetailsService,
         private router: Router
     ) { }
@@ -103,6 +112,47 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
         })
        
     }
+
+    like(data : string) : void{
+        this.insertActivity.thread = data
+        this.insertActivity.threadActivityCategory = LIKE
+        this.threadActivityServcie.insert(
+            this.insertActivity
+            ).subscribe(result => {
+                this.initData()
+        })
+    }
+
+    unlike(data : string) : void{
+        this.insertActivity.thread = data
+        this.insertActivity.threadActivityCategory = LIKE
+        this.threadActivityServcie.deleteByThreadId(
+            this.insertActivity
+            ).subscribe(result => {
+                this.initData()
+        })
+    }
+
+    bookmark(data : string) : void{
+        this.insertActivity.thread = data
+        this.insertActivity.threadActivityCategory = BOOKMARK
+        this.threadActivityServcie.insert(
+            this.insertActivity
+            ).subscribe(result => {
+                this.initData()
+        })
+    }
+
+    unBookmark(data : string) : void{
+        this.insertActivity.thread = data
+        this.insertActivity.threadActivityCategory = BOOKMARK
+        this.threadActivityServcie.deleteByThreadId(
+            this.insertActivity
+            ).subscribe(result => {
+                this.initData()
+        })
+    }
+
 
     ngOnInit(): void {
         this.initData()

@@ -43,6 +43,7 @@ export class HomeCreateComponent implements OnInit, OnDestroy{
     }
 
     ngOnDestroy(): void {
+        
     }
 
     pollings = new FormArray([new FormControl()])
