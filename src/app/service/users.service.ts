@@ -11,29 +11,29 @@ import { ShowUsers } from "../dto/users/show-users";
 import { UpdateUserReq } from "../dto/users/update-user-req";
 
 @Injectable({
-    providedIn : 'root'
+    providedIn: 'root'
 })
 export class UsersService {
 
-    constructor(private http : HttpClient) {}
+    constructor(private http: HttpClient) { }
 
-    getAll() : Observable<ShowUsers> {
+    getAll(startPage: number, maxPage: number, query?: string): Observable<ShowUsers> {
         return this.http.get<ShowUsers>(`${BASE_URL}/users`)
     }
 
-    getById(id : number) : Observable<ShowUserById> {
+    getById(id: number): Observable<ShowUserById> {
         return this.http.get<ShowUserById>(`${BASE_URL}/users/${id}`)
     }
 
-    insert(data : InsertUserReq) : Observable<InsertResDto> {
+    insert(data: InsertUserReq): Observable<InsertResDto> {
         return this.http.post<InsertResDto>(`${BASE_URL}/users`, data)
     }
 
-    update(data : UpdateUserReq) : Observable<UpdateResDto> {
+    update(data: UpdateUserReq): Observable<UpdateResDto> {
         return this.http.put<UpdateResDto>(`${BASE_URL}/users/update`, data)
     }
 
-    delete(id : number) : Observable<DeleteResDto> {
+    delete(id: number): Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/users/delete/${id}`)
     }
 

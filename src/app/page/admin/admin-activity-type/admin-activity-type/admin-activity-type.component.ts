@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ConfirmationService } from "primeng/api";
+import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 import { Subscription } from "rxjs";
 import { ShowActivityTypes } from "src/app/dto/activity-type/show-activity-types";
 import { ActivityTypeService } from "src/app/service/activity-type.service";
@@ -8,34 +9,59 @@ import { ActivityTypeService } from "src/app/service/activity-type.service";
 @Component({
     selector: "app-admin-activity-type",
     templateUrl: "./admin-activity-type.component.html",
-    providers : [
+    providers: [
         ConfirmationService
     ]
 })
-export class AdminActivityType implements OnInit, OnDestroy{
+export class AdminActivityType implements OnDestroy {
 
     constructor(
-        private confirmationService : ConfirmationService,
-        private activityTypeService : ActivityTypeService,
+        private confirmationService: ConfirmationService,
+        private activityTypeService: ActivityTypeService,
         private router: Router
     ) { }
 
-    activityTypes : ShowActivityTypes = {} as ShowActivityTypes
-    deleteSubs? : Subscription
-    isDeleted! : number
+    startPage: number = 0
+    maxPage: number = 5
+    totalData: number = 0
+    loading: boolean = true
+    query?: string
 
-    initData() : void {
-        this.activityTypeService.getAll().subscribe(result => {
+    activityTypes: ShowActivityTypes = {} as ShowActivityTypes
+    activityTypesSub?: Subscription
+    deleteSubs?: Subscription
+    isDeleted!: number
+
+    initData(): void {
+        this.activityTypeService.getAll(this.startPage, this.maxPage, this.query).subscribe(result => {
             this.activityTypes = result
         })
     }
 
-    ngOnInit(): void {
-        this.initData()
+    loadData(event: LazyLoadEvent) {
+        this.getData(event.first, event.rows, event.globalFilter)
+    }
+
+    getData(startPage: number = this.startPage, maxPage: number = this.maxPage, query?: string): void {
+        this.loading = true;
+        this.startPage = startPage
+        this.maxPage = maxPage
+        this.query = query
+
+        this.activityTypesSub = this.activityTypeService.getAll(startPage, maxPage, query).subscribe(
+            result => {
+                const resultData: any = result
+                this.activityTypes.data = resultData.data
+                this.loading = false
+                this.totalData = resultData.total
+                console.log(resultData)
+            },
+        )
     }
 
     ngOnDestroy(): void {
-        
+        this.activityTypesSub?.unsubscribe()
+        this.deleteSubs?.unsubscribe()
     }
 
     goTo() {
@@ -51,10 +77,10 @@ export class AdminActivityType implements OnInit, OnDestroy{
 
     deleted(): void {
         this.deleteSubs = this.activityTypeService
-        .delete(this.isDeleted)
-        .subscribe((_) => {
-            this.initData();
-        });
+            .delete(this.isDeleted)
+            .subscribe((_) => {
+                this.initData();
+            });
     }
 
     confirm(id: number) {

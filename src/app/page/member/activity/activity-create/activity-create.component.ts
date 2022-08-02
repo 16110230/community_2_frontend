@@ -16,15 +16,15 @@ import { FileService } from "src/app/service/file.service";
 })
 export class ActivityCreateComponent implements OnInit, OnDestroy {
 
-    constructor(private activityTypeService : ActivityTypeService, private activityService : ActivityService,
-        private router : Router, private fileService : FileService, private activityCategoryService : ActivityCategoryService) {}
+    constructor(private activityTypeService: ActivityTypeService, private activityService: ActivityService,
+        private router: Router, private fileService: FileService, private activityCategoryService: ActivityCategoryService) { }
 
-    activitySubs? : Subscription
+    activitySubs?: Subscription
 
-    data : InsertActivityReq = {
+    data: InsertActivityReq = {
         activityTitle: '',
         activityContent: '',
-        activityCategory : '',
+        activityCategory: '',
         activityType: '',
         startedAt: '',
         endedAt: '',
@@ -35,25 +35,25 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
         trainer: ''
     }
 
-    types : ShowActivityTypes = {
-        data : []
+    types: ShowActivityTypes = {
+        data: []
     }
 
-    categories : ShowActivityCategories = {
-        data : []
+    categories: ShowActivityCategories = {
+        data: []
     }
 
-    type : string = ''
-    category : string = ''
-    startDate : string = ''
-    endDate : string = ''
+    type: string = ''
+    category: string = ''
+    startDate: string = ''
+    endDate: string = ''
 
     ngOnInit(): void {
         this.initData()
     }
 
-    initData = () : void => {
-        this.activityTypeService.getAll().subscribe(res => {
+    initData = (): void => {
+        this.activityTypeService.getAll(0, 0).subscribe(res => {
             this.types = res
         })
 
@@ -66,13 +66,13 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
         this.activitySubs?.unsubscribe()
     }
 
-    submit = () : void => {
+    submit = (): void => {
         this.activityService.insert(this.data).subscribe(() => this.router.navigateByUrl('/member/articles'))
     }
 
-    change(event : any) : void {
+    change(event: any): void {
         console.log(event.files[0]);
-        
+
         const file = event.files[0]
         this.fileService.uploadAsBase64(file).then(res => {
             this.data.fileName = res[0]

@@ -31,7 +31,7 @@
         <div class="m-5">
             <p-card >  
                 <h4>Newest Threads</h4>              
-                <p-table [value]="threads" responsiveLayout="scroll">
+                <p-table [value]="threads.data" responsiveLayout="scroll">
                     <ng-template pTemplate="header">
                         <tr>
                             <th>No</th>
@@ -44,7 +44,7 @@
                         <tr>
                             <td>{{i+1}}</td>
                             <td>{{data.threadTitle}}</td>
-                            <td>{{data.threadCategory}}</td>
+                            <td>{{data.threadCategoryName}}</td>
                             <td>
                                 <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded"></button>
                             </td>

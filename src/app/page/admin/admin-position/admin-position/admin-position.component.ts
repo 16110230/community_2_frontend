@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ConfirmationService } from "primeng/api";
+import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 import { Subscription } from "rxjs";
 import { ShowPositions } from "src/app/dto/position/show-positions";
 import { PositionService } from "src/app/service/position.service";
@@ -8,31 +9,57 @@ import { PositionService } from "src/app/service/position.service";
 @Component({
     selector: "app-admin-position",
     templateUrl: "./admin-position.component.html",
-    providers : [
+    providers: [
         ConfirmationService
     ]
 })
 
-export class AdminPositionComponent implements OnInit {
+export class AdminPositionComponent implements OnDestroy {
 
     constructor(
-        private confirmationService : ConfirmationService,
-        private positionService : PositionService,
+        private confirmationService: ConfirmationService,
+        private positionService: PositionService,
         private router: Router
     ) { }
 
-    positions : ShowPositions = {} as ShowPositions
-    deleteSubs? : Subscription
-    isDeleted! : number
+    startPage: number = 0
+    maxPage: number = 5
+    totalData: number = 0
+    loading: boolean = true
+    query?: string
 
-    initData() : void {
-        this.positionService.getAll().subscribe(result => {
+    positions: ShowPositions = {} as ShowPositions
+    positionsSub?: Subscription
+    deleteSubs?: Subscription
+    isDeleted!: number
+
+
+
+    initData(): void {
+        this.positionService.getAll(this.startPage, this.maxPage, this.query).subscribe(result => {
             this.positions = result
         })
     }
 
-    ngOnInit(): void {
-        this.initData()
+    loadData(event: LazyLoadEvent) {
+        this.getData(event.first, event.rows, event.globalFilter)
+    }
+
+    getData(startPage: number = this.startPage, maxPage: number = this.maxPage, query?: string): void {
+        this.loading = true;
+        this.startPage = startPage
+        this.maxPage = maxPage
+        this.query = query
+
+        this.positionsSub = this.positionService.getAll(startPage, maxPage, query).subscribe(
+            result => {
+                const resultData: any = result
+                this.positions.data = resultData.data
+                this.loading = false
+                this.totalData = resultData.total
+                console.log(resultData)
+            },
+        )
     }
 
     goTo() {
@@ -42,16 +69,16 @@ export class AdminPositionComponent implements OnInit {
         this.router.navigate([`/admin/position/update/${id}`])
     }
 
-    onDelete(id : number) : void {
+    onDelete(id: number): void {
         this.isDeleted = id
     }
 
-    deleted() : void {
+    deleted(): void {
         this.deleteSubs = this.positionService
-        .delete(this.isDeleted)
-        .subscribe((_) => {
-            this.initData()
-        })
+            .delete(this.isDeleted)
+            .subscribe((_) => {
+                this.initData()
+            })
     }
 
     confirm(id: number) {
@@ -64,5 +91,10 @@ export class AdminPositionComponent implements OnInit {
                 this.deleted()
             }
         });
+    }
+
+    ngOnDestroy() {
+        this.positionsSub?.unsubscribe()
+        this.deleteSubs?.unsubscribe()
     }
 }

@@ -13,30 +13,30 @@ import { ThreadService } from "src/app/service/thread.service";
     templateUrl: './home.component.html',
     styleUrls: ['../home.component.css']
 })
-export class HomeComponent implements OnInit, OnDestroy{
-    threads : ShowThreads = {} as ShowThreads
-    threadsData : ThreadDto[] = []
-    articles : ShowThreads = {} as ShowThreads
-    articlesData : ThreadDto[] = []
-    insert : InsertThreadActivityReq = {
-        thread : "",
-        threadActivityCategory : "",
-        isActive : true
+export class HomeComponent implements OnInit, OnDestroy {
+    threads: ShowThreads = {} as ShowThreads
+    threadsData: ThreadDto[] = []
+    articles: ShowThreads = {} as ShowThreads
+    articlesData: ThreadDto[] = []
+    insert: InsertThreadActivityReq = {
+        thread: "",
+        threadActivityCategory: "",
+        isActive: true
     }
-    subs? : Subscription
-    startPage : number = 0
-    maxPage : number = 3
+    subs?: Subscription
+    startPage: number = 0
+    maxPage: number = 3
 
     constructor(
-        private threadService : ThreadService, 
-        private threadActivityServcie : ThreadActivityService,
+        private threadService: ThreadService,
+        private threadActivityServcie: ThreadActivityService,
         private router: Router
     ) { }
 
-    initData(startPage : number, maxPage : number) : void {
+    initData(startPage: number, maxPage: number): void {
         this.threadService.getAllUser(startPage, maxPage).subscribe((result) => {
             this.threads = result
-            this.threadsData = result.data       
+            this.threadsData = result.data
         })
         this.threadService.getAllArticles().subscribe((result) => {
             this.articles = result
@@ -44,57 +44,57 @@ export class HomeComponent implements OnInit, OnDestroy{
         })
     }
 
-    like(data : string) : void{
+    like(data: string): void {
         this.insert.thread = data
         this.insert.threadActivityCategory = LIKE
         this.threadActivityServcie.insert(
             this.insert
-            ).subscribe(result => {
-                this.initData(this.startPage, this.maxPage)
+        ).subscribe(result => {
+            this.initData(this.startPage, this.maxPage)
         })
     }
 
-    unlike(data : string) : void{
+    unlike(data: string): void {
         this.insert.thread = data
         this.insert.threadActivityCategory = LIKE
         this.threadActivityServcie.deleteByThreadId(
             this.insert
-            ).subscribe(result => {
-                this.initData(this.startPage, this.maxPage)
+        ).subscribe(result => {
+            this.initData(this.startPage, this.maxPage)
         })
     }
 
-    bookmark(data : string) : void{
+    bookmark(data: string): void {
         this.insert.thread = data
         this.insert.threadActivityCategory = BOOKMARK
         this.threadActivityServcie.insert(
             this.insert
-            ).subscribe(result => {
-                this.initData(this.startPage, this.maxPage)
+        ).subscribe(result => {
+            this.initData(this.startPage, this.maxPage)
         })
     }
 
-    unBookmark(data : string) : void{
+    unBookmark(data: string): void {
         this.insert.thread = data
         this.insert.threadActivityCategory = BOOKMARK
         this.threadActivityServcie.deleteByThreadId(
             this.insert
-            ).subscribe(result => {
-                this.initData(this.startPage, this.maxPage)
+        ).subscribe(result => {
+            this.initData(this.startPage, this.maxPage)
         })
     }
 
-    trimChar(data : string) : string{
-        let result : string = data.substr(0, 120)+"...";
+    trimChar(data: string): string {
+        let result: string = data.substr(0, 120) + "...";
         return result;
     }
 
-    trimCharSubs(data : string) : string{
-        let result : string = data.substr(0, 200)+"...";
+    trimCharSubs(data: string): string {
+        let result: string = data.substr(0, 200) + "...";
         return result;
     }
 
-    toDetail(id:string){
+    toDetail(id: string) {
         this.router.navigate([`/member/thread-detail/${id}`])
     }
 
@@ -102,12 +102,12 @@ export class HomeComponent implements OnInit, OnDestroy{
         this.initData(this.startPage, this.maxPage)
     }
     ngOnDestroy(): void {
-        
+
     }
-    onScroll() : void {
+    onScroll(): void {
         this.initData(this.startPage, this.maxPage)
         this.maxPage += this.maxPage
     }
-    
-    
+
+
 }
