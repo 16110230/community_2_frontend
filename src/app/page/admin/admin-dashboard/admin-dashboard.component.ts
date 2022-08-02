@@ -1,12 +1,30 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
+import { ShowDashboard } from "src/app/dto/dashboard/show-dashboard";
+import { DashboardService } from "src/app/service/dashboard-service";
 
 @Component({
     selector: "app-admin-dashboard",
     templateUrl: "./admin-dashboard.component.html"
 })
-export class AdminDashboardComponent implements OnInit {
+export class AdminDashboardComponent implements OnInit, OnDestroy {
     targetId?= null
+
+    dashboards: ShowDashboard = {
+        data: {
+            countUsers: 0,
+            countDailyUsers: 0,
+            countEvent: 0,
+            countCourse: 0,
+            countPendingEventInvoice: 0,
+            countPendingCourseInvoice: 0,
+            countPendingSubscribeInvoice: 0
+        }
+    }
+
+    dashboardSubscribe?: Subscription
+
 
     threads = [
         {
@@ -23,61 +41,83 @@ export class AdminDashboardComponent implements OnInit {
 
     cards = [
         {
-            title: "Total Users",
-            count: 304,
+            title: "",
+            count: 0,
             icon: "pi pi-users",
             classCustom: "card-custom-1",
             dest: "nogo"
-        },
-        {
-            title: "Daily New User",
-            count: 17,
-            icon: "pi pi-user",
-            classCustom: "card-custom-1",
-            dest: "nogo"
-        },
-        {
-            title: "Daily New Event",
-            count: 4,
-            icon: "pi pi-calendar",
-            classCustom: "card-custom-2",
-            dest: "nogo"
-        },
-        {
-            title: "Daily New Course",
-            count: 3,
-            icon: "pi pi-calendar",
-            classCustom: "card-custom-2",
-            dest: "nogo"
-        },
-        {
-            title: "Pending Subscribe Invoice",
-            count: 13,
-            icon: "pi pi-align-justify",
-            classCustom: "card-custom-3",
-            dest: "/admin/invoice/subscribe/pending"
-        },
-        {
-            title: "Pending Event Invoice",
-            count: 24,
-            icon: "pi pi-align-justify",
-            classCustom: "card-custom-3",
-            dest: "/admin/invoice/event/pending"
-        },
-        {
-            title: "Pending Course Invoice",
-            count: 20,
-            icon: "pi pi-align-justify",
-            classCustom: "card-custom-3",
-            dest: "/admin/invoice/course/pending"
         }
     ]
 
-    constructor(private router: Router) { }
+    constructor(
+        private router: Router,
+        private dashboardService: DashboardService
+    ) { }
 
+
+    initData() {
+        this.dashboardSubscribe = this.dashboardService.getAll().subscribe((result) => {
+            this.dashboards = result
+            console.log(this.dashboards.data)
+
+            this.cards = [
+                {
+                    title: "Total Users",
+                    count: this.dashboards.data.countUsers,
+                    icon: "pi pi-users",
+                    classCustom: "card-custom-1",
+                    dest: "nogo"
+                },
+                {
+                    title: "Daily New User",
+                    count: this.dashboards.data.countDailyUsers,
+                    icon: "pi pi-user",
+                    classCustom: "card-custom-1",
+                    dest: "nogo"
+                },
+                {
+                    title: "Daily New Event",
+                    count: this.dashboards.data.countEvent,
+                    icon: "pi pi-calendar",
+                    classCustom: "card-custom-2",
+                    dest: "nogo"
+                },
+                {
+                    title: "Daily New Course",
+                    count: this.dashboards.data.countCourse,
+                    icon: "pi pi-calendar",
+                    classCustom: "card-custom-2",
+                    dest: "nogo"
+                },
+                {
+                    title: "Pending Subscribe Invoice",
+                    count: this.dashboards.data.countPendingSubscribeInvoice,
+                    icon: "pi pi-align-justify",
+                    classCustom: "card-custom-3",
+                    dest: "/admin/invoice/subscribe/pending"
+                },
+                {
+                    title: "Pending Event Invoice",
+                    count: this.dashboards.data.countPendingEventInvoice,
+                    icon: "pi pi-align-justify",
+                    classCustom: "card-custom-3",
+                    dest: "/admin/invoice/event/pending"
+                },
+                {
+                    title: "Pending Course Invoice",
+                    count: this.dashboards.data.countPendingCourseInvoice,
+                    icon: "pi pi-align-justify",
+                    classCustom: "card-custom-3",
+                    dest: "/admin/invoice/course/pending"
+                }
+            ]
+        })
+
+
+    }
 
     ngOnInit() {
-
+        this.initData()
     }
 
     cardGoTo(dest: string) {
@@ -90,10 +130,15 @@ export class AdminDashboardComponent implements OnInit {
     }
 
     executeDelete(): void {
+
         // this.deleteSubscribe = this.employeeService.delete(this.targetId)
         //     .subscribe(result => {
         //         this.targetId = null
         //         this.showData()
         //     })
+    }
+
+    ngOnDestroy() {
+        this.dashboardSubscribe?.unsubscribe
     }
 }

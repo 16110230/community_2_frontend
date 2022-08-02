@@ -12,6 +12,12 @@ import { InputTextareaModule } from "primeng/inputtextarea";
 import { DropdownModule } from "primeng/dropdown";
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
+import { CommonModule } from "@angular/common";
+import { ActivityDetailsInfoComponent } from "./activity-details/activity-details-info/activity-details-info.component";
+import { ActivityDetailsRegisterComponent } from "./activity-details/activity-details-register/activity-details-register.component";
+import { FileUploadModule } from "primeng/fileupload";
+import { SharedModule } from "src/app/component/shared.module";
+import { TableModule } from "primeng/table";
 
 @NgModule({
     imports: [
@@ -24,17 +30,24 @@ import { CheckboxModule } from 'primeng/checkbox';
         InputTextareaModule,
         DropdownModule,
         CalendarModule,
-        CheckboxModule
+        CheckboxModule,
+        CommonModule,
+        FileUploadModule
+        TableModule
     ],
     declarations: [
         ActivityListComponent,
         ActivityDetailsComponent,
-        ActivityCreateComponent
+        ActivityCreateComponent,
+        ActivityDetailsInfoComponent,
+        ActivityDetailsRegisterComponent
     ],
     exports: [
         ActivityListComponent,
         ActivityDetailsComponent,
-        ActivityCreateComponent
+        ActivityCreateComponent,
+        ActivityDetailsInfoComponent,
+        ActivityDetailsRegisterComponent
     ]
 })
 export class ActivityModule { }

@@ -10,6 +10,9 @@ export interface ThreadDto {
     isActive : boolean
     version : number
     createdAt : string
-    countBook? : number
+    countBookmark? : number
     countLike? : number
+    countComment? : number
+    isLike? : boolean
+    isBookmark? : boolean
 }

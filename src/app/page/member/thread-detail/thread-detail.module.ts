@@ -5,6 +5,7 @@ import { CardModule } from "primeng/card";
 import { ButtonModule } from "primeng/button";
 import { CommonModule } from "@angular/common";
 import { HomeModule } from "../home/home.module";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import { HomeModule } from "../home/home.module";
         CardModule,
         ButtonModule,
         CommonModule,
-        HomeModule
+        HomeModule,
+        FormsModule
     ],
     declarations: [
         ThreadDetailComponent

@@ -33,3 +33,7 @@
 .field-attendance {
     margin: 11.5px 0px;
 }
+
+ol > li {
+    margin-bottom: 1.25vh;
+}
