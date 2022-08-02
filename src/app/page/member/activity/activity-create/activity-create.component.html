@@ -20,17 +20,33 @@
                                 <label for="threadContent">Description</label>
                                 <textarea pInputTextarea class="w-full my-3" name="activityContent" id="activityContent" rows="3" [(ngModel)]="data.activityContent"></textarea>
                             </div>
+                            <div class="row-trainer-provider grid">
+                                <div class="lg:col-4 sm:col-12">
+                                    <label for="trainer">Trainer</label>
+                                    <input type="text" name="trainer" id="trainer" pInputText class="w-full my-3" [(ngModel)]="data.trainer" >
+                                </div>
+                                <div class="lg:col-4 sm:col-12">
+                                    <label for="provider">Provider</label>
+                                    <input type="text" name="provider" id="provider" pInputText class="w-full my-3" [(ngModel)]="data.provider" >
+                                </div>
+                                <div class="lg:col-4 sm:col-12">
+                                    <label for="category" class="block">Category</label>
+                                    <p-dropdown name="activityCategory" [options]="categories.data" [(ngModel)]="data.activityCategory" placeholder="Select category" 
+                                    styleClass="my-3" styleClass="w-full my-3" optionLabel="categoryName" optionValue="id">
+                                    </p-dropdown>
+                                </div>
+                            </div>
                             <div class="row-category-price">
                                 <div class="grid">
                                     <div class="lg:col-5 sm:col-12">
-                                        <label for="category" class="block">Type</label>
+                                        <label for="type" class="block">Type</label>
                                         <p-dropdown name="activityType" [options]="types.data" [(ngModel)]="data.activityType" placeholder="Select type" 
                                         styleClass="my-3" styleClass="w-full my-3" optionLabel="typeName" optionValue="id">
                                         </p-dropdown>
                                     </div>
                                     <div class="lg:col-3 sm:col-12">
                                         <label for="file" class="block">Price</label>
-                                        <input type="number" pInputText class="my-3" [(ngModel)]="data.fee" name="fee">
+                                        <input type="number" pInputText class="my-3 w-full" [(ngModel)]="data.fee" name="fee">
                                     </div>
                                     <div class="lg:col sm:col-12 ml-2">
                                         <div class="field-checkbox m-0">
@@ -38,23 +54,29 @@
                                             <label for="binary" class="ml-2">Limit Attendance</label>
                                         </div>
                                         <div class="field-attendance">
-                                            <input type="number" class="limit-input" pInputText [disabled]="data.isLimit == false" name="quantity" [(ngModel)]="data.quantity">
+                                            <input type="number" class="limit-input w-full" pInputText [disabled]="data.isLimit == false" name="quantity" [(ngModel)]="data.quantity">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row-date">
                                 <div class="grid">
-                                    <div class="lg:col-6 sm:col-12">
+                                    <div class="lg:col-4 sm:col-12">
                                         <label for="startDate" class="block">Start Date</label>
                                         <p-calendar name="startDate" styleClass="w-full my-3" [(ngModel)]="data.startedAt" [showTime]="true"></p-calendar>
                                     </div>
-                                    <div class="lg:col-6 sm:col-12">
+                                    <div class="lg:col-4 sm:col-12">
                                         <label for="endDate" class="block">End Date</label>
                                         <p-calendar name="endDate" styleClass="w-full my-3" [(ngModel)]="data.endedAt" [showTime]="true"></p-calendar>
                                     </div>
+                                    <div class="lg:col-4 sm:col-12">
+                                        <label for="file">File</label>
+                                        <p-fileUpload #fubauto styleClass="my-3 p-button-sm p-button-outlined" mode="basic" name="file" accept="image/*" [auto]="true" chooseLabel="Upload" 
+                                                    chooseIcon="pi pi-upload" [customUpload]="true" (uploadHandler)="change($event)"></p-fileUpload>
+                                    </div>
                                 </div>
                             </div>
+                            
                             <div class="flex flex-row justify-content-center">
                                 <button pButton pRipple type="submit" class="p-button-info p-button-sm" label="Save"></button>
                             </div>
