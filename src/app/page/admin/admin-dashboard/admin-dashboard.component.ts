@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { ShowDashboard } from "src/app/dto/dashboard/show-dashboard";
-import { DashboardService } from "src/app/service/dashboard-service";
+import { DashboardService } from "src/app/service/dashboard.service";
 
 @Component({
     selector: "app-admin-dashboard",

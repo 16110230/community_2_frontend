@@ -1,7 +1,6 @@
 export interface UpdateUserReq {
     id : string
     fullName : string
-    email : string
     username : string
     company : string
     companyName : string

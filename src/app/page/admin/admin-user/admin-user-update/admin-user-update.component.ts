@@ -19,7 +19,6 @@ export class AdminUserUpdateComponent implements OnInit {
     update : UpdateUserReq = {
         id : "",
         fullName : "",
-        email : "",
         username : "",
         company : "",
         companyName : "",
@@ -41,7 +40,6 @@ export class AdminUserUpdateComponent implements OnInit {
             this.usersService.getById(this.idParam).subscribe(res => {
                 this.update.id = res.data.id
                 this.update.fullName = res.data.fullName
-                this.update.email = res.data.email
                 this.update.username = res.data.username
                 this.update.company = res.data.company
                 this.update.companyName = res.data.companyName
