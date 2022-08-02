@@ -11,29 +11,29 @@ import { InsertResDto } from "../dto/insert-res-dto";
 import { UpdateResDto } from "../dto/update-res-dto";
 
 @Injectable({
-    providedIn : 'root'
+    providedIn: 'root'
 })
-export class ActivityCategoryService{
+export class ActivityCategoryService {
 
-    constructor(private http : HttpClient) {}
+    constructor(private http: HttpClient) { }
 
-    getAll() : Observable<ShowActivityCategories> {
+    getAll(startPage: number, maxPage: number, query?: string): Observable<ShowActivityCategories> {
         return this.http.get<ShowActivityCategories>(`${BASE_URL}/activity-categories`)
     }
 
-    getById(id : number) : Observable<ShowActivityCategoryById> {
+    getById(id: number): Observable<ShowActivityCategoryById> {
         return this.http.get<ShowActivityCategoryById>(`${BASE_URL}/activity-categories/${id}`)
     }
 
-    insert(data : InsertActivityCategoryReq) : Observable<InsertResDto> {
+    insert(data: InsertActivityCategoryReq): Observable<InsertResDto> {
         return this.http.post<InsertResDto>(`${BASE_URL}/activity-categories`, data)
     }
 
-    update(data : UpdateActivityCategoryReq) : Observable<UpdateResDto> {
+    update(data: UpdateActivityCategoryReq): Observable<UpdateResDto> {
         return this.http.put<UpdateResDto>(`${BASE_URL}/activity-categories`, data)
     }
 
-    delete(id : number) : Observable<DeleteResDto> {
+    delete(id: number): Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/activity-categories/${id}`)
     }
 }

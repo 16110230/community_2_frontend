@@ -10,23 +10,23 @@ import { ThreadService } from "src/app/service/thread.service";
     templateUrl: './home.component.html',
     styleUrls: ['../home.component.css']
 })
-export class HomeComponent implements OnInit, OnDestroy{
-    threads : ShowThreads = {} as ShowThreads
-    threadsData : ThreadDto[] = []
-    articles : ShowThreads = {} as ShowThreads
-    articlesData : ThreadDto[] = []
-    subs? : Subscription
+export class HomeComponent implements OnInit, OnDestroy {
+    threads: ShowThreads = {} as ShowThreads
+    threadsData: ThreadDto[] = []
+    articles: ShowThreads = {} as ShowThreads
+    articlesData: ThreadDto[] = []
+    subs?: Subscription
 
     constructor(
-        private threadService : ThreadService, 
+        private threadService: ThreadService,
         private router: Router
     ) { }
 
-    initData() : void {
-        this.threadService.getAll().subscribe((result) => {
+    initData(): void {
+        this.threadService.getAll(0, 0).subscribe((result) => {
             this.threads = result
             this.threadsData = result.data
-            
+
         })
         this.threadService.getAllArticles().subscribe((result) => {
             this.articles = result
@@ -34,17 +34,17 @@ export class HomeComponent implements OnInit, OnDestroy{
         })
     }
 
-    trimChar(data : string) : string{
-        let result : string = data.substr(0, 120)+"...";
+    trimChar(data: string): string {
+        let result: string = data.substr(0, 120) + "...";
         return result;
     }
 
-    trimCharSubs(data : string) : string{
-        let result : string = data.substr(0, 200)+"...";
+    trimCharSubs(data: string): string {
+        let result: string = data.substr(0, 200) + "...";
         return result;
     }
 
-    toDetail(id:string){
+    toDetail(id: string) {
         this.router.navigate([`/member/thread-detail/${id}`])
     }
 
@@ -52,6 +52,6 @@ export class HomeComponent implements OnInit, OnDestroy{
         this.initData()
     }
     ngOnDestroy(): void {
-        
+
     }
 }

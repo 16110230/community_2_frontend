@@ -15,7 +15,7 @@
                     </div>                                            
                 </div>                
                                              
-                <p-table [value]="roles.data" responsiveLayout="scroll">
+                <p-table [value]="roles.data" responsiveLayout="scroll" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true" [rows]="maxPage" [totalRecords]="totalData" [loading]="loading" [rowsPerPageOptions]="[5, 10]" tyleClass="p-datatable-gridlines"> 
                     <ng-template pTemplate="header">
                         <tr>
                             <th>No</th>                            

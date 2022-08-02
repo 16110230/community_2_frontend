@@ -32,7 +32,7 @@ import { TableModule } from "primeng/table";
         CalendarModule,
         CheckboxModule,
         CommonModule,
-        FileUploadModule
+        FileUploadModule,
         TableModule
     ],
     declarations: [

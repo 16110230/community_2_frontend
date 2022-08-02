@@ -11,37 +11,37 @@ import { UpdateThreadReq } from "../dto/thread/update-thread-req";
 import { UpdateResDto } from "../dto/update-res-dto";
 
 @Injectable({
-    providedIn : 'root'
+    providedIn: 'root'
 })
 export class ThreadService {
 
-    constructor(private http : HttpClient) {}
+    constructor(private http: HttpClient) { }
 
-    getAll() : Observable<ShowThreads> {
+    getAll(startPage: number, maxPage: number, query?: string): Observable<ShowThreads> {
         return this.http.get<ShowThreads>(`${BASE_URL}/threads`)
     }
 
-    getAllArticles() : Observable<ShowThreads> {
+    getAllArticles(): Observable<ShowThreads> {
         return this.http.get<ShowThreads>(`${BASE_URL}/threads/article`)
     }
 
-    getById(id : string) : Observable<ShowThreadById> {
+    getById(id: string): Observable<ShowThreadById> {
         return this.http.get<ShowThreadById>(`${BASE_URL}/threads/${id}`)
     }
 
-    insert(data : InsertThreadReq) : Observable<InsertResDto> {
+    insert(data: InsertThreadReq): Observable<InsertResDto> {
         return this.http.post<InsertResDto>(`${BASE_URL}/threads`, data)
     }
 
-    insertArticle(data : InsertThreadReq) : Observable<InsertResDto> {
+    insertArticle(data: InsertThreadReq): Observable<InsertResDto> {
         return this.http.post<InsertResDto>(`${BASE_URL}/threads/article`, data)
     }
 
-    update(data : UpdateThreadReq) : Observable<UpdateResDto> {
+    update(data: UpdateThreadReq): Observable<UpdateResDto> {
         return this.http.put<UpdateResDto>(`${BASE_URL}/threads`, data)
     }
 
-    delete(id : number) : Observable<DeleteResDto> {
+    delete(id: number): Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/threads/${id}`)
     }
 }

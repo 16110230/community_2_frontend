@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ConfirmationService } from "primeng/api";
+import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 import { Subscription } from "rxjs";
 import { ShowIndustries } from "src/app/dto/industry/show-industries";
 import { IndustryService } from "src/app/service/industry.service";
@@ -8,31 +9,55 @@ import { IndustryService } from "src/app/service/industry.service";
 @Component({
     selector: "app-admin-industry",
     templateUrl: "./admin-industry.component.html",
-    providers : [
+    providers: [
         ConfirmationService
     ]
 })
 
-export class AdminIndustryComponent implements OnInit {
+export class AdminIndustryComponent implements OnDestroy {
 
     constructor(
-        private confirmationService : ConfirmationService,
-        private industryService : IndustryService,
+        private confirmationService: ConfirmationService,
+        private industryService: IndustryService,
         private router: Router
     ) { }
 
-    industries : ShowIndustries = {} as ShowIndustries
-    deleteSubs? : Subscription
-    isDeleted! : number
+    startPage: number = 0
+    maxPage: number = 5
+    totalData: number = 0
+    loading: boolean = true
+    query?: string
 
-    initData() :void {
-        this.industryService.getAll().subscribe(result => {
+    industries: ShowIndustries = {} as ShowIndustries
+    industriesSub?: Subscription
+    deleteSubs?: Subscription
+    isDeleted!: number
+
+    initData(): void {
+        this.industryService.getAll(this.startPage, this.maxPage, this.query).subscribe(result => {
             this.industries = result
         })
     }
 
-    ngOnInit(): void {
-        this.initData()
+    loadData(event: LazyLoadEvent) {
+        this.getData(event.first, event.rows, event.globalFilter)
+    }
+
+    getData(startPage: number = this.startPage, maxPage: number = this.maxPage, query?: string): void {
+        this.loading = true;
+        this.startPage = startPage
+        this.maxPage = maxPage
+        this.query = query
+
+        this.industriesSub = this.industryService.getAll(startPage, maxPage, query).subscribe(
+            result => {
+                const resultData: any = result
+                this.industries.data = resultData.data
+                this.loading = false
+                this.totalData = resultData.total
+                console.log(resultData)
+            },
+        )
     }
 
     goTo() {
@@ -42,16 +67,16 @@ export class AdminIndustryComponent implements OnInit {
         this.router.navigate([`/admin/industry/update/${id}`])
     }
 
-    onDelete(id : number) : void {
+    onDelete(id: number): void {
         this.isDeleted = id
     }
 
-    deleted() : void {
+    deleted(): void {
         this.deleteSubs = this.industryService
-        .delete(this.isDeleted)
-        .subscribe(result => {
-            this.initData()
-        })
+            .delete(this.isDeleted)
+            .subscribe(result => {
+                this.initData()
+            })
     }
 
     confirm(id: number) {
@@ -64,5 +89,9 @@ export class AdminIndustryComponent implements OnInit {
                 this.deleted()
             }
         });
+    }
+
+    ngOnDestroy() {
+        this.industriesSub?.unsubscribe()
     }
 }

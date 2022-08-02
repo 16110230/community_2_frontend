@@ -13,12 +13,12 @@ import { ActivityService } from "src/app/service/activity.service";
 })
 export class ActivityCreateComponent implements OnInit, OnDestroy {
 
-    constructor(private activityTypeService : ActivityTypeService, private activityService : ActivityService,
-        private router : Router) {}
+    constructor(private activityTypeService: ActivityTypeService, private activityService: ActivityService,
+        private router: Router) { }
 
-    activitySubs? : Subscription
+    activitySubs?: Subscription
 
-    data : InsertActivityReq = {
+    data: InsertActivityReq = {
         activityTitle: '',
         activityContent: '',
         activityType: '',
@@ -31,21 +31,21 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
         trainer: ''
     }
 
-    types : ShowActivityTypes = {
-        data : []
+    types: ShowActivityTypes = {
+        data: []
     }
 
-    type : string = ''
-    category : string = ''
-    startDate : string = ''
-    endDate : string = ''
+    type: string = ''
+    category: string = ''
+    startDate: string = ''
+    endDate: string = ''
 
     ngOnInit(): void {
         this.initData()
     }
 
-    initData = () : void => {
-        this.activityTypeService.getAll().subscribe(res => {
+    initData = (): void => {
+        this.activityTypeService.getAll(0, 0).subscribe(res => {
             this.types = res
         })
     }
@@ -54,7 +54,7 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
         this.activitySubs?.unsubscribe()
     }
 
-    submit = () : void => {
+    submit = (): void => {
         this.activityService.insert(this.data).subscribe(() => this.router.navigateByUrl('/member/articles'))
     }
 }

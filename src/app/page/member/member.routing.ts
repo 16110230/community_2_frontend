@@ -14,7 +14,7 @@ const routes: Routes = [
         loadChildren: () => import('./activity/activity.module').then(m => m.ActivityModule)
     },
     {
-        path: 'profile',
+        path: 'profiles',
         component: NavbarComponent,
         loadChildren: () => import('./member-profile/member-profile.module').then(m => m.MemberProfileModule)
     },
@@ -24,7 +24,7 @@ const routes: Routes = [
         loadChildren: () => import('./thread-detail/thread-detail.module').then(m => m.ThreadDetailModule)
     },
     {
-        path: 'activity',
+        path: 'activities',
         component: NavbarComponent,
         loadChildren: () => import('./activity/activity.module').then(m => m.ActivityModule)
     },
