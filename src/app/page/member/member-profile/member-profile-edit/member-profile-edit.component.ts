@@ -1,64 +1,77 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
+import { ShowCompanies } from "src/app/dto/company/show-companies";
+import { ShowIndustries } from "src/app/dto/industry/show-industries";
+import { ShowPositions } from "src/app/dto/position/show-positions";
+import { ShowUserById } from "src/app/dto/users/show-user-by-id";
+import { CompanyService } from "src/app/service/company.service";
+import { IndustryService } from "src/app/service/industry.service";
+import { PositionService } from "src/app/service/position.service";
+import { UsersService } from "src/app/service/users.service";
 
 @Component({
     selector: "app-member-profile-edit",
     templateUrl: "./member-profile-edit.component.html"
 })
-export class MemberProfileEditComponent {
+export class MemberProfileEditComponent implements OnInit, OnDestroy {
 
-    blankPhotoProfile = "../../../../assets/img/blank-profile.jpg"
-    user = {
-        id: 1,
-        fullName: "Jaka Sugih",
-        username: "jakasugih123",
-        email: "jaka.sugih@mail.com",
-        companyName: "PT. Lawencon International",
-        company: 1,
-        industryName: "Technology",
-        industry: 1,
-        positionName: "HR",
-        position: 1,
-        isActive: true,
-        src: "../../../../assets/img/profile-1.jpg"
+    constructor(private userService : UsersService, private companyService : CompanyService,
+        private industryService : IndustryService, private positionService : PositionService,
+        private router: Router) {}
+
+    profileSubs? : Subscription
+    profilePic : string = ''
+    companies : ShowCompanies = { data : [] }
+    industries : ShowIndustries = { data : [] }
+    positions : ShowPositions = { data : [] }
+    user : ShowUserById = {
+        data : {
+            id : '',
+            fullName : '',
+            username : '',
+            email : '',
+            balance : 0,
+            company : '',
+            companyName : '',
+            industry : '',
+            industryName : '',
+            position : '',
+            positionName : '',
+            file : '',
+            isActive : false,
+            version : 0
+        }
     }
 
-    companys = [
-        {
-            id: 1,
-            companyName: "PT. Lawencon International"
-        },
-        {
-            id: 2,
-            companyName: "PT. Asus"
-        }
-    ]
+    ngOnInit(): void {
+        this.initData()
+    }
 
-    industrys = [
-        {
-            id: 1,
-            industryName: "Technology"
-        },
-        {
-            id: 2,
-            industryName: "Factory"
-        }
-    ]
+    initData = () : void => {
+        this.companyService.getAll().subscribe(res => {
+            this.companies = res
+        })
 
-    positions = [
-        {
-            id: 1,
-            positionName: "HR"
-        },
-        {
-            id: 2,
-            positionName: "Programmer"
-        }
-    ]
+        this.industryService.getAll().subscribe(res => {
+            this.industries = res
+        })
 
-    constructor(
-        private router: Router
-    ) { }
+        this.positionService.getAll().subscribe(res => {
+            this.positions = res
+        })
+
+        this.userService.getUserProfile().subscribe(res => {
+            this.user = res
+            this.profilePic = `http://localhost:1221/files/${res.data.file}`
+        })
+    }
+
+    ngOnDestroy(): void {
+        this.profileSubs?.unsubscribe()
+    }
+
+    blankPhotoProfile = "../../../../../assets/img/blank-profile.jpg"
 
     goToEditProfile() {
         this.router.navigate(['/member/profile/edit'])
@@ -68,4 +81,7 @@ export class MemberProfileEditComponent {
         this.router.navigate(['/member/profile/change-password'])
     }
 
+    change = (event : any) : void => {
+        console.log(event)
+    }
 }
