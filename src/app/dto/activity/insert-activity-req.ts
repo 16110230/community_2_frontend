@@ -10,4 +10,6 @@ export interface InsertActivityReq{
 	isLimit? : boolean
 	provider? : string
 	trainer? : string
+	fileName?: string
+    fileExt?: string
 }

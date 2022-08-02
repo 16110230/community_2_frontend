@@ -57,4 +57,6 @@ export class ActivityListComponent implements OnInit, OnDestroy {
     filter = () : void => {
         console.log(this.selectedType, this.selectedCategory)
     }
+
+    
 }
