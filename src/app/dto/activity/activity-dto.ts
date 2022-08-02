@@ -8,6 +8,7 @@ export interface ActivityDto {
     activityTypeName : string
     startedAt? : string
     endedAt?: string
+    file? : string
     fee?: number
     quantity?: number
     isLimit?: boolean

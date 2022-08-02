@@ -1,74 +1,80 @@
 <div class="container-home">
-    <div class="grid">
-        <div class="sm:col-3 col-12 mt-5 h-screen">
-                <p-card>                                                           
-                    <div class="mt-5 ml-3">
-                        <div class="text-primary cursor-pointer font-semibold" (click)="goToEditProfile()">
-                            <span><i class="pi pi-pencil"></i> Edit Profile</span>
-                        </div>                                                                      
-                        <div class="text-primary cursor-pointer font-semibold mt-3" (click)="goToChangePassword()">
-                            <span><i class="pi pi-pencil"></i> Change Password</span>
-                        </div>                                                                      
+    <div class="grid px-5">
+        <div class="sm:col-3 col-12 mt-2 h-screen">
+            <p-card>
+                <div class="ml-3">
+                    <div class="text-primary cursor-pointer font-semibold" (click)="goToEditProfile()">
+                        <span><i class="pi pi-pencil"></i> Edit Profile</span>
                     </div>
-                </p-card>
-          
+                    <div class="text-primary cursor-pointer font-semibold mt-3" (click)="goToChangePassword()">
+                        <span><i class="pi pi-pencil"></i> Change Password</span>
+                    </div>
+                </div>
+            </p-card>
         </div>
 
-        <div class="sm:col-9 col-12 mt-5">
-            <p-card >
-                <form>                              
+        <div class="sm:col-9 col-12 mt-2 p-0">
+            <p-card>
+                <form>
                     <div class="flex justify-content-center align-items-end">
                         <div class="photo-profile">
-                            <img *ngIf="user.src !== ''" src="{{user.src}}" alt="">
-                            <img *ngIf="user.src === ''" src="{{blankPhotoProfile}}" alt="">                                                        
+                            <img *ngIf="user.data.file !== null" src="{{profilePic}}" alt="">
+                            <img *ngIf="user.data.file === null" src="../../../../../assets/img/blank-profile.jpg"
+                                alt="">
                         </div>
-                        <div class="flex flex-column">
-                            <span>Change Photo</span>
-                            <input  type="file">
-                        </div>       
-                    </div>                                          
-                     
+                        <div class="inline">
+                            <p-fileUpload #fubauto styleClass="my-3 p-button-rounded p-button-text p-button-sm" mode="basic" name="file" 
+                            accept="image/*" [auto]="true" chooseIcon="pi pi-pencil" [customUpload]="true"
+                            (uploadHandler)="change($event)">
+                            </p-fileUpload>
+                        </div>
+                    </div>
+
                     <div class="grid w-full">
-                        <div class="col-12 sm:col-6 mt-3">
-                            <label >Name</label>                      
-                            <input class="w-full" type="text" pInputText name="fullName" [(ngModel)]="user.fullName"/>
+                        <div class="lg:col-5 sm:col-6 mt-3">
+                            <label for="fullName">Name</label>
+                            <input class="w-full mt-2" type="text" pInputText name="fullName"
+                                [(ngModel)]="user.data.fullName" />
                         </div>
-                        <div class="col-12 sm:col-6 mt-3">
-                            <label >UserName</label>                            
-                            <input class="w-full" type="text" pInputText name="userName" [(ngModel)]="user.username"/>
+                        <div class="lg:col-3 sm:col-6 mt-3">
+                            <label for="username">Username</label>
+                            <input class="w-full mt-2" type="text" pInputText name="username"
+                                [(ngModel)]="user.data.username" />
                         </div>
-                        <div class="col-12 sm:col-6 mt-3">
-                            <label >Email</label>                            
-                            <input class="w-full" type="text" pInputText name="email" [(ngModel)]="user.email"/>
-                        </div>                                                                                                                                 
-                    </div>    
-                    
-                    <div class="grid w-full">
-                        <div class="col-12 sm:col-6 mt-3">
-                            <label >Company</label>                                                
-                            <p-dropdown class="width-full" name="company" id="company" [options]="companys" optionLabel="companyName" optionValue="id" [(ngModel)]="user.company"></p-dropdown>
+                        <div class="lg:col-4 sm:col-6 mt-3">
+                            <label for="email">Email</label>
+                            <input class="w-full mt-2" type="text" pInputText name="email" [(ngModel)]="user.data.email"
+                                disabled />
                         </div>
-                        
-                        <div class="col-12 sm:col-6 mt-3">
-                            <label >Industry</label>                    
-                            <p-dropdown class="width-full" name="industry" id="industry" [options]="industrys" optionLabel="industryName" optionValue="id" [(ngModel)]="user.industry"></p-dropdown>
+
+                        <div class="lg:col-4 sm:col-6 mt-3">
+                            <label for="company">Company</label>
+                            <p-dropdown styleClass="w-full mt-2" name="company" id="company" [options]="companies.data"
+                                optionLabel="companyName" optionValue="id" [(ngModel)]="user.data.company"></p-dropdown>
                         </div>
-                        
-                        <div class="col-12 sm:col-6 mt-3">
-                            <label >Position</label>                 
-                            <p-dropdown class="width-full" name="position" id="position" [options]="positions" optionLabel="positionName" optionValue="id" [(ngModel)]="user.position"></p-dropdown>
+
+                        <div class="lg:col-4 sm:col-6 mt-3">
+                            <label for="industry">Industry</label>
+                            <p-dropdown styleClass="w-full mt-2" name="industry" id="industry"
+                                [options]="industries.data" optionLabel="industryName" optionValue="id"
+                                [(ngModel)]="user.data.industry"></p-dropdown>
                         </div>
-                    </div>                                    
-                    <div class="grid w-full"> 
-                        <div class="col-12 sm:col-6 col-offset-6">
-                            <button pButton pRipple type="button" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>                                                
-                        </div>                                                         
-                        
-                    </div>                                                                         
+
+                        <div class="lg:col-4 sm:col-6 my-3">
+                            <label for="position">Position</label>
+                            <p-dropdown styleClass="w-full mt-2" name="position" id="position"
+                                [options]="positions.data" optionLabel="positionName" optionValue="id"
+                                [(ngModel)]="user.data.position"></p-dropdown>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row justify-content-center">
+                        <button pButton pRipple type="button" label="Save"
+                            class="p-button-rounded p-button-info p-button-sm">
+                        </button>
+                    </div>
                 </form>
             </p-card>
-            
         </div>
     </div>
-
 </div>

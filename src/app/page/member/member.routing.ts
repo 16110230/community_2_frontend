@@ -29,7 +29,7 @@ const routes: Routes = [
         loadChildren: () => import('./activity/activity.module').then(m => m.ActivityModule)
     },
     {
-        path: 'subscription',
+        path: 'subscriptions',
         component: NavbarComponent,
         loadChildren: () => import('./subscription/subscription.module').then(m => m.SubscriptionModule)
     },

@@ -36,4 +36,8 @@ export class UsersService {
     delete(id: number): Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/users/delete/${id}`)
     }
+
+    getUserProfile() : Observable<ShowUserById> {
+        return this.http.get<ShowUserById>(`${BASE_URL}/users/profile`)
+    }
 }

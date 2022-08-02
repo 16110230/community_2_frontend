@@ -3,8 +3,7 @@ import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { ShowDashboard } from "src/app/dto/dashboard/show-dashboard";
 import { ShowThreads } from "src/app/dto/thread/show-threads";
-import { ThreadDto } from "src/app/dto/thread/thread-dto";
-import { DashboardService } from "src/app/service/dashboard-service";
+import { DashboardService } from "src/app/service/dashboard.service";
 
 @Component({
     selector: "app-admin-dashboard",
