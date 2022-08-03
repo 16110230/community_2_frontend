@@ -1,3 +1,5 @@
+import { ShowPollingMain } from "../polling/show-polling-main"
+
 export interface ThreadDto {
     id : string
     threadTitle : string
@@ -15,4 +17,5 @@ export interface ThreadDto {
     countComment? : number
     isLike? : boolean
     isBookmark? : boolean
+    polling? : ShowPollingMain
 }
