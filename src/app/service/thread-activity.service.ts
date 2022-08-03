@@ -36,4 +36,9 @@ export class ThreadActivityService {
     delete(id : number) : Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/thread-activities/${id}`)
     }
+
+    deleteByThreadId(data : InsertThreadActivityReq) : Observable<InsertResDto> {
+        return this.http.post<InsertResDto>(`${BASE_URL}/thread-activities/thread`, data)
+    }
+    
 }

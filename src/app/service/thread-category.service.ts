@@ -11,29 +11,29 @@ import { UpdateThreadCategoryReq } from "../dto/thread-category/update-thread-ca
 import { UpdateResDto } from "../dto/update-res-dto";
 
 @Injectable({
-    providedIn : 'root'
+    providedIn: 'root'
 })
 export class ThreadCategoryService {
 
-    constructor(private http : HttpClient) {}
+    constructor(private http: HttpClient) { }
 
-    getAll() : Observable<ShowThreadCategories> {
+    getAll(startPage: number, maxPage: number, query?: string): Observable<ShowThreadCategories> {
         return this.http.get<ShowThreadCategories>(`${BASE_URL}/thread-categories`)
     }
 
-    getById(id : number) : Observable<ShowThreadCategoryById> {
+    getById(id: number): Observable<ShowThreadCategoryById> {
         return this.http.get<ShowThreadCategoryById>(`${BASE_URL}/thread-categories/${id}`)
     }
 
-    insert(data : InsertThreadCategoryReq) : Observable<InsertResDto> {
+    insert(data: InsertThreadCategoryReq): Observable<InsertResDto> {
         return this.http.post<InsertResDto>(`${BASE_URL}/thread-categories`, data)
     }
 
-    update(data : UpdateThreadCategoryReq) : Observable<UpdateResDto> {
+    update(data: UpdateThreadCategoryReq): Observable<UpdateResDto> {
         return this.http.put<UpdateResDto>(`${BASE_URL}/thread-categories`, data)
     }
 
-    delete(id : number) : Observable<DeleteResDto> {
+    delete(id: number): Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/thread-categories/${id}`)
     }
 }

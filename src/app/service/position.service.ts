@@ -11,28 +11,28 @@ import { UpdatePositionReq } from "../dto/position/update-position-req";
 import { UpdateResDto } from "../dto/update-res-dto";
 
 @Injectable({
-    providedIn : 'root'
+    providedIn: 'root'
 })
-export class PositionService{
-    constructor(private http : HttpClient) {}
+export class PositionService {
+    constructor(private http: HttpClient) { }
 
-    getAll() : Observable<ShowPositions> {
+    getAll(startPage: number, maxPage: number, query?: string): Observable<ShowPositions> {
         return this.http.get<ShowPositions>(`${BASE_URL}/positions`)
     }
 
-    getById(id : number) : Observable<ShowPositionById> {
+    getById(id: number): Observable<ShowPositionById> {
         return this.http.get<ShowPositionById>(`${BASE_URL}/positions/${id}`)
     }
 
-    insert(data : InsertPositionReq) : Observable<InsertResDto> {
+    insert(data: InsertPositionReq): Observable<InsertResDto> {
         return this.http.post<InsertResDto>(`${BASE_URL}/positions`, data)
     }
 
-    update(data : UpdatePositionReq) : Observable<UpdateResDto> {
+    update(data: UpdatePositionReq): Observable<UpdateResDto> {
         return this.http.put<UpdateResDto>(`${BASE_URL}/positions`, data)
     }
 
-    delete(id : number) : Observable<DeleteResDto> {
+    delete(id: number): Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/positions/${id}`)
     }
 }

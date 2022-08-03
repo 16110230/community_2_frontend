@@ -12,6 +12,7 @@ import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FileUploadModule } from 'primeng/fileupload';
 import { TimeAgoPipe } from "src/app/pipe/time-ago.pipe";
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import { TimeAgoPipe } from "src/app/pipe/time-ago.pipe";
         FormsModule,
         CommonModule,
         ReactiveFormsModule,
-        FileUploadModule
+        FileUploadModule,
+        InfiniteScrollModule
     ],
     declarations: [
         HomeComponent,

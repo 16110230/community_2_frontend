@@ -11,28 +11,28 @@ import { InsertResDto } from "../dto/insert-res-dto";
 import { UpdateResDto } from "../dto/update-res-dto";
 
 @Injectable({
-    providedIn : 'root'
+    providedIn: 'root'
 })
-export class CompanyService{
-    constructor(private http : HttpClient) {}
+export class CompanyService {
+    constructor(private http: HttpClient) { }
 
-    getAll() : Observable<ShowCompanies> {
+    getAll(startPage: number, maxPage: number, query?: string): Observable<ShowCompanies> {
         return this.http.get<ShowCompanies>(`${BASE_URL}/companies`)
     }
 
-    getById(id : number) : Observable<ShowCompanyById> {
+    getById(id: number): Observable<ShowCompanyById> {
         return this.http.get<ShowCompanyById>(`${BASE_URL}/companies/${id}`)
     }
 
-    insert(data : InsertCompanyReq) : Observable<InsertResDto> {
+    insert(data: InsertCompanyReq): Observable<InsertResDto> {
         return this.http.post<InsertResDto>(`${BASE_URL}/companies`, data)
     }
 
-    update(data : UpdateCompanyReq) : Observable<UpdateResDto> {
+    update(data: UpdateCompanyReq): Observable<UpdateResDto> {
         return this.http.put<UpdateResDto>(`${BASE_URL}/companies`, data)
     }
 
-    delete(id : number) : Observable<DeleteResDto> {
+    delete(id: number): Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/companies/${id}`)
     }
 }
