@@ -1,8 +1,8 @@
-<div class="invoice-card px-4">
+<form class="invoice-card px-4" (ngSubmit)="submit()">
     <div class="invoice-header">
-        <span class="block details-title mb-2">Pelatihan Memblokir Steam, Epic Games, Paypal, etc</span>
+        <span class="block details-title mb-2">{{activity.data.activityTitle}}</span>
         <b>
-            <span class="text-red-500">Rp140.000,00</span>
+            <span class="text-red-500">{{activity.data.fee | currency: "Rp"}}</span>
         </b>
     </div>
     <div class="invoice-body my-4">
@@ -18,4 +18,7 @@
 
     </div>
     <span>Thank you!</span>
-</div>
+    <div class="flex flex-row justify-content-center mt-3">
+        <button pButton pRipple class="p-button-sm p-button-success" type="submit" label="Submit"></button>
+    </div>
+</form>

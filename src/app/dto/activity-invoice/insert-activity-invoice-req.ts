@@ -1,5 +1,4 @@
 export interface InsertActivityInvoiceReq{
-    user? : string
 	activity? : string
 	file? : string
 	fileName? : string

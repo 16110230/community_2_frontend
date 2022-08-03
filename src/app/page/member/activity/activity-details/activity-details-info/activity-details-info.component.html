@@ -6,10 +6,10 @@
 
         <div class="flex flex-column py-2 ml-5 justify-content-between">
             <div class="activity-owner">
-                <span>Salman Faris</span>
+                <span>{{activity.data.fullName}}</span>
             </div>
             <div class="activity-date">
-                Upload 8 hours ago
+                {{activity.data.createdAt | timeAgo}}
             </div>
         </div>
     </div>
@@ -17,11 +17,11 @@
 <div class="activity-details-body mt-3">
     <div class="grid">
         <div class="col-12 px-0 details-title">
-            <span>Pelatihan Memblokir Steam, Epic Games, Paypal, etc</span>
+            <span>{{activity.data.activityTitle}}</span>
         </div>
         <div class="col-12 px-0 details-body">
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, officia! Labore non corrupti, rerum consectetur libero amet assumenda! Quam beatae sequi accusantium, distinctio officiis possimus laboriosam aut eligendi numquam ratione!
+                {{activity.data.activityContent}}
             </p>
         </div>
     </div>

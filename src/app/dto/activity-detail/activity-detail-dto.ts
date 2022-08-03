@@ -1,5 +1,5 @@
 export interface  ActivityDetailDto{
-    id? : string
+    id : string
 	activity? : string
 	user? : string
 	userName? : string

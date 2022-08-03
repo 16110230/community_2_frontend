@@ -34,9 +34,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     ) { }
 
     initData(startPage: number, maxPage: number): void {
-        this.threadService.getAllUser(startPage, maxPage).subscribe((result) => {
+        this.threadService.getAll().subscribe((result) => { //ganti pake get all user untuk infinite scroll
             this.threads = result
             this.threadsData = result.data
+            console.log(this.threadsData)
         })
         this.threadService.getAllArticles().subscribe((result) => {
             this.articles = result
