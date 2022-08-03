@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { MenuItem } from "primeng/api";
 
 @Component({
@@ -6,7 +7,15 @@ import { MenuItem } from "primeng/api";
     templateUrl: './navbar.component.html'
 })
 export class NavbarComponent implements OnInit {
+
+    constructor(private router : Router) {}
+
     items! : MenuItem[]
+
+    logout(): void {
+        localStorage.clear()
+        this.router.navigateByUrl('/')
+    }
 
     ngOnInit(): void {
         this.items = [
@@ -23,15 +32,19 @@ export class NavbarComponent implements OnInit {
                 routerLink: '/member/activities'
             },
             {
-                icon: 'pi pi-user',
+                icon: 'pi pi-fw pi-user',
                 items: [
                     {
                         label: 'Profiles',
+                        icon: 'pi pi-fw pi-user',
                         routerLink: '/member/profiles'
                     },
                     {
                         label: 'Logout',
-                        routerLink: '/'
+                        icon:'pi pi-fw pi-power-off',
+                        command : () => {
+                            this.logout()
+                        }
                     }
                 ]
             }

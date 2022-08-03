@@ -1,5 +1,5 @@
 export interface ActivityDto {
-    id?: number
+    id: string
     activityTitle?: string
     activityContent?: string
     activityCategory?: string
@@ -16,4 +16,6 @@ export interface ActivityDto {
     trainer?: string
     isActive?: boolean
     version?: number
+    createdAt : string
+    fullName : string
 }
