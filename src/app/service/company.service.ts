@@ -16,7 +16,7 @@ import { UpdateResDto } from "../dto/update-res-dto";
 export class CompanyService {
     constructor(private http: HttpClient) { }
 
-    getAll(startPage: number, maxPage: number, query?: string): Observable<ShowCompanies> {
+    getAll(): Observable<ShowCompanies> {
         return this.http.get<ShowCompanies>(`${BASE_URL}/companies`)
     }
 
@@ -34,5 +34,9 @@ export class CompanyService {
 
     delete(id: number): Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/companies/${id}`)
+    }
+
+    getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowCompanies> {
+        return this.http.get<ShowCompanies>(`${BASE_URL}/companies`)
     }
 }

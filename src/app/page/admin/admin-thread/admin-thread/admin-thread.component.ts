@@ -31,7 +31,7 @@ export class AdminThreadComponents implements OnDestroy {
     isDeleted!: number
 
     initData(): void {
-        this.threadService.getAll(0, 0).subscribe(result => {
+        this.threadService.getAll().subscribe(result => {
             this.threads = result
         })
     }
@@ -46,7 +46,7 @@ export class AdminThreadComponents implements OnDestroy {
         this.maxPage = maxPage
         this.query = query
 
-        this.threadsSub = this.threadService.getAll(startPage, maxPage, query).subscribe(
+        this.threadsSub = this.threadService.getAllWithPagination(startPage, maxPage, query).subscribe(
             result => {
                 const resultData: any = result
                 this.threads.data = resultData.data

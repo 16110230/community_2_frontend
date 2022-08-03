@@ -17,7 +17,7 @@ export class UsersService {
 
     constructor(private http: HttpClient) { }
 
-    getAll(startPage: number, maxPage: number, query?: string): Observable<ShowUsers> {
+    getAll(): Observable<ShowUsers> {
         return this.http.get<ShowUsers>(`${BASE_URL}/users`)
     }
 
@@ -37,7 +37,12 @@ export class UsersService {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/users/delete/${id}`)
     }
 
-    getUserProfile() : Observable<ShowUserById> {
+    getUserProfile(): Observable<ShowUserById> {
         return this.http.get<ShowUserById>(`${BASE_URL}/users/profile`)
     }
+
+    getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowUsers> {
+        return this.http.get<ShowUsers>(`${BASE_URL}/users`)
+    }
+
 }

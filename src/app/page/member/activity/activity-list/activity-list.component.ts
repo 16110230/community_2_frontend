@@ -41,11 +41,11 @@ export class ActivityListComponent implements OnInit, OnDestroy {
             this.activities = res
         })
 
-        this.activityTypeService.getAll(0, 0).subscribe(res => {
+        this.activityTypeService.getAll().subscribe(res => {
             this.types = res
         })
 
-        this.activityCategoryService.getAll(0, 0).subscribe(res => {
+        this.activityCategoryService.getAll().subscribe(res => {
             this.categories = res
         })
     }
@@ -58,5 +58,5 @@ export class ActivityListComponent implements OnInit, OnDestroy {
         console.log(this.selectedType, this.selectedCategory)
     }
 
-    
+
 }

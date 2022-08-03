@@ -53,7 +53,7 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
     }
 
     initData = (): void => {
-        this.activityTypeService.getAll(0, 0).subscribe(res => {
+        this.activityTypeService.getAll().subscribe(res => {
             this.types = res
         })
 
