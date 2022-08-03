@@ -34,7 +34,7 @@ export class AdminUserRoleComponent implements OnDestroy {
     isDeleted!: number
 
     initData(): void {
-        this.userRoleSub = this.userRoleService.getAll(this.startPage, this.maxPage, this.query).subscribe(result => {
+        this.userRoleSub = this.userRoleService.getAllWithPagination(this.startPage, this.maxPage, this.query).subscribe(result => {
             this.roles = result
         })
     }
@@ -49,7 +49,7 @@ export class AdminUserRoleComponent implements OnDestroy {
         this.maxPage = maxPage
         this.query = query
 
-        this.userRoleSub = this.userRoleService.getAll(startPage, maxPage, query).subscribe(
+        this.userRoleSub = this.userRoleService.getAllWithPagination(startPage, maxPage, query).subscribe(
             result => {
                 const resultData: any = result
                 this.roles.data = resultData.data
