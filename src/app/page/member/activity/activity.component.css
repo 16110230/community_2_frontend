@@ -37,3 +37,12 @@
 ol > li {
     margin-bottom: 1.25vh;
 }
+
+.icon-activity {
+    font-size: 12px;
+}
+
+.padding-icon {
+    padding: 2px 5px 2px 5px;
+    border-radius: 10px;
+}

@@ -21,18 +21,18 @@ export class SignupSecondStepComponent implements OnInit, OnDestroy {
 
     @Output() newEvent = new EventEmitter<void>()
 
-    constructor(private companyService : CompanyService, private industryService : IndustryService,
-        private positionService : PositionService,  private registerService : RegisterService, private store : Store) {}
+    constructor(private companyService: CompanyService, private industryService: IndustryService,
+        private positionService: PositionService, private registerService: RegisterService, private store: Store) { }
 
-    registerSubscription? : Subscription
-    companies : ShowCompanies = {} as ShowCompanies
-    industries : ShowIndustries = {} as ShowIndustries
-    positions : ShowPositions = {} as ShowPositions
-    sendMail : InsertRegister = new InsertRegister()
+    registerSubscription?: Subscription
+    companies: ShowCompanies = {} as ShowCompanies
+    industries: ShowIndustries = {} as ShowIndustries
+    positions: ShowPositions = {} as ShowPositions
+    sendMail: InsertRegister = new InsertRegister()
 
-    account : AccountInfo = new AccountInfo()
+    account: AccountInfo = new AccountInfo()
     company = ''
-    industry : string = ''
+    industry: string = ''
     position = ''
 
     ngOnInit() {
@@ -40,14 +40,14 @@ export class SignupSecondStepComponent implements OnInit, OnDestroy {
         this.store.select(getPersonal).subscribe(res => { this.sendMail.email = res.email })
     }
 
-    initData = () : void => {
-        this.companyService.getAll()
+    initData = (): void => {
+        this.companyService.getAll(0, 0)
             .subscribe(res => { this.companies = res })
 
-        this.industryService.getAll()
+        this.industryService.getAll(0, 0)
             .subscribe(res => { this.industries = res })
 
-        this.positionService.getAll()
+        this.positionService.getAll(0, 0)
             .subscribe(res => { this.positions = res })
     }
 
@@ -55,7 +55,7 @@ export class SignupSecondStepComponent implements OnInit, OnDestroy {
         this.registerSubscription?.unsubscribe()
     }
 
-    submit = () : void => {
+    submit = (): void => {
         this.account.company = this.company
         this.account.industry = this.industry
         this.account.position = this.position
@@ -64,7 +64,7 @@ export class SignupSecondStepComponent implements OnInit, OnDestroy {
             .subscribe(res => {
                 this.store.dispatch(addCode({ payload: res.message }))
                 this.store.dispatch(addAccount({ payload: this.account }))
-        })
+            })
 
         this.newEvent.emit()
     }

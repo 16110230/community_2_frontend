@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ConfirmationService } from "primeng/api";
+import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 import { Subscription } from "rxjs";
 import { ShowThreads } from "../../../../dto/thread/show-threads";
 import { ThreadService } from "../../../../service/thread.service";
@@ -9,25 +10,51 @@ import { ThreadService } from "../../../../service/thread.service";
     selector: "app-admin-thread",
     templateUrl: "./admin-thread.component.html"
 })
-export class AdminThreadComponents implements OnInit {
-    threads : ShowThreads = {} as ShowThreads
-    deleteSubs? : Subscription
-    isDeleted! : number
+export class AdminThreadComponents implements OnDestroy {
+
 
     constructor(
-        private threadService : ThreadService,
+        private threadService: ThreadService,
         private router: Router,
         private confirmationService: ConfirmationService
     ) { }
 
-    initData() : void {
-        this.threadService.getAll().subscribe(result => {
+    startPage: number = 0
+    maxPage: number = 5
+    totalData: number = 0
+    loading: boolean = true
+    query?: string
+
+    threads: ShowThreads = {} as ShowThreads
+    threadsSub?: Subscription
+    deleteSubs?: Subscription
+    isDeleted!: number
+
+    initData(): void {
+        this.threadService.getAll(0, 0).subscribe(result => {
             this.threads = result
         })
     }
 
-    ngOnInit(): void {
-        this.initData()
+    loadData(event: LazyLoadEvent) {
+        this.getData(event.first, event.rows, event.globalFilter)
+    }
+
+    getData(startPage: number = this.startPage, maxPage: number = this.maxPage, query?: string): void {
+        this.loading = true;
+        this.startPage = startPage
+        this.maxPage = maxPage
+        this.query = query
+
+        this.threadsSub = this.threadService.getAll(startPage, maxPage, query).subscribe(
+            result => {
+                const resultData: any = result
+                this.threads.data = resultData.data
+                this.loading = false
+                this.totalData = resultData.total
+                console.log(resultData)
+            },
+        )
     }
 
     goTo(id: number) {
@@ -38,16 +65,16 @@ export class AdminThreadComponents implements OnInit {
         this.router.navigate([`/admin/thread/polling/${id}`])
     }
 
-    onDelete(id : number) : void {
+    onDelete(id: number): void {
         this.isDeleted = id
     }
 
-    deleted() : void {
+    deleted(): void {
         this.deleteSubs = this.threadService
-        .delete(this.isDeleted)
-        .subscribe((_) => {
-            this.initData()
-        })
+            .delete(this.isDeleted)
+            .subscribe((_) => {
+                this.initData()
+            })
     }
 
     confirm(id: number) {
@@ -60,5 +87,10 @@ export class AdminThreadComponents implements OnInit {
                 this.deleted()
             }
         });
+    }
+
+    ngOnDestroy() {
+        this.threadsSub?.unsubscribe()
+        this.deleteSubs?.unsubscribe()
     }
 }

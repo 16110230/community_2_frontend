@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { ShowDashboard } from "src/app/dto/dashboard/show-dashboard";
+import { ShowThreads } from "src/app/dto/thread/show-threads";
 import { DashboardService } from "src/app/service/dashboard.service";
 
 @Component({
@@ -23,21 +24,10 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
         }
     }
 
+    threads: ShowThreads = {} as ShowThreads
+
     dashboardSubscribe?: Subscription
-
-
-    threads = [
-        {
-            id: 1,
-            threadTitle: "new title",
-            threadCategory: "cat"
-        },
-        {
-            id: 2,
-            threadTitle: "new title 2",
-            threadCategory: "cat"
-        }
-    ]
+    threadSubscribe?: Subscription
 
     cards = [
         {
@@ -58,7 +48,6 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
     initData() {
         this.dashboardSubscribe = this.dashboardService.getAll().subscribe((result) => {
             this.dashboards = result
-            console.log(this.dashboards.data)
 
             this.cards = [
                 {
@@ -111,6 +100,10 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
                     dest: "/admin/invoice/course/pending"
                 }
             ]
+        })
+
+        this.threadSubscribe = this.dashboardService.getAllThreads().subscribe((result) => {
+            this.threads.data = result.data
         })
 
 

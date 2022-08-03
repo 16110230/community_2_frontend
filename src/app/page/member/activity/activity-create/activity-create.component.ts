@@ -1,10 +1,13 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
+import { ShowActivityCategories } from "src/app/dto/activity-category/show-activity-categories";
 import { ShowActivityTypes } from "src/app/dto/activity-type/show-activity-types";
 import { InsertActivityReq } from "src/app/dto/activity/insert-activity-req";
+import { ActivityCategoryService } from "src/app/service/activity-category.service";
 import { ActivityTypeService } from "src/app/service/activity-type.service";
 import { ActivityService } from "src/app/service/activity.service";
+import { FileService } from "src/app/service/file.service";
 
 @Component({
     selector: 'app-activity-new',
@@ -13,14 +16,15 @@ import { ActivityService } from "src/app/service/activity.service";
 })
 export class ActivityCreateComponent implements OnInit, OnDestroy {
 
-    constructor(private activityTypeService : ActivityTypeService, private activityService : ActivityService,
-        private router : Router) {}
+    constructor(private activityTypeService: ActivityTypeService, private activityService: ActivityService,
+        private router: Router, private fileService: FileService, private activityCategoryService: ActivityCategoryService) { }
 
-    activitySubs? : Subscription
+    activitySubs?: Subscription
 
-    data : InsertActivityReq = {
+    data: InsertActivityReq = {
         activityTitle: '',
         activityContent: '',
+        activityCategory: '',
         activityType: '',
         startedAt: '',
         endedAt: '',
@@ -31,22 +35,30 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
         trainer: ''
     }
 
-    types : ShowActivityTypes = {
-        data : []
+    types: ShowActivityTypes = {
+        data: []
     }
 
-    type : string = ''
-    category : string = ''
-    startDate : string = ''
-    endDate : string = ''
+    categories: ShowActivityCategories = {
+        data: []
+    }
+
+    type: string = ''
+    category: string = ''
+    startDate: string = ''
+    endDate: string = ''
 
     ngOnInit(): void {
         this.initData()
     }
 
-    initData = () : void => {
-        this.activityTypeService.getAll().subscribe(res => {
+    initData = (): void => {
+        this.activityTypeService.getAll(0, 0).subscribe(res => {
             this.types = res
+        })
+
+        this.activityCategoryService.getAll().subscribe(res => {
+            this.categories = res
         })
     }
 
@@ -54,7 +66,17 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
         this.activitySubs?.unsubscribe()
     }
 
-    submit = () : void => {
+    submit = (): void => {
         this.activityService.insert(this.data).subscribe(() => this.router.navigateByUrl('/member/articles'))
+    }
+
+    change(event: any): void {
+        console.log(event.files[0]);
+
+        const file = event.files[0]
+        this.fileService.uploadAsBase64(file).then(res => {
+            this.data.fileName = res[0]
+            this.data.fileExt = res[1]
+        })
     }
 }
