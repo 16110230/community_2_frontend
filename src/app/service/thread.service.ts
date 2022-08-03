@@ -17,7 +17,7 @@ export class ThreadService {
 
     constructor(private http: HttpClient) { }
 
-    getAll(startPage: number, maxPage: number, query?: string): Observable<ShowThreads> {
+    getAll(): Observable<ShowThreads> {
         return this.http.get<ShowThreads>(`${BASE_URL}/threads`)
     }
 
@@ -51,5 +51,9 @@ export class ThreadService {
 
     delete(id: number): Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/threads/${id}`)
+    }
+
+    getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowThreads> {
+        return this.http.get<ShowThreads>(`${BASE_URL}/threads`)
     }
 }

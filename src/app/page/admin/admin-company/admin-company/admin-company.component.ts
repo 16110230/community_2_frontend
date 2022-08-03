@@ -34,7 +34,7 @@ export class AdminCompanyComponent implements OnDestroy {
     isDeleted!: number;
 
     initData() {
-        this.companyService.getAll(this.startPage, this.maxPage, this.query).subscribe(result => {
+        this.companyService.getAllWithPagination(this.startPage, this.maxPage, this.query).subscribe(result => {
             this.companies = result
         })
     }
@@ -49,7 +49,7 @@ export class AdminCompanyComponent implements OnDestroy {
         this.maxPage = maxPage
         this.query = query
 
-        this.companiesSub = this.companyService.getAll(startPage, maxPage, query).subscribe(
+        this.companiesSub = this.companyService.getAllWithPagination(startPage, maxPage, query).subscribe(
             result => {
                 const resultData: any = result
                 this.companies.data = resultData.data
