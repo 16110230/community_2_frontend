@@ -37,6 +37,6 @@ export class PositionService {
     }
 
     getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowPositions> {
-        return this.http.get<ShowPositions>(`${BASE_URL}/positions`)
+        return this.http.get<ShowPositions>(`${BASE_URL}/positions?startPage=${startPage}&maxPage=${maxPage}`)
     }
 }

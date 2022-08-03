@@ -38,6 +38,6 @@ export class ThreadCategoryService {
     }
 
     getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowThreadCategories> {
-        return this.http.get<ShowThreadCategories>(`${BASE_URL}/thread-categories`)
+        return this.http.get<ShowThreadCategories>(`${BASE_URL}/thread-categories?startPage=${startPage}&maxPage=${maxPage}`)
     }
 }

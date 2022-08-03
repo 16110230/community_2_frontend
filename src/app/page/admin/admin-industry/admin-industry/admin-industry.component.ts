@@ -54,8 +54,7 @@ export class AdminIndustryComponent implements OnDestroy {
                 const resultData: any = result
                 this.industries.data = resultData.data
                 this.loading = false
-                this.totalData = resultData.total
-                console.log(resultData)
+                this.totalData = resultData.count
             },
         )
     }
@@ -93,5 +92,6 @@ export class AdminIndustryComponent implements OnDestroy {
 
     ngOnDestroy() {
         this.industriesSub?.unsubscribe()
+        this.deleteSubs?.unsubscribe()
     }
 }

@@ -53,8 +53,7 @@ export class AdminActivityType implements OnDestroy {
                 const resultData: any = result
                 this.activityTypes.data = resultData.data
                 this.loading = false
-                this.totalData = resultData.total
-                console.log(resultData)
+                this.totalData = resultData.count
             },
         )
     }

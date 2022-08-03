@@ -37,6 +37,6 @@ export class IndustryService {
     }
 
     getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowIndustries> {
-        return this.http.get<ShowIndustries>(`${BASE_URL}/industries`)
+        return this.http.get<ShowIndustries>(`${BASE_URL}/industries?startPage=${startPage}&maxPage=${maxPage}`)
     }
 }

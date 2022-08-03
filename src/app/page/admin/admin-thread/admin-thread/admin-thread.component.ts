@@ -51,8 +51,7 @@ export class AdminThreadComponents implements OnDestroy {
                 const resultData: any = result
                 this.threads.data = resultData.data
                 this.loading = false
-                this.totalData = resultData.total
-                console.log(resultData)
+                this.totalData = resultData.count
             },
         )
     }
