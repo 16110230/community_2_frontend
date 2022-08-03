@@ -21,6 +21,10 @@ export class ThreadCategoryService {
         return this.http.get<ShowThreadCategories>(`${BASE_URL}/thread-categories`)
     }
 
+    getAllUser() : Observable<ShowThreadCategories> {
+        return this.http.get<ShowThreadCategories>(`${BASE_URL}/thread-categories/user`)
+    }
+
     getById(id: number): Observable<ShowThreadCategoryById> {
         return this.http.get<ShowThreadCategoryById>(`${BASE_URL}/thread-categories/${id}`)
     }
