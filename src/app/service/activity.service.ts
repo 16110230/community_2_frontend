@@ -20,7 +20,7 @@ export class ActivityService{
         return this.http.get<ShowActivities>(`${BASE_URL}/activities`)
     }
 
-    getById(id : number) : Observable<ShowActivityById> {
+    getById(id : string) : Observable<ShowActivityById> {
         return this.http.get<ShowActivityById>(`${BASE_URL}/activities/${id}`)
     }
 
@@ -32,7 +32,7 @@ export class ActivityService{
         return this.http.put<UpdateResDto>(`${BASE_URL}/activities`, data)
     }
 
-    delete(id : number) : Observable<DeleteResDto> {
+    delete(id : string) : Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/activities/${id}`)
     }
 }

@@ -18,6 +18,7 @@ import { ActivityDetailsRegisterComponent } from "./activity-details/activity-de
 import { FileUploadModule } from "primeng/fileupload";
 import { SharedModule } from "src/app/component/shared.module";
 import { TableModule } from "primeng/table";
+import { HomeModule } from "../home/home.module";
 
 @NgModule({
     imports: [
@@ -33,7 +34,8 @@ import { TableModule } from "primeng/table";
         CheckboxModule,
         CommonModule,
         FileUploadModule,
-        TableModule
+        TableModule,
+        HomeModule
     ],
     declarations: [
         ActivityListComponent,
