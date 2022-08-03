@@ -14,7 +14,7 @@ export class DashboardService {
     getAll(): Observable<ShowDashboard> {
         return this.http.get<ShowDashboard>(`${BASE_URL}/dashboard`)
     }
-
+    
     getAllThreads(): Observable<ShowThreads> {
         return this.http.get<ShowThreads>(`${BASE_URL}/dashboard/threads`)
     }
