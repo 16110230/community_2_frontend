@@ -5,6 +5,7 @@ import { ShowThreads } from "../../../../dto/thread/show-threads";
 import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 
 import { ThreadService } from "../../../../service/thread.service";
+import { ART } from "src/app/constant/constant";
 
 @Component({
     selector: "app-admin-article",
@@ -27,8 +28,8 @@ export class AdminArticleComponent implements OnDestroy {
     articlesSub?: Subscription
 
     initData() {
-        this.threadService.getAll().subscribe(result => {
-            this.articles = result
+        this.threadService.getAllWithPagination(this.startPage, this.maxPage, this.query).subscribe(result => {
+            this.articles.data = result.data
         })
     }
 

@@ -37,6 +37,6 @@ export class UserRoleService {
     }
 
     getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowUserRoles> {
-        return this.http.get<ShowUserRoles>(`${BASE_URL}/user-roles`)
+        return this.http.get<ShowUserRoles>(`${BASE_URL}/user-roles?startPage=${startPage}&maxPage=${maxPage}`)
     }
 }
