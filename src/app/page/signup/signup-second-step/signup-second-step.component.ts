@@ -41,13 +41,13 @@ export class SignupSecondStepComponent implements OnInit, OnDestroy {
     }
 
     initData = (): void => {
-        this.companyService.getAll(0, 0)
+        this.companyService.getAll()
             .subscribe(res => { this.companies = res })
 
-        this.industryService.getAll(0, 0)
+        this.industryService.getAll()
             .subscribe(res => { this.industries = res })
 
-        this.positionService.getAll(0, 0)
+        this.positionService.getAll()
             .subscribe(res => { this.positions = res })
     }
 

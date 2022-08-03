@@ -17,7 +17,7 @@ export class ThreadCategoryService {
 
     constructor(private http: HttpClient) { }
 
-    getAll(startPage: number, maxPage: number, query?: string): Observable<ShowThreadCategories> {
+    getAll(): Observable<ShowThreadCategories> {
         return this.http.get<ShowThreadCategories>(`${BASE_URL}/thread-categories`)
     }
 
@@ -35,5 +35,9 @@ export class ThreadCategoryService {
 
     delete(id: number): Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/thread-categories/${id}`)
+    }
+
+    getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowThreadCategories> {
+        return this.http.get<ShowThreadCategories>(`${BASE_URL}/thread-categories`)
     }
 }
