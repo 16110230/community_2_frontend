@@ -8,6 +8,7 @@ import { UpdateResDto } from "../dto/update-res-dto";
 import { InsertUserReq } from "../dto/users/insert-user-req";
 import { ShowUserById } from "../dto/users/show-user-by-id";
 import { ShowUsers } from "../dto/users/show-users";
+import { UpdatePasswordReq } from "../dto/users/update-password-req";
 import { UpdateUserReq } from "../dto/users/update-user-req";
 
 @Injectable({
@@ -43,6 +44,10 @@ export class UsersService {
 
     getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowUsers> {
         return this.http.get<ShowUsers>(`${BASE_URL}/users`)
+    }
+
+    changePassword(data : UpdatePasswordReq) : Observable<UpdateResDto> {
+        return this.http.put<UpdateResDto>(`${BASE_URL}/users/change-password`, data)
     }
 
 }
