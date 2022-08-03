@@ -36,7 +36,7 @@ export class AdminArticleCreateComponent implements OnDestroy, OnInit {
     }
 
     initData(): void {
-        this.threadCategoryService.getAll(0, 0).subscribe((result) => {
+        this.threadCategoryService.getAll().subscribe((result) => {
             this.categories = result;
             this.categoryData = result.data;
         })

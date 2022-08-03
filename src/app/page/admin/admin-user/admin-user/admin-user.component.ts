@@ -27,7 +27,7 @@ export class AdminUserComponents implements OnDestroy {
     usersSub?: Subscription
 
     initData(): void {
-        this.usersService.getAll(this.startPage, this.maxPage, this.query).subscribe(result => {
+        this.usersService.getAllWithPagination(this.startPage, this.maxPage, this.query).subscribe(result => {
             this.users = result
         })
     }
@@ -42,7 +42,7 @@ export class AdminUserComponents implements OnDestroy {
         this.maxPage = maxPage
         this.query = query
 
-        this.usersSub = this.usersService.getAll(startPage, maxPage, query).subscribe(
+        this.usersSub = this.usersService.getAllWithPagination(startPage, maxPage, query).subscribe(
             result => {
                 const resultData: any = result
                 this.users.data = resultData.data
