@@ -12,12 +12,12 @@ export class MemberProfileComponent {
         private router: Router
     ) { }
     goToEditProfile() {
-        this.router.navigate(['/member/profile/edit'])
+        this.router.navigate(['/member/profiles/edit'])
     }
     goToTransaction() {
-        this.router.navigate(['/member/profile/transaction'])
+        this.router.navigate(['/member/profiles/transaction'])
     }
     goToActivity() {
-        this.router.navigate(['/member/profile/activity'])
+        this.router.navigate(['/member/profiles/activity'])
     }
 }

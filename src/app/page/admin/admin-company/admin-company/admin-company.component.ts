@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ConfirmationService } from "primeng/api";
+import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 import { Subscription } from "rxjs";
 import { ShowCompanies } from "../../../../dto/company/show-companies";
 import { CompanyService } from "../../../../service/company.service";
@@ -8,31 +9,55 @@ import { CompanyService } from "../../../../service/company.service";
 @Component({
     selector: "app-admin-company",
     templateUrl: "./admin-company.component.html",
-    providers : [
+    providers: [
         ConfirmationService
     ]
 })
 
-export class AdminCompanyComponent implements OnInit {
+export class AdminCompanyComponent implements OnDestroy {
 
     constructor(
-        private companyService : CompanyService,
-        private confirmationService : ConfirmationService,
+        private companyService: CompanyService,
+        private confirmationService: ConfirmationService,
         private router: Router
     ) { }
 
-    companies : ShowCompanies = {} as ShowCompanies
+    startPage: number = 0
+    maxPage: number = 5
+    totalData: number = 0
+    loading: boolean = true
+    query?: string
+
+    companies: ShowCompanies = {} as ShowCompanies
+    companiesSub?: Subscription
     deleteSubscription?: Subscription
     isDeleted!: number;
 
     initData() {
-        this.companyService.getAll().subscribe(result => {
+        this.companyService.getAll(this.startPage, this.maxPage, this.query).subscribe(result => {
             this.companies = result
         })
     }
 
-    ngOnInit(): void {
-        this.initData()
+    loadData(event: LazyLoadEvent) {
+        this.getData(event.first, event.rows, event.globalFilter)
+    }
+
+    getData(startPage: number = this.startPage, maxPage: number = this.maxPage, query?: string): void {
+        this.loading = true;
+        this.startPage = startPage
+        this.maxPage = maxPage
+        this.query = query
+
+        this.companiesSub = this.companyService.getAll(startPage, maxPage, query).subscribe(
+            result => {
+                const resultData: any = result
+                this.companies.data = resultData.data
+                this.loading = false
+                this.totalData = resultData.total
+                console.log(resultData)
+            },
+        )
     }
 
     goTo() {
@@ -48,10 +73,10 @@ export class AdminCompanyComponent implements OnInit {
 
     deleted(): void {
         this.deleteSubscription = this.companyService
-        .delete(this.isDeleted)
-        .subscribe((_) => {
-            this.initData();
-        });
+            .delete(this.isDeleted)
+            .subscribe((_) => {
+                this.initData();
+            });
     }
 
     confirm(id: number) {
@@ -64,5 +89,10 @@ export class AdminCompanyComponent implements OnInit {
                 this.deleted()
             }
         });
+    }
+
+    ngOnDestroy() {
+        this.companiesSub?.unsubscribe()
+        this.deleteSubscription?.unsubscribe()
     }
 }

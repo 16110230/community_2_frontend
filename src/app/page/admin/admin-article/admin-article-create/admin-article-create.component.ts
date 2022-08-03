@@ -13,20 +13,20 @@ import { ThreadService } from "src/app/service/thread.service";
     templateUrl: "./admin-article-create.component.html"
 })
 export class AdminArticleCreateComponent implements OnDestroy, OnInit {
-    categories : ShowThreadCategories = {} as ShowThreadCategories
-    categoryData : ThreadCategoryDto[] = []
-    threadData : InsertThreadReq = {
-        threadTitle : "",
-        threadContent : "",
-        threadCategory : ""
+    categories: ShowThreadCategories = {} as ShowThreadCategories
+    categoryData: ThreadCategoryDto[] = []
+    threadData: InsertThreadReq = {
+        threadTitle: "",
+        threadContent: "",
+        threadCategory: ""
     }
 
-    threadSubs? : Subscription
+    threadSubs?: Subscription
 
     constructor(
-        private fileService : FileService,
-        private threadService : ThreadService, 
-        private threadCategoryService : ThreadCategoryService, 
+        private fileService: FileService,
+        private threadService: ThreadService,
+        private threadCategoryService: ThreadCategoryService,
         private router: Router
     ) { }
 
@@ -35,15 +35,15 @@ export class AdminArticleCreateComponent implements OnDestroy, OnInit {
         this.initData()
     }
 
-    initData() : void {
-        this.threadCategoryService.getAll().subscribe((result) => {
+    initData(): void {
+        this.threadCategoryService.getAll(0, 0).subscribe((result) => {
             this.categories = result;
             this.categoryData = result.data;
         })
     }
 
-    insertThread() : void {
-        this.threadSubs =this.threadService.insertArticle(this.threadData)
+    insertThread(): void {
+        this.threadSubs = this.threadService.insertArticle(this.threadData)
             .subscribe(result => {
                 this.router.navigateByUrl('/admin/article')
             })
@@ -57,9 +57,9 @@ export class AdminArticleCreateComponent implements OnDestroy, OnInit {
         this.threadSubs?.unsubscribe()
     }
 
-    change(event : any) : void {
+    change(event: any): void {
         console.log(event.files[0]);
-        
+
         const file = event.files[0]
         this.fileService.uploadAsBase64(file).then(res => {
             this.threadData.fileName = res[0]

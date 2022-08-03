@@ -14,38 +14,38 @@ import { ActivityService } from "src/app/service/activity.service";
 })
 export class ActivityListComponent implements OnInit, OnDestroy {
 
-    constructor(private activityService : ActivityService, private activityTypeService : ActivityTypeService,
-        private activityCategoryService : ActivityCategoryService) {}
+    constructor(private activityService: ActivityService, private activityTypeService: ActivityTypeService,
+        private activityCategoryService: ActivityCategoryService) { }
 
-    selectedType : string = ''
-    selectedCategory : string = ''
-    activitySubs? : Subscription
-    activities : ShowActivities = {
-        data : []
+    selectedType: string = ''
+    selectedCategory: string = ''
+    activitySubs?: Subscription
+    activities: ShowActivities = {
+        data: []
     }
 
-    types : ShowActivityTypes = {
-        data : []
+    types: ShowActivityTypes = {
+        data: []
     }
 
-    categories : ShowActivityCategories = {
-        data : []
+    categories: ShowActivityCategories = {
+        data: []
     }
 
-    ngOnInit() : void {
+    ngOnInit(): void {
         this.initData()
     }
 
-    initData = () : void => {
+    initData = (): void => {
         this.activityService.getAll().subscribe(res => {
             this.activities = res
         })
 
-        this.activityTypeService.getAll().subscribe(res => {
+        this.activityTypeService.getAll(0, 0).subscribe(res => {
             this.types = res
         })
 
-        this.activityCategoryService.getAll().subscribe(res => {
+        this.activityCategoryService.getAll(0, 0).subscribe(res => {
             this.categories = res
         })
     }
@@ -54,7 +54,9 @@ export class ActivityListComponent implements OnInit, OnDestroy {
         this.activitySubs?.unsubscribe()
     }
 
-    filter = () : void => {
+    filter = (): void => {
         console.log(this.selectedType, this.selectedCategory)
     }
+
+    
 }

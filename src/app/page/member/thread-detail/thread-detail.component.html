@@ -24,22 +24,22 @@
                     <div class="content-card-footer mt-3 px-4">
                         <div class="grid flex flex-row justify-content-between">
                             <div class="activity-left flex flex-row align-items-center">
-                                <a class="mr-2" href="">
-                                    <span class="pi pi-heart" *ngIf="!thread.data.isLike"></span>
-                                    <span class="pi pi-heart-fill icon-like-filled" *ngIf="thread.data.isLike"></span>
+                                <a class="mr-2">
+                                    <span class="pi pi-heart" *ngIf="!thread.data.isLike" (click)="like(thread.data.id)"></span>
+                                            <span class="pi pi-heart-fill icon-like-filled" *ngIf="thread.data.isLike" (click)="unlike(thread.data.id)"></span>
                                 </a>
                                 <span class="mr-3">{{thread.data.countLike}}</span>
-                                <a class="mr-2" routerLink="/member/thread-detail/1">
+                                <div class="mr-2">
                                     <span class="pi pi-comment"></span>
-                                </a>
+                                </div>
                                 <span class="mr-3">{{thread.data.countComment}}</span>
                             </div>
 
                             <div class="activity-right flex flex-row align-items-center">
                                 <div class="flex flex-row justify-content-between">
-                                    <a class="mr-2" href="">
-                                        <span class="pi pi-bookmark" *ngIf="!thread.data.isBookmark"></span>
-                                        <span class="pi pi-bookmark-fill icon-bookmark-filled" *ngIf="thread.data.isBookmark"></span>
+                                    <a class="mr-2">
+                                        <span class="pi pi-bookmark" *ngIf="!thread.data.isBookmark" (click)="bookmark(thread.data.id)"></span>
+                                        <span class="pi pi-bookmark-fill icon-bookmark-filled" *ngIf="thread.data.isBookmark" (click)="unBookmark(thread.data.id)"></span>
                                     </a>
                                 </div>
                             </div>
