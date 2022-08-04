@@ -3,5 +3,6 @@ export interface PollingDto{
     thread? : string
     threadTitle? : string
     version? : number
+    isPolling? : boolean
     isActive? : boolean
 }

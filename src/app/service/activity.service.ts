@@ -20,7 +20,7 @@ export class ActivityService {
         return this.http.get<ShowActivities>(`${BASE_URL}/activities`)
     }
 
-    getById(id: number): Observable<ShowActivityById> {
+    getById(id: string): Observable<ShowActivityById> {
         return this.http.get<ShowActivityById>(`${BASE_URL}/activities/${id}`)
     }
 
