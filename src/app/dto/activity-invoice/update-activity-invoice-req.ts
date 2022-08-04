@@ -1,9 +1,5 @@
 export interface UpdateActivityInvoiceReq{
-    user? : string 
-	activity? : string
-	file? : string
-	fileName? : string
-	fileExt? : string
+	id : string
 	isApproved? : boolean
 	isActive? : boolean
 	version? : number
