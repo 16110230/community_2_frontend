@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { ShowActivityCategories } from "src/app/dto/activity-category/show-activity-categories";
 import { ShowActivityTypes } from "src/app/dto/activity-type/show-activity-types";
@@ -15,7 +16,7 @@ import { ActivityService } from "src/app/service/activity.service";
 export class ActivityListComponent implements OnInit, OnDestroy {
 
     constructor(private activityService: ActivityService, private activityTypeService: ActivityTypeService,
-        private activityCategoryService: ActivityCategoryService) { }
+        private activityCategoryService: ActivityCategoryService, private router : Router) { }
 
     selectedType: string = ''
     selectedCategory: string = ''
@@ -41,11 +42,11 @@ export class ActivityListComponent implements OnInit, OnDestroy {
             this.activities = res
         })
 
-        this.activityTypeService.getAll(0, 0).subscribe(res => {
+        this.activityTypeService.getAll().subscribe(res => {
             this.types = res
         })
 
-        this.activityCategoryService.getAll(0, 0).subscribe(res => {
+        this.activityCategoryService.getAll().subscribe(res => {
             this.categories = res
         })
     }
@@ -58,5 +59,7 @@ export class ActivityListComponent implements OnInit, OnDestroy {
         console.log(this.selectedType, this.selectedCategory)
     }
 
-    
+    onById(id : string) : void {
+        this.router.navigateByUrl(`/member/articles/details/${id}`)
+    }
 }

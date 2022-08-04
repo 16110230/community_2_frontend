@@ -6,6 +6,7 @@ import { ShowIndustries } from "src/app/dto/industry/show-industries";
 import { ShowPositions } from "src/app/dto/position/show-positions";
 import { ShowUserById } from "src/app/dto/users/show-user-by-id";
 import { CompanyService } from "src/app/service/company.service";
+import { FileService } from "src/app/service/file.service";
 import { IndustryService } from "src/app/service/industry.service";
 import { PositionService } from "src/app/service/position.service";
 import { UsersService } from "src/app/service/users.service";
@@ -18,10 +19,10 @@ export class MemberProfileEditComponent implements OnInit, OnDestroy {
 
     constructor(private userService : UsersService, private companyService : CompanyService,
         private industryService : IndustryService, private positionService : PositionService,
-        private router: Router) {}
+        private router : Router, private fileService : FileService) {}
 
     profileSubs? : Subscription
-    profilePic : string = ''
+    profilePic? : string
     companies : ShowCompanies = { data : [] }
     industries : ShowIndustries = { data : [] }
     positions : ShowPositions = { data : [] }
@@ -40,7 +41,9 @@ export class MemberProfileEditComponent implements OnInit, OnDestroy {
             positionName : '',
             file : '',
             isActive : false,
-            version : 0
+            version : 0,
+            fileName : '',
+            fileExt : ''
         }
     }
 
@@ -63,7 +66,7 @@ export class MemberProfileEditComponent implements OnInit, OnDestroy {
 
         this.userService.getUserProfile().subscribe(res => {
             this.user = res
-            this.profilePic = `http://localhost:1221/files/${res.data.file}`
+            if(res.data.file) this.profilePic = `http://localhost:1221/files/${res.data.file}`
         })
     }
 
@@ -78,10 +81,18 @@ export class MemberProfileEditComponent implements OnInit, OnDestroy {
     }
 
     goToChangePassword() {
-        this.router.navigate(['/member/profile/change-password'])
+        this.router.navigate(['/member/profiles/change-password'])
     }
 
     change = (event : any) : void => {
-        console.log(event)
+        const file = event.files[0]
+        this.fileService.uploadAsBase64(file).then(res => {
+            this.user.data.fileName = res[0]
+            this.user.data.fileExt = res[1]
+        })
+    }
+
+    submit = () : void => {
+        this.userService.update(this.user.data).subscribe(res => { this.router.navigateByUrl('/member/profiles') })
     }
 }

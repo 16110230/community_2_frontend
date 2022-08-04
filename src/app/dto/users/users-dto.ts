@@ -13,4 +13,6 @@ export interface UsersDto {
     file : string
     isActive : boolean
     version : number
+    fileName : string
+    fileExt : string
 }

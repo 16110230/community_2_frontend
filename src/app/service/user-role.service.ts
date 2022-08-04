@@ -16,7 +16,7 @@ import { UpdateUserRoleReq } from "../dto/user-role/update-user-role-req";
 export class UserRoleService {
     constructor(private http: HttpClient) { }
 
-    getAll(startPage: number, maxPage: number, query?: string): Observable<ShowUserRoles> {
+    getAll(): Observable<ShowUserRoles> {
         return this.http.get<ShowUserRoles>(`${BASE_URL}/user-roles`)
     }
 
@@ -34,5 +34,9 @@ export class UserRoleService {
 
     delete(id: number): Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/user-roles/${id}`)
+    }
+
+    getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowUserRoles> {
+        return this.http.get<ShowUserRoles>(`${BASE_URL}/user-roles?startPage=${startPage}&maxPage=${maxPage}`)
     }
 }

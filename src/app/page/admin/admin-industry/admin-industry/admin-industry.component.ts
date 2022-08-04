@@ -34,7 +34,7 @@ export class AdminIndustryComponent implements OnDestroy {
     isDeleted!: number
 
     initData(): void {
-        this.industryService.getAll(this.startPage, this.maxPage, this.query).subscribe(result => {
+        this.industryService.getAllWithPagination(this.startPage, this.maxPage, this.query).subscribe(result => {
             this.industries = result
         })
     }
@@ -49,13 +49,12 @@ export class AdminIndustryComponent implements OnDestroy {
         this.maxPage = maxPage
         this.query = query
 
-        this.industriesSub = this.industryService.getAll(startPage, maxPage, query).subscribe(
+        this.industriesSub = this.industryService.getAllWithPagination(startPage, maxPage, query).subscribe(
             result => {
                 const resultData: any = result
                 this.industries.data = resultData.data
                 this.loading = false
-                this.totalData = resultData.total
-                console.log(resultData)
+                this.totalData = resultData.count
             },
         )
     }
@@ -93,5 +92,6 @@ export class AdminIndustryComponent implements OnDestroy {
 
     ngOnDestroy() {
         this.industriesSub?.unsubscribe()
+        this.deleteSubs?.unsubscribe()
     }
 }

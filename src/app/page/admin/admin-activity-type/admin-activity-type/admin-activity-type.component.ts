@@ -33,7 +33,7 @@ export class AdminActivityType implements OnDestroy {
     isDeleted!: number
 
     initData(): void {
-        this.activityTypeService.getAll(this.startPage, this.maxPage, this.query).subscribe(result => {
+        this.activityTypeService.getAllWithPagination(this.startPage, this.maxPage, this.query).subscribe(result => {
             this.activityTypes = result
         })
     }
@@ -48,13 +48,12 @@ export class AdminActivityType implements OnDestroy {
         this.maxPage = maxPage
         this.query = query
 
-        this.activityTypesSub = this.activityTypeService.getAll(startPage, maxPage, query).subscribe(
+        this.activityTypesSub = this.activityTypeService.getAllWithPagination(startPage, maxPage, query).subscribe(
             result => {
                 const resultData: any = result
                 this.activityTypes.data = resultData.data
                 this.loading = false
-                this.totalData = resultData.total
-                console.log(resultData)
+                this.totalData = resultData.count
             },
         )
     }

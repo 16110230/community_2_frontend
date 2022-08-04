@@ -17,7 +17,7 @@ export class ActivityCategoryService {
 
     constructor(private http: HttpClient) { }
 
-    getAll(startPage: number, maxPage: number, query?: string): Observable<ShowActivityCategories> {
+    getAll(): Observable<ShowActivityCategories> {
         return this.http.get<ShowActivityCategories>(`${BASE_URL}/activity-categories`)
     }
 
@@ -35,5 +35,9 @@ export class ActivityCategoryService {
 
     delete(id: number): Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/activity-categories/${id}`)
+    }
+
+    getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowActivityCategories> {
+        return this.http.get<ShowActivityCategories>(`${BASE_URL}/activity-categories?startPage=${startPage}&maxPage=${maxPage}`)
     }
 }

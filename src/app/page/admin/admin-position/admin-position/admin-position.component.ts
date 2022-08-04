@@ -36,7 +36,7 @@ export class AdminPositionComponent implements OnDestroy {
 
 
     initData(): void {
-        this.positionService.getAll(this.startPage, this.maxPage, this.query).subscribe(result => {
+        this.positionService.getAllWithPagination(this.startPage, this.maxPage, this.query).subscribe(result => {
             this.positions = result
         })
     }
@@ -51,13 +51,12 @@ export class AdminPositionComponent implements OnDestroy {
         this.maxPage = maxPage
         this.query = query
 
-        this.positionsSub = this.positionService.getAll(startPage, maxPage, query).subscribe(
+        this.positionsSub = this.positionService.getAllWithPagination(startPage, maxPage, query).subscribe(
             result => {
                 const resultData: any = result
                 this.positions.data = resultData.data
                 this.loading = false
-                this.totalData = resultData.total
-                console.log(resultData)
+                this.totalData = resultData.count
             },
         )
     }

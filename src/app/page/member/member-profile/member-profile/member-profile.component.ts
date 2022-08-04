@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 @Component({
     selector: "app-member-profiel",
     templateUrl: "./member-profile.component.html",
-    styleUrls: ['../home.component.css']
+    styleUrls: ['../../home/home.component.css']
 })
 export class MemberProfileComponent {
 

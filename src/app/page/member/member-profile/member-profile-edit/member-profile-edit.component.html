@@ -1,6 +1,6 @@
 <div class="container-home">
-    <div class="grid px-5">
-        <div class="sm:col-3 col-12 mt-2 h-screen">
+    <div class="grid lg:px-5 sm:px-2">
+        <div class="sm:col-12 lg:col-3 mt-2">
             <p-card>
                 <div class="ml-3">
                     <div class="text-primary cursor-pointer font-semibold" (click)="goToEditProfile()">
@@ -13,14 +13,14 @@
             </p-card>
         </div>
 
-        <div class="sm:col-9 col-12 mt-2 p-0">
+        <div class="sm:col-12 lg:col-9 lg:mt-2">
             <p-card>
-                <form>
+                <form (ngSubmit)="submit()">
                     <div class="flex justify-content-center align-items-end">
                         <div class="photo-profile">
-                            <img *ngIf="user.data.file !== null" src="{{profilePic}}" alt="">
-                            <img *ngIf="user.data.file === null" src="../../../../../assets/img/blank-profile.jpg"
+                            <img *ngIf="profilePic === null" src="../../../../../assets/img/blank-profile.jpg"
                                 alt="">
+                            <img *ngIf="profilePic !== null" src="{{profilePic}}" alt="">
                         </div>
                         <div class="inline">
                             <p-fileUpload #fubauto styleClass="my-3 p-button-rounded p-button-text p-button-sm" mode="basic" name="file" 
@@ -31,17 +31,17 @@
                     </div>
 
                     <div class="grid w-full">
-                        <div class="lg:col-5 sm:col-6 mt-3">
+                        <div class="lg:col-5 sm:col-12 mt-3">
                             <label for="fullName">Name</label>
                             <input class="w-full mt-2" type="text" pInputText name="fullName"
                                 [(ngModel)]="user.data.fullName" />
                         </div>
-                        <div class="lg:col-3 sm:col-6 mt-3">
+                        <div class="lg:col-3 sm:col-12 mt-3">
                             <label for="username">Username</label>
                             <input class="w-full mt-2" type="text" pInputText name="username"
                                 [(ngModel)]="user.data.username" />
                         </div>
-                        <div class="lg:col-4 sm:col-6 mt-3">
+                        <div class="lg:col-4 sm:col-12 mt-3">
                             <label for="email">Email</label>
                             <input class="w-full mt-2" type="text" pInputText name="email" [(ngModel)]="user.data.email"
                                 disabled />
@@ -60,7 +60,7 @@
                                 [(ngModel)]="user.data.industry"></p-dropdown>
                         </div>
 
-                        <div class="lg:col-4 sm:col-6 my-3">
+                        <div class="lg:col-4 sm:col-12 my-3">
                             <label for="position">Position</label>
                             <p-dropdown styleClass="w-full mt-2" name="position" id="position"
                                 [options]="positions.data" optionLabel="positionName" optionValue="id"
@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="flex flex-row justify-content-center">
-                        <button pButton pRipple type="button" label="Save"
+                        <button pButton pRipple type="submit" label="Save"
                             class="p-button-rounded p-button-info p-button-sm">
                         </button>
                     </div>

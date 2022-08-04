@@ -34,7 +34,7 @@ export class AdminThreadCategoryComponent implements OnDestroy {
     isDeleted!: number
 
     initData(): void {
-        this.threadCategoryService.getAll(this.startPage, this.maxPage, this.query).subscribe(result => {
+        this.threadCategoryService.getAllWithPagination(this.startPage, this.maxPage, this.query).subscribe(result => {
             this.threadCategories = result
         })
     }
@@ -49,13 +49,12 @@ export class AdminThreadCategoryComponent implements OnDestroy {
         this.maxPage = maxPage
         this.query = query
 
-        this.threadCategoriesSub = this.threadCategoryService.getAll(startPage, maxPage, query).subscribe(
+        this.threadCategoriesSub = this.threadCategoryService.getAllWithPagination(startPage, maxPage, query).subscribe(
             result => {
                 const resultData: any = result
                 this.threadCategories.data = resultData.data
                 this.loading = false
-                this.totalData = resultData.total
-                console.log(resultData)
+                this.totalData = resultData.count
             },
         )
     }
