@@ -54,8 +54,8 @@ export class AdminActivityEventComponent {
                 const resultData: any = result
                 this.activities.data = resultData.data
                 this.loading = false
-                this.totalData = resultData.total
-                console.log(resultData)
+                this.totalData = resultData.countData
+                console.log(result)
             },
         )
     }

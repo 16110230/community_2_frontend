@@ -37,6 +37,6 @@ export class ActivityService {
     }
 
     getAllWithPagination(startPage: number, maxPage: number, query?: string, code?: string): Observable<ShowActivities> {
-        return this.http.get<ShowActivities>(`${BASE_URL}/activities/type/${code}`)
+        return this.http.get<ShowActivities>(`${BASE_URL}/activities/type?code=${code}&startPage=${startPage}&maxPage=${maxPage}`)
     }
 }
