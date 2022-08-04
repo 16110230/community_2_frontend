@@ -9,11 +9,6 @@ const routes: Routes = [
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
     },
     {
-        path: 'articles',
-        component: NavbarComponent,
-        loadChildren: () => import('./activity/activity.module').then(m => m.ActivityModule)
-    },
-    {
         path: 'profiles',
         component: NavbarComponent,
         loadChildren: () => import('./member-profile/member-profile.module').then(m => m.MemberProfileModule)
@@ -38,6 +33,11 @@ const routes: Routes = [
         component: NavbarComponent,
         loadChildren: () => import('./send-validation/send-validation.module').then(m => m.SendValidationModule)
     },
+    {
+        path: 'articles',
+        component: NavbarComponent,
+        loadChildren: () => import('./articles/article.module').then(m => m.ArticleModule)
+    }
 
 ]
 
