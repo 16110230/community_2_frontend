@@ -28,7 +28,7 @@ export class AdminArticleComponent implements OnDestroy {
     articlesSub?: Subscription
 
     initData() {
-        this.threadService.getAllWithPagination(this.startPage, this.maxPage, this.query).subscribe(result => {
+        this.threadService.getAllThreadArticleWithPagination(this.startPage, this.maxPage, this.query).subscribe(result => {
             this.articles.data = result.data
         })
     }
@@ -43,13 +43,13 @@ export class AdminArticleComponent implements OnDestroy {
         this.maxPage = maxPage
         this.query = query
 
-        this.articlesSub = this.threadService.getAllWithPagination(startPage, maxPage, query).subscribe(
+        this.articlesSub = this.threadService.getAllThreadArticleWithPagination(startPage, maxPage, query).subscribe(
             result => {
                 const resultData: any = result
                 this.articles.data = resultData.data
                 this.loading = false
-                this.totalData = resultData.total
-                console.log(resultData)
+                this.totalData = resultData.countData
+                console.log(result)
             },
         )
     }
