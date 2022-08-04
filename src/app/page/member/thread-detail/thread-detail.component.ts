@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import { BOOKMARK, LIKE } from "src/app/constant/constant";
+import { BOOKMARK, LIKE, POLLING } from "src/app/constant/constant";
 import { InsertThreadActivityReq } from "src/app/dto/thread-activity/insert-thread-activity-req";
 import { InsertThreadDetailsReq } from "src/app/dto/thread-details/insert-thread-details-req";
 import { ShowThreadDetails } from "src/app/dto/thread-details/show-thread-details";
@@ -9,9 +9,11 @@ import { ThreadDetailsDto } from "src/app/dto/thread-details/thread-details-dto"
 import { ShowThreadById } from "src/app/dto/thread/show-thread-by-id";
 import { ShowThreads } from "src/app/dto/thread/show-threads";
 import { ThreadDto } from "src/app/dto/thread/thread-dto";
+import { InsertUserPollingReq } from "src/app/dto/user-polling/insert-user-polling";
 import { ThreadActivityService } from "src/app/service/thread-activity.service";
 import { ThreadDetailsService } from "src/app/service/thread-details.service";
 import { ThreadService } from "src/app/service/thread.service";
+import { UserPollingService } from "src/app/service/user-polling.service";
 
 @Component({
     selector: 'app-thread-detail',
@@ -47,6 +49,9 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
         threadActivityCategory : "",
         isActive : true
     }
+    insertPolling : InsertUserPollingReq = {
+        pollingDetails : ""
+    }
     threadData? : ThreadDto 
     threadDetails : ShowThreadDetails = {} as ShowThreadDetails
     threadDetailsData : ThreadDetailsDto[] = []
@@ -54,6 +59,7 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
     articlesData : ThreadDto[] = []
     subs? : Subscription
     idParam! : string
+    polling : string  = POLLING
     localStorage = JSON.parse(localStorage.getItem('data') || '{}')
     nameUser = this.localStorage.data.username
 
@@ -62,6 +68,7 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
         private threadService : ThreadService, 
         private threadActivityServcie : ThreadActivityService,
         private threadDetailService : ThreadDetailsService,
+        private userPollingService: UserPollingService,
         private router: Router
     ) { }
 
@@ -71,6 +78,7 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
             this.idParam = resultTemp.id 
             this.threadService.getById(this.idParam).subscribe((result) => {
                 this.thread = result
+                
             })
         })
         this.activateRoute.params.subscribe(result => {
@@ -150,6 +158,17 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
             this.insertActivity
             ).subscribe(result => {
                 this.initData()
+        })
+    }
+
+    insertPol(childId : any):void{
+        this.insertPolling.pollingDetails = childId
+        console.log(childId);
+        
+        this.userPollingService.insert(
+            this.insertPolling
+        ).subscribe(result => {
+            this.initData()
         })
     }
 
