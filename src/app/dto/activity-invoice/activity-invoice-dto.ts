@@ -1,5 +1,5 @@
 export interface ActivityInvoiceDto{
-    id? : string
+    id : string
 	user? : string
 	userName? : string
 	activity? : string
@@ -8,4 +8,6 @@ export interface ActivityInvoiceDto{
     isApproved? : boolean
     isActive? : boolean
 	version? : number
+	activityType : string
+	invoiceCode : string
 }

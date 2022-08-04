@@ -8,7 +8,7 @@
         <div class="m-5">
             <p-card >  
                 <h4 class="mb-5">Pending Event Invoices</h4>              
-                <p-table [value]="invoices" responsiveLayout="scroll">
+                <p-table [value]="invoices.data" responsiveLayout="scroll">
                     <ng-template pTemplate="header">
                         <tr>
                             <th>No</th>
@@ -23,16 +23,16 @@
                     <ng-template pTemplate="body" let-i="rowIndex" let-data>
                         <tr>
                             <td>{{i+1}}</td>
-                            <td>{{data.id}}</td>
-                            <td>{{data.username}}</td>
+                            <td>{{data.invoiceCode}}</td>
+                            <td>{{data.userName}}</td>
                             <td>{{data.orderDate}}</td>
                             <td>{{data.amount}}</td>
                             <td>
-                                <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded" (click)="viewImage(data.file)" ></button>                                
+                                <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded" (click)="viewImage('http://localhost:1221/files/' + data.file)" ></button>                                
                             </td>
                             <td class="text-center">
-                                <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-success mr-4"></button>
-                                <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-success mr-4" (click)="onValidate(data.id)"></button>
+                                <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger" (click)="onRejected(data.id)"></button>
                             </td>
                         </tr>
                     </ng-template>

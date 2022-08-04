@@ -21,7 +21,7 @@ export class ActivityInvoiceService{
         return this.http.get<ShowActivityInvoices>(`${BASE_URL}/activity-invoices`)
     }
 
-    getById(id : number) : Observable<ShowActivityInvoiceById> {
+    getById(id : string) : Observable<ShowActivityInvoiceById> {
         return this.http.get<ShowActivityInvoiceById>(`${BASE_URL}/activity-invoices/${id}`)
     }
 
