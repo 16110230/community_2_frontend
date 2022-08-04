@@ -10,6 +10,8 @@ import { ShowUserById } from "../dto/users/show-user-by-id";
 import { ShowUsers } from "../dto/users/show-users";
 import { UpdatePasswordReq } from "../dto/users/update-password-req";
 import { UpdateUserReq } from "../dto/users/update-user-req";
+import { VerificationReqDto } from "../dto/verification-req-dto";
+import { VerificationResDto } from "../dto/verification-res-dto";
 
 @Injectable({
     providedIn: 'root'
@@ -50,4 +52,7 @@ export class UsersService {
         return this.http.put<UpdateResDto>(`${BASE_URL}/users/change-password`, data)
     }
 
+    verification(data : VerificationReqDto) : Observable<VerificationResDto> {
+        return this.http.post<VerificationResDto>(`${BASE_URL}/users/verification`, data)
+    }
 }

@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { AdminModule } from "../admin/admin.module";
+import { ArticleModule } from "./articles/article.module";
 import { MemberRouting } from "./member.routing";
 import { ThreadDetailModule } from "./thread-detail/thread-detail.module";
 
@@ -7,7 +8,8 @@ import { ThreadDetailModule } from "./thread-detail/thread-detail.module";
     imports: [
         MemberRouting,
         AdminModule,
-        ThreadDetailModule
+        ThreadDetailModule,
+        ArticleModule
     ],
 })
 export class MemberModule {}

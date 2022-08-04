@@ -56,4 +56,8 @@ export class ThreadService {
     getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowThreads> {
         return this.http.get<ShowThreads>(`${BASE_URL}/threads/article`)
     }
+
+    getAllNonLogin(): Observable<ShowThreads> {
+        return this.http.get<ShowThreads>(`${BASE_URL}/threads/non-login`)
+    }
 }

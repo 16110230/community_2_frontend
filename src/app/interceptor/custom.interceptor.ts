@@ -36,6 +36,8 @@ export class CustomInterceptor implements HttpInterceptor {
                             localStorage.clear()
                             this.router.navigateByUrl('/login')
                         }
+
+                        localStorage.clear()
                     }
                 }
             }
