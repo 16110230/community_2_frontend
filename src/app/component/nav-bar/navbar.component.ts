@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
             {
                 label: 'Profiles',
                 icon: 'pi pi-fw pi-user',
-                routerLink: '/member/profiles'
+                routerLink: '/home/profiles'
             },
             {
                 label: 'Logout',
@@ -45,15 +45,15 @@ export class NavbarComponent implements OnInit {
         this.items = [
             {
                 label: 'Home',
-                routerLink: '/member'
+                routerLink: '/home'
             },
             {
                 label: 'Articles',
-                routerLink: '/member/articles'
+                routerLink: '/home/articles'
             },
             {
                 label: 'Activities',
-                routerLink: '/member/activities'
+                routerLink: '/home/activities'
             },
             // {
             //     icon: 'pi pi-fw pi-user',
