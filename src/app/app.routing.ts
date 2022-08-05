@@ -23,7 +23,7 @@ const routes: Routes = [
     },
     {
         path: 'admin',
-        canLoad: [AuthAdminGuard, AuthLoginGuard],
+        // canLoad: [AuthAdminGuard, AuthLoginGuard],
         loadChildren: () => import('./page/admin/admin.module').then((m) => m.AdminModule)
     },
     {
@@ -31,9 +31,9 @@ const routes: Routes = [
         component: ForbiddenComponent
     },
     {
-        path : '',
-        redirectTo : '/home',
-        pathMatch : 'full'
+        path: '',
+        redirectTo: '/home',
+        pathMatch: 'full'
     },
     {
         path: '**',
