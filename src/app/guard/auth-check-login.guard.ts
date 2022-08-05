@@ -12,7 +12,7 @@ export class AuthCheckLoginGuard implements CanLoad {
         if(this.loginService.getData()) {
             return true
         } else {
-            this.router.navigateByUrl('/login')
+            this.router.navigateByUrl('/')
             return false
         }
     }

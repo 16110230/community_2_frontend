@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { AuthLoginGuard } from "src/app/guard/auth-login.guard";
 import { MemberProfileActivityComponent } from "./member-profile-activity/activity.component";
 import { MemberProfileChangePassword } from "./member-profile-change-password/member-profile-change-password.component";
 import { MemberProfileEditComponent } from "./member-profile-edit/member-profile-edit.component";
