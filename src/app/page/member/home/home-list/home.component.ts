@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         private router: Router
     ) { }
 
-    ngOnInit(): void {      
+    ngOnInit(): void {
         if(this.data.data.token) this.token = this.data.data.token
         this.initData(this.startPage, this.maxPage)
     }

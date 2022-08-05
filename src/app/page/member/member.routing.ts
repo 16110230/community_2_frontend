@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { NavbarComponent } from "src/app/component/nav-bar/navbar.component";
+import { AuthCheckLoginGuard } from "src/app/guard/auth-check-login.guard";
 
 const routes: Routes = [
     {
@@ -11,6 +12,7 @@ const routes: Routes = [
     {
         path: 'profiles',
         component: NavbarComponent,
+        canLoad: [AuthCheckLoginGuard],
         loadChildren: () => import('./member-profile/member-profile.module').then(m => m.MemberProfileModule)
     },
     {
