@@ -26,6 +26,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     polling: string = POLLING
     buttonDis: boolean = false
     data: any = this.loginService.getData()
+
+
     token?: string
 
     insert: InsertThreadActivityReq = {
@@ -51,6 +53,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit(): void {
+
         if (this.data.data.token) this.token = this.data.data.token
         this.initData(this.startPage, this.maxPage)
     }

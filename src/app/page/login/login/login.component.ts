@@ -23,7 +23,7 @@ export class LoginComponent implements OnDestroy {
         this.loginSubscription = this.loginService.login(this.loginReq)
             .subscribe(result => {
                 this.loginService.saveData(result)
-                this.router.navigateByUrl("/admin")
+                this.router.navigateByUrl("/")
             })
     }
 

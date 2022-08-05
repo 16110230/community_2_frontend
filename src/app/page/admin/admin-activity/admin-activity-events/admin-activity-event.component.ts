@@ -67,7 +67,7 @@ export class AdminActivityEventComponent {
     deleted(): void {
         this.deleteSubs = this.activityService
             .delete(this.isDeleted)
-            .subscribe(result => {
+            .subscribe((_) => {
                 this.initData()
             })
     }
