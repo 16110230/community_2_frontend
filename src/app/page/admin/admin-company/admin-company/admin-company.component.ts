@@ -74,8 +74,8 @@ export class AdminCompanyComponent implements OnDestroy {
         this.deleteSubscription = this.companyService
             .delete(this.isDeleted)
             .subscribe((_) => {
-                this.initData();
-            });
+                this.initData()
+            })
     }
 
     confirm(id: number) {
