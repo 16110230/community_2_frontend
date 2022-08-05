@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { InsertUserReq } from "src/app/dto/users/insert-user-req";
+import { VerificationReqDto } from "src/app/dto/verification-req-dto";
 import { UsersService } from "src/app/service/users.service";
 import { getAccount, getCode, getPersonal } from "src/app/state/app.selector";
 
@@ -21,6 +22,11 @@ export class SignupVerifyComponent implements OnInit {
         company : '',
         position: '',
         industry: '',
+    }
+
+    request : VerificationReqDto = {
+        email : '',
+        code : ''
     }
 
     code : string = ''
@@ -47,9 +53,11 @@ export class SignupVerifyComponent implements OnInit {
     }
 
     submit = () : void => {
-        if(this.code !== this.codeRes) {
-            this.register.verificationCode = this.code
-            this.userService.insert(this.register).subscribe(res => this.router.navigateByUrl('/login'))
-        }
+        this.request.code = this.code
+        this.request.email = this.register.email
+
+        this.userService.verification(this.request).subscribe(res => {
+            this.userService.insert(this.register).subscribe(response => this.router.navigateByUrl('/login'))
+        })
     }
 }

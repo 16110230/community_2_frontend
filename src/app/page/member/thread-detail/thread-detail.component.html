@@ -21,6 +21,19 @@
                         </p>
                     </div>
 
+                    <div *ngIf="thread.data.threadCategoryName == polling">
+                        <div class="flex flex-column " *ngFor="let polling of thread.data.polling?.details">
+                            <button pButton pRipple label={{polling.pollingDetailsName}} type="button" 
+                            class="p-button-rounded p-button-primary flex-grow-1 mt-3"
+                            (click)="insertPol(polling.id)" *ngIf="thread.data.polling!.header.isPolling == false">
+                            </button> 
+                            <button pButton pRipple label={{polling.pollingDetailsName}} type="button" 
+                            class="p-button-rounded p-button-danger flex-grow-1 mt-3"
+                            *ngIf="thread.data.polling!.header.isPolling == true" [disabled]="true">
+                            </button>                                                
+                        </div>
+                    </div>
+
                     <div class="content-card-footer mt-3 px-4">
                         <div class="grid flex flex-row justify-content-between">
                             <div class="activity-left flex flex-row align-items-center">

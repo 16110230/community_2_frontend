@@ -1,5 +1,3 @@
-export interface InsertUserPolling {
-    user : string
+export interface InsertUserPollingReq {
     pollingDetails : string
-    isActive : boolean
 }

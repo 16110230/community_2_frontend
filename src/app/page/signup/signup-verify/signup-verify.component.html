@@ -10,7 +10,7 @@
                 <label for="verify">Verify Your Code</label>
             </div>
             <input class="mt-2" type="text" [ngStyle]="{'width': '100%'}" name="verificationCode" id="verify"
-                pInputText />
+               [(ngModel)]="code" pInputText />
 
             <button class="mt-4" pButton type="submit" [ngStyle]="{'width': '100%'}" label="Submit"></button>
         </form>
