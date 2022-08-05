@@ -7,7 +7,7 @@
     <div class="flex-1">
         <div class="m-5">
             <p-card >  
-                <h4 class="mb-5">Pending Event Invoices</h4>              
+                <h4 class="mb-5">Pending Course Invoices</h4>              
                 <p-table [value]="invoices.data" responsiveLayout="scroll">
                     <ng-template pTemplate="header">
                         <tr>
@@ -32,7 +32,7 @@
                             </td>
                             <td class="text-center">
                                 <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-success mr-4" (click)="onValidate(data.id)"></button>
-                                <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                                <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger" (click)="onRejected(data.id)"></button>
                             </td>
                         </tr>
                     </ng-template>
