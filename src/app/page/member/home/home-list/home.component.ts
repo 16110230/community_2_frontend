@@ -34,8 +34,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         isActive: true
     }
 
-    insertPolling : InsertUserPollingReq = {
-        pollingDetails : ""
+    insertPolling: InsertUserPollingReq = {
+        pollingDetails: ""
     }
 
     subs?: Subscription
@@ -46,18 +46,19 @@ export class HomeComponent implements OnInit, OnDestroy {
         private threadService: ThreadService,
         private threadActivityServcie: ThreadActivityService,
         private userPollingService: UserPollingService,
-        private loginService : LoginService,
+        private loginService: LoginService,
         private router: Router
     ) { }
 
     ngOnInit(): void {
+        if (this.data.data.token) this.token = this.data.data.token
         this.initData(this.startPage, this.maxPage)
     }
 
     ngOnDestroy(): void {
         this.subs?.unsubscribe()
     }
-    
+
     initData(startPage: number, maxPage: number): void {
         if(this.loginService.getData()){
             this.token = this.data.data.token
@@ -71,6 +72,10 @@ export class HomeComponent implements OnInit, OnDestroy {
                 this.threadsData = result.data
             })
         }
+        this.threadService.getAllUser(startPage, maxPage).subscribe((result) => {
+            this.threads = result
+            this.threadsData = result.data
+        })
         this.threadService.getAllArticles().subscribe((result) => {
             this.articles = result
             this.articlesData = result.data
@@ -80,7 +85,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     like(data: string): void {
         this.insert.thread = data
         this.insert.threadActivityCategory = LIKE
-        
+
         this.threadActivityServcie.insert(
             this.insert
         ).subscribe(result => {
@@ -118,10 +123,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         })
     }
 
-    insertPol(childId : any):void{
+    insertPol(childId: any): void {
         this.insertPolling.pollingDetails = childId
         console.log(childId);
-        
+
         this.userPollingService.insert(
             this.insertPolling
         ).subscribe(result => {
@@ -143,7 +148,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.router.navigate([`/member/thread-detail/${id}`])
     }
 
-   
+
     onScroll(): void {
         this.initData(this.startPage, this.maxPage)
         this.maxPage += this.maxPage
