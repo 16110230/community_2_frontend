@@ -21,6 +21,10 @@ export class ActivityInvoiceService{
         return this.http.get<ShowActivityInvoices>(`${BASE_URL}/activity-invoices`)
     }
 
+    getAllByType(startPage: number, maxPage: number, code : string) : Observable<ShowActivityInvoices> {
+        return this.http.get<ShowActivityInvoices>(`${BASE_URL}/activity-invoices/type?code=${code}&startPage=${startPage}&maxPage=${maxPage}`)
+    }
+
     getById(id : string) : Observable<ShowActivityInvoiceById> {
         return this.http.get<ShowActivityInvoiceById>(`${BASE_URL}/activity-invoices/${id}`)
     }

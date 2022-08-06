@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 import { ConfirmationService } from "primeng/api";
 import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 import { Subscription } from "rxjs";
-import { COURSE, EVENT } from "src/app/constant/constant";
+import { COURSE } from "src/app/constant/constant";
 import { ShowActivities } from "src/app/dto/activity/show-activities";
 import { ActivityService } from "src/app/service/activity.service";
 
@@ -55,7 +55,6 @@ export class AdminActivityCourseComponent {
                 this.activities.data = resultData.data
                 this.loading = false
                 this.totalData = resultData.countData
-                console.log(result)
             },
         )
     }
@@ -67,7 +66,7 @@ export class AdminActivityCourseComponent {
     deleted(): void {
         this.deleteSubs = this.activityService
             .delete(this.isDeleted)
-            .subscribe(result => {
+            .subscribe((_) => {
                 this.initData()
             })
     }
