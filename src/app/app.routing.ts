@@ -11,6 +11,7 @@ import { NotFoundComponent } from "./page/not-found/not-found.component";
 const routes: Routes = [
     {
         path: 'home',
+        canLoad: [AuthLoginGuard],
         loadChildren: () => import('./page/member/member.module').then(m => m.MemberModule)
     },
     {

@@ -180,7 +180,7 @@ table {
 
 .photo-profile {
   /* min-width: 200px; */
-  max-width: 150px;
+  max-width: 100px;
   aspect-ratio: 1/1;
   border-radius: 50%;
   overflow: hidden;
@@ -237,4 +237,16 @@ table {
 
 a {
   text-decoration: none;
+}
+
+.profile-header > span {
+  font-size: 14px;
+}
+
+.profile-body > span {
+  font-size : 13px;
+}
+
+.sidebar-profile > span {
+  font-size: 13px;
 }
