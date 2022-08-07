@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { NavbarComponent } from "src/app/component/nav-bar/navbar.component";
+import { AuthAdminGuard } from "src/app/guard/auth-admin.guard";
 import { AuthCheckLoginGuard } from "src/app/guard/auth-check-login.guard";
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
     {
         path: 'activities',
         component: NavbarComponent,
+        canLoad: [AuthAdminGuard],
         loadChildren: () => import('./activity/activity.module').then(m => m.ActivityModule)
     },
     {

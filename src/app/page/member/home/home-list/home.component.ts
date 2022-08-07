@@ -26,9 +26,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     polling: string = POLLING
     buttonDis: boolean = false
     data: any = this.loginService.getData()
-
-
-    token?: string
+    token? : string = ""
 
     insert: InsertThreadActivityReq = {
         thread: "",
@@ -53,7 +51,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit(): void {
-
         if (this.data.data.token) this.token = this.data.data.token
         this.initData(this.startPage, this.maxPage)
     }
@@ -63,6 +60,18 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     initData(startPage: number, maxPage: number): void {
+        if(this.loginService.getData()){
+            this.token = this.data.data.token
+            this.threadService.getAllUser(startPage, maxPage).subscribe((result) => { 
+                this.threads = result
+                this.threadsData = result.data
+            })
+        }else{
+            this.threadService.getAllNoLogin(startPage, maxPage).subscribe((result) => { 
+                this.threads = result
+                this.threadsData = result.data
+            })
+        }
         this.threadService.getAllUser(startPage, maxPage).subscribe((result) => {
             this.threads = result
             this.threadsData = result.data
@@ -136,7 +145,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     toDetail(id: string) {
-        this.router.navigate([`/member/thread-detail/${id}`])
+        this.router.navigateByUrl(`/home/thread-detail/${id}`)
     }
 
 
@@ -144,6 +153,4 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.initData(this.startPage, this.maxPage)
         this.maxPage += this.maxPage
     }
-
-
 }

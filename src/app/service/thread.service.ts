@@ -25,6 +25,10 @@ export class ThreadService {
         return this.http.get<ShowThreads>(`${BASE_URL}/threads?startPage=${startPage}&maxPage=${maxPage}`)
     }
 
+    getAllNoLogin(startPage: number, maxPage: number): Observable<ShowThreads> {
+        return this.http.get<ShowThreads>(`${BASE_URL}/threads/non-login/?startPage=${startPage}&maxPage=${maxPage}`)
+    }
+
     getAllArticles(): Observable<ShowThreads> {
         return this.http.get<ShowThreads>(`${BASE_URL}/threads/article`)
     }
@@ -56,11 +60,12 @@ export class ThreadService {
     getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowThreads> {
         return this.http.get<ShowThreads>(`${BASE_URL}/threads?startPage=${startPage}&maxPage=${maxPage}`)
     }
+    
     getAllThreadArticleWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowThreads> {
         return this.http.get<ShowThreads>(`${BASE_URL}/threads/articles?startPage=${startPage}&maxPage=${maxPage}`)
     }
 
-    getAllNonLogin(): Observable<ShowThreads> {
-        return this.http.get<ShowThreads>(`${BASE_URL}/threads/non-login`)
+    getAllProfile(startPage : number, maxPage : number) : Observable<ShowThreads> {
+        return this.http.get<ShowThreads>(`${BASE_URL}/threads/profile?startPage=${startPage}&maxPage=${maxPage}`)
     }
 }

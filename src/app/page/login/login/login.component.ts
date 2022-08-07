@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
+import { ADMIN, MEMBER } from "src/app/constant/constant";
 import { LoginReqDto } from "src/app/dto/login-req-dto";
 import { LoginService } from "src/app/service/login.service";
 
@@ -23,7 +24,11 @@ export class LoginComponent implements OnDestroy {
         this.loginSubscription = this.loginService.login(this.loginReq)
             .subscribe(result => {
                 this.loginService.saveData(result)
-                this.router.navigateByUrl("/")
+                if(result.data.roleCode === ADMIN) {
+                    this.router.navigateByUrl('/admin')
+                } else if(result.data.roleCode === MEMBER) {
+                    this.router.navigateByUrl('/')
+                }
             })
     }
 

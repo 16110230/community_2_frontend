@@ -14,9 +14,6 @@ export class AuthLoginGuard implements CanLoad {
        if(this.loginService.getData()?.data.roleCode === ADMIN){
             this.router.navigateByUrl('/admin') 
             return false
-        } else if(this.loginService.getData()?.data.roleCode === MEMBER) {
-            this.router.navigateByUrl('/')
-            return false
         } else {
             return true
        }
