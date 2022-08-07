@@ -18,9 +18,9 @@
                 <form (ngSubmit)="submit()">
                     <div class="flex justify-content-center align-items-end">
                         <div class="photo-profile">
-                            <img *ngIf="profilePic === null" src="../../../../../assets/img/blank-profile.jpg"
+                            <img *ngIf="user.data.file === null" src="../../../../../assets/img/blank-profile.jpg"
                                 alt="">
-                            <img *ngIf="profilePic !== null" src="{{profilePic}}" alt="">
+                            <img *ngIf="user.data.file !== null" src="{{profilePic}}" alt="">
                         </div>
                         <div class="inline">
                             <p-fileUpload #fubauto styleClass="my-3 p-button-rounded p-button-text p-button-sm" mode="basic" name="file" 

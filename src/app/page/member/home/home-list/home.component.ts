@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     reguler: string = REGULAR
     polling: string = POLLING
     buttonDis: boolean = false
-    data: any = this.loginService.getData()
+    data?: any = this.loginService.getData()
 
 
     token?: string
@@ -136,7 +136,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     toDetail(id: string) {
-        this.router.navigate([`/member/thread-detail/${id}`])
+        this.router.navigateByUrl(`/home/thread-detail/${id}`)
     }
 
 

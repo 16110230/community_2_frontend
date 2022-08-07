@@ -63,4 +63,8 @@ export class ThreadService {
     getAllNonLogin(): Observable<ShowThreads> {
         return this.http.get<ShowThreads>(`${BASE_URL}/threads/non-login`)
     }
+
+    getAllProfile(startPage : number, maxPage : number) : Observable<ShowThreads> {
+        return this.http.get<ShowThreads>(`${BASE_URL}/threads/profile?startPage=${startPage}&maxPage=${maxPage}`)
+    }
 }

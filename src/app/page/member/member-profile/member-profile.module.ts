@@ -20,6 +20,8 @@ import { MemberProfileEditComponent } from "./member-profile-edit/member-profile
 import { MemberProfileChangePassword } from "./member-profile-change-password/member-profile-change-password.component";
 import { MemberProfileActivityComponent } from "./member-profile-activity/activity.component";
 import { MemberProfileTransactionComponent } from "./member-profile-transaction/transaction.component";
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
+import { HomeModule } from "../home/home.module";
 
 @NgModule({
     imports: [
@@ -37,7 +39,9 @@ import { MemberProfileTransactionComponent } from "./member-profile-transaction/
         CheckboxModule,
         FileUploadModule,
         HttpClientModule,
-        MemberProfileRouting
+        MemberProfileRouting,
+        HomeModule,
+        InfiniteScrollModule
     ],
     declarations: [
         MemberProfileComponent,
