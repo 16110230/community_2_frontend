@@ -60,7 +60,12 @@ export class ThreadService {
     getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowThreads> {
         return this.http.get<ShowThreads>(`${BASE_URL}/threads?startPage=${startPage}&maxPage=${maxPage}`)
     }
+    
     getAllThreadArticleWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowThreads> {
         return this.http.get<ShowThreads>(`${BASE_URL}/threads/articles?startPage=${startPage}&maxPage=${maxPage}`)
+    }
+
+    getAllProfile(startPage : number, maxPage : number) : Observable<ShowThreads> {
+        return this.http.get<ShowThreads>(`${BASE_URL}/threads/profile?startPage=${startPage}&maxPage=${maxPage}`)
     }
 }

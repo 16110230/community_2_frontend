@@ -145,7 +145,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     toDetail(id: string) {
-        this.router.navigate([`/member/thread-detail/${id}`])
+        this.router.navigateByUrl(`/home/thread-detail/${id}`)
     }
 
 
@@ -153,6 +153,4 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.initData(this.startPage, this.maxPage)
         this.maxPage += this.maxPage
     }
-
-
 }

@@ -3,6 +3,7 @@ import { ArticleListComponent } from "./article-list/article-list.component";
 import { ArticleRouting } from "./article.routing";
 import { CardModule } from "primeng/card";
 import { CommonModule } from "@angular/common";
+import { ArticleDetailComponent } from "./article-detail/article-detail.component";
 
 @NgModule({
     imports: [
@@ -11,10 +12,12 @@ import { CommonModule } from "@angular/common";
         CommonModule
     ],
     declarations: [
-        ArticleListComponent
+        ArticleListComponent,
+        ArticleDetailComponent
     ],
     exports: [
-        ArticleListComponent
+        ArticleListComponent,
+        ArticleDetailComponent
     ]
 })
 export class ArticleModule {}
