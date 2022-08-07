@@ -88,4 +88,8 @@ export class AdminActivityEventComponent {
         this.activitiesSub?.unsubscribe()
         this.deleteSubs?.unsubscribe()
     }
+
+    goTo(id: number) {
+        this.router.navigate([`admin/activity/event/detail/${id}`])
+    }
 }
