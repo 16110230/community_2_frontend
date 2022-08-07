@@ -60,6 +60,6 @@ export class ActivityListComponent implements OnInit, OnDestroy {
     }
 
     onById(id : string) : void {
-        this.router.navigateByUrl(`/member/articles/details/${id}`)
+        this.router.navigateByUrl(`/home/activities/details/${id}`)
     }
 }
