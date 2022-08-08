@@ -4,11 +4,14 @@ import { FormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 import { CardModule } from "primeng/card";
 import { DropdownModule } from "primeng/dropdown";
+import { FileUploadModule } from "primeng/fileupload";
 import { InputTextModule } from "primeng/inputtext";
 import { MenuModule } from "primeng/menu";
 import { SidebarModule } from "primeng/sidebar";
 import { TableModule } from "primeng/table";
+import { Subscriber } from "rxjs";
 import { SharedModule } from "src/app/component/shared.module";
+import { SubscriptionDetailComponent } from "./subscription-detail/subscription-detail.component";
 import { SubscriptionRouting } from "./subscription.routing";
 import { SubscriptionComponent } from "./subscription/subscription.component";
 
@@ -24,13 +27,16 @@ import { SubscriptionComponent } from "./subscription/subscription.component";
         SidebarModule,
         MenuModule,
         TableModule,
+        FileUploadModule,
         SubscriptionRouting
     ],
     declarations: [
-        SubscriptionComponent
+        SubscriptionComponent,
+        SubscriptionDetailComponent
     ],
     exports: [
-        SubscriptionComponent
+        SubscriptionComponent,
+        SubscriptionDetailComponent
     ]
 })
 export class SubscriptionModule { }

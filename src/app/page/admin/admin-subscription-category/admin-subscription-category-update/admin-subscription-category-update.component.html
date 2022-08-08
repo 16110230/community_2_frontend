@@ -1,0 +1,51 @@
+<div class="flex flex-row bg-blue-custom">
+    <div id="menu-side-custom" class="flex">
+        <side-bar-custom></side-bar-custom>
+    </div>
+    
+    <!-- end of sidebar -->
+    <div class="flex-1">
+        <div class="m-5">
+            <p-card >  
+               <div class="grid mb-2">
+                    <div>
+                        <button pButton pRipple type="button" icon="pi pi-arrow-left" class="p-button-rounded p-button-success" (click)="goTo()"></button>
+                    </div>
+                </div>    
+                <div class="grid mb-5">
+                    <div class="col-10">
+                        <h4 >Update Company</h4>
+                    </div>
+                    <div class="col-2"></div>                                            
+                </div>              
+
+                <!-- update form -->
+                <form class="mb-5" (ngSubmit)="onUpdate()">
+                    <div class="grid">                        
+                        <div class="col-12">
+                            <label for="description">Description</label>                            
+                            <textarea class="w-full" type="text"  name="description" id="description" pInputText [(ngModel)]="update.description" ></textarea>
+                        </div>
+                        <div class="col-6">
+                            <label for="price">Price</label>                            
+                            <input class="w-full" type="text"  name="price" id="price" pInputText [(ngModel)]="update.price" />
+                        </div>
+                        <div class="col-6">
+                            <label for="duration">Duration</label>                            
+                            <input class="w-full" type="text"  name="duration" id="duration" pInputText [(ngModel)]="update.duration" />
+                        </div>
+                        <div class="col-12">   
+                            <label for="isActive">Active</label> <br>                         
+                            <input type="checkbox" name="isActive" id="" [(ngModel)]="update.isActive" >
+                        </div>
+                        <div class="col-12 justify-content-bottom">
+                            <button pButton pRipple type="submit" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>                            
+                        </div>
+                    </div>
+                </form>                                                                            
+            </p-card>
+            
+        </div> 
+    </div>
+</div>
+

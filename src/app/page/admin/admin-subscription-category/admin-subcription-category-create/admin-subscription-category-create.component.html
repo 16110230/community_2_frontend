@@ -1,0 +1,51 @@
+<div class="flex flex-row bg-blue-custom">
+    <div id="menu-side-custom" class="flex">
+        <side-bar-custom></side-bar-custom>
+    </div>
+    
+    <!-- end of sidebar -->
+    <div class="flex-1">
+        <div class="m-5">
+            <p-card >
+                <div class="grid mb-2">
+                    <div>
+                        <button pButton pRipple type="button" icon="pi pi-arrow-left" class="p-button-rounded p-button-success" (click)="goTo()"></button>
+                    </div>
+                </div>    
+                <div class="grid mb-5">
+                    <div class="col-10">
+                        <h4 >Create Subscription Category</h4>
+                    </div>
+                    <div class="col-2"></div>                                            
+                </div>
+
+                <!-- insert form -->
+                <form class="mb-5" (ngSubmit)="onSubmit()">
+                    <div class="grid">
+                        <div class="col-12">
+                            <label for="description">Description</label>                            
+                            <textarea class="w-full" type="text"  name="description" id="description" pInputTextarea [(ngModel)]="insert.description" ></textarea>
+                        </div>
+                        <div class="col-6">
+                            <label for="price">Price</label>                            
+                            <input class="w-full" type="number"  name="price" id="price" pInputText [(ngModel)]="insert.price" />
+                        </div>
+                        <div class="col-6">  
+                            <label for="duration">Duration</label> <br>                         
+                            <input class="w-full" type="number" name="duration" id="duration" pInputText [(ngModel)]="insert.duration" >
+                        </div>
+                        <div class="col-12">  
+                            <label for="isActive">Active</label> <br>                         
+                            <input type="checkbox" name="isActive" id="" [(ngModel)]="insert.isActive" >
+                        </div>                                                        
+                        <div class="col-6 justify-content-bottom">
+                            <button pButton pRipple type="submit" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>                            
+                        </div>
+                    </div>
+                </form>                                                                                           
+            </p-card>
+            
+        </div> 
+    </div>
+</div>
+
