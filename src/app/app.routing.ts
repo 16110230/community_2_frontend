@@ -11,11 +11,12 @@ import { NotFoundComponent } from "./page/not-found/not-found.component";
 const routes: Routes = [
     {
         path: 'home',
+        canLoad: [AuthLoginGuard],
         loadChildren: () => import('./page/member/member.module').then(m => m.MemberModule)
     },
     {
         path: 'login',
-        canLoad: [AuthLoginGuard],
+        // canLoad: [AuthLoginGuard],
         loadChildren: () => import('./page/login/login.module').then(m => m.LoginModule)
     },
     {
@@ -24,7 +25,6 @@ const routes: Routes = [
     },
     {
         path: 'admin',
-
         canLoad: [AuthAdminGuard],
         loadChildren: () => import('./page/admin/admin.module').then((m) => m.AdminModule)
     },

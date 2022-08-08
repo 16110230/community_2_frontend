@@ -6,15 +6,15 @@
         </div>
     </div>
 
-    <div class="grid px-7 pt-5">
+    <div class="grid px-7 pt-2">
         <div class="lg:col-9 xs:col-12">
-            <button pButton pRipple class="p-button-sm p-button-rounded p-button-info mb-3" label="Thread" routerLink="/member/create">
+            <button pButton pRipple class="p-button-sm p-button-rounded p-button-info mb-2" label="Thread" routerLink="/member/create">
                 <i class="pi pi-plus mr-2"></i>
             </button>
             <div>
                 <div class="content-home">
                     <div *ngFor="let data of threadsData">
-                        <p-card styleClass="mb-3 " *ngIf="data.threadCategoryName === reguler">
+                        <p-card styleClass="mb-3" *ngIf="data.threadCategoryName === reguler">
                             <div class="content-card-header flex flex-row px-4 mb-3">
                                 <img class="content-card-header-pic"
                                     src="https://image.tmdb.org/t/p/w235_and_h235_face/6wsOvUn9YewNZ3IEEBWfiDVTYOc.jpg"
@@ -172,8 +172,10 @@
 
         <div class="col-3">
             <div class="grid">
-                <div class="title mb-4">
-                    <span>Articles</span>
+                <div class="col-12">
+                    <div class="title mb-2">
+                        <span>Articles</span>
+                    </div>
                 </div>
                 <div class="col-12 p-0 mb-2" *ngFor="let data of articlesData">
                     <div class="article-card">

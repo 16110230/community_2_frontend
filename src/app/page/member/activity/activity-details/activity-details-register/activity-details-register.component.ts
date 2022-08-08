@@ -62,7 +62,7 @@ export class ActivityDetailsRegisterComponent {
     }
 
     submit = (): void => {
-        this.activityInvoiceService.insert(this.invoice).subscribe(() => this.router.navigateByUrl('/member/activities'))
+        this.activityInvoiceService.insert(this.invoice).subscribe(() => this.router.navigateByUrl('/home/activities'))
     }
 
     ngOnInit(): void {
