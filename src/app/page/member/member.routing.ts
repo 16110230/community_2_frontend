@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { NavbarComponent } from "src/app/component/nav-bar/navbar.component";
 import { AuthAdminGuard } from "src/app/guard/auth-admin.guard";
 import { AuthCheckLoginGuard } from "src/app/guard/auth-check-login.guard";
+import { AuthLoginGuard } from "src/app/guard/auth-login.guard";
 
 const routes: Routes = [
     {
@@ -13,7 +14,7 @@ const routes: Routes = [
     {
         path: 'profiles',
         component: NavbarComponent,
-        canLoad: [AuthCheckLoginGuard],
+        canLoad: [AuthLoginGuard],
         loadChildren: () => import('./member-profile/member-profile.module').then(m => m.MemberProfileModule)
     },
     {
@@ -24,7 +25,7 @@ const routes: Routes = [
     {
         path: 'activities',
         component: NavbarComponent,
-        canLoad: [AuthAdminGuard],
+        canLoad: [AuthLoginGuard],
         loadChildren: () => import('./activity/activity.module').then(m => m.ActivityModule)
     },
     {
