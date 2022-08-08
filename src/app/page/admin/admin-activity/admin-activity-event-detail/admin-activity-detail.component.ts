@@ -54,8 +54,6 @@ export class AdminActivityEventDetailComponent {
                 },
             )
         })
-
-
     }
 
     ngOnInit() {
