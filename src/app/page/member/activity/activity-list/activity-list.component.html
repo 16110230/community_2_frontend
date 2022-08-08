@@ -27,7 +27,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-row justify-content-center">
+                <div class="flex flex-row justify-content-between">
+                    <button pButton pRipple type="button" (click)="clear()" class="p-button-sm p-button-text p-button-info mt-3 px-2" label="Clear"></button>
                     <button pButton pRipple type="button" (click)="filter()" class="p-button-sm p-button-success mt-3" label="Apply"></button>
                 </div>
             </div>
@@ -44,7 +45,7 @@
                                 <img *ngIf="data.file" class="article-pic mb-3" [src]="'http://localhost:1221/files/' + data.file" alt="article-header-pic">
                                 <img *ngIf="!data.file" class="article-pic mb-3" src="../../../../../assets/img/default-picture.jpg" alt="article-header-pic">
                                 <div class="article-card-header-title px-3">
-                                    <h4>{{data.activityTitle}}</h4>
+                                    <h4 class="white-space-nowrap overflow-hidden text-overflow-ellipsis" style="width:270px">{{data.activityTitle}}</h4>
                                 </div>
                                 
                             </div>
@@ -58,11 +59,11 @@
                                 </div>
                             </div>
                             <div class="article-card-content px-3 py-2 grid flex flex-row lg:justify-content-between">
-                                <p class="lg:col sm:col-12 p-0">
+                                <p>
                                     <i class="icon-activity pi pi-clock"></i>
                                     {{data.startedAt | date : 'h:mm'}} - {{data.endedAt| date : 'h:mm'}}
                                 </p>
-                                <p class="lg:col sm:col-12 p-0">
+                                <p>
                                     <i class="icon-activity pi pi-money-bill"></i>
                                     {{data.fee | currency: "Rp":"symbol":"3.0"}}
                                 </p>
