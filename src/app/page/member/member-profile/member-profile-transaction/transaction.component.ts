@@ -16,7 +16,7 @@ export class MemberProfileTransactionComponent implements OnInit, OnDestroy {
     constructor(
         private router: Router,
         private userService: UsersService,
-        private activityInvoice: ActivityInvoiceService
+        private activityInvoiceService: ActivityInvoiceService
     ) { }
 
     profSubs?: Subscription
@@ -77,12 +77,12 @@ export class MemberProfileTransactionComponent implements OnInit, OnDestroy {
         this.invoiceStartpage = startPage
         this.invoiceMaxPage = maxPage
 
-        this.invoiceSub = this.activityInvoice.getByIdUserId(startPage, maxPage).subscribe(
+        this.invoiceSub = this.activityInvoiceService.getByIdUserId(startPage, maxPage).subscribe(
             result => {
                 const resultData: any = result
                 this.invoices.data = resultData.data
                 this.invoiceLoading = false
-                this.invoiceTotalData = resultData.count
+                this.invoiceTotalData = resultData.countData
             },
         )
     }
@@ -100,7 +100,7 @@ export class MemberProfileTransactionComponent implements OnInit, OnDestroy {
     // invoice activity
     getInvoiceData(invoiceStartpage: number, invoiceMaxPage: number) {
 
-        this.invoiceSub = this.activityInvoice.getByIdUserId(invoiceStartpage, invoiceMaxPage).subscribe(
+        this.invoiceSub = this.activityInvoiceService.getByIdUserId(invoiceStartpage, invoiceMaxPage).subscribe(
             result => {
                 const resultData: any = result
                 this.invoices.data = resultData.data

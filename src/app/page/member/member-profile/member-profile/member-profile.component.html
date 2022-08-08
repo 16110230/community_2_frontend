@@ -132,9 +132,9 @@
                     <div infinite-scroll (scrolled)="onScrollBookmark()">
                         <p-card styleClass="mb-3" *ngFor="let data of bookmarkThreads.data">
                             <div class="content-card-header flex flex-row px-4 mb-3">
-                                <img class="content-card-header-pic" *ngIf="user.data.file === null"
+                                <img class="content-card-header-pic" *ngIf="data.userFile === null"
                                     src="../../../../../assets/img/blank-profile.jpg" alt="">
-                                <img class="content-card-header-pic" *ngIf="user.data.file !== null" src="{{profilePic}}"
+                                <img class="content-card-header-pic" *ngIf="data.userFile !== null" src="{{data.userFile}}"
                                     alt="">
                                 <div class="content-card-header-dtl ml-3 flex flex-column justify-content-center">
                                     <div class="header-details mt-3">
@@ -182,10 +182,10 @@
                     <div infinite-scroll (scrolled)="onScrollLike()">
                         <p-card styleClass="mb-3" *ngFor="let data of likeThreads.data">
                             <div class="content-card-header flex flex-row px-4 mb-3">
-                                <img class="content-card-header-pic" *ngIf="user.data.file === null"
+                                <img class="content-card-header-pic" *ngIf="data.userFile === null"
                                     src="../../../../../assets/img/blank-profile.jpg" alt="">
-                                <img class="content-card-header-pic" *ngIf="user.data.file !== null" src="{{profilePic}}"
-                                    alt="">
+                                <img class="content-card-header-pic" *ngIf="data.userFile !== null" src="{{data.userFile}}" alt="">
+                                
                                 <div class="content-card-header-dtl ml-3 flex flex-column justify-content-center">
                                     <div class="header-details mt-3">
                                         <h4>{{data.threadTitle}}</h4>
