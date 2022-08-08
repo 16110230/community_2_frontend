@@ -154,15 +154,15 @@ export class MemberProfileComponent implements OnInit, OnDestroy {
         })
     }
 
-    onScroll(): void {
-        // this.initData(this.startPage, this.maxPage)
-        // this.maxPage += this.maxPage
+    // thread
+    onScrollThread(): void {
+        this.initData(this.startPage, this.maxPage)
+        this.maxPage += this.maxPage
     }
+    //----------------------------
 
     // bookmark
     getBookmarkData(bookmarkStartPage: number = this.bookmarkStartPage, bookamrkMaxPage: number = this.bookmarkMaxPage): void {
-        this.bookmarkStartPage = bookmarkStartPage
-        this.bookmarkMaxPage = bookamrkMaxPage
 
         this.bookmarkThreadSub = this.threadService.getByBookmark(bookmarkStartPage, bookamrkMaxPage).subscribe(
             result => {
@@ -176,20 +176,19 @@ export class MemberProfileComponent implements OnInit, OnDestroy {
     onScrollBookmark(): void {
         this.getBookmarkData(this.bookmarkStartPage, this.bookmarkMaxPage)
         this.bookmarkMaxPage += this.bookmarkMaxPage
+
     }
     //----------------------
 
     // like
     getLikeData(likeStartPage: number = this.likeStartPage, likeMaxPage: number = this.likeMaxPage): void {
-        this.likeStartPage = likeStartPage
-        this.likeMaxPage = likeMaxPage
 
         this.likeThreadSub = this.threadService.getByLike(likeStartPage, likeMaxPage).subscribe(
             result => {
                 const resultData: any = result
                 this.likeThreads.data = resultData.data
                 this.likeTotalData = resultData.count
-            },
+            }
         )
     }
 
