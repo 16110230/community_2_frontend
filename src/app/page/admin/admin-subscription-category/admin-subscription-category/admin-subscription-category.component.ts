@@ -1,17 +1,23 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
-import { LazyLoadEvent } from "primeng/api";
+import { ConfirmationService, LazyLoadEvent } from "primeng/api";
 import { Subscription } from "rxjs";
 import { ShowSubsCategories } from "src/app/dto/subs-category/show-subs-categories";
 import { SubsCategoryService } from "src/app/service/subs-category.service";
 
 @Component({
-    selector: "app-member-subscribtion",
-    templateUrl: "./subscription.component.html",
-    styleUrls: ["../subscription.style.css"]
+    selector: "app-subscription-category",
+    templateUrl: "./admin-subscription-category.component.html",
+    providers : [
+        ConfirmationService
+    ]
 })
-export class SubscriptionComponent implements OnInit, OnDestroy {
-    constructor(private subsCategoryService : SubsCategoryService, private router : Router) {}
+export class AdminSubscriptionCategoryComponent implements OnDestroy {
+    constructor(
+        private confirmationService: ConfirmationService,
+        private subsCategoryService: SubsCategoryService,
+        private router: Router
+    ) { }
 
     startPage: number = 0
     maxPage: number = 5
@@ -21,6 +27,8 @@ export class SubscriptionComponent implements OnInit, OnDestroy {
 
     subsCategories: ShowSubsCategories = {} as ShowSubsCategories
     subscriptionCategoriesSub?: Subscription
+    deleteSubs?: Subscription
+    isDeleted!: number
 
     initData(): void {
         this.subsCategoryService.getAllWithPagination(this.startPage, this.maxPage, this.query).subscribe(result => {
@@ -48,26 +56,38 @@ export class SubscriptionComponent implements OnInit, OnDestroy {
         )
     }
 
-    ngOnInit(): void {
-        this.initData()
+    goTo() {
+        this.router.navigate(['/admin/subscription-category/create'])
+    }
+    editAt(id: number) {
+        this.router.navigate([`/admin/subscription-category/update/${id}`])
     }
 
-    ngOnDestroy(): void {
+    onDelete(id: number) {
+        this.isDeleted = id
+    }
+
+    deleted(): void {
+        this.deleteSubs = this.subsCategoryService
+            .delete(this.isDeleted)
+            .subscribe(result => {
+                this.initData()
+            })
+    }
+
+    confirm(id: number) {
+        this.isDeleted = id
+        this.confirmationService.confirm({
+            message: 'Are you sure that you want to proceed?',
+            header: 'Confirmation',
+            icon: 'pi pi-exclamation-triangle',
+            accept: () => {
+                this.deleted()
+            }
+        });
+    }
+
+    ngOnDestroy() {
         this.subscriptionCategoriesSub?.unsubscribe()
-    }
-
-    convert(duration : number) : string {
-        let result : string
-
-        if (duration < 365) {
-            return result = `${duration/30} Month` 
-        } else {
-            const year : number = duration/365
-            return result = `${year} Year`
-        }
-    }
-
-    onById(id : string) : void {
-        this.router.navigateByUrl(`/home/subscriptions/details/${id}`)
     }
 }

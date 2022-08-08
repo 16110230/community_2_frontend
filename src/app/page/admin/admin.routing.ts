@@ -55,6 +55,10 @@ const routes: Routes = [
         path: 'thread-category',
         loadChildren: () => import('./admin-thread-category/admin-thread-category.module').then((m) => m.AdminThreadCategoryModule)
     },
+    {
+        path: 'subscription-category',
+        loadChildren: () => import('./admin-subscription-category/admin-subscription-category.module').then((m) => m.AdminSubscriptionCategoryModule)
+    }
 
 ]
 

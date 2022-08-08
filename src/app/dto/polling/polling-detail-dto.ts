@@ -1,7 +1,8 @@
 export interface PollingDetailDto{
-    id? : string
-	polling? : string
-	pollingDetailsName? : string
-	version? : number
-	isActive? : boolean
+    id : string
+	polling : string
+	pollingDetailsName : string
+	version : number
+	isActive : boolean
+	countVote : number
 }

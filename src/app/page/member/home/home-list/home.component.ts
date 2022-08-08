@@ -27,6 +27,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     buttonDis: boolean = false
     data: any = this.loginService.getData()
     token? : string = ""
+    isPremium : boolean = false
+    isLogin : boolean = false
 
     insert: InsertThreadActivityReq = {
         thread: "",
@@ -41,6 +43,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     subs?: Subscription
     startPage: number = 0
     maxPage: number = 3
+    imageSource = ""
+    imageViewFull = false
 
     constructor(
         private threadService: ThreadService,
@@ -51,7 +55,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit(): void {
-        if (this.loginService.getData()) this.token = this.data.data.token
+        if (this.loginService.getData()) {
+            this.token = this.data.data.token
+            this.isPremium = this.data.data.prem 
+            this.isLogin = true 
+        } 
         this.initData(this.startPage, this.maxPage)
     }
 
@@ -86,41 +94,52 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.insert.thread = data
         this.insert.threadActivityCategory = LIKE
 
-        this.threadActivityServcie.insert(
-            this.insert
-        ).subscribe(result => {
-            this.initData(this.startPage, this.maxPage)
-        })
+        if(this.isLogin) {
+            this.threadActivityServcie.insert(
+                this.insert
+            ).subscribe(result => {
+                this.initData(this.startPage, this.maxPage)
+            })
+        }
     }
 
     unlike(data: string): void {
         this.insert.thread = data
         this.insert.threadActivityCategory = LIKE
-        this.threadActivityServcie.deleteByThreadId(
-            this.insert
-        ).subscribe(result => {
-            this.initData(this.startPage, this.maxPage)
-        })
+
+        if(this.isLogin) {
+            this.threadActivityServcie.deleteByThreadId(
+                this.insert
+            ).subscribe(result => {
+                this.initData(this.startPage, this.maxPage)
+            })
+        }
     }
 
     bookmark(data: string): void {
         this.insert.thread = data
         this.insert.threadActivityCategory = BOOKMARK
-        this.threadActivityServcie.insert(
-            this.insert
-        ).subscribe(result => {
-            this.initData(this.startPage, this.maxPage)
-        })
+
+        if(this.isLogin) {
+            this.threadActivityServcie.insert(
+                this.insert
+            ).subscribe(result => {
+                this.initData(this.startPage, this.maxPage)
+            })
+        }
     }
 
     unBookmark(data: string): void {
         this.insert.thread = data
         this.insert.threadActivityCategory = BOOKMARK
-        this.threadActivityServcie.deleteByThreadId(
-            this.insert
-        ).subscribe(result => {
-            this.initData(this.startPage, this.maxPage)
-        })
+
+        if(this.isLogin) {
+            this.threadActivityServcie.deleteByThreadId(
+                this.insert
+            ).subscribe(result => {
+                this.initData(this.startPage, this.maxPage)
+            })
+        }
     }
 
     insertPol(childId: any): void {
@@ -152,5 +171,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     onScroll(): void {
         this.initData(this.startPage, this.maxPage)
         this.maxPage += this.maxPage
+    }
+
+    goToSubscription = () : void => {
+        this.router.navigateByUrl('/home/subscriptions')
+    }
+
+    viewImage(src: string) {
+        this.imageViewFull = !this.imageViewFull
+        this.imageSource = src
+    }
+
+    closeViewImage() {
+        this.imageSource = ""
+        this.imageViewFull = !this.imageViewFull
     }
 }

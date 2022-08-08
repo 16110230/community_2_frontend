@@ -3,6 +3,6 @@ export interface InsertSubscriptionReq {
     isApproved : string
     subscriptionCategory : string
     isActive : boolean
-    fileName : string
-    fileExt : string
+    fileName? : string
+    fileExt? : string
 }
