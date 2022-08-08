@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit(): void {
-        if (this.data.data.token) this.token = this.data.data.token
+        if (this.loginService.getData()) this.token = this.data.data.token
         this.initData(this.startPage, this.maxPage)
     }
 
@@ -72,10 +72,10 @@ export class HomeComponent implements OnInit, OnDestroy {
                 this.threadsData = result.data
             })
         }
-        this.threadService.getAllUser(startPage, maxPage).subscribe((result) => {
-            this.threads = result
-            this.threadsData = result.data
-        })
+        // this.threadService.getAllUser(startPage, maxPage).subscribe((result) => {
+        //     this.threads = result
+        //     this.threadsData = result.data
+        // })
         this.threadService.getAllArticles().subscribe((result) => {
             this.articles = result
             this.articlesData = result.data
