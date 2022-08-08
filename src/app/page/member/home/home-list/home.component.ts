@@ -153,6 +153,4 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.initData(this.startPage, this.maxPage)
         this.maxPage += this.maxPage
     }
-
-
 }

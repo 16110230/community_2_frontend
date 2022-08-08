@@ -13,8 +13,10 @@ import { SharedModule } from "src/app/component/shared.module";
 
 
 import { AdminActivityCourseComponent } from "./admin-activity-courses/admin-activity-course.component";
+import { AdminActivityCourseDetailComponent } from "./admin-activity-course-detail/admin-activity-detail.component";
 import { AdminActivityEventComponent } from "./admin-activity-events/admin-activity-event.component";
 import { AdminActivityRouting } from "./admin-activity.routing";
+import { AdminActivityEventDetailComponent } from "./admin-activity-event-detail/admin-activity-detail.component";
 
 @NgModule({
     imports: [
@@ -33,11 +35,15 @@ import { AdminActivityRouting } from "./admin-activity.routing";
     ],
     declarations: [
         AdminActivityEventComponent,
-        AdminActivityCourseComponent
+        AdminActivityCourseComponent,
+        AdminActivityCourseDetailComponent,
+        AdminActivityEventDetailComponent
     ],
     exports: [
         AdminActivityEventComponent,
-        AdminActivityCourseComponent
+        AdminActivityCourseComponent,
+        AdminActivityCourseDetailComponent,
+        AdminActivityEventDetailComponent
     ]
 })
 

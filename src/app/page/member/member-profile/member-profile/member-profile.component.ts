@@ -18,17 +18,17 @@ export class MemberProfileComponent implements OnInit, OnDestroy {
 
     constructor(
         private router: Router,
-        private threadService : ThreadService,
-        private userService : UsersService,
-        private threadActivityService : ThreadActivityService
+        private threadService: ThreadService,
+        private userService: UsersService,
+        private threadActivityService: ThreadActivityService
     ) { }
 
-    startPage : number = 0
-    maxPage : number = 3
-    profSubs? : Subscription
-    profilePic? : string
-    threads : ShowThreads = { data: [] }
-    user : ShowUserById = {
+    startPage: number = 0
+    maxPage: number = 3
+    profSubs?: Subscription
+    profilePic?: string
+    threads: ShowThreads = { data: [] }
+    user: ShowUserById = {
         data: {
             id: '',
             fullName: '',
@@ -63,7 +63,7 @@ export class MemberProfileComponent implements OnInit, OnDestroy {
         this.profSubs?.unsubscribe();
     }
 
-    initData = (startPage : number, maxPage : number) : void => {
+    initData = (startPage: number, maxPage: number): void => {
         this.threadService.getAllProfile(startPage, maxPage)
             .subscribe(res => {
                 this.threads = res
@@ -72,7 +72,7 @@ export class MemberProfileComponent implements OnInit, OnDestroy {
         this.userService.getUserProfile()
             .subscribe(res => {
                 this.user = res
-                if(res.data.file) this.profilePic = `http://localhost:1221/files/${res.data.file}`
+                if (res.data.file) this.profilePic = `http://localhost:1221/files/${res.data.file}`
             })
     }
 
@@ -83,10 +83,10 @@ export class MemberProfileComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl('/home/profiles/transaction')
     }
     goToActivity() {
-       this.router.navigateByUrl('/home/profiles/activity')
+        this.router.navigateByUrl('/home/profiles/activity')
     }
 
-    goToComment = (id : string) => (
+    goToComment = (id: string) => (
         this.router.navigateByUrl(`home/thread-detail/${id}`)
     )
 

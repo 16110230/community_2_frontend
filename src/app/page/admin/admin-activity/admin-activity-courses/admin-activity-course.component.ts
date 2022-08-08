@@ -87,4 +87,8 @@ export class AdminActivityCourseComponent {
         this.activitiesSub?.unsubscribe()
         this.deleteSubs?.unsubscribe()
     }
+
+    goTo(id: number) {
+        this.router.navigate([`admin/activity/course/detail/${id}`])
+    }
 }
