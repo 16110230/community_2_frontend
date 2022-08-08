@@ -23,6 +23,25 @@ export class MemberProfileComponent implements OnInit, OnDestroy {
         private threadActivityService: ThreadActivityService
     ) { }
 
+    // bookmarks
+    bookmarkStartPage: number = 0
+    bookmarkMaxPage: number = 3
+    bookmarkTotalData: number = 0
+    bookmarkLoading: boolean = true
+    bookmarkThreads: ShowThreads = { data: [] }
+    bookmarkThreadSub?: Subscription
+    query?: string
+    //------------------------
+
+    // likes
+    likeStartPage: number = 0
+    likeMaxPage: number = 3
+    likeTotalData: number = 0
+    likeLoading: boolean = true
+    likeThreads: ShowThreads = { data: [] }
+    likeThreadSub?: Subscription
+    //------------------------
+
     startPage: number = 0
     maxPage: number = 3
     profSubs?: Subscription
@@ -57,6 +76,7 @@ export class MemberProfileComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.initData(this.startPage, this.maxPage)
+
     }
 
     ngOnDestroy(): void {
@@ -74,6 +94,9 @@ export class MemberProfileComponent implements OnInit, OnDestroy {
                 this.user = res
                 if (res.data.file) this.profilePic = `http://localhost:1221/files/${res.data.file}`
             })
+
+        this.getBookmarkData(this.bookmarkStartPage, this.bookmarkMaxPage)
+        this.getLikeData(this.likeStartPage, this.likeMaxPage)
     }
 
     goToEditProfile() {
@@ -132,7 +155,50 @@ export class MemberProfileComponent implements OnInit, OnDestroy {
     }
 
     onScroll(): void {
-        this.initData(this.startPage, this.maxPage)
-        this.maxPage += this.maxPage
+        // this.initData(this.startPage, this.maxPage)
+        // this.maxPage += this.maxPage
     }
+
+    // bookmark
+    getBookmarkData(bookmarkStartPage: number = this.bookmarkStartPage, bookamrkMaxPage: number = this.bookmarkMaxPage): void {
+        this.bookmarkStartPage = bookmarkStartPage
+        this.bookmarkMaxPage = bookamrkMaxPage
+
+        this.bookmarkThreadSub = this.threadService.getByBookmark(bookmarkStartPage, bookamrkMaxPage).subscribe(
+            result => {
+                const resultData: any = result
+                this.bookmarkThreads.data = resultData.data
+                this.bookmarkTotalData = resultData.count
+            },
+        )
+    }
+
+    onScrollBookmark(): void {
+        this.getBookmarkData(this.bookmarkStartPage, this.bookmarkMaxPage)
+        this.bookmarkMaxPage += this.bookmarkMaxPage
+    }
+    //----------------------
+
+    // like
+    getLikeData(likeStartPage: number = this.likeStartPage, likeMaxPage: number = this.likeMaxPage): void {
+        this.likeStartPage = likeStartPage
+        this.likeMaxPage = likeMaxPage
+
+        this.likeThreadSub = this.threadService.getByLike(likeStartPage, likeMaxPage).subscribe(
+            result => {
+                const resultData: any = result
+                this.likeThreads.data = resultData.data
+                this.likeTotalData = resultData.count
+            },
+        )
+    }
+
+    onScrollLike(): void {
+        if (this.likeMaxPage < this.likeTotalData) {
+            this.getLikeData(this.likeStartPage, this.likeMaxPage)
+            this.likeMaxPage += this.likeMaxPage
+        }
+
+    }
+    //----------------------
 }
