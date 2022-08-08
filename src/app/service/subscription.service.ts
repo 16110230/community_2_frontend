@@ -21,7 +21,7 @@ export class SubscriptionService {
         return this.http.get<ShowSubscriptions>(`${BASE_URL}/subscriptions`)
     }
 
-    getById(id : number) : Observable<ShowSubscriptionById> {
+    getById(id : string) : Observable<ShowSubscriptionById> {
         return this.http.get<ShowSubscriptionById>(`${BASE_URL}/subscriptions/${id}`)
     }
 

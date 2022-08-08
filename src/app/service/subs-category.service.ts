@@ -20,7 +20,7 @@ export class SubsCategoryService{
         return this.http.get<ShowSubsCategories>(`${BASE_URL}/subscription-categories`)
     }
 
-    getById(id : number) : Observable<ShowSubsCategoryById> {
+    getById(id : string) : Observable<ShowSubsCategoryById> {
         return this.http.get<ShowSubsCategoryById>(`${BASE_URL}/subscription-categories/${id}`)
     }
 
@@ -34,5 +34,9 @@ export class SubsCategoryService{
 
     delete(id : number) : Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/subscription-categories/${id}`)
+    }
+
+    getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowSubsCategories> {
+        return this.http.get<ShowSubsCategories>(`${BASE_URL}/subscription-categories?startPage=${startPage}&maxPage=${maxPage}`)
     }
 }
