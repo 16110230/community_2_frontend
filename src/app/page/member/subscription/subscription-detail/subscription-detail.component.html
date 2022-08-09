@@ -6,7 +6,7 @@
                     <div class="invoice-header">
                         <span class="block details-title mb-2">{{subscription.data.description}}</span>
                         <b>
-                            <span class="text-red-500">{{subscription.data.price}}</span>
+                            <span class="text-red-500">{{subscription.data.price | currency : "Rp"}}</span>
                         </b>
                     </div>
                     <div class="invoice-body my-4">
