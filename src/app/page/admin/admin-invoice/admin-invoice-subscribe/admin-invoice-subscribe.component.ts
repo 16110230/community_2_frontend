@@ -18,7 +18,7 @@ export class AdminInvoiceSubscribeComponent {
             id: 1235,
             username: "Putrimalu",
             orderDate: "2022-07-25",
-            amount: 40000,
+            amount: 400,
             file: "foto.jpg",
             isApproved: false
         },

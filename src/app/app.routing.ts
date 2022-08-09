@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { LogoutComponent } from "./component/logout/logout.component";
 import { AuthAdminGuard } from "./guard/auth-admin.guard";
 import { AuthLoginGuard } from "./guard/auth-login.guard";
 import { ForbiddenComponent } from "./page/forbidden/forbidden.component";
@@ -22,6 +23,10 @@ const routes: Routes = [
     {
         path: 'signup',
         loadChildren: () => import('./page/signup/signup.module').then((m) => m.SignupModule)
+    },
+    {
+        path: 'logout',
+        component: LogoutComponent
     },
     {
         path: 'admin',
