@@ -55,7 +55,6 @@ export class AdminUserRoleComponent implements OnDestroy {
                 this.roles.data = resultData.data
                 this.loading = false
                 this.totalData = resultData.total
-                console.log(resultData)
             },
         )
     }

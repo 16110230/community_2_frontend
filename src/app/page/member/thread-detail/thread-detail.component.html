@@ -4,9 +4,10 @@
             <div class="content-home">
                 <p-card styleClass="mb-3">
                     <div class="content-card-header flex flex-row px-4 mb-3">
-                        <img class="content-card-header-pic"
-                            src="https://image.tmdb.org/t/p/w235_and_h235_face/6wsOvUn9YewNZ3IEEBWfiDVTYOc.jpg"
-                            alt="profile-picture">
+                        <img class="content-card-header-pic" *ngIf="thread.data.userFile === null"
+                            src="../../../../../assets/img/blank-profile.jpg" alt="">
+                        <img class="content-card-header-pic" *ngIf="thread.data.userFile !== null" src="{{thread.data.userFile}}"
+                            alt="">
                         <div class="content-card-header-dtl ml-3 flex flex-column justify-content-center">
                             <div class="header-details mt-3">
                                 <h4>{{thread.data.threadTitle}}</h4>

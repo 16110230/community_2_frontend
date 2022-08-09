@@ -39,4 +39,12 @@ export class ActivityService {
     getAllWithPagination(startPage: number, maxPage: number, query?: string, code?: string): Observable<ShowActivities> {
         return this.http.get<ShowActivities>(`${BASE_URL}/activities/type?code=${code}&startPage=${startPage}&maxPage=${maxPage}`)
     }
+
+    getAllWithFilter(type: string, category: string, startPage: number, maxPage: number): Observable<ShowActivities> {
+        return this.http.get<ShowActivities>(`${BASE_URL}/activities/filter?type=${type}&category=${category}&startPage=${startPage}&maxPage=${maxPage}`)
+    }
+
+    getAllByUserId(startPage: number, maxPage: number): Observable<ShowActivities> {
+        return this.http.get<ShowActivities>(`${BASE_URL}/activities/user?startPage=${startPage}&maxPage=${maxPage}`)
+    }
 }

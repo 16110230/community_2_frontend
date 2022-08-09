@@ -210,6 +210,14 @@ table {
   display: inline-block;
 }
 
+.invoice-status-pending-custom {
+  color: #a38b00;
+  background-color: #ffda09;
+  border-radius: 4px;
+  padding: 5px;
+  display: inline-block;
+}
+
 .polling-bar-custom {
   height: 30px;
   display: inline-block;
@@ -244,9 +252,22 @@ a {
 }
 
 .profile-body > span {
-  font-size : 13px;
+  font-size: 13px;
 }
 
 .sidebar-profile > span {
   font-size: 13px;
 }
+
+#thread-image-view {
+  transition: 0.5s;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
