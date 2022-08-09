@@ -45,6 +45,7 @@ export class AdminInvoiceSubscribePendingComponent implements OnInit {
             this.update.isApproved = true
             this.update.isActive = res.data.isActive
             this.update.version = res.data.version
+            this.update.subscriptionCategory = res.data.subscriptionCategory
 
             this.subscriptionService.update(this.update).subscribe(result => {
                 this.initData()
@@ -61,6 +62,7 @@ export class AdminInvoiceSubscribePendingComponent implements OnInit {
             this.update.isApproved = false
             this.update.isActive = res.data.isActive
             this.update.version = res.data.version
+            this.update.subscriptionCategory = res.data.subscriptionCategory
 
             this.subscriptionService.update(this.update).subscribe(result => {
                 this.initData()
