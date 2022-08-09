@@ -7,6 +7,7 @@ import { SubscriptionService } from "src/app/service/subscription.service";
     selector: "app-admin-invoice-subscribe",
     templateUrl: "./admin-invoice-subscribe.component.html"
 })
+
 export class AdminInvoiceSubscribeComponent implements OnInit, OnDestroy {
     constructor(private subscriptionService : SubscriptionService) {}
 

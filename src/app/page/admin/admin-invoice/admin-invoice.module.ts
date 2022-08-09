@@ -17,6 +17,7 @@ import { AdminInvoiceEventComponent } from "./admin-invoice-event/admin-invoice-
 import { AdminInvoiceSubscribePendingComponent } from "./admin-invoice-subscribe-pending/admin-invoice-subscribe-pending.component";
 import { AdminInvoiceSubscribeComponent } from "./admin-invoice-subscribe/admin-invoice-subscribe.component";
 import { AdminInvoiceRouting } from "./admin-invoice.routing";
+import { CurrencyPipe } from "src/app/pipe/currency.pipe";
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { AdminInvoiceRouting } from "./admin-invoice.routing";
         AdminInvoiceCourseComponent,
         AdminInvoiceSubscribePendingComponent,
         AdminInvoiceEventPendingComponent,
-        AdminInvoiceCoursePendingComponent
+        AdminInvoiceCoursePendingComponent,
+        CurrencyPipe
     ],
     exports: [
         AdminInvoiceSubscribeComponent,
@@ -48,7 +50,8 @@ import { AdminInvoiceRouting } from "./admin-invoice.routing";
         AdminInvoiceCourseComponent,
         AdminInvoiceSubscribePendingComponent,
         AdminInvoiceEventPendingComponent,
-        AdminInvoiceCoursePendingComponent
+        AdminInvoiceCoursePendingComponent,
+        CurrencyPipe
     ]
 })
 export class AdminInvoiceModule { }
