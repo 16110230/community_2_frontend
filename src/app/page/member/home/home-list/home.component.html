@@ -27,21 +27,23 @@
                                 </div>
                             </div>
         
-                            <!-- <div class="content-card-body mt-2 px-4"> -->
-                                <div class="grid mt-2 px-3" *ngIf="data.file">
-                                    <div class="col-9 content-card-body">
-                                        <p>
-                                            {{data.threadContent}}
-                                        </p>
-                                    </div>
-                                    <a class="col-3 thread-pic" (click)="viewImage('http://localhost:1221/files/' + data.file)">
-                                        <img [src]="'http://localhost:1221/files/' + data.file" alt="">
-                                    </a>
+                            <div class="grid mt-2 px-3" *ngIf="data.file">
+                                <div class="col-9 content-card-body">
+                                    <p>
+                                        {{data.threadContent}}
+                                    </p>
                                 </div>
-                                <!-- <p>
+                                <a class="col-3 thread-pic" (click)="viewImage('http://localhost:1221/files/' + data.file)">
+                                    <img [src]="'http://localhost:1221/files/' + data.file" alt="">
+                                </a>
+                            </div>
+                            
+                            
+                            <div class="content-card-body mt-2 px-4" *ngIf="!data.file">
+                                <p>
                                     {{data.threadContent}}
                                 </p>
-                            </div> -->
+                            </div>
         
                             <div class="content-card-footer mt-3 px-4">
                                 <div class="grid flex flex-row justify-content-between">
