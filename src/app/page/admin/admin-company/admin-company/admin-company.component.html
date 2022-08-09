@@ -7,8 +7,8 @@
     <div class="flex-1">
         <div class="m-5">
             <p-card >  
-                <div class="grid mb-5">
-                    <div class="col-10">
+                <div class="grid">
+                    <div class="col-10 flex flex-row align-items-center">
                         <h4 >Company List</h4>
                     </div>
                     <div class="col-2">
@@ -42,7 +42,7 @@
                                 <div *ngIf="!data.isActive" class="check-status-custom-false"></div>
                             </td>
                             <td class="action">
-                                <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-4" (click)="editAt(data.id)"></button>
+                                <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-2" (click)="editAt(data.id)"></button>
                                 <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="confirm(data.id)"></button>
                             </td>
                         </tr>

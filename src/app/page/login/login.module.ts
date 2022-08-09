@@ -6,7 +6,7 @@ import { CardModule } from "primeng/card";
 import { InputTextModule } from "primeng/inputtext";
 import { LoginRouting } from "./login.routing";
 import { LoginComponent } from "./login/login.component";
-
+import { ToastModule } from 'primeng/toast';
 
 
 
@@ -18,7 +18,8 @@ import { LoginComponent } from "./login/login.component";
         ButtonModule,
         CardModule,
         InputTextModule,
-        LoginRouting
+        LoginRouting,
+        ToastModule
     ],
     declarations: [
         LoginComponent

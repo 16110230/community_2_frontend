@@ -12,6 +12,7 @@ import { appReducer } from "./state/app.reducer"
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreModule } from "@ngrx/store"
+import { MessageService } from "primeng/api"
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { StoreModule } from "@ngrx/store"
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

@@ -72,4 +72,8 @@ export class ThreadService {
     getByBookmark(startPage: number, maxPage: number): Observable<ShowThreads> {
         return this.http.get<ShowThreads>(`${BASE_URL}/threads/bookmark?startPage=${startPage}&maxPage=${maxPage}`)
     }
+
+    getByLike(startPage: number, maxPage: number): Observable<ShowThreads> {
+        return this.http.get<ShowThreads>(`${BASE_URL}/threads/like?startPage=${startPage}&maxPage=${maxPage}`)
+    }
 }

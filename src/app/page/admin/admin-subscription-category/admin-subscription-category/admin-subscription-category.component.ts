@@ -1,23 +1,21 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
-import { ConfirmationService } from "primeng/api";
-import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
+import { ConfirmationService, LazyLoadEvent } from "primeng/api";
 import { Subscription } from "rxjs";
-import { ShowUserRoles } from "src/app/dto/user-role/show-user-roles";
-import { UserRoleService } from "src/app/service/user-role.service";
+import { ShowSubsCategories } from "src/app/dto/subs-category/show-subs-categories";
+import { SubsCategoryService } from "src/app/service/subs-category.service";
 
 @Component({
-    selector: "app-admin-user-role",
-    templateUrl: "./admin-user-role.component.html",
-    providers: [
+    selector: "app-subscription-category",
+    templateUrl: "./admin-subscription-category.component.html",
+    providers : [
         ConfirmationService
     ]
 })
-export class AdminUserRoleComponent implements OnDestroy {
-
+export class AdminSubscriptionCategoryComponent implements OnDestroy {
     constructor(
         private confirmationService: ConfirmationService,
-        private userRoleService: UserRoleService,
+        private subsCategoryService: SubsCategoryService,
         private router: Router
     ) { }
 
@@ -27,15 +25,14 @@ export class AdminUserRoleComponent implements OnDestroy {
     loading: boolean = true
     query?: string
 
-
-    roles: ShowUserRoles = {} as ShowUserRoles
-    userRoleSub?: Subscription
+    subsCategories: ShowSubsCategories = {} as ShowSubsCategories
+    subscriptionCategoriesSub?: Subscription
     deleteSubs?: Subscription
     isDeleted!: number
 
     initData(): void {
-        this.userRoleSub = this.userRoleService.getAllWithPagination(this.startPage, this.maxPage, this.query).subscribe(result => {
-            this.roles = result
+        this.subsCategoryService.getAllWithPagination(this.startPage, this.maxPage, this.query).subscribe(result => {
+            this.subsCategories = result
         })
     }
 
@@ -49,22 +46,21 @@ export class AdminUserRoleComponent implements OnDestroy {
         this.maxPage = maxPage
         this.query = query
 
-        this.userRoleSub = this.userRoleService.getAllWithPagination(startPage, maxPage, query).subscribe(
+        this.subscriptionCategoriesSub = this.subsCategoryService.getAllWithPagination(startPage, maxPage, query).subscribe(
             result => {
                 const resultData: any = result
-                this.roles.data = resultData.data
+                this.subsCategories.data = resultData.data
                 this.loading = false
-                this.totalData = resultData.total
+                this.totalData = resultData.count
             },
         )
     }
 
-    editAt(id: string) {
-        this.router.navigate([`/admin/user-role/update/${id}`])
-    }
-
     goTo() {
-        this.router.navigate(['/admin/user-role/create'])
+        this.router.navigate(['/admin/subscription-category/create'])
+    }
+    editAt(id: number) {
+        this.router.navigate([`/admin/subscription-category/update/${id}`])
     }
 
     onDelete(id: number) {
@@ -72,14 +68,14 @@ export class AdminUserRoleComponent implements OnDestroy {
     }
 
     deleted(): void {
-        this.deleteSubs = this.userRoleService
+        this.deleteSubs = this.subsCategoryService
             .delete(this.isDeleted)
             .subscribe(result => {
                 this.initData()
             })
     }
 
-    confirm(id: number): void {
+    confirm(id: number) {
         this.isDeleted = id
         this.confirmationService.confirm({
             message: 'Are you sure that you want to proceed?',
@@ -88,11 +84,10 @@ export class AdminUserRoleComponent implements OnDestroy {
             accept: () => {
                 this.deleted()
             }
-        })
+        });
     }
 
     ngOnDestroy() {
-        this.deleteSubs?.unsubscribe()
-        this.userRoleSub?.unsubscribe()
+        this.subscriptionCategoriesSub?.unsubscribe()
     }
 }

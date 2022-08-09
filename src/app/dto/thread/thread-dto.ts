@@ -18,4 +18,5 @@ export interface ThreadDto {
     isLike? : boolean
     isBookmark? : boolean
     polling? : ShowPollingMain
+    userFile? : string
 }

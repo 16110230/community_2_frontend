@@ -36,8 +36,8 @@ export class HomeCreateComponent implements OnInit, OnDestroy{
             },
             details :[] 
         },
-        fileName: "",
-        fileExt: ""
+        fileName: undefined,
+        fileExt: undefined,
     }
     subs? : Subscription
 
@@ -69,7 +69,7 @@ export class HomeCreateComponent implements OnInit, OnDestroy{
     }
 
     onSubmit() : void {
-        if(this.pollings){
+        if(this.setCategory == this.polling){
             for(let i=0; i<this.pollings.value.length; i++) {
                 const detail : InsertPollingDtlReq  = {
                     pollingDetailsName: this.pollings.value[i],
@@ -78,13 +78,15 @@ export class HomeCreateComponent implements OnInit, OnDestroy{
 
                 this.insert.polling?.details?.push(detail)
             }
+        } else {
+            this.insert.polling = undefined
         }
 
         
         this.threadService.insert(
             this.insert
             ).subscribe(result => {
-                this.router.navigateByUrl('/member')
+                this.router.navigateByUrl('/')
         })
     }
 
