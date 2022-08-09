@@ -18,13 +18,21 @@ export class SideBarComponent implements OnInit {
         this.items = [
             {
                 label: 'Home',
-                items: [{
-                    label: 'Dashboard',
-                    icon: 'pi pi-home',
-                    command: () => {
-                        this.router.navigate(['/admin'])
+                items: [
+                    {
+                        label: 'Dashboard',
+                        icon: 'pi pi-home',
+                        command: () => {
+                            this.router.navigate(['/admin'])
+                        }
+                    },
+                    {
+                        label: 'Logout',
+                        icon: 'pi pi-sign-out',
+                        command: () => this.logout()
                     }
-                }]
+            
+                ]
             },
             {
                 label: 'Manage',
@@ -87,6 +95,14 @@ export class SideBarComponent implements OnInit {
                         command: () => {
                             this.router.navigate(['/admin/thread-category'])
                         }
+                    },
+                    {
+                        label: 'Subscription Category',
+                        icon: 'pi pi-table',
+
+                        command: () => {
+                            this.router.navigate(['/admin/subscription-category'])
+                        }
                     }
                 ]
             },
@@ -105,7 +121,7 @@ export class SideBarComponent implements OnInit {
                 label: 'Organization',
                 items: [
                     {
-                        label: 'Comapany',
+                        label: 'Company',
                         command: () => {
                             this.router.navigate(['/admin/company'])
                         }
@@ -177,5 +193,10 @@ export class SideBarComponent implements OnInit {
                 ]
             }
         ]
+    }
+
+    logout = () : void => {
+        localStorage.clear()
+        this.router.navigateByUrl('/login')
     }
 }

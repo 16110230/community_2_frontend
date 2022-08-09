@@ -1,51 +1,83 @@
 <div class="container-home">
-    <div class="grid">
-        <div class="sm:col-3 col-12 h-screen">
-            <div  class="mt-5">
+    <div class="grid p-3">
+        <div class="sm:col-3 col-12">
+            <div>
                 <p-card>
                     <div class="photo-frame">
                         <div class="photo-profile">
-                            <img src="../../../../assets/img/profile-1.jpg" alt="">
+                            <img *ngIf="user.data.file === null" src="../../../../../assets/img/blank-profile.jpg"
+                                alt="">
+                            <img *ngIf="user.data.file !== null" src="{{profilePic}}" alt="">
                         </div>
                     </div>
                     <div class="border-bottom-1 mt-3">
-                        <span class="text-color-secondary">Full Name</span><br>
-                        <span class="">Peter parker</span>
+                        <div class="profile-header mb-1">
+                            <span class="text-color-secondary block">Full Name</span>
+                        </div>
+                        <div class="profile-body">
+                            <span>{{user.data.fullName}}</span>
+                        </div>
                     </div>
                     <div class="border-bottom-1 mt-3">
-                        <span class="text-color-secondary">Email</span><br>
-                        <span class="">peter.parker@mail.com</span>
+                        <div class="profile-header mb-1">
+                            <span class="text-color-secondary block">Email</span>
+                        </div>
+                        <div class="profile-body">
+                            <span class="">{{user.data.email}}</span>
+                        </div>
                     </div>
                     <div class="border-bottom-1 mt-3">
-                        <span class="text-color-secondary">Company</span><br>
-                        <span class="">PT.Lawencon International</span>
+                        <div class="profile-header mb-1">
+                            <span class="text-color-secondary block">Company</span>
+                        </div>
+                        <div class="profile-body">
+                            <span class="">{{user.data.companyName}}</span>
+                        </div>
                     </div>
                     <div class="border-bottom-1 mt-3">
-                        <span class="text-color-secondary">Industry</span><br>
-                        <span class="">Technology</span>
+                        <div class="profile-header mb-1">
+                            <span class="text-color-secondary block">Industry</span>
+                        </div>
+                        <div class="profile-body">
+                            <span class="">{{user.data.industryName}}</span>
+                        </div>
                     </div>
                     <div class="border-bottom-1 mt-3">
-                        <span class="text-color-secondary">Position</span><br>
-                        <span class="">Junior Fullstack Programmer</span>
+                        <div class="profile-header mb-1">
+                            <span class="text-color-secondary block">Position</span>
+                        </div>
+                        <div class="profile-body">
+                            <span class="">{{user.data.positionName}}</span>
+                        </div>
                     </div>
 
-                    <div class="mt-5 ml-3">
-                        <div class="text-primary cursor-pointer font-semibold" (click)="goToEditProfile()">
-                            <i class="pi pi-pencil"></i> Edit Profile
+                    <div class="mt-3">
+                        <div class="grid p-0">
+                            <div class="col-12">
+                                <div class="flex flex-row justify-content-between">
+                                    <div class="text-primary cursor-pointer font-semibold sidebar-profile"
+                                        (click)="goToTransaction()">
+                                        <span><i class="pi pi-align-justify"></i> Transaction</span>
+                                    </div>
+                                    <div class="text-primary cursor-pointer font-semibold sidebar-profile"
+                                        (click)="goToEditProfile()">
+                                        <span><i class="pi pi-pencil"></i> Edit Profile</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 pb-0">
+                                <div class="text-primary cursor-pointer font-semibold sidebar-profile"
+                                    (click)="goToActivity()">
+                                    <span><i class="pi pi-align-justify"></i> Activity</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-primary cursor-pointer font-semibold mt-3" (click)="goToTransaction()">
-                            <span class="text-primary cursor-pointer font-semibold"><i class="pi pi-align-justify"></i> Transaction</span>
-                        </div>
-                        <div class="text-primary cursor-pointer font-semibold mt-3" (click)="goToActivity()">
-                            <span class="text-primary cursor-pointer font-semibold"><i class="pi pi-align-justify"></i> Activity</span>
-                        </div>
-                                                
                     </div>
                 </p-card>
             </div>           
         </div>
 
-        <div class="sm:col-9 col-12 mt-5">  
+        <div class="sm:col-9 col-12">  
             <p-card>
                 <div class="grid">
                     <div class="col-10">
@@ -56,31 +88,31 @@
                     </div>
                 </div>
 
-                <p-table [value]="invoices" responsiveLayout="scroll">
+                <p-table [value]="activities.data" responsiveLayout="scroll" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true" [rows]="maxPage" [totalRecords]="totalData" [loading]="loading" [rowsPerPageOptions]="[5, 10]" tyleClass="p-datatable-gridlines"> 
+                <!-- <p-table [value]="invoices" responsiveLayout="scroll"> -->
                     <ng-template pTemplate="header">
                         <tr>
                             <th>No</th>
-                            <th>Invoice</th>
+                            <th>Title</th>
                             <th>Category</th>
-                            <th>Order Date</th>
-                            <th>Amount</th>                                
+                            <th>Type</th>
+                            <th>Started At</th>                                
+                            <th>Ended At</th>                                
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-i="rowIndex" let-data>
                         <tr>
                             <td>{{i+1}}</td>
-                            <td>{{data.id}}</td>
-                            <td>{{data.activityName}}</td>
-                            <td>{{data.orderDate}}</td>
-                            <td>{{data.amount}}</td> 
+                            <td>{{data.activityTitle}}</td>
+                            <td>{{data.activityCategoryName}}</td>
+                            <td>{{data.activityTypeName}}</td>
+                            <td>{{data.startedAt | date:'medium'}}</td> 
+                            <td>{{data.endedAt | date:'medium'}}</td> 
                         </tr>
                     </ng-template>
                 </p-table>  
 
             </p-card>
-                      
-                                             
-            
         </div>
     </div>
 

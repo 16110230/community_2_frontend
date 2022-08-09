@@ -1,3 +1,3 @@
 export interface InsertPollingHdrReq{
-    isActive? : boolean
+    isActive : boolean
 }

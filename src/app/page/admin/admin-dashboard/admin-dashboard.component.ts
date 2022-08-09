@@ -118,19 +118,6 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
 
     }
 
-    targetDelete(id: any): void {
-        this.targetId = id
-    }
-
-    executeDelete(): void {
-
-        // this.deleteSubscribe = this.employeeService.delete(this.targetId)
-        //     .subscribe(result => {
-        //         this.targetId = null
-        //         this.showData()
-        //     })
-    }
-
     ngOnDestroy() {
         this.dashboardSubscribe?.unsubscribe
     }

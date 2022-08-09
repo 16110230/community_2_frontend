@@ -20,6 +20,8 @@ export class ActivityListComponent implements OnInit, OnDestroy {
 
     selectedType: string = ''
     selectedCategory: string = ''
+    startPage : number = 0
+    maxPage : number = 8
     activitySubs?: Subscription
     activities: ShowActivities = {
         data: []
@@ -56,10 +58,19 @@ export class ActivityListComponent implements OnInit, OnDestroy {
     }
 
     filter = (): void => {
-        console.log(this.selectedType, this.selectedCategory)
+        this.activityService.getAllWithFilter(this.selectedType, this.selectedCategory, this.startPage, this.maxPage)
+            .subscribe(res => {
+                this.activities = res
+            })
     }
 
     onById(id : string) : void {
         this.router.navigateByUrl(`/home/activities/details/${id}`)
+    }
+
+    clear = () : void => {
+        this.selectedType = ''
+        this.selectedCategory = ''
+        this.initData()
     }
 }
