@@ -134,7 +134,7 @@
                             <div class="content-card-header flex flex-row px-4 mb-3">
                                 <img class="content-card-header-pic" *ngIf="data.userFile === null"
                                     src="../../../../../assets/img/blank-profile.jpg" alt="">
-                                <img class="content-card-header-pic" *ngIf="data.userFile !== null" src="{{data.userFile}}"
+                                <img class="content-card-header-pic" *ngIf="data.userFile !== null" src="{{'http://localhost:1221/files/'+data.userFile}}"
                                     alt="">
                                 <div class="content-card-header-dtl ml-3 flex flex-column justify-content-center">
                                     <div class="header-details mt-3">
@@ -184,7 +184,7 @@
                             <div class="content-card-header flex flex-row px-4 mb-3">
                                 <img class="content-card-header-pic" *ngIf="data.userFile === null"
                                     src="../../../../../assets/img/blank-profile.jpg" alt="">
-                                <img class="content-card-header-pic" *ngIf="data.userFile !== null" src="{{data.userFile}}" alt="">
+                                <img class="content-card-header-pic" *ngIf="data.userFile !== null" src="{{'http://localhost:1221/files/'+data.userFile}}" alt="">
                                 
                                 <div class="content-card-header-dtl ml-3 flex flex-column justify-content-center">
                                     <div class="header-details mt-3">

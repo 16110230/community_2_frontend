@@ -1,15 +1,15 @@
 <div class="container px-5 py-3">
     <p-card styleClass="px-8">
         <div class="article-detail-header mb-3">
-            <img class="mb-3" src="../../../../../assets/img/default-picture.jpg" alt="">
-            <span class="article-detail-header title block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi non atque, maxime.</span>
-            <span class="uploaded">Upload 1 week ago</span>
+            <img class="content-card-header-pic" *ngIf="thread.data.file === null"
+                src="../../../../../assets/img/default-picture.jpg" alt="">
+            <img class="content-card-header-pic" *ngIf="thread.data.file !== null" [src]="'http://localhost:1221/files/' + thread.data.file" alt="">
+            <span class="article-detail-header title block">{{thread.data.threadTitle}}</span>
+            <span class="uploaded">{{thread.data.createdAt | timeAgo}}</span>
         </div>
         <div class="article-detail-body">
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero distinctio esse mollitia illum 
-                enim nihil exercitationem officia. Consequuntur libero earum ut debitis, nostrum suscipit, 
-                illo explicabo sunt maiores accusantium quae!
+                {{thread.data.threadContent}}
             </p>
         </div>
     </p-card>
