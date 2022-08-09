@@ -67,7 +67,7 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
     }
 
     submit = (): void => {
-        this.activityService.insert(this.data).subscribe(() => this.router.navigateByUrl('/member/articles'))
+        this.activityService.insert(this.data).subscribe(() => this.router.navigateByUrl('/home/activities'))
     }
 
     change(event: any): void {
