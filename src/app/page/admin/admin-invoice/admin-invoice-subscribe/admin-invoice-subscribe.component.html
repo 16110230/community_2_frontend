@@ -22,10 +22,10 @@
                     <ng-template pTemplate="body" let-i="rowIndex" let-data>
                         <tr>
                             <td>{{i+1}}</td>
-                            <td>{{data.id}}</td>
-                            <td>{{data.username}}</td>
-                            <td>{{data.orderDate}}</td>
-                            <td>{{data.amount}}</td>
+                            <td>{{data.subscriptionCode}}</td>
+                            <td>{{data.fullName}}</td>
+                            <td>{{data.orderDate | date : 'EE, d MMM y, HH:mm'}}</td>
+                            <td>{{data.amount | currency : "Rp"}}</td>
                             <td class="">
                                 <span class="invoice-status-succsess-custom" *ngIf="data.isApproved">APPROVED</span>
                                 <span class="invoice-status-reject-custom" *ngIf="!data.isApproved">REJECTED</span>
