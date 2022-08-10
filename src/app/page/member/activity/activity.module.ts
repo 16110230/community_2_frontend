@@ -19,6 +19,7 @@ import { FileUploadModule } from "primeng/fileupload";
 import { SharedModule } from "src/app/component/shared.module";
 import { TableModule } from "primeng/table";
 import { HomeModule } from "../home/home.module";
+import { PipeModule } from "src/app/pipe/pipe.module";
 
 @NgModule({
     imports: [
@@ -35,8 +36,7 @@ import { HomeModule } from "../home/home.module";
         CommonModule,
         FileUploadModule,
         TableModule,
-        SharedModule,
-        HomeModule
+        PipeModule
     ],
     declarations: [
         ActivityListComponent,

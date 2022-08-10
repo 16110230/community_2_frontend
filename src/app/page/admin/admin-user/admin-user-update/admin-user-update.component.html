@@ -55,10 +55,10 @@
                             </div>
                         </div> 
                         <div class="col-12 sm:col-12">
-                            <label for="isActive">Active</label>
-                            <input type="checkbox" name="isActive" id="isActive" [(ngModel)]="update.isActive">
+                            <label for="isActive" class="block mb-1">Active</label>
+                            <p-checkbox type="checkbox" name="isActive" id="isActive" [binary]="true" [value]="update.isActive" [(ngModel)]="update.isActive"></p-checkbox>
                         </div>  
-                        <div class="col-12 sm:col-6 ">                          
+                        <div class="col-12 text-center">                          
                             <button pButton pRipple [loading]="isLoading" type="submit" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>                                                      
                         </div>
                                                              

@@ -25,7 +25,7 @@
                         </div>
                         <div class="col">  
                             <label for="isActive">Active</label> <br>                         
-                            <input class="mt-2" type="checkbox" name="isActive" id="" value="true" [(ngModel)]="update.isActive" >
+                            <p-checkbox class="mt-2" type="checkbox" name="isActive" [binary]="true" [value]="update.isActive" [(ngModel)]="update.isActive" ></p-checkbox>
                         </div>
                         <div class="col-12">
                             <button pButton pRipple [loading]="isLoading" type="submit" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>

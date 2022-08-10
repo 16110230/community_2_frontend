@@ -17,6 +17,7 @@ import { AdminArticleRouting } from "./admin-article.routing";
 import { AdminArticleComponent } from "./admin-article/admin-article.component";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { CheckboxModule } from "primeng/checkbox";
+import { ConfirmDialogModule } from "primeng/confirmdialog";
 
 @NgModule({
     imports: [
@@ -34,6 +35,7 @@ import { CheckboxModule } from "primeng/checkbox";
         HttpClientModule,
         AdminArticleRouting,
         InputTextareaModule,
+        ConfirmDialogModule,
         CheckboxModule
     ],
     declarations: [

@@ -4,9 +4,9 @@ import { ThreadDetailRouting } from "./thread-detail.routing";
 import { CardModule } from "primeng/card";
 import { ButtonModule } from "primeng/button";
 import { CommonModule } from "@angular/common";
-import { HomeModule } from "../home/home.module";
 import { FormsModule } from "@angular/forms";
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
+import { PipeModule } from "src/app/pipe/pipe.module";
 
 @NgModule({
     imports: [
@@ -14,7 +14,7 @@ import { InfiniteScrollModule } from "ngx-infinite-scroll";
         CardModule,
         ButtonModule,
         CommonModule,
-        HomeModule,
+        PipeModule,
         InfiniteScrollModule,
         FormsModule
     ],

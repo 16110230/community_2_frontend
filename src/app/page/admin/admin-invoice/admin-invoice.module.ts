@@ -17,11 +17,13 @@ import { AdminInvoiceEventComponent } from "./admin-invoice-event/admin-invoice-
 import { AdminInvoiceSubscribePendingComponent } from "./admin-invoice-subscribe-pending/admin-invoice-subscribe-pending.component";
 import { AdminInvoiceSubscribeComponent } from "./admin-invoice-subscribe/admin-invoice-subscribe.component";
 import { AdminInvoiceRouting } from "./admin-invoice.routing";
+import { PipeModule } from "src/app/pipe/pipe.module";
 
 
 @NgModule({
     imports: [
         SharedModule,
+        PipeModule,
         FormsModule,
         CommonModule,
         ButtonModule,
