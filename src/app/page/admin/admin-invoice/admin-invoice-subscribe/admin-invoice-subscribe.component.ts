@@ -7,6 +7,7 @@ import { SubscriptionService } from "src/app/service/subscription.service";
     selector: "app-admin-invoice-subscribe",
     templateUrl: "./admin-invoice-subscribe.component.html"
 })
+
 export class AdminInvoiceSubscribeComponent implements OnInit, OnDestroy {
     constructor(private subscriptionService : SubscriptionService) {}
 
@@ -22,9 +23,9 @@ export class AdminInvoiceSubscribeComponent implements OnInit, OnDestroy {
     subscriptionSubs? : Subscription
 
     initData() : void {
-        // this.subscriptionService.getAllByType(this.startPage, this.maxPage).subscribe(result => {
-        //     this.subscription = result
-        // })
+        this.subscriptionService.getAllByValidate().subscribe(result => {
+            this.subscription = result
+        })
     }
 
     ngOnInit(): void {
@@ -35,16 +36,6 @@ export class AdminInvoiceSubscribeComponent implements OnInit, OnDestroy {
         this.loading = true;
         this.startPage = startPage
         this.maxPage = maxPage
-
-        // this.subscriptionSubs = this.subscriptionService.getAllByType(startPage, maxPage, EVENT).subscribe(
-        //     result => {
-        //         const resultData: any = result
-        //         this.subscription.data = resultData.data
-        //         this.loading = false
-        //         this.totalData = resultData.countData
-        //         console.log(result)
-        //     },
-        // )
     }
 
     ngOnDestroy(): void {

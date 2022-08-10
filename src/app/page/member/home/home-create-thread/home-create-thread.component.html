@@ -1,12 +1,12 @@
 <div class="container">
-    <div class="grid px-7">
+    <div class="grid px-7 pt-2">
         <div class="col-9">
             <p-card styleClass="mt-3">
                 <form (ngSubmit)="onSubmit()" ngNativeValidate>
                     <div class="grid">
                         <div class="col-1">
                             <button pButton pRipple icon="pi pi-caret-left" class="p-button-danger p-button-sm"
-                                label="Back" routerLink="/member"></button>
+                                label="Back" routerLink="/home"></button>
                         </div>
                         <div class="col-10 flex flex-row justify-content-center">
                             <span class="form-title">New Thread</span>
@@ -14,18 +14,18 @@
                         <div class="col-12 mt-3">
                             <div class="row-title">
                                 <label for="threadTitle">Thread Title</label>
-                                <input pInputText type="text" class="w-full my-3" [(ngModel)]="insert.threadTitle" name="threadTitle" required>
+                                <input pInputText type="text" class="w-full mt-1 mb-3" [(ngModel)]="insert.threadTitle" name="threadTitle" required>
                             </div>
                             <div class="row-description">
                                 <label for="threadContent">Description</label>
-                                <textarea pInputTextarea class="w-full my-3" [(ngModel)]="insert.threadContent" name="threadContent" id="threadContent" rows="3"></textarea>
+                                <textarea pInputTextarea class="w-full mt-1 mb-3" [(ngModel)]="insert.threadContent" name="threadContent" id="threadContent" rows="3"></textarea>
                             </div>
                             <div class="row-category">
                                 <div class="grid">
-                                    <div class="lg:col-6 sm:col-12">
+                                    <div class="lg:col-6 sm:col-12 px-0">
                                         <label for="category" class="block">Category</label>
                                         <p-dropdown optionValue="id" [options]="category!.data" optionLabel="categoryName" [(ngModel)]="insert.threadCategory" name="threadCategory" placeholder="Select category" 
-                                        [showClear]="true" styleClass="my-3" [style]="{'width': '80%'}" [ngModelOptions]="{standalone: true}"
+                                        [showClear]="true" styleClass="mt-1 mb-3" [style]="{'width': '80%'}" [ngModelOptions]="{standalone: true}"
                                         (onChange)="onChangeCategory($event)" [required]="true">
                                             <ng-template let-category>
         
@@ -34,7 +34,7 @@
                                     </div>
                                     <div class="lg:col-6 sm:col-12">
                                         <label for="file" class="block">File</label>
-                                        <p-fileUpload #fubauto styleClass="my-3 p-button-sm p-button-outlined" mode="basic" name="file" accept="image/*" [auto]="true" chooseLabel="Browse" 
+                                        <p-fileUpload #fubauto styleClass="mt-1 mb-3 p-button-sm p-button-outlined" mode="basic" name="file" accept="image/*" [auto]="true" chooseLabel="Browse" 
                                         chooseIcon="pi pi-upload" [customUpload]="true" (uploadHandler)="change($event)"></p-fileUpload>
                                     </div>
                                 </div>
@@ -43,10 +43,10 @@
                                 <div class="grid">
                                     <div class="col-10 p-0" *ngFor="let polling of pollings.controls; let i = index">
                                         <label for="pollingDetailsName">Polling Option {{i+1}}</label>
-                                        <input pInputText type="text" class="w-full my-3" name="pollingDetailsName" [formControl]="polling">
+                                        <input pInputText type="text" class="w-full mt-1 mb-3" name="pollingDetailsName" [formControl]="polling">
                                     </div>
                                     <div class="col flex flex-row align-items-center">
-                                        <button pButton pRipple type="button" class="p-button-sm p-button-success mt-3" icon="pi pi-plus" (click)="addNewPolling()"></button>
+                                        <button pButton pRipple type="button" class="p-button-sm p-button-success mt-1" icon="pi pi-plus" (click)="addNewPolling()"></button>
                                     </div>
                                 </div>
                             </div>
@@ -61,8 +61,10 @@
         
         <div class="col-3">
             <div class="grid">
-                <div class="title mb-4">
-                    <span>Articles</span>
+                <div class="col">
+                    <div class="title mb-2 flex flex-row justify-content-center">
+                        <span class="text-center">Articles</span>
+                    </div>
                 </div>
                 <div class="col-12 p-0 mb-2" *ngFor="let data of articlesData">
                     <div class="article-card">

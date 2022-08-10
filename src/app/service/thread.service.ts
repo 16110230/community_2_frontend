@@ -21,12 +21,12 @@ export class ThreadService {
         return this.http.get<ShowThreads>(`${BASE_URL}/threads`)
     }
 
-    getAllUser(startPage: number, maxPage: number): Observable<ShowThreads> {
-        return this.http.get<ShowThreads>(`${BASE_URL}/threads?startPage=${startPage}&maxPage=${maxPage}`)
+    getAllUser(startPage: number, maxPage: number, query: string): Observable<ShowThreads> {
+        return this.http.get<ShowThreads>(`${BASE_URL}/threads?startPage=${startPage}&maxPage=${maxPage}&query=${query}`)
     }
 
-    getAllNoLogin(startPage: number, maxPage: number): Observable<ShowThreads> {
-        return this.http.get<ShowThreads>(`${BASE_URL}/threads/non-login/?startPage=${startPage}&maxPage=${maxPage}`)
+    getAllNoLogin(startPage: number, maxPage: number, query: string): Observable<ShowThreads> {
+        return this.http.get<ShowThreads>(`${BASE_URL}/threads/non-login/?startPage=${startPage}&maxPage=${maxPage}&query=${query}`)
     }
 
     getAllArticles(): Observable<ShowThreads> {

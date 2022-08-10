@@ -1,16 +1,19 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { MenuItem } from "primeng/api";
+import { Subscription } from "rxjs";
 import { LoginService } from "src/app/service/login.service";
+import { LogoutService } from "src/app/service/logout.service";
 
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html'
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
 
-    constructor(private router : Router, private loginService : LoginService) {}
+    constructor(private router : Router, private loginService : LoginService, private logoutService : LogoutService) {}
 
+    navSubs? : Subscription
     items! : MenuItem[]
 
     loggedIn : {} = {
@@ -24,9 +27,7 @@ export class NavbarComponent implements OnInit {
             {
                 label: 'Logout',
                 icon:'pi pi-fw pi-power-off',
-                command : () => {
-                    this.logout()
-                }
+                routerLink: '/logout'
             }
         ]
     }
@@ -37,8 +38,7 @@ export class NavbarComponent implements OnInit {
     }
 
     logout(): void {
-        localStorage.clear()
-        this.router.navigateByUrl('/')
+        this.router.navigateByUrl('/logout')
     }
 
     ngOnInit(): void {
@@ -76,5 +76,9 @@ export class NavbarComponent implements OnInit {
 
         if(this.loginService.getData()) this.items.push(this.loggedIn)
         else this.items.push(this.notLoggedIn)
+    }
+
+    ngOnDestroy(): void {
+        this.navSubs?.unsubscribe()
     }
 }

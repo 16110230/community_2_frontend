@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { MenuItem } from "primeng/api";
+import { LogoutService } from "src/app/service/logout.service";
 
 @Component({
     selector: "side-bar-custom",
@@ -11,7 +12,8 @@ export class SideBarComponent implements OnInit {
     items!: MenuItem[]
 
     constructor(
-        private router: Router
+        private router: Router,
+        private logoutService: LogoutService
     ) { }
 
     ngOnInit() {

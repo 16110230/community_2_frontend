@@ -107,7 +107,7 @@
                                     <td>{{data.activityName}}</td>
                                     <td>{{data.activityType}}</td>
                                     <td>{{data.orderDate | date:'medium'}}</td>
-                                    <td>{{data.amount}}</td>                                    
+                                    <td>{{data.amount | currency:'Rp'}}</td>                                    
                                     <td *ngIf="data.isApproved;">
                                         <b><span class="invoice-status-succsess-custom" >APPROVED</span></b>
                                     </td> 

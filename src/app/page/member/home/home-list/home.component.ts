@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     token? : string = ""
     isPremium : boolean = false
     isLogin : boolean = false
+    isClear : boolean = false
 
     insert: InsertThreadActivityReq = {
         thread: "",
@@ -43,8 +44,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     subs?: Subscription
     startPage: number = 0
     maxPage: number = 3
-    imageSource = ""
-    imageViewFull = false
+    imageSource : string = ''
+    imageViewFull : boolean = false
+    query : string = ''
 
     constructor(
         private threadService: ThreadService,
@@ -60,22 +62,22 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.isPremium = this.data.data.prem 
             this.isLogin = true 
         } 
-        this.initData(this.startPage, this.maxPage)
+        this.initData(this.startPage, this.maxPage, this.query)
     }
 
     ngOnDestroy(): void {
         this.subs?.unsubscribe()
     }
 
-    initData(startPage: number, maxPage: number): void {
+    initData(startPage: number, maxPage: number, query: string): void {
         if(this.loginService.getData()){
             this.token = this.data.data.token
-            this.threadService.getAllUser(startPage, maxPage).subscribe((result) => { 
+            this.threadService.getAllUser(startPage, maxPage, query).subscribe((result) => { 
                 this.threads = result
                 this.threadsData = result.data
             })
         }else{
-            this.threadService.getAllNoLogin(startPage, maxPage).subscribe((result) => { 
+            this.threadService.getAllNoLogin(startPage, maxPage, query).subscribe((result) => { 
                 this.threads = result
                 this.threadsData = result.data
             })
@@ -98,7 +100,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.threadActivityServcie.insert(
                 this.insert
             ).subscribe(result => {
-                this.initData(this.startPage, this.maxPage)
+                this.initData(this.startPage, this.maxPage, this.query)
             })
         }
     }
@@ -111,7 +113,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.threadActivityServcie.deleteByThreadId(
                 this.insert
             ).subscribe(result => {
-                this.initData(this.startPage, this.maxPage)
+                this.initData(this.startPage, this.maxPage, this.query)
             })
         }
     }
@@ -124,7 +126,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.threadActivityServcie.insert(
                 this.insert
             ).subscribe(result => {
-                this.initData(this.startPage, this.maxPage)
+                this.initData(this.startPage, this.maxPage, this.query)
             })
         }
     }
@@ -137,7 +139,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.threadActivityServcie.deleteByThreadId(
                 this.insert
             ).subscribe(result => {
-                this.initData(this.startPage, this.maxPage)
+                this.initData(this.startPage, this.maxPage, this.query)
             })
         }
     }
@@ -149,7 +151,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.userPollingService.insert(
             this.insertPolling
         ).subscribe(result => {
-            this.initData(this.startPage, this.maxPage)
+            this.initData(this.startPage, this.maxPage, this.query)
         })
     }
 
@@ -169,7 +171,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
     onScroll(): void {
-        this.initData(this.startPage, this.maxPage)
+        this.initData(this.startPage, this.maxPage, this.query)
         this.maxPage += this.maxPage
     }
 
@@ -185,5 +187,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     closeViewImage() {
         this.imageSource = ""
         this.imageViewFull = !this.imageViewFull
+    }
+
+    search = () : void => {
+        this.isClear = true
+        this.initData(this.startPage, this.maxPage, this.query)
+    }
+
+    clear = () : void => {
+        this.isClear = false
+        this.query = ''
+        this.initData(this.startPage, this.maxPage, this.query)
     }
 }

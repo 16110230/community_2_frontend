@@ -1,159 +1,24 @@
 <p-card styleClass="mx-4 mt-4 p-0">
-    <div class="grid">
-        <div class="lg:col-3 lg:px-3 lg:mb-3 sm:col-6 sm:col-6 sm:px-2 sm:mb-2 py-0 h-14rem">
-            <div class="article-card pb-3" routerLink="/home/articles/1">
-                <div class="card-img">
-                    <img src="../../../../../assets/img/default-picture.jpg" alt="">
-                </div>
-                <div class="card-title my-1 px-2">
-                    <span>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, doloremque.
-                    </span>
-                </div>
-                <div>
-                    <p class="card-content p-2 pt-1">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates voluptatibus inventore,
-                        hic dolore amet reprehenderit odio voluptatem vel veniam iusto ex nostrum vero molestias neque
-                        cumque. Ut nulla at adipisci.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="lg:col-3 lg:px-3 lg:mb-3 sm:col-6 sm:col-6 sm:px-2 sm:mb-2 py-0 h-14rem">
-            <div class="article-card pb-3">
-                <div class="card-img">
-                    <img src="../../../../../assets/img/default-picture.jpg" alt="">
-                </div>
-                <div class="card-title my-1 px-2">
-                    <span>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, doloremque.
-                    </span>
-                </div>
-                <div>
-                    <p class="card-content p-2 pt-1">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates voluptatibus inventore,
-                        hic dolore amet reprehenderit odio voluptatem vel veniam iusto ex nostrum vero molestias neque
-                        cumque. Ut nulla at adipisci.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="lg:col-3 lg:px-3 lg:mb-3 sm:col-6 sm:col-6 sm:px-2 sm:mb-2 py-0 h-14rem">
-            <div class="article-card pb-3">
-                <div class="card-img">
-                    <img src="../../../../../assets/img/default-picture.jpg" alt="">
-                </div>
-                <div class="card-title my-1 px-2">
-                    <span>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, doloremque.
-                    </span>
-                </div>
-                <div>
-                    <p class="card-content p-2 pt-1">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates voluptatibus inventore,
-                        hic dolore amet reprehenderit odio voluptatem vel veniam iusto ex nostrum vero molestias neque
-                        cumque. Ut nulla at adipisci.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="lg:col-3 lg:px-3 lg:mb-3 sm:col-6 sm:col-6 sm:px-2 sm:mb-2 py-0 h-14rem">
-            <div class="article-card pb-3">
-                <div class="card-img">
-                    <img src="../../../../../assets/img/default-picture.jpg" alt="">
-                </div>
-                <div class="card-title my-1 px-2">
-                    <span>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, doloremque. Ut nulla at adipisci.
-                    </span>
-                </div>
-                <div>
-                    <p class="card-content p-2 pt-1">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates voluptatibus inventore,
-                        hic dolore amet reprehenderit odio voluptatem vel veniam iusto ex nostrum vero molestias neque
-                        cumque. Ut nulla at adipisci.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="grid" >
 
-    <div class="grid">
-        <div class="lg:col-3 lg:px-3 lg:mb-3 sm:col-6 sm:col-6 sm:px-2 sm:mb-2 py-0 h-14rem">
-            <div class="article-card pb-3">
-                <div class="card-img">
-                    <img src="../../../../../assets/img/default-picture.jpg" alt="">
+        <div class="lg:col-3 lg:px-3 lg:mb-3 sm:col-6 sm:col-6 sm:px-2 sm:mb-2 py-0 h-14rem" *ngFor="let data of threads.data;">
+            <div class="article-card pb-3" [routerLink]="'/home/articles/'+data.id">
+                <div class="card-img">  
+                    <img class="content-card-header-pic" *ngIf="data.file === null"
+                        src="../../../../../assets/img/default-picture.jpg" alt="">
+                    <img class="content-card-header-pic" *ngIf="data.file !== null" [src]="'http://localhost:1221/files/' + data.file" alt="">
                 </div>
                 <div class="card-title my-1 px-2">
                     <span>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, doloremque.
+                        {{data.threadTitle}}
                     </span>
                 </div>
                 <div>
                     <p class="card-content p-2 pt-1">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates voluptatibus inventore,
-                        hic dolore amet reprehenderit odio voluptatem vel veniam iusto ex nostrum vero molestias neque
-                        cumque. Ut nulla at adipisci.
+                        {{data.threadContent}}
                     </p>
                 </div>
             </div>
-        </div>
-        <div class="lg:col-3 lg:px-3 lg:mb-3 sm:col-6 sm:col-6 sm:px-2 sm:mb-2 py-0 h-14rem">
-            <div class="article-card pb-3">
-                <div class="card-img">
-                    <img src="../../../../../assets/img/default-picture.jpg" alt="">
-                </div>
-                <div class="card-title my-1 px-2">
-                    <span>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, doloremque.
-                    </span>
-                </div>
-                <div>
-                    <p class="card-content p-2 pt-1">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates voluptatibus inventore,
-                        hic dolore amet reprehenderit odio voluptatem vel veniam iusto ex nostrum vero molestias neque
-                        cumque. Ut nulla at adipisci.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="lg:col-3 lg:px-3 lg:mb-3 sm:col-6 sm:col-6 sm:px-2 sm:mb-2 py-0 h-14rem">
-            <div class="article-card pb-3">
-                <div class="card-img">
-                    <img src="../../../../../assets/img/default-picture.jpg" alt="">
-                </div>
-                <div class="card-title my-1 px-2">
-                    <span>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, doloremque.
-                    </span>
-                </div>
-                <div>
-                    <p class="card-content p-2 pt-1">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates voluptatibus inventore,
-                        hic dolore amet reprehenderit odio voluptatem vel veniam iusto ex nostrum vero molestias neque
-                        cumque. Ut nulla at adipisci.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="lg:col-3 lg:px-3 lg:mb-3 sm:col-6 sm:col-6 sm:px-2 sm:mb-2 py-0 h-14rem">
-            <div class="article-card pb-3">
-                <div class="card-img">
-                    <img src="../../../../../assets/img/default-picture.jpg" alt="">
-                </div>
-                <div class="card-title my-1 px-2">
-                    <span>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, doloremque. Ut nulla at adipisci.
-                    </span>
-                </div>
-                <div>
-                    <p class="card-content p-2 pt-1">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates voluptatibus inventore,
-                        hic dolore amet reprehenderit odio voluptatem vel veniam iusto ex nostrum vero molestias neque
-                        cumque. Ut nulla at adipisci.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+        </div> 
+     </div>   
 </p-card>
