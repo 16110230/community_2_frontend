@@ -29,6 +29,7 @@ export class AdminThreadComponents implements OnDestroy {
     threadsSub?: Subscription
     deleteSubs?: Subscription
     isDeleted!: number
+    isLoading : boolean = false
 
     initData(): void {
         this.threadService.getAll().subscribe(result => {
@@ -69,10 +70,13 @@ export class AdminThreadComponents implements OnDestroy {
     }
 
     deleted(): void {
+        this.isLoading = true
         this.deleteSubs = this.threadService
             .delete(this.isDeleted)
             .subscribe((_) => {
-                this.initData()
+                if(this.maxPage != 5) this.initData()
+                else this.getData(this.startPage, this.maxPage, this.query)
+                this.isLoading = false
             })
     }
 

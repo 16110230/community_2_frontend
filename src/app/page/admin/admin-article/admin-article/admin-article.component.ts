@@ -23,6 +23,7 @@ export class AdminArticleComponent implements OnDestroy {
     totalData: number = 0
     loading: boolean = true
     query?: string
+    isLoading : boolean = false
 
     articles: ShowThreads = {} as ShowThreads;
     articlesSub?: Subscription
@@ -49,7 +50,6 @@ export class AdminArticleComponent implements OnDestroy {
                 this.articles.data = resultData.data
                 this.loading = false
                 this.totalData = resultData.countData
-                console.log(result)
             },
         )
     }

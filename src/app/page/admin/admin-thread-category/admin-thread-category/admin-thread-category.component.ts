@@ -27,6 +27,7 @@ export class AdminThreadCategoryComponent implements OnDestroy {
     totalData: number = 0
     loading: boolean = true
     query?: string
+    isLoading : boolean = false
 
     threadCategories: ShowThreadCategories = {} as ShowThreadCategories
     threadCategoriesSub?: Subscription
@@ -71,10 +72,13 @@ export class AdminThreadCategoryComponent implements OnDestroy {
     }
 
     deleted(): void {
+        this.isLoading = true
         this.deleteSubs = this.threadCategoryService
             .delete(this.isDeleted)
             .subscribe(result => {
-                this.initData()
+                if(this.maxPage != 5) this.initData()
+                else this.getData(this.startPage, this.maxPage, this.query)
+                this.isLoading = false
             })
     }
 

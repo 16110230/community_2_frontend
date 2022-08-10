@@ -22,10 +22,13 @@ export class AdminSubscriptionCategoryCreateComponent implements OnDestroy {
     }
 
     subsCategorySubs? : Subscription
+    isLoading : boolean = false
 
     onSubmit() {
+        this.isLoading = true
         this.subsCategoryService.insert(this.insert).subscribe(result => {
             this.router.navigateByUrl('/admin/subscription-category')
+            this.isLoading = false
         })
     }
 

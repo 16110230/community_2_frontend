@@ -26,6 +26,7 @@ export class AdminThreadCategoryUpdateComponent {
 
     idParam! : number
     threadCatSubs? : Subscription
+    isLoading : boolean = false
 
     ngOnInit() : void {
         this.activateRoute.params.subscribe(result => {
@@ -43,8 +44,10 @@ export class AdminThreadCategoryUpdateComponent {
     }
 
     onUpdate() : void {
+        this.isLoading = true
         this.threadCategoryService.update(this.update).subscribe(result => {
             this.router.navigateByUrl('/admin/thread-category')
+            this.isLoading = false
         })
     }
 

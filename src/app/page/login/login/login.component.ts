@@ -19,26 +19,17 @@ export class LoginComponent implements OnDestroy {
 
     loginSubscription?: Subscription
 
-    constructor(private loginService : LoginService, private router : Router, private messageService : MessageService){}
+    constructor(private loginService : LoginService, private router : Router){}
 
     login(): void{
         this.loginSubscription = this.loginService.login(this.loginReq)
-            .subscribe({
-                next: (result => {
-                    this.loginService.saveData(result)
-                    if(result.data.roleCode === ADMIN) {
-                        this.router.navigateByUrl('/admin')
-                    } else if(result.data.roleCode === MEMBER) {
-                        this.router.navigateByUrl('/')
-                    }
-                }),
-                error: (err => {
-                    this.messageService.add({
-                        severity: 'error',
-                        summary: 'Error',
-                        detail: err.error.message
-                    })
-                })
+            .subscribe(result => {
+                this.loginService.saveData(result)
+                if(result.data.roleCode === ADMIN) {
+                    this.router.navigateByUrl('/admin')
+                } else if(result.data.roleCode === MEMBER) {
+                    this.router.navigateByUrl('/')
+                }
             })
     }
 
