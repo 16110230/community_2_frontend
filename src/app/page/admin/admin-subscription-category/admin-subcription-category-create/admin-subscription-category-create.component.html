@@ -20,19 +20,19 @@
                 </div>
 
                 <!-- insert form -->
-                <form class="mb-5" (ngSubmit)="onSubmit()">
+                <form class="mb-5" (ngSubmit)="onSubmit()"  ngNativeValidate>
                     <div class="grid">
                         <div class="col-12">
-                            <label for="description">Description</label>                            
-                            <textarea class="w-full" type="text"  name="description" id="description" pInputTextarea [(ngModel)]="insert.description" ></textarea>
+                            <label for="description">Description <span class="text-red-500">*</span></label>                            
+                            <textarea class="w-full" type="text"  name="description" id="description" pInputTextarea [(ngModel)]="insert.description" required  ></textarea>
                         </div>
                         <div class="col-6">
-                            <label for="price">Price</label>                            
-                            <input class="w-full" type="number"  name="price" id="price" pInputText [(ngModel)]="insert.price" />
+                            <label for="price">Price <span class="text-red-500">*</span></label>                            
+                            <input class="w-full" type="number"  name="price" id="price" pInputText [(ngModel)]="insert.price" min="0"/>
                         </div>
                         <div class="col-6">  
-                            <label for="duration">Duration</label> <br>                         
-                            <input class="w-full" type="number" name="duration" id="duration" pInputText [(ngModel)]="insert.duration" >
+                            <label for="duration">Duration <span class="text-red-500">*</span></label> <br>                         
+                            <input class="w-full" type="number" name="duration" id="duration" pInputText [(ngModel)]="insert.duration" min="1" >
                         </div>
                         <div class="col-12">  
                             <label for="isActive">Active</label> <br>                         

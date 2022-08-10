@@ -2,8 +2,7 @@
     <div id="menu-side-custom" class="flex">
         <side-bar-custom></side-bar-custom>
     </div>
-    
-    <!-- end of sidebar -->
+        
     <div class="flex-1">
         <div class="m-5">
             <p-card >  
@@ -18,21 +17,20 @@
                     </div>
                     <div class="col-2"></div>                                            
                 </div>              
-
-                <!-- update form -->
-                <form class="mb-5" (ngSubmit)="onUpdate()">
+                
+                <form class="mb-5" (ngSubmit)="onUpdate()" ngNativeValidate>
                     <div class="grid">                        
                         <div class="col-12">
-                            <label for="description">Description</label>                            
-                            <textarea class="w-full" type="text"  name="description" id="description" pInputText [(ngModel)]="update.description" ></textarea>
+                            <label for="description">Description <span class="text-red-500">*</span></label>                            
+                            <textarea class="w-full" type="text"  name="description" id="description" pInputText [(ngModel)]="update.description" required></textarea>
                         </div>
                         <div class="col-6">
-                            <label for="price">Price</label>                            
-                            <input class="w-full" type="text"  name="price" id="price" pInputText [(ngModel)]="update.price" />
+                            <label for="price">Price <span class="text-red-500">*</span></label>                            
+                            <input class="w-full" type="text"  name="price" id="price" pInputText [(ngModel)]="update.price" min="0"/>
                         </div>
                         <div class="col-6">
-                            <label for="duration">Duration</label>                            
-                            <input class="w-full" type="text"  name="duration" id="duration" pInputText [(ngModel)]="update.duration" />
+                            <label for="duration">Duration <span class="text-red-500">*</span></label>                            
+                            <input class="w-full" type="text"  name="duration" id="duration" pInputText [(ngModel)]="update.duration" min="1" />
                         </div>
                         <div class="col-12">   
                             <label for="isActive">Active</label> <br>                         

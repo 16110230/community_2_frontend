@@ -20,31 +20,47 @@
                 </div>
 
                 <!-- insert form -->
-                <form class="mb-5" (ngSubmit)="insertCompany()">
+                <form class="mb-5" (ngSubmit)="insertCompany()" ngNativeValidate>
                     <div class="grid">
-                        <div class="col-6">
-                            <label for="name">Name</label>                            
-                            <input class="w-full" type="text"  name="companyName" id="name" pInputText [(ngModel)]="data.companyName" />
+                        <div class="col-12 sm:col-6">
+                            <label for="name">Name <span class="text-red-500">*</span></label>                            
+                            <input class="w-full" type="text"  name="companyName" id="name" pInputText [(ngModel)]="data.companyName" minlength="4" maxlength="35" required/>
                         </div>
-                        <div class="col-6">
-                            <label for="code">Code</label>                            
-                            <input class="w-full" type="text"  name="companyCode" id="code" pInputText [(ngModel)]="data.companyCode" />
+                        <div class="col-12 sm:col-6">
+                            <label for="code">Code <span class="text-red-500">*</span></label>                            
+                            <input class="w-full" type="text"  name="companyCode" id="code" pInputText [(ngModel)]="data.companyCode" minlength="2" maxlength="10" required/>
                         </div>
+<<<<<<< HEAD
+                        <div class="col-12 sm:col-6">
+                            <label for="address">Address <span class="text-red-500">*</span></label>                            
+                            <textarea id="address" name="address" class="w-full" rows="5" pInputTextarea autoResize="autoResize" [(ngModel)]="data.address"  required></textarea>
+=======
                         <div class="col-6">
                             <label for="address">Address</label>                            
                             <textarea id="address" name="address" class="w-full" rows="3" pInputTextarea [(ngModel)]="data.address"></textarea>
+>>>>>>> 7ece52f8cfd5a08ccc1e50989c0d68b30703d8c6
                         </div>
-                        <div class="col-6">
-                            <label for="email">Email</label>                            
-                            <input class="w-full" type="email"  name="email" id="email" pInputText [(ngModel)]="data.email" />
+                        <div class="col-12 sm:col-6">
+                            <label for="email">Email <span class="text-red-500">*</span></label>                            
+                            <input class="w-full" type="email"  name="email" id="email" pInputText [(ngModel)]="data.email" minlength="15" maxlength="35" required/>
                         </div>
-                        <div class="col-6">  
+                        <div class="col-12 sm:col-6">  
                             <label for="isActive">Active</label> <br>                         
+<<<<<<< HEAD
+                            <input type="checkbox" name="isActive" id="" value="true" [(ngModel)]="data.isActive" >
+                        </div>                                                         
+                    </div>
+                    <div class="">
+                        <div class="col-12 sm:col-6 col-offset-6">
+                            <button pButton pRipple type="submit" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>                            
+                        </div>
+=======
                             <p-checkbox styleClass="mt-1" type="checkbox" name="isActive" id="" [binary]="true" [value]="data.isActive" [(ngModel)]="data.isActive" ></p-checkbox>
                         </div>                                             
                     </div>
                     <div class="flex flex-row justify-content-center">
                         <button pButton pRipple type="submit" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>                            
+>>>>>>> 7ece52f8cfd5a08ccc1e50989c0d68b30703d8c6
                     </div>
                 </form>                                                                                           
             </p-card>

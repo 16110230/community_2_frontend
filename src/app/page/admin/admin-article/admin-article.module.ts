@@ -18,6 +18,7 @@ import { AdminArticleComponent } from "./admin-article/admin-article.component";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { CheckboxModule } from "primeng/checkbox";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
+import { AdminArticleDetailComponent } from "./admin-article-detail/admin-article-detail.component";
 
 @NgModule({
     imports: [
@@ -41,12 +42,14 @@ import { ConfirmDialogModule } from "primeng/confirmdialog";
     declarations: [
         AdminArticleComponent,
         AdminArticleCreateComponent,
-        AdminArticleUpdateComponent
+        AdminArticleUpdateComponent,
+        AdminArticleDetailComponent
     ],
     exports: [
         AdminArticleComponent,
         AdminArticleCreateComponent,
-        AdminArticleUpdateComponent
+        AdminArticleUpdateComponent,
+        AdminArticleDetailComponent
     ]
 })
 export class AdminArticleModule { }

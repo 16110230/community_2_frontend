@@ -13,23 +13,26 @@
                     </div>
                 </div>  
                 <h4 class="mb-5">Create Activity Type</h4>                
-                <form class="form-create-custom" (ngSubmit)="onSubmit()">
+                <form class="form-create-custom" (ngSubmit)="onSubmit()" ngNativeValidate>
                     <div class="grid">
-                        <div class="col-12">
-                            <label for="name">Name</label><br>
-                            <input class="w-full mt-2" id="name" name="activityName" pInputText autoResize="autoResize" [(ngModel)]="insert.typeName" />
+                        <div class="col-12 sm:col-6">
+                            <label for="name">Name <span class="text-red-500">*</span></label><br>
+                            <input class="w-full mt-2" id="name" name="activityName" pInputText autoResize="autoResize" [(ngModel)]="insert.typeName" minlength="4" maxlength="35" required/>
                         </div>
-                        <div class="col-12">
-                            <label for="code">Code</label><br>
-                            <input class="w-full mt-2" id="code" name="activityCode" pInputText autoResize="autoResize" [(ngModel)]="insert.typeCode" />
+                        <div class="col-12 sm:col-6">
+                            <label for="code">Code <span class="text-red-500">*</span></label><br>
+                            <input class="w-full mt-2" id="code" name="activityCode" pInputText autoResize="autoResize" [(ngModel)]="insert.typeCode" minlength="2" maxlength="10" required/>
                         </div>
-                        <div class="col">  
+                        <div class="col-12 sm:col-6">  
                             <label for="isActive">Active</label> <br>                         
                             <p-checkbox type="checkbox" name="isActive" [binary]="true" [value]="insert.isActive" [(ngModel)]="insert.isActive" ></p-checkbox>
                         </div>
-                        <div class="col-12">
+                                         
+                    </div>
+                    <div class="grid">
+                        <div class="col-12 sm:col-6 col-offset-6">
                             <button pButton pRipple type="submit" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>
-                        </div>                 
+                        </div>
                     </div>                
                 </form>          
             </p-card>

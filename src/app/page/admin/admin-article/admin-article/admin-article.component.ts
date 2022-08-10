@@ -60,8 +60,12 @@ export class AdminArticleComponent implements OnDestroy {
         )
     }
 
-    goTo() {
-        this.router.navigate(['admin/article/create'])
+    goTo(id: string) {
+        this.router.navigate([`/admin/article/detail/${id}`])
+    }
+
+    create() {
+        this.router.navigate(['/admin/article/create'])
     }
     editAt(id: number) {
         this.router.navigate([`/admin/article/update/${id}`])

@@ -13,12 +13,12 @@
                     </div>
                 </div>  
                 <h4 class="mb-5">Update Article</h4>                
-                <form class="form-create-custom" (ngSubmit)="submit()">
-                    <label for="title">Title</label><br>
-                    <textarea id="title" name="activityTitle" class="mt-2 mb-3" [rows]="2" pInputTextarea [(ngModel)]="updateReq.threadTitle"></textarea>
+                <form class="form-create-custom" ngNativeValidate>
+                    <label for="title">Title <span class="text-red-500">*</span></label><br>
+                    <textarea id="title" name="activityTitle" class="mt-2 mb-3" [rows]="2"  pInputTextarea  [(ngModel)]="updateReq.threadTitle" required></textarea>
 
-                    <label for="description">Description</label><br>
-                    <textarea id="description" name="activityContent" class="mt-2 mb-3" [rows]="3" pInputTextarea [(ngModel)]="updateReq.threadContent"></textarea>                    
+                    <label for="description">Description <span class="text-red-500">*</span></label><br>
+                    <textarea id="description" name="activityContent" class="mt-2 mb-3" [rows]="3"  pInputTextarea [(ngModel)]="updateReq.threadContent" required></textarea>                    
 
                     <label for="category">Active</label><br>
                     <p-checkbox class="mt-2" name="isActive" [binary]="true" [(ngModel)]="updateReq.isActive" [value]="updateReq.isActive"></p-checkbox>
