@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 import { Subscription } from "rxjs";
 import { ShowActivityInvoices } from "src/app/dto/activity-invoice/show-activity-invoices";
@@ -11,17 +11,21 @@ import { UsersService } from "src/app/service/users.service";
 
 @Component({
     selector: "app-member-activity",
-    templateUrl: "./activity.component.html"
+    templateUrl: "./activity-detail.component.html"
 })
-export class MemberProfileActivityComponent {
+export class MemberProfileActivityDetailComponent {
 
     constructor(
         private router: Router,
         private userService: UsersService,
         private activityService: ActivityService,
-        private activityInvoiceService: ActivityInvoiceService
+        private activityInvoiceService: ActivityInvoiceService,
+        private activateRoute: ActivatedRoute
     ) { }
 
+    startDate! : string
+    endDate! : string
+    idParam! : string
     profSubs?: Subscription
     profilePic?: string
     user: ShowUserById = {
@@ -97,8 +101,16 @@ export class MemberProfileActivityComponent {
     goToActivity() {
         this.router.navigateByUrl('/home/profiles/activity')
     }
-    detail(id: string) {
-        // this.activityInvoiceService.getReport(id).subscribe()
-        this.router.navigateByUrl(`/home/profiles/activity/detail/${id}`)
+    download(startDate: string, endDate: string) {
+        this.activateRoute.params.subscribe(result => {
+            const resultTemp : any = result
+            this.idParam = resultTemp.id
+
+            console.log(this.idParam)
+            console.log(this.startDate)
+            console.log(this.endDate)
+            
+            this.activityInvoiceService.getReport(this.idParam, this.startDate, this.endDate).subscribe()
+        })
     }
 }
