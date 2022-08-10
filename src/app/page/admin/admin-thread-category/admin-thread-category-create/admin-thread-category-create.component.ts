@@ -22,10 +22,13 @@ export class AdminThreadCategoryCreateComponent implements OnDestroy {
     }
 
     threadCategorySubs? : Subscription
+    isLoading : boolean = false
 
     onSubmit() {
+        this.isLoading = true
         this.threadCategory.insert(this.insert).subscribe(result => {
             this.router.navigateByUrl('/admin/thread-category')
+            this.isLoading = false
         })
     }
 

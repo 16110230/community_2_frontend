@@ -16,14 +16,18 @@ export class AdminUserRoleCreateComponent {
         isActive: false
     }
 
+    isLoading : boolean = false
+
     constructor(
         private userRoleService : UserRoleService,
         private router: Router
     ) { }
 
     onSubmit() : void {
+        this.isLoading = true
         this.userRoleService.insert(this.insert).subscribe(result => {
             this.router.navigateByUrl('/admin/user-role')
+            this.isLoading = false
         })
     }
 

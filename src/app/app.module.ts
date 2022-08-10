@@ -13,6 +13,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreModule } from "@ngrx/store"
 import { MessageService } from "primeng/api"
+import { ToastModule } from "primeng/toast"
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MessageService } from "primeng/api"
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ToastModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({ app: appReducer }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],

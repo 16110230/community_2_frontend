@@ -77,11 +77,11 @@ export class MemberProfileEditComponent implements OnInit, OnDestroy {
     blankPhotoProfile = "../../../../../assets/img/blank-profile.jpg"
 
     goToEditProfile() {
-        this.router.navigate(['/member/profile/edit'])
+        this.router.navigate(['/home/profiles/edit'])
     }
 
     goToChangePassword() {
-        this.router.navigate(['/member/profiles/change-password'])
+        this.router.navigate(['/home/profiles/change-password'])
     }
 
     change = (event : any) : void => {
@@ -93,6 +93,6 @@ export class MemberProfileEditComponent implements OnInit, OnDestroy {
     }
 
     submit = () : void => {
-        this.userService.update(this.user.data).subscribe(res => { this.router.navigateByUrl('/member/profiles') })
+        this.userService.update(this.user.data).subscribe(res => { this.router.navigateByUrl('/home/profiles') })
     }
 }

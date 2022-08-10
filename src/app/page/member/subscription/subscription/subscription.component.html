@@ -6,7 +6,7 @@
         <div class="card-subscription-content text-l flex flex-column justify-content-center align-items-center gap-5 text-color-secondary">
             <div class="text-center px-3">{{data.description}}</div>
             <div class="card-subscription-price2 text-4xl">
-                {{data.price | currency: "Rp" : "symbol" : "3.0"}}
+                {{data.price | customCurrency}}
             </div> 
         </div>
         <div class=" flex-grow-1 flex flex-column justify-content-center align-items-center">

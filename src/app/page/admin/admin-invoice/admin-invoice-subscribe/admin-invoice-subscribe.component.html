@@ -25,10 +25,14 @@
                             <td>{{data.subscriptionCode}}</td>
                             <td>{{data.fullName}}</td>
                             <td>{{data.orderDate | date : 'EE, d MMM y, HH:mm'}}</td>
-                            <td>{{data.amount | currency : "Rp"}}</td>
+                            <td>{{data.amount | customCurrency}}</td>
                             <td class="">
-                                <span class="invoice-status-succsess-custom" *ngIf="data.isApproved">APPROVED</span>
-                                <span class="invoice-status-reject-custom" *ngIf="!data.isApproved">REJECTED</span>
+                                <b>
+                                    <span class="invoice-status-succsess-custom" *ngIf="data.isApproved">APPROVED</span>
+                                </b>
+                                <b>
+                                    <span class="invoice-status-reject-custom" *ngIf="!data.isApproved">REJECTED</span>
+                                </b>
                             </td>  
                         </tr>
                     </ng-template>

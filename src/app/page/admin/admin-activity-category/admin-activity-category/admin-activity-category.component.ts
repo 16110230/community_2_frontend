@@ -26,6 +26,7 @@ export class AdminActivityCategory implements OnDestroy {
     totalData: number = 0
     loading: boolean = true
     query?: string
+    isLoading : boolean = false
 
     activityCategories: ShowActivityCategories = {} as ShowActivityCategories
     activityCategoriesSub?: Subscription
@@ -70,10 +71,13 @@ export class AdminActivityCategory implements OnDestroy {
     }
 
     deleted(): void {
+        this.isLoading = true
         this.deleteSubs = this.activityCategoryService
             .delete(this.isDeleted)
             .subscribe((_) => {
-                this.initData();
+                if(this.maxPage != 5) this.initData()
+                else this.getData(this.startPage, this.maxPage, this.query)
+                this.isLoading = false
             });
     }
 

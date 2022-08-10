@@ -27,6 +27,7 @@ export class AdminActivityEventComponent {
     totalData: number = 0
     loading: boolean = true
     query?: string
+    isLoading : boolean = false
 
     activities: ShowActivities = {} as ShowActivities
     activitiesSub?: Subscription
@@ -68,7 +69,9 @@ export class AdminActivityEventComponent {
         this.deleteSubs = this.activityService
             .delete(this.isDeleted)
             .subscribe((_) => {
-                this.initData()
+                if(this.maxPage != 5) this.initData()
+                else this.getData(this.startPage, this.maxPage, this.query)
+                this.isLoading = false
             })
     }
 

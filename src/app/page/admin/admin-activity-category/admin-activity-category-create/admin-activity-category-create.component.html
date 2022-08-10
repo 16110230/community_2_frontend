@@ -25,13 +25,11 @@
                         </div>
                         <div class="col-12 sm:col-6">  
                             <label for="isActive">Active</label> <br>                         
-                            <input type="checkbox" name="isActive" id="" value="true" [(ngModel)]="insert.isActive" >
-                        </div>                
-                    </div>
-                    <div class="grid">
-                        <div class="col-12 sm:col-6 col-offset-6">
-                            <button pButton pRipple type="submit" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>
-                        </div> 
+                            <p-checkbox type="checkbox" name="isActive" id="" value="true" [binary]="true" [value]="insert.isActive" [(ngModel)]="insert.isActive" ></p-checkbox>
+                        </div>
+                        <div class="col-12">
+                            <button pButton pRipple [loading]="isLoading" type="submit" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>
+                        </div>                 
                     </div>
                 </form>          
             </p-card>

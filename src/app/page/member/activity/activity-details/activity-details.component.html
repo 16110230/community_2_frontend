@@ -2,7 +2,7 @@
     <div class="grid px-7">
         <div class="col-9">
             <p-card styleClass="mt-3">
-                <app-details-info (click)="clickStep()" *ngIf="firstStep"></app-details-info>
+                <app-details-info (submit)="clickStep()" *ngIf="firstStep"></app-details-info>
                 <app-details-register *ngIf="!firstStep"></app-details-register>
             </p-card>
         </div>

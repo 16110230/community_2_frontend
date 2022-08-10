@@ -24,6 +24,7 @@
                         </div>
                         <div class="col-12 sm:col-6">  
                             <label for="isActive">Active</label> <br>                         
+<<<<<<< HEAD
                             <input class="mt-2" type="checkbox" name="isActive" id="" value="true" [(ngModel)]="update.isActive" >
                         </div>                                       
                     </div>
@@ -31,6 +32,13 @@
                         <div class="col-12 sm:col-6 col-offset-6">
                             <button pButton pRipple type="submit" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>
                         </div>  
+=======
+                            <p-checkbox class="mt-2" type="checkbox" name="isActive" [binary]="true" [value]="update.isActive" [(ngModel)]="update.isActive" ></p-checkbox>
+                        </div>
+                        <div class="col-12">
+                            <button pButton pRipple [loading]="isLoading" type="submit" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>
+                        </div>                 
+>>>>>>> 7ece52f8cfd5a08ccc1e50989c0d68b30703d8c6
                     </div>
                     
                 </form>          

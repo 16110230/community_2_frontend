@@ -61,17 +61,17 @@
                             <div class="article-card-content px-3 py-2 grid flex flex-row lg:justify-content-between">
                                 <p>
                                     <i class="icon-activity pi pi-clock"></i>
-                                    {{data.startedAt | date : 'h:mm'}} - {{data.endedAt| date : 'h:mm'}}
+                                    {{data.startedAt | date : 'H:mm'}} - {{data.endedAt| date : 'H:mm'}}
                                 </p>
                                 <p>
                                     <i class="icon-activity pi pi-money-bill"></i>
-                                    {{data.fee | currency: "Rp":"symbol":"3.0"}}
+                                    {{data.fee | customCurrency}}
                                 </p>
                             </div>
                             <div class="article-card-content px-3 pb-3">
                                 <p>
                                     <i class="icon-activity pi pi-calendar"></i>
-                                    {{data.startedAt | date : 'EEEE, d MMM'}} — {{data.endedAt| date : 'EEEE, d MMM, yy'}}
+                                    {{data.startedAt | date : 'EEE, d MMM'}} — {{data.endedAt| date : 'EEE, d MMM, yy'}}
                                 </p>
                             </div>
                         </div>

@@ -32,11 +32,9 @@
                         </div>
                         <div class="col-12 sm:col-6">   
                             <label for="isActive">Active</label> <br>                         
-                            <input type="checkbox" name="isActive" id="" [(ngModel)]="update.isActive" >
-                        </div>                        
-                        
-                    </div>
-                    <div class="grid">
+                            <p-checkbox type="checkbox" name="isActive" [binary]="true" [value]="update.isActive" [(ngModel)]="update.isActive" ></p-checkbox>
+                        </div>
+                        <div class="col-6"></div>
                         <div class="col-6 justify-content-bottom">
                             <button pButton pRipple type="submit" label="Edit" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>                            
                         </div>

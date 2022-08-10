@@ -12,7 +12,7 @@
                         <h4>Courses List</h4>              
                     </div>
                 </div>
-                <p-table [value]="activities.data" responsiveLayout="scroll" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true" [rows]="maxPage" [totalRecords]="totalData" [loading]="loading" [rowsPerPageOptions]="[5, 10]" tyleClass="p-datatable-gridlines"> 
+                <p-table [loading]="isLoading" [value]="activities.data" responsiveLayout="scroll" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true" [rows]="maxPage" [totalRecords]="totalData" [loading]="loading" [rowsPerPageOptions]="[5, 10]" tyleClass="p-datatable-gridlines"> 
                     <ng-template pTemplate="header">
                         <tr>
                             <th>No</th>
@@ -30,7 +30,7 @@
                             <td>{{i+1}}</td>
                             <td>{{data.activityTitle}}</td>
                             <td>{{data.activityCategoryName}}</td>
-                            <td>{{data.fee}}</td>
+                            <td>{{data.fee | customCurrency}}</td>
                             <td>
                                 <div *ngIf="data.isLimit" class="check-status-custom-true">
                                     <i class="pi pi-check font-bold text-blue-500"></i>

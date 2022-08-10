@@ -26,6 +26,7 @@ export class AdminSubscriptionCategoryUpdateComponent implements OnInit, OnDestr
 
     idParam! : string
     subsCatSubs? : Subscription
+    isLoading : boolean = false
 
     ngOnInit() : void {
         this.activateRoute.params.subscribe(result => {
@@ -44,8 +45,10 @@ export class AdminSubscriptionCategoryUpdateComponent implements OnInit, OnDestr
     }
 
     onUpdate() : void {
+        this.isLoading = true
         this.subsCategoryService.update(this.update).subscribe(result => {
             this.router.navigateByUrl('/admin/subscription-category')
+            this.isLoading = false
         })
     }
 

@@ -25,8 +25,8 @@
                             <td>{{i+1}}</td>
                             <td>{{data.invoiceCode}}</td>
                             <td>{{data.userName}}</td>
-                            <td>{{data.orderDate}}</td>
-                            <td>{{data.amount}}</td>
+                            <td>{{data.orderDate | date : 'EE, d MMM y, HH:mm'}}</td>
+                            <td>{{data.amount | customCurrency}}</td>
                             <td>                                
                                 <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded" (click)="viewImage('http://localhost:1221/files/' + data.file)" ></button>                                
                             </td>

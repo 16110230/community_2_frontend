@@ -11,8 +11,8 @@ import { SidebarModule } from "primeng/sidebar";
 import { TableModule } from "primeng/table";
 import { TabViewModule } from "primeng/tabview";
 import { SharedModule } from "src/app/component/shared.module";
+import { MemberProfileTransactionComponent } from "../member-profile/member-profile-transaction/transaction.component";
 import { TransactionRouting } from "./transaction.routing";
-import { TransactionComponent } from "../member-profile/member-profile-transaction/transaction.component";
 
 @NgModule({
     imports: [
@@ -30,10 +30,10 @@ import { TransactionComponent } from "../member-profile/member-profile-transacti
         TransactionRouting
     ],
     declarations: [
-        TransactionComponent
+        MemberProfileTransactionComponent
     ],
     exports: [
-        TransactionComponent
+        MemberProfileTransactionComponent
     ]
 })
 export class TransactionModule { }

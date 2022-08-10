@@ -24,6 +24,7 @@ export class AdminActivityCategoryUpdate implements OnDestroy, OnInit {
         isActive: false,
         version: 0
     }
+    isLoading : boolean = false
 
     idParam! : number
     activityCategorySubs? : Subscription
@@ -44,8 +45,10 @@ export class AdminActivityCategoryUpdate implements OnDestroy, OnInit {
     }
 
     onUpdate() : void {
+        this.isLoading = true
         this.activityCategoryService.update(this.update).subscribe(result => {
             this.router.navigateByUrl('/admin/activity-category')
+            this.isLoading = false
         })
     }
 

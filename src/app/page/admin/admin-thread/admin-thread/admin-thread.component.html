@@ -12,11 +12,11 @@
                     </div>
                 </div>
                               
-                <p-table [value]="threads.data" responsiveLayout="scroll" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true" [rows]="maxPage" [totalRecords]="totalData" [loading]="loading" [rowsPerPageOptions]="[5, 10]" tyleClass="p-datatable-gridlines"> 
+                <p-table [loading]="isLoading" [value]="threads.data" responsiveLayout="scroll" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true" [rows]="maxPage" [totalRecords]="totalData" [loading]="loading" [rowsPerPageOptions]="[5, 10]" tyleClass="p-datatable-gridlines"> 
                     <ng-template pTemplate="header">
                         <tr>
                             <th>No</th>                            
-                            <th class="text-center">Title</th>                            
+                            <th>Title</th>                            
                             <th>Category</th>
                             <th>Active</th>
                             <th>View</th>                           

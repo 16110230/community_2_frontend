@@ -9,15 +9,14 @@ import { InputTextModule } from "primeng/inputtext";
 import { MenuModule } from "primeng/menu";
 import { SidebarModule } from "primeng/sidebar";
 import { TableModule } from "primeng/table";
-import { Subscriber } from "rxjs";
-import { SharedModule } from "src/app/component/shared.module";
+import { PipeModule } from "src/app/pipe/pipe.module";
 import { SubscriptionDetailComponent } from "./subscription-detail/subscription-detail.component";
 import { SubscriptionRouting } from "./subscription.routing";
 import { SubscriptionComponent } from "./subscription/subscription.component";
 
 @NgModule({
     imports: [
-        SharedModule,
+        PipeModule,
         FormsModule,
         CommonModule,
         ButtonModule,
