@@ -57,7 +57,7 @@ export class AdminThreadComponents implements OnDestroy {
     }
 
     goTo(id: number) {
-        this.router.navigate([`/admin/thread/update/${id}`])
+        this.router.navigate([`/admin/thread/detail/${id}`])
     }
 
     pollingTo(id: string) {

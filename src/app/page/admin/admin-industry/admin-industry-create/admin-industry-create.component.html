@@ -2,8 +2,7 @@
     <div id="menu-side-custom" class="flex">
         <side-bar-custom></side-bar-custom>
     </div>
-    
-    <!-- end of sidebar -->
+        
     <div class="flex-1">
         <div class="m-5">
             <p-card >
@@ -18,24 +17,25 @@
                     </div>
                     <div class="col-2"></div>                                            
                 </div>
-
-                <!-- insert form -->
-                <form class="mb-5" (ngSubmit)="insertIndustry()">
+                
+                <form class="mb-5" (ngSubmit)="insertIndustry()"  ngNativeValidate>
                     <div class="grid">
-                        <div class="col-6">
-                            <label for="name">Name</label>                            
-                            <input class="w-full" type="text"  name="industryName" id="name" pInputText [(ngModel)]="insert.industryName" />
+                        <div class="col-12 sm:col-6">
+                            <label for="name">Name <span class="text-red-500">*</span></label>                            
+                            <input class="w-full" type="text"  name="industryName" id="name" pInputText [(ngModel)]="insert.industryName" minlength="4" maxlength="35" required/>
                         </div>
-                        <div class="col-6">
-                            <label for="code">Code</label>                            
-                            <input class="w-full" type="text"  name="indusryCode" id="code" pInputText [(ngModel)]="insert.industryCode" />
+                        <div class="col-12 sm:col-6">
+                            <label for="code">Code <span class="text-red-500">*</span></label>                            
+                            <input class="w-full" type="text"  name="indusryCode" id="code" pInputText [(ngModel)]="insert.industryCode" minlength="2" maxlength="10" required/>
                         </div>
-                        <div class="col-6">  
+                        <div class="col-12 sm:col-6">  
                             <label for="isActive">Active</label> <br>                         
                             <input type="checkbox" name="isActive" id="" [(ngModel)]="insert.isActive" >
-                        </div>
-                        <div class="col-6"></div>                                               
-                        <div class="col-6 justify-content-bottom">
+                        </div>                                                                      
+                        
+                    </div>
+                    <div class="grid">
+                        <div class="col-12 sm:col-6 col-offset-6">
                             <button pButton pRipple type="submit" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>                            
                         </div>
                     </div>

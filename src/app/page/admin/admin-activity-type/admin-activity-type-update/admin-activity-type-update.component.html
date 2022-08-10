@@ -3,7 +3,6 @@
         <side-bar-custom></side-bar-custom>
     </div>
     
-    <!-- end of sidebar -->
     <div class="flex-1">
         <div class="m-5">
             <p-card > 
@@ -13,25 +12,26 @@
                     </div>
                 </div>  
                 <h4 class="mb-5">Update Activity Type</h4>                
-                <form class="form-create-custom" (ngSubmit)="onUpdate()">
+                <form class="form-create-custom" (ngSubmit)="onUpdate()" ngNativeValidate>
                     <div class="grid">
-                        <div class="col-12">
-                            <label for="name">Name</label><br>
-                            <input class="w-full mt-2" id="name" name="name" pInputText autoResize="autoResize" [(ngModel)]="update.typeName" />
+                        <div class="col-12 sm:col-6">
+                            <label for="name">Name <span class="text-red-500">*</span></label><br>
+                            <input class="w-full mt-2" id="name" name="name" pInputText autoResize="autoResize" [(ngModel)]="update.typeName" minlength="4" maxlength="35" required/>
                         </div>
-                        <div class="col-12">
-                            <label for="code">Code</label><br>
-                            <input class="w-full mt-2" id="code" name="code" pInputText autoResize="autoResize" [(ngModel)]="update.typeCode" />
+                        <div class="col-12 sm:col-6">
+                            <label for="code">Code <span class="text-red-500">*</span></label><br>
+                            <input class="w-full mt-2" id="code" name="code" pInputText autoResize="autoResize" [(ngModel)]="update.typeCode" minlength="2" maxlength="10" required/>
                         </div>
-                        <div class="col">  
+                        <div class="col-12 sm:col-6">  
                             <label for="isActive">Active</label> <br>                         
                             <input class="mt-2" type="checkbox" name="isActive" id="" value="true" [(ngModel)]="update.isActive" >
-                        </div>
-                        <div class="col-12">
-                            <button pButton pRipple type="submit" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>
-                        </div>                 
+                        </div>                                       
                     </div>
-                    
+                    <div class="grid">
+                        <div class="col-12 sm:col-6 col-offset-6">
+                            <button pButton pRipple type="submit" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>
+                        </div>  
+                    </div>
                 </form>          
             </p-card>
             
