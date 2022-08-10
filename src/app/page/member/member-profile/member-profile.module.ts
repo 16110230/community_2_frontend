@@ -23,6 +23,8 @@ import { MemberProfileTransactionComponent } from "./member-profile-transaction/
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { HomeModule } from "../home/home.module";
 import { PipeModule } from "src/app/pipe/pipe.module";
+import { MemberProfileActivityDetailComponent } from "./member-profile-activity-detail/activity-detail.component";
+import { CalendarModule } from "primeng/calendar";
 
 @NgModule({
     imports: [
@@ -42,21 +44,24 @@ import { PipeModule } from "src/app/pipe/pipe.module";
         HttpClientModule,
         MemberProfileRouting,
         HomeModule,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        CalendarModule
     ],
     declarations: [
         MemberProfileComponent,
         MemberProfileEditComponent,
         MemberProfileChangePassword,
         MemberProfileActivityComponent,
-        MemberProfileTransactionComponent
+        MemberProfileTransactionComponent,
+        MemberProfileActivityDetailComponent
     ],
     exports: [
         MemberProfileComponent,
         MemberProfileEditComponent,
         MemberProfileChangePassword,
         MemberProfileActivityComponent,
-        MemberProfileTransactionComponent
+        MemberProfileTransactionComponent,
+        MemberProfileActivityDetailComponent
     ]
 })
 export class MemberProfileModule { }

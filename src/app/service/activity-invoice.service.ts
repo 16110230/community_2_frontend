@@ -44,4 +44,8 @@ export class ActivityInvoiceService {
     getByIdUserId(startPage: number, maxPage: number): Observable<ShowActivityInvoices> {
         return this.http.get<ShowActivityInvoices>(`${BASE_URL}/activity-invoices/user?startPage=${startPage}&maxPage=${maxPage}`)
     }
+
+    getReport(id: string, startDate: string, endDate: string): Observable<ShowActivityInvoices>{
+        return this.http.get<ShowActivityInvoices>(`${BASE_URL}/activity-invoices/download?id=${id}&startDate=${startDate}&endDate=${endDate}`)
+    }
 }
