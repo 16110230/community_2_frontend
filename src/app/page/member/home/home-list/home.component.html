@@ -96,12 +96,24 @@
                                         <i class="pi pi-lock"></i>
                                     </div>
                                 </div>
-                                <div class="content-card-body mt-2 px-4">
+
+                                <div class="grid mt-2 px-3" *ngIf="data.file">
+                                    <div class="col-9 content-card-body">
+                                        <p>
+                                            {{data.threadContent}}
+                                        </p>
+                                    </div>
+                                    <a class="col-3 thread-pic" (click)="viewImage('http://localhost:1221/files/' + data.file)">
+                                        <img [src]="'http://localhost:1221/files/' + data.file" alt="">
+                                    </a>
+                                </div>
+
+                                <div class="content-card-body mt-2 px-4" *ngIf="!data.file">
                                     <p>
                                         {{trimCharSubs(data.threadContent)}}
                                     </p>
                                 </div>
-                                <div class="content-card-footer mt-3 px-4">
+                                <div class="content-card-footer mt-3">
                                     <div class="grid flex flex-row justify-content-between">
                                         <div class="activity-left flex flex-row align-items-center">
                                             <a class="mr-2">
@@ -126,18 +138,30 @@
                             </div>
 
                             <div class="content-card-body mt-2 px-4" *ngIf="isPremium">
-                                <p>
-                                    {{data.threadContent}}
-                                </p>
-                                <div class="content-card-footer mt-3 px-4">
+                                <div class="grid mt-2" *ngIf="data.file">
+                                    <div class="col-9 content-card-body p-0">
+                                        <p>
+                                            {{data.threadContent}}
+                                        </p>
+                                    </div>
+                                    <a class="col-3 thread-pic" (click)="viewImage('http://localhost:1221/files/' + data.file)">
+                                        <img [src]="'http://localhost:1221/files/' + data.file" alt="">
+                                    </a>
+                                </div>
+                                <div class="content-card-body mt-2" *ngIf="!data.file">
+                                    <p>
+                                        {{data.threadContent}}
+                                    </p>
+                                </div>
+                                <div class="content-card-footer mt-3">
                                     <div class="grid flex flex-row justify-content-between">
                                         <div class="activity-left flex flex-row align-items-center">
                                             <a class="mr-2">
-                                                <span class="pi pi-heart" *ngIf="!data.isLike"></span>
-                                                <span class="pi pi-heart-fill icon-like-filled" *ngIf="data.isLike"></span>
+                                                <span class="pi pi-heart" *ngIf="!data.isLike" (click)="like(data.id)"></span>
+                                                <span class="pi pi-heart-fill icon-like-filled" *ngIf="data.isLike" (click)="unlike(data.id)"></span>
                                             </a>
                                             <span class="mr-3">{{data.countLike}}</span>
-                                            <a class="mr-2">
+                                            <a class="mr-2" (click)="toDetail(data.id)">
                                                 <span class="pi pi-comment"></span>
                                             </a>
                                             <span class="mr-3">{{data.countComment}}</span>
@@ -146,8 +170,8 @@
                                         <div class="activity-right flex flex-row align-items-center">
                                             <div class="flex flex-row justify-content-between">
                                                 <a class="mr-2">
-                                                    <span class="pi pi-bookmark" *ngIf="!data.isBookmark"></span>
-                                                    <span class="pi pi-bookmark-fill icon-bookmark-filled" *ngIf="data.isBookmark"></span>
+                                                    <span class="pi pi-bookmark" *ngIf="!data.isBookmark" (click)="bookmark(data.id)"></span>
+                                                <span class="pi pi-bookmark-fill icon-bookmark-filled" *ngIf="data.isBookmark" (click)="unBookmark(data.id)"></span>
                                                 </a>
                                             </div>
                                         </div>
@@ -169,19 +193,30 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="grid mt-2" *ngIf="data.file">
+                                <div class="col-9 content-card-body">
+                                    <p>
+                                        {{data.threadContent}}
+                                    </p>
+                                </div>
+                                <a class="col-3 thread-pic" (click)="viewImage('http://localhost:1221/files/' + data.file)">
+                                    <img [src]="'http://localhost:1221/files/' + data.file" alt="">
+                                </a>
+                            </div>
             
-                            <div class="content-card-body mt-2 px-4">
+                            <div class="content-card-body mt-2 px-4" *ngIf="!data.file">
                                 <p>
                                     {{data.threadContent}}
                                 </p>
                             </div>
-                            <div class="flex flex-column" *ngFor="let polling of data.polling?.details">
+                            <div class="flex flex-column align-items-center" *ngFor="let polling of data.polling?.details">
                                 <button pButton pRipple label={{polling.pollingDetailsName}} type="button" 
-                                class="p-button-rounded p-button-primary flex-grow-1 mt-3" 
+                                class="p-button-rounded p-button-primary flex-grow-1 mt-3 w-5" 
                                 (click)="insertPol(polling.id)" *ngIf="data.polling!.header.isPolling == false">
                                 </button>  
                                 <button pButton pRipple [label]="polling.pollingDetailsName + ' (' + polling.countVote + ' votes)'" type="button" 
-                                class="p-button-rounded p-button-danger flex-grow-1 mt-3" 
+                                class="p-button-rounded p-button-danger flex-grow-1 mt-3 w-5" 
                                 *ngIf="data.polling!.header.isPolling == true" [disabled] = "true">
                                 </button>                                              
                             </div>
@@ -224,9 +259,13 @@
                     </div>
                 </div>
                 <div class="col-12 p-0 mb-2" *ngFor="let data of articlesData">
-                    <div class="article-card">
+                    <div class="article-card" (click)="goToArticle(data.id)">
                         <div class="article-card-header">
-                            <img class="article-pic mb-3" src="https://i.pinimg.com/originals/93/42/1e/93421e8db0859ecb02642b9b5f59aa5d.png" alt="article-header-pic">
+                            
+                            <img class="article-pic" *ngIf="data.file === null" src="../../../../../assets/img/default-picture.jpg"
+                            alt="">
+                            <img class="article-pic" *ngIf="data.file !== null" [src]="'http://localhost:1221/files/' + data.file" alt="">
+                            
                             <div class="article-card-header-title px-3">
                                 <h5>{{data.threadTitle}}</h5>
                             </div>
