@@ -55,23 +55,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 label: 'Activities',
                 routerLink: '/home/activities'
             },
-            // {
-            //     icon: 'pi pi-fw pi-user',
-            //     items: [
-            //         {
-            //             label: 'Profiles',
-            //             icon: 'pi pi-fw pi-user',
-            //             routerLink: '/member/profiles'
-            //         },
-            //         {
-            //             label: 'Logout',
-            //             icon:'pi pi-fw pi-power-off',
-            //             command : () => {
-            //                 this.logout()
-            //             }
-            //         }
-            //     ]
-            // }
+            {
+                label: 'Subscriptions',
+                routerLink: '/home/subscriptions'
+            }
         ]
 
         if(this.loginService.getData()) this.items.push(this.loggedIn)

@@ -199,4 +199,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.query = ''
         this.initData(this.startPage, this.maxPage, this.query)
     }
+
+    goToArticle = (id : string) : void => {
+        this.router.navigateByUrl(`/home/articles/${id}`)
+    }
 }
