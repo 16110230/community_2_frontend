@@ -17,7 +17,9 @@
                     <div class="grid">
                         <div class="col-12 sm:col-12 photo-frame">
                             <div class="photo-profile">
-                                <img src="../../../../assets/img/profile-1.jpg" alt="">
+                                <img *ngIf="!file" src="../../../../../assets/img/blank-profile.jpg"
+                                alt="">
+                                <img *ngIf="file !== null" src="{{file}}" alt="">
                             </div>
                         </div>                    
                          
@@ -32,7 +34,7 @@
                             </div>
                             <div class="mt-3">
                                 <label for="email">Email</label>                            
-                                <input class="w-full" type="email" pInputText disabled name="email"/>
+                                <input class="w-full" type="email" pInputText disabled name="email" [(ngModel)]="email"/>
                             </div>                                                                                                                                 
                         </div>    
                         
@@ -57,7 +59,7 @@
                             <input type="checkbox" name="isActive" id="isActive" [(ngModel)]="update.isActive">
                         </div>  
                         <div class="col-12 sm:col-6 ">                          
-                            <button pButton pRipple type="submit" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>                                                      
+                            <button pButton pRipple [loading]="isLoading" type="submit" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>                                                      
                         </div>
                                                              
                     </div>
@@ -67,4 +69,4 @@
         </div> 
     </div>
 </div>
-
+<p-toast position="top-right"></p-toast>

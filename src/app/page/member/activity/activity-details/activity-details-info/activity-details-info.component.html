@@ -1,32 +1,34 @@
-<div class="article-details-header w-full">
-    <div class="flex flex-row">
-        <div class="prof-pic">
-            <img src="https://assets.promediateknologi.com/crop/0x0:0x0/x/photo/2022/05/29/3967583242.jpg" alt="prof-pic">
-        </div>
-
-        <div class="flex flex-column py-2 ml-5 justify-content-between">
-            <div class="activity-owner">
-                <span>{{activity.data.fullName}}</span>
+<form (ngSubmit)="submit()">
+    <div class="article-details-header w-full">
+        <div class="flex flex-row">
+            <div class="prof-pic">
+                <img src="https://assets.promediateknologi.com/crop/0x0:0x0/x/photo/2022/05/29/3967583242.jpg" alt="prof-pic">
             </div>
-            <div class="activity-date">
-                {{activity.data.createdAt | timeAgo}}
+    
+            <div class="flex flex-column py-2 ml-5 justify-content-between">
+                <div class="activity-owner">
+                    <span>{{activity.data.fullName}}</span>
+                </div>
+                <div class="activity-date">
+                    {{activity.data.createdAt | timeAgo}}
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="activity-details-body mt-3">
-    <div class="grid">
-        <div class="col-12 px-0 details-title">
-            <span>{{activity.data.activityTitle}}</span>
-        </div>
-        <div class="col-12 px-0 details-body">
-            <p>
-                {{activity.data.activityContent}}
-            </p>
+    <div class="activity-details-body mt-3">
+        <div class="grid">
+            <div class="col-12 px-0 details-title">
+                <span>{{activity.data.activityTitle}}</span>
+            </div>
+            <div class="col-12 px-0 details-body">
+                <p>
+                    {{activity.data.activityContent}}
+                </p>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="flex flex-row justify-content-center mt-3">
-    <button pButton pRipple class="p-button-sm p-button-success" label="Register"></button>
-</div>
+    
+    <div class="flex flex-row justify-content-center mt-3">
+        <button pButton pRipple type="submit" class="p-button-sm p-button-success" label="Register"></button>
+    </div>
+</form>

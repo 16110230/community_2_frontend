@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { ShowActivityById } from "src/app/dto/activity/show-activity-by-id";
 import { ActivityService } from "src/app/service/activity.service";
@@ -10,6 +10,8 @@ import { ActivityService } from "src/app/service/activity.service";
 })
 export class ActivityDetailsInfoComponent implements OnInit {
     constructor(private activateRoute : ActivatedRoute, private activityService : ActivityService) {}
+
+    @Output() newEvent = new EventEmitter<void>()
 
     activity : ShowActivityById = {
         data : {
@@ -49,5 +51,9 @@ export class ActivityDetailsInfoComponent implements OnInit {
 
     ngOnInit(): void {
         this.initData()
+    }
+
+    submit() : void {
+        this.newEvent.emit()
     }
 }

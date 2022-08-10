@@ -33,7 +33,7 @@
                             <input type="checkbox" name="isActive" id="" [(ngModel)]="insert.isActive" >
                         </div>                                                      
                         <div class="col-6 justify-content-bottom">
-                            <button pButton pRipple type="submit" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>                            
+                            <button pButton pRipple [loading]="isLoading" type="submit" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>                            
                         </div>
                     </div>
                 </form>                                                                                           
