@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 import { CardModule } from "primeng/card";
+import { CheckboxModule } from "primeng/checkbox";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { DropdownModule } from "primeng/dropdown";
 import { InputTextModule } from "primeng/inputtext";
@@ -30,6 +31,7 @@ import { AdminSubscriptionCategoryComponent } from "./admin-subscription-categor
         MenuModule,
         TableModule,
         ConfirmDialogModule,
+        CheckboxModule,
         AdminSubscriptionCategoryRouting
     ],
     exports : [

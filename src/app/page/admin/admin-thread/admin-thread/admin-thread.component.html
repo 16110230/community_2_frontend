@@ -3,7 +3,6 @@
         <side-bar-custom></side-bar-custom>
     </div>
     
-    <!-- end of sidebar -->
     <div class="flex-1">
         <div class="m-5">
             <p-card >  
@@ -13,13 +12,14 @@
                     </div>
                 </div>
                               
-                <p-table [value]="threads.data" responsiveLayout="scroll" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true" [rows]="maxPage" [totalRecords]="totalData" [loading]="loading" [rowsPerPageOptions]="[5, 10]" tyleClass="p-datatable-gridlines"> 
+                <p-table [loading]="isLoading" [value]="threads.data" responsiveLayout="scroll" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true" [rows]="maxPage" [totalRecords]="totalData" [loading]="loading" [rowsPerPageOptions]="[5, 10]" tyleClass="p-datatable-gridlines"> 
                     <ng-template pTemplate="header">
                         <tr>
                             <th>No</th>                            
-                            <th class="text-center">Title</th>                            
+                            <th>Title</th>                            
                             <th>Category</th>
-                            <th>Active</th>                           
+                            <th>Active</th>
+                            <th>View</th>                           
                             <th class="text-center">Action</th>                            
                         </tr>
                     </ng-template>
@@ -34,8 +34,10 @@
                                 </div>
                                 <div *ngIf="!data.isActive" class="check-status-custom-false"></div>
                             </td>
-                            <td class="text-center">
-                                <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded mr-4"></button>
+                            <td>
+                                <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded mr-4" (click)="goTo(data.id)"></button>
+                            </td>
+                            <td class="text-center">                                
                                 <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="confirm(data.id)"></button>                                
                             </td>
                         </tr>

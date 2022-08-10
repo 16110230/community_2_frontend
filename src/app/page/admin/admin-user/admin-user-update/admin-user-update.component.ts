@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { BASE_URL } from "src/app/constant/constant";
 import { UpdateUserReq } from "src/app/dto/users/update-user-req";
 import { UsersService } from "src/app/service/users.service";
 
@@ -15,6 +16,10 @@ export class AdminUserUpdateComponent implements OnInit {
         private usersService : UsersService,
         private router: Router
     ) { }
+
+    email : string = ''
+    file? : string
+    isLoading : boolean = false
 
     update : UpdateUserReq = {
         id : "",
@@ -49,12 +54,18 @@ export class AdminUserUpdateComponent implements OnInit {
                 this.update.positionName = res.data.positionName
                 this.update.version = res.data.version
                 this.update.isActive = res.data.isActive
+                this.email = res.data.email
+                if(res.data.file != null) {
+                    this.file = `${BASE_URL}/files/${res.data.file}`
+                }
             })
         })
     }
 
     onUpdate() :void {
+        this.isLoading = true
         this.usersService.update(this.update).subscribe(result => {
+            this.isLoading = false
             this.router.navigateByUrl('/admin/user')
         })
     }

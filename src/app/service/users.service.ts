@@ -45,14 +45,14 @@ export class UsersService {
     }
 
     getAllWithPagination(startPage: number, maxPage: number, query?: string): Observable<ShowUsers> {
-        return this.http.get<ShowUsers>(`${BASE_URL}/users`)
+        return this.http.get<ShowUsers>(`${BASE_URL}/users?startPage=${startPage}&maxPage=${maxPage}`)
     }
 
-    changePassword(data : UpdatePasswordReq) : Observable<UpdateResDto> {
+    changePassword(data: UpdatePasswordReq): Observable<UpdateResDto> {
         return this.http.put<UpdateResDto>(`${BASE_URL}/users/change-password`, data)
     }
 
-    verification(data : VerificationReqDto) : Observable<VerificationResDto> {
+    verification(data: VerificationReqDto): Observable<VerificationResDto> {
         return this.http.post<VerificationResDto>(`${BASE_URL}/users/verification`, data)
     }
 }

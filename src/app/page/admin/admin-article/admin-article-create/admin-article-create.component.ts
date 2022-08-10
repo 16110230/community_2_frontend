@@ -22,6 +22,7 @@ export class AdminArticleCreateComponent implements OnDestroy, OnInit {
     }
 
     threadSubs?: Subscription
+    isLoading : boolean = false
 
     constructor(
         private fileService: FileService,
@@ -43,8 +44,10 @@ export class AdminArticleCreateComponent implements OnDestroy, OnInit {
     }
 
     insertThread(): void {
+        this.isLoading = true
         this.threadSubs = this.threadService.insertArticle(this.threadData)
             .subscribe(result => {
+                this.isLoading = false
                 this.router.navigateByUrl('/admin/article')
             })
     }

@@ -15,6 +15,10 @@ import { AdminArticleCreateComponent } from "./admin-article-create/admin-articl
 import { AdminArticleUpdateComponent } from "./admin-article-update/admin-article-update.component";
 import { AdminArticleRouting } from "./admin-article.routing";
 import { AdminArticleComponent } from "./admin-article/admin-article.component";
+import { InputTextareaModule } from "primeng/inputtextarea";
+import { CheckboxModule } from "primeng/checkbox";
+import { ConfirmDialogModule } from "primeng/confirmdialog";
+import { AdminArticleDetailComponent } from "./admin-article-detail/admin-article-detail.component";
 
 @NgModule({
     imports: [
@@ -30,17 +34,22 @@ import { AdminArticleComponent } from "./admin-article/admin-article.component";
         TableModule,
         FileUploadModule,
         HttpClientModule,
-        AdminArticleRouting
+        AdminArticleRouting,
+        InputTextareaModule,
+        ConfirmDialogModule,
+        CheckboxModule
     ],
     declarations: [
         AdminArticleComponent,
         AdminArticleCreateComponent,
-        AdminArticleUpdateComponent
+        AdminArticleUpdateComponent,
+        AdminArticleDetailComponent
     ],
     exports: [
         AdminArticleComponent,
         AdminArticleCreateComponent,
-        AdminArticleUpdateComponent
+        AdminArticleUpdateComponent,
+        AdminArticleDetailComponent
     ]
 })
 export class AdminArticleModule { }

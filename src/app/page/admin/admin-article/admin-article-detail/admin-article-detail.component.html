@@ -1,0 +1,26 @@
+<div class="flex flex-row bg-blue-custom">
+    <div id="menu-side-custom" class="flex">
+        <side-bar-custom></side-bar-custom>
+    </div>
+        
+    <div class="flex-1">
+        <div class="m-5">
+            <p-card>
+                <div class="grid mb-2">
+                    <div>
+                        <button pButton pRipple type="button" icon="pi pi-arrow-left" class="p-button-rounded p-button-success" (click)="goTo()"></button>
+                    </div>
+                </div> 
+
+                <div class="text-3xl mt-3">{{thread.data.threadTitle}} </div>
+                <div class="my-1 text-xs">Posted by <span class="">{{thread.data.userName}}</span></div>
+                <div class="my-1 text-xs"><span class="">{{thread.data.createdAt | date:'medium'}}</span></div>
+                <div class="my-1 text-xs">Category <span class="">{{thread.data.threadCategoryName}}</span></div>
+                <div class="mt-3">{{thread.data.threadContent}} </div>                
+                
+            </p-card>
+        </div> 
+    </div>
+</div>
+
+

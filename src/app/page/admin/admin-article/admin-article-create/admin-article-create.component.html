@@ -13,22 +13,20 @@
                     </div>
                 </div>  
                 <h4 class="mb-5">Create Article</h4>                
-                <form class="form-create-custom" (ngSubmit)="insertThread()">
-                    <label for="title">Title</label><br>
-                    <textarea id="title" class="mt-2 mb-5" rows="5" pInputTextarea autoResize="autoResize" name="title" [(ngModel)]="threadData.threadTitle"></textarea>
+                <form class="form-create-custom" (ngSubmit)="insertThread()" ngNativeValidate>
+                    <label for="title">Title <span class="text-red-500">*</span></label><br>
+                    <textarea id="title" class="mt-2 mb-3" [rows]="2"  pInputTextarea name="title" [(ngModel)]="threadData.threadTitle" required></textarea>
 
-                    <label for="description">Description</label><br>
-                    <textarea id="description" class="mt-2 mb-5" rows="5" pInputTextarea autoResize="autoResize" name="description" [(ngModel)]="threadData.threadContent"></textarea>
+                    <label for="description">Description <span class="text-red-500">*</span></label><br>
+                    <textarea id="description" class="mt-2 mb-3" [rows]="3"  pInputTextarea name="description" [(ngModel)]="threadData.threadContent" required></textarea>
 
                     <label for="category">Upload File</label><br>
                     <p-fileUpload #fubauto styleClass="my-3 p-button-sm p-button-outlined" mode="basic" name="file" accept="image/*" [auto]="true" chooseLabel="Upload" 
                                         chooseIcon="pi pi-upload" [customUpload]="true" (uploadHandler)="change($event)"></p-fileUpload>
 
-                    <div class="grid">
-                        <div class="col-6 col-offset-6">
-                            <button pButton pRipple type="submit" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>
-                        </div>
-                    </div>                    
+                    <div class="text-center">
+                        <button pButton pRipple [loading]="isLoading" type="submit" label="Create" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>
+                    </div>               
                 </form>          
             </p-card>
             

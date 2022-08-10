@@ -4,14 +4,14 @@ import { ArticleRouting } from "./article.routing";
 import { CardModule } from "primeng/card";
 import { CommonModule } from "@angular/common";
 import { ArticleDetailComponent } from "./article-detail/article-detail.component";
-import { HomeModule } from "../home/home.module";
+import { PipeModule } from "src/app/pipe/pipe.module";
 
 @NgModule({
     imports: [
         ArticleRouting,
         CardModule,
         CommonModule,
-        HomeModule
+        PipeModule
     ],
     declarations: [
         ArticleListComponent,

@@ -17,6 +17,7 @@ import { AdminActivityCourseDetailComponent } from "./admin-activity-course-deta
 import { AdminActivityEventComponent } from "./admin-activity-events/admin-activity-event.component";
 import { AdminActivityRouting } from "./admin-activity.routing";
 import { AdminActivityEventDetailComponent } from "./admin-activity-event-detail/admin-activity-detail.component";
+import { PipeModule } from "src/app/pipe/pipe.module";
 
 @NgModule({
     imports: [
@@ -31,6 +32,7 @@ import { AdminActivityEventDetailComponent } from "./admin-activity-event-detail
         MenuModule,
         TableModule,
         ConfirmDialogModule,
+        PipeModule,
         AdminActivityRouting
     ],
     declarations: [

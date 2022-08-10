@@ -14,6 +14,8 @@ import { AdminCompanyUpdateComponent } from "./admin-company-update/admin-compan
 import { AdminCompanyRouting } from "./admin-company.routing";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { AdminCompanyComponent } from "./admin-company/admin-company.component";
+import { InputTextareaModule } from "primeng/inputtextarea";
+import { CheckboxModule } from "primeng/checkbox";
 
 @NgModule({
     imports: [
@@ -28,7 +30,9 @@ import { AdminCompanyComponent } from "./admin-company/admin-company.component";
         MenuModule,
         TableModule,
         ConfirmDialogModule,
-        AdminCompanyRouting
+        AdminCompanyRouting,
+        InputTextareaModule,
+        CheckboxModule
     ],
     declarations: [
         AdminCompanyComponent,

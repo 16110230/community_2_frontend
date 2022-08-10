@@ -5,17 +5,21 @@ import { ShowThreads } from "../../../../dto/thread/show-threads";
 import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 
 import { ThreadService } from "../../../../service/thread.service";
-import { ART } from "src/app/constant/constant";
+import { ConfirmationService } from "primeng/api";
 
 @Component({
     selector: "app-admin-article",
-    templateUrl: "./admin-article.component.html"
+    templateUrl: "./admin-article.component.html",
+    providers : [
+        ConfirmationService
+    ]
 })
 export class AdminArticleComponent implements OnDestroy {
 
     constructor(
         private threadService: ThreadService,
-        private router: Router
+        private router: Router,
+        private confirmationService : ConfirmationService
     ) { }
 
     startPage: number = 0
@@ -23,6 +27,9 @@ export class AdminArticleComponent implements OnDestroy {
     totalData: number = 0
     loading: boolean = true
     query?: string
+    isLoading : boolean = false
+    deleteSubs?: Subscription
+    isDeleted!: number
 
     articles: ShowThreads = {} as ShowThreads;
     articlesSub?: Subscription
@@ -49,13 +56,16 @@ export class AdminArticleComponent implements OnDestroy {
                 this.articles.data = resultData.data
                 this.loading = false
                 this.totalData = resultData.countData
-                console.log(result)
             },
         )
     }
 
-    goTo() {
-        this.router.navigate(['admin/article/create'])
+    goTo(id: string) {
+        this.router.navigate([`/admin/article/detail/${id}`])
+    }
+
+    create() {
+        this.router.navigate(['/admin/article/create'])
     }
     editAt(id: number) {
         this.router.navigate([`/admin/article/update/${id}`])
@@ -63,5 +73,31 @@ export class AdminArticleComponent implements OnDestroy {
 
     ngOnDestroy() {
         this.articlesSub?.unsubscribe()
+    }
+
+    onDelete(id: number): void {
+        this.isDeleted = id;
+    }
+
+    deleted(): void {
+        this.deleteSubs = this.threadService
+            .delete(this.isDeleted)
+            .subscribe(() => {
+                if(this.maxPage != 5) this.initData()
+                else this.getData(this.startPage, this.maxPage, this.query)
+                this.isLoading = false
+            });
+    }
+
+    confirm(id: number) {
+        this.isDeleted = id
+        this.confirmationService.confirm({
+            message: 'Are you sure that you want to proceed?',
+            header: 'Confirmation',
+            icon: 'pi pi-exclamation-triangle',
+            accept: () => {
+                this.deleted()
+            }
+        });
     }
 }
