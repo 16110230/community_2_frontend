@@ -25,6 +25,7 @@ export class AdminUserRoleUpdateComponent implements OnInit, OnDestroy {
         isActive : false
     }
 
+    isLoading : boolean = false
     idParam! : number
     userRoleSubs? : Subscription
 
@@ -44,7 +45,9 @@ export class AdminUserRoleUpdateComponent implements OnInit, OnDestroy {
     }
 
     onUpdate() : void {
+        this.isLoading = true
         this.userRoleService.update(this.update).subscribe(result => {
+            this.isLoading = false
             this.router.navigateByUrl('/admin/user-role')
         })
     }

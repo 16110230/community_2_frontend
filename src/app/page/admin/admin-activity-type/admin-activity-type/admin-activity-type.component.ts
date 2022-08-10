@@ -26,6 +26,7 @@ export class AdminActivityType implements OnDestroy {
     totalData: number = 0
     loading: boolean = true
     query?: string
+    isLoading : boolean = false
 
     activityTypes: ShowActivityTypes = {} as ShowActivityTypes
     activityTypesSub?: Subscription
@@ -78,7 +79,9 @@ export class AdminActivityType implements OnDestroy {
         this.deleteSubs = this.activityTypeService
             .delete(this.isDeleted)
             .subscribe((_) => {
-                this.initData();
+                if(this.maxPage != 5) this.initData()
+                else this.getData(this.startPage, this.maxPage, this.query)
+                this.isLoading = false
             });
     }
 

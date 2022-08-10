@@ -24,6 +24,7 @@ export class AdminSubscriptionCategoryComponent implements OnDestroy {
     totalData: number = 0
     loading: boolean = true
     query?: string
+    isLoading : boolean = false
 
     subsCategories: ShowSubsCategories = {} as ShowSubsCategories
     subscriptionCategoriesSub?: Subscription
@@ -68,10 +69,13 @@ export class AdminSubscriptionCategoryComponent implements OnDestroy {
     }
 
     deleted(): void {
+        this.isLoading = true
         this.deleteSubs = this.subsCategoryService
             .delete(this.isDeleted)
             .subscribe(result => {
-                this.initData()
+                if(this.maxPage != 5) this.initData()
+                else this.getData(this.startPage, this.maxPage, this.query)
+                this.isLoading = false
             })
     }
 

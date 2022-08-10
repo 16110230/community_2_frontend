@@ -19,10 +19,13 @@ export class AdminActivityCategoryCreate {
         categoryCode : "",
         isActive : false
     }
+    isLoading : boolean = false
 
     onSubmit() : void {
+        this.isLoading = true
         this.activityCategoryService.insert(this.insert).subscribe(result => {
             this.router.navigateByUrl('/admin/activity-category')
+            this.isLoading = false
         })
     }
 

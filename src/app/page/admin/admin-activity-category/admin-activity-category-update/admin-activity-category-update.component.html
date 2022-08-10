@@ -28,7 +28,7 @@
                             <input class="mt-2" type="checkbox" name="isActive" id="" value="true" [(ngModel)]="update.isActive" >
                         </div>
                         <div class="col-12">
-                            <button pButton pRipple type="submit" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>
+                            <button pButton pRipple [loading]="isLoading" type="submit" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>
                         </div>                 
                     </div>
                     
