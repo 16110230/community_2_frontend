@@ -1,16 +1,22 @@
 <div class="container-home" infinite-scroll (scrolled)="onScroll()">
-
-    <div class="grid flex justify-content-center align-items-center">
-        <div class="w-14.5rem container-search mt-2">
-            <input pInputText class="px-4 py-2" placeholder="Search......" />
-        </div>
-    </div>
-
     <div class="grid px-7 pt-2">
-        <div class="lg:col-9 xs:col-12">
-            <button pButton pRipple class="p-button-sm p-button-rounded p-button-info mb-2" label="Thread" routerLink="/home/create">
-                <i class="pi pi-plus mr-2"></i>
-            </button>
+        <div class="lg:col-9 xs:col-12 py-0">
+            <div class="flex flex-row justify-content-between mb-2">
+                <button pButton pRipple class="p-button-sm p-button-rounded p-button-info" label="Thread" routerLink="/home/create">
+                    <i class="pi pi-plus mr-2"></i>
+                </button>
+
+                <form (ngSubmit)="search()">
+                    <div class="w-14.5rem">
+                        <span class="p-input-icon-right container-search">
+                            <i class="pi pi-times" (click)="clear()" style="cursor: pointer;" *ngIf="isClear">
+                            </i>
+                            <input type="text" pInputText placeholder="Search" [(ngModel)]="query" name="query" />
+                        </span>
+                        <!-- <input pInputText class="px-4 py-2" placeholder="Search......" [(ngModel)]="query" name="query" /> -->
+                    </div>
+                </form>
+            </div>
             <div>
                 <div class="content-home">
                     <div *ngFor="let data of threadsData">
@@ -27,21 +33,23 @@
                                 </div>
                             </div>
         
-                            <!-- <div class="content-card-body mt-2 px-4"> -->
-                                <div class="grid mt-2 px-3" *ngIf="data.file">
-                                    <div class="col-9 content-card-body">
-                                        <p>
-                                            {{data.threadContent}}
-                                        </p>
-                                    </div>
-                                    <a class="col-3 thread-pic" (click)="viewImage('http://localhost:1221/files/' + data.file)">
-                                        <img [src]="'http://localhost:1221/files/' + data.file" alt="">
-                                    </a>
+                            <div class="grid mt-2 px-3" *ngIf="data.file">
+                                <div class="col-9 content-card-body">
+                                    <p>
+                                        {{data.threadContent}}
+                                    </p>
                                 </div>
-                                <!-- <p>
+                                <a class="col-3 thread-pic" (click)="viewImage('http://localhost:1221/files/' + data.file)">
+                                    <img [src]="'http://localhost:1221/files/' + data.file" alt="">
+                                </a>
+                            </div>
+                            
+                            
+                            <div class="content-card-body mt-2 px-4" *ngIf="!data.file">
+                                <p>
                                     {{data.threadContent}}
                                 </p>
-                            </div> -->
+                            </div>
         
                             <div class="content-card-footer mt-3 px-4">
                                 <div class="grid flex flex-row justify-content-between">
@@ -69,7 +77,7 @@
                             </div>
                         </p-card>
     
-                        <p-card styleClass="mt-3" *ngIf="data.threadCategoryName === premium">
+                        <p-card styleClass="my-3" *ngIf="data.threadCategoryName === premium">
                             <div class="content-card-header flex flex-row px-4 mb-3">
                                 <img class="content-card-header-pic" *ngIf="data.userFile === null" src="../../../../../assets/img/default-picture.jpg"
                                 alt="">
@@ -211,7 +219,7 @@
         <div class="col-3">
             <div class="grid">
                 <div class="col-12">
-                    <div class="title mb-2">
+                    <div class="title mb-2 flex flex-row justify-content-center">
                         <span>Articles</span>
                     </div>
                 </div>

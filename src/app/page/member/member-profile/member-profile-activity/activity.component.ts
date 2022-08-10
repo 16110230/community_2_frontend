@@ -95,4 +95,7 @@ export class MemberProfileActivityComponent {
     goToActivity() {
         this.router.navigateByUrl('/home/profiles/activity')
     }
+    downloadFile(id: string) {
+        console.log("run")
+    }
 }

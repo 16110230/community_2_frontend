@@ -3,10 +3,10 @@
     width: 100%;
 }
 
-.container-home {
+/* .container-home {
     height: 8.5vh;
     background-image: url('../../../../assets/img/home-bg.jpg') !important;
-}
+} */
 
 .container-search > input {
     border-radius: 23px;

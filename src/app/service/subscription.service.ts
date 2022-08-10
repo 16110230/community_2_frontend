@@ -21,6 +21,10 @@ export class SubscriptionService {
         return this.http.get<ShowSubscriptions>(`${BASE_URL}/subscriptions`)
     }
 
+    getAllByValidate() : Observable<ShowSubscriptions> {
+        return this.http.get<ShowSubscriptions>(`${BASE_URL}/subscriptions/validate`)
+    }
+
     getById(id : string) : Observable<ShowSubscriptionById> {
         return this.http.get<ShowSubscriptionById>(`${BASE_URL}/subscriptions/${id}`)
     }
