@@ -35,6 +35,7 @@ import { HomeModule } from "../home/home.module";
         CommonModule,
         FileUploadModule,
         TableModule,
+        SharedModule,
         HomeModule
     ],
     declarations: [

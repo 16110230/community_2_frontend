@@ -7,6 +7,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { FormsModule } from "@angular/forms";
 import { NavbarComponent } from "./nav-bar/navbar.component";
 import { MenubarModule } from 'primeng/menubar';
+import { CurrencyPipe } from "../pipe/currency.pipe";
 
 @NgModule({
     imports: [
@@ -18,11 +19,13 @@ import { MenubarModule } from 'primeng/menubar';
     ],
     declarations: [
         SideBarComponent,
-        NavbarComponent
+        NavbarComponent,
+        CurrencyPipe
     ],
     exports: [
         SideBarComponent,
-        NavbarComponent
+        NavbarComponent,
+        CurrencyPipe
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
