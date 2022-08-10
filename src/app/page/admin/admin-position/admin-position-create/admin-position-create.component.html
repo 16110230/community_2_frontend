@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-6">  
                             <label for="isActive">Active</label> <br>                         
-                            <input type="checkbox" name="isActive" id="" [(ngModel)]="insert.isActive" >
+                            <p-checkbox type="checkbox" name="isActive" [binary]="true" [value]="insert.isActive" [(ngModel)]="insert.isActive" ></p-checkbox>
                         </div>  
                         <div class="col-6"></div>                                                    
                         <div class="col-6 justify-content-bottom">

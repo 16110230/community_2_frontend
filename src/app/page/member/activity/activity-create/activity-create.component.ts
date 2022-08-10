@@ -1,3 +1,4 @@
+import { formatDate } from "@angular/common";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
@@ -67,6 +68,11 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
     }
 
     submit = (): void => {
+        const startDate = formatDate(this.data.startedAt, `yyyy-MM-dd'T'HH:mm:ss.SSS${this.getTimeZone()}`, 'en')
+        const endDate = formatDate(this.data.endedAt, `yyyy-MM-dd'T'HH:mm:ss.SSS${this.getTimeZone()}`, 'en')
+        this.data.startedAt = startDate
+        this.data.endedAt = endDate
+
         this.activityService.insert(this.data).subscribe(() => this.router.navigateByUrl('/home/activities'))
     }
 
@@ -79,4 +85,10 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
             this.data.fileExt = res[1]
         })
     }
+
+    getTimeZone() {
+        var offset = new Date().getTimezoneOffset(), o = Math.abs(offset);
+        return (offset < 0 ? "+" : "-") + ("00" + Math.floor(o / 60)).slice(-2) + ":" + ("00" + (o % 60)).slice(-2);
+    }
+    
 }

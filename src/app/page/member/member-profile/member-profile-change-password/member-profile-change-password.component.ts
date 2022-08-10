@@ -25,11 +25,11 @@ export class MemberProfileChangePassword {
     ) { }
 
     goToEditProfile() {
-        this.router.navigate(['/member/profiles/edit'])
+        this.router.navigate(['/home/profiles/edit'])
     }
 
     goToChangePassword() {
-        this.router.navigate(['/member/profiles/change-password'])
+        this.router.navigate(['/home/profiles/change-password'])
     }
 
     show = () : void => {

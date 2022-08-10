@@ -30,7 +30,7 @@
                             <td>{{i+1}}</td>
                             <td>{{data.activityTitle}}</td>
                             <td>{{data.activityCategoryName}}</td>
-                            <td>{{data.fee}}</td>
+                            <td>{{data.fee | customCurrency}}</td>
                             <td>
                                 <div *ngIf="data.isLimit" class="check-status-custom-true">
                                     <i class="pi pi-check font-bold text-blue-500"></i>

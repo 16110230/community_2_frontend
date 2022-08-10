@@ -2,7 +2,7 @@
     <div class="invoice-header">
         <span class="block details-title mb-2">{{activity.data.activityTitle}}</span>
         <b>
-            <span class="text-red-500">{{activity.data.fee | currency: "Rp"}}</span>
+            <span class="text-red-500">{{activity.data.fee | customCurrency}}</span>
         </b>
     </div>
     <div class="invoice-body my-4">

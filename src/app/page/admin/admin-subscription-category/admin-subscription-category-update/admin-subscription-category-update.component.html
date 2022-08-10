@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-12">   
                             <label for="isActive">Active</label> <br>                         
-                            <input type="checkbox" name="isActive" id="" [(ngModel)]="update.isActive" >
+                            <p-checkbox type="checkbox" name="isActive" [binary]="true" [value]="update.isActive" [(ngModel)]="update.isActive" ></p-checkbox>
                         </div>
                         <div class="col-12 justify-content-bottom">
                             <button [loading]="isLoading" pButton pRipple type="submit" label="Change" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>                            

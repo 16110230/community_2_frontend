@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ShowSubscriptions } from "src/app/dto/subscription/show-subscriptions";
 import { UpdateSubscriptionReq } from "src/app/dto/subscription/update-subscription-req";
 import { SubscriptionService } from "src/app/service/subscription.service";

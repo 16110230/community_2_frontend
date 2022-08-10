@@ -3,8 +3,8 @@ export interface InsertActivityReq{
 	activityContent? : string
 	activityCategory? : string
 	activityType? : string
-	startedAt? : string
-	endedAt? : string
+	startedAt : string
+	endedAt : string
 	fee? : number 
     quantity? : number
 	isLimit? : boolean
