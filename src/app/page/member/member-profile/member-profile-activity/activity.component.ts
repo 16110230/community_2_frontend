@@ -1,5 +1,6 @@
+import { formatDate } from "@angular/common";
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 import { Subscription } from "rxjs";
 import { ShowActivityInvoices } from "src/app/dto/activity-invoice/show-activity-invoices";
@@ -19,9 +20,13 @@ export class MemberProfileActivityComponent {
         private router: Router,
         private userService: UsersService,
         private activityService: ActivityService,
-        private activityInvoiceService: ActivityInvoiceService
+        private activityInvoiceService: ActivityInvoiceService,
+        private activateRoute: ActivatedRoute
     ) { }
 
+    startDate! : string
+    endDate! : string
+    idParam! : string
     profSubs?: Subscription
     profilePic?: string
     user: ShowUserById = {
@@ -100,5 +105,19 @@ export class MemberProfileActivityComponent {
     detail(id: string) {
         // this.activityInvoiceService.getReport(id).subscribe()
         this.router.navigateByUrl(`/home/profiles/activity/detail/${id}`)
+    }
+
+    display: boolean = false;
+
+    showDialog() {
+        this.display = true;
+    }
+
+    download(id : string, startDate: string, endDate: string) {
+
+        const startDateFormated = formatDate(this.startDate, `yyyy-MM-dd`, "en")
+        const endDateFormated = formatDate(this.endDate, `yyyy-MM-dd`, "en")
+        
+        this.activityInvoiceService.getReport(id, startDateFormated , endDateFormated).subscribe()
     }
 }

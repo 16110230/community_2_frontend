@@ -10,18 +10,18 @@ import { ActivityCategoryService } from "src/app/service/activity-category.servi
 export class AdminActivityCategoryCreate {
 
     constructor(
-        private activityCategoryService : ActivityCategoryService,
+        private activityCategoryService: ActivityCategoryService,
         private router: Router,
     ) { }
 
     insert: InsertActivityCategoryReq = {
-        categoryName : "",
-        categoryCode : "",
-        isActive : false
+        categoryName: "",
+        categoryCode: "",
+        isActive: false
     }
-    isLoading : boolean = false
+    isLoading: boolean = false
 
-    onSubmit() : void {
+    onSubmit(): void {
         this.isLoading = true
         this.activityCategoryService.insert(this.insert).subscribe(result => {
             this.router.navigateByUrl('/admin/activity-category')

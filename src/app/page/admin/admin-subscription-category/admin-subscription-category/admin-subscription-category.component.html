@@ -32,7 +32,7 @@
                         <tr>
                             <td>{{i+1}}</td>                            
                             <td>{{data.description}}</td>
-                            <td>{{data.price}}</td>
+                            <td>{{data.price | customCurrency}}</td>
                             <td>{{data.duration}}</td>                    
                             <td>
                                 <div *ngIf="data.isActive" class="check-status-custom-true">

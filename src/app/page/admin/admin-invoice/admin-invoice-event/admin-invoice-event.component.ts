@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
 import { EVENT } from "src/app/constant/constant";
+import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 import { ShowActivityInvoices } from "src/app/dto/activity-invoice/show-activity-invoices";
 import { ActivityInvoiceService } from "src/app/service/activity-invoice.service";
 
@@ -9,10 +10,10 @@ import { ActivityInvoiceService } from "src/app/service/activity-invoice.service
     templateUrl: "./admin-invoice-event.component.html"
 })
 export class AdminInvoiceEventComponent implements OnInit, OnDestroy {
-    constructor(private activityInvoiceService : ActivityInvoiceService) {}
+    constructor(private activityInvoiceService: ActivityInvoiceService) { }
 
-    invoices : ShowActivityInvoices = {
-        data : []
+    invoices: ShowActivityInvoices = {
+        data: []
     }
 
     startPage: number = 0
@@ -20,19 +21,23 @@ export class AdminInvoiceEventComponent implements OnInit, OnDestroy {
     totalData: number = 0
     loading: boolean = true
     query?: string
-    invoiceSubs? : Subscription
+    invoiceSubs?: Subscription
 
-    initData() : void {
+    initData(): void {
         this.activityInvoiceService.getAllByType(this.startPage, this.maxPage, EVENT).subscribe(result => {
             this.invoices = result
         })
     }
 
     ngOnInit(): void {
-        this.initData()
+        // this.initData()
     }
 
-    getData(startPage: number = this.startPage, maxPage: number = this.maxPage): void {
+    loadData(event: LazyLoadEvent) {
+        this.getData(event.first, event.rows, event.globalFilter)
+    }
+
+    getData(startPage: number = this.startPage, maxPage: number = this.maxPage, query?: string): void {
         this.loading = true;
         this.startPage = startPage
         this.maxPage = maxPage

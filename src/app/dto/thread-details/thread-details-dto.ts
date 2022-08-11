@@ -4,6 +4,7 @@ export interface ThreadDetailsDto {
     threadDesc : string
     userId : string
     userName : string
+    userFile : string
     isACtive : boolean
     version : number
     createdAt : string

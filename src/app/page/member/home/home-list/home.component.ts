@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     subs?: Subscription
     startPage: number = 0
-    maxPage: number = 3
+    maxPage: number = 5
     imageSource : string = ''
     imageViewFull : boolean = false
     query : string = ''
@@ -171,7 +171,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
     onScroll(): void {
-        this.initData(this.startPage, this.maxPage, this.query)
+        this.initData(this.startPage, this.maxPage + 5, this.query)
         this.maxPage += this.maxPage
     }
 
