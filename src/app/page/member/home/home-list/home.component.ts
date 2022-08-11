@@ -171,7 +171,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
     onScroll(): void {
-        this.initData(this.startPage, this.maxPage, this.query)
+        this.initData(this.startPage, this.maxPage + 5, this.query)
         this.maxPage += this.maxPage
     }
 

@@ -13,7 +13,7 @@
                     </div>
                 </div>  
                 <h4 class="mb-5">Update Article</h4>                
-                <form class="form-create-custom" ngNativeValidate>
+                <form class="form-create-custom" ngNativeValidate (ngSubmit)="submit()">
                     <label for="title">Title <span class="text-red-500">*</span></label><br>
                     <textarea id="title" name="activityTitle" class="mt-2 mb-3" [rows]="2"  pInputTextarea  [(ngModel)]="updateReq.threadTitle" required></textarea>
 
