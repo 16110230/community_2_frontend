@@ -97,13 +97,13 @@
                                     </div>
                                 </div>
 
-                                <div class="grid mt-2 px-3" *ngIf="data.file">
+                                <div class="grid mt-2" *ngIf="data.file">
                                     <div class="col-9 content-card-body">
                                         <p>
                                             {{data.threadContent}}
                                         </p>
                                     </div>
-                                    <a class="col-3 thread-pic" (click)="viewImage('http://localhost:1221/files/' + data.file)">
+                                    <a class="col-3 thread-pic">
                                         <img [src]="'http://localhost:1221/files/' + data.file" alt="">
                                     </a>
                                 </div>
@@ -113,7 +113,7 @@
                                         {{trimCharSubs(data.threadContent)}}
                                     </p>
                                 </div>
-                                <div class="content-card-footer mt-3">
+                                <div class="content-card-footer mt-3 px-2">
                                     <div class="grid flex flex-row justify-content-between">
                                         <div class="activity-left flex flex-row align-items-center">
                                             <a class="mr-2">
@@ -267,12 +267,12 @@
                             <img class="article-pic" *ngIf="data.file !== null" [src]="'http://localhost:1221/files/' + data.file" alt="">
                             
                             <div class="article-card-header-title px-3">
-                                <h5>{{data.threadTitle}}</h5>
+                                <h5 class="white-space-nowrap overflow-hidden text-overflow-ellipsis">{{data.threadTitle}}</h5>
                             </div>
                         </div>
                         <div class="article-card-content p-3">
-                            <p>
-                                {{trimChar(data.threadContent)}}
+                            <p class="white-space-nowrap overflow-hidden text-overflow-ellipsis">
+                                {{data.threadContent}}
                             </p>
                         </div>
                     </div>
