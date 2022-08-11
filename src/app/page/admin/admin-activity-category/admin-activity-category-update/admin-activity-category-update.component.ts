@@ -12,26 +12,26 @@ import { ActivityCategoryService } from "src/app/service/activity-category.servi
 export class AdminActivityCategoryUpdate implements OnDestroy, OnInit {
 
     constructor(
-        private activateRoute : ActivatedRoute,
-        private activityCategoryService : ActivityCategoryService,
+        private activateRoute: ActivatedRoute,
+        private activityCategoryService: ActivityCategoryService,
         private router: Router
     ) { }
 
-    update : UpdateActivityCategoryReq = {
-        id : "",
-        categoryName : "",
-        categoryCode : "",
+    update: UpdateActivityCategoryReq = {
+        id: "",
+        categoryName: "",
+        categoryCode: "",
         isActive: false,
         version: 0
     }
-    isLoading : boolean = false
+    isLoading: boolean = false
 
-    idParam! : number
-    activityCategorySubs? : Subscription
+    idParam!: number
+    activityCategorySubs?: Subscription
 
     ngOnInit(): void {
         this.activateRoute.params.subscribe(result => {
-            const resultTemp : any = result
+            const resultTemp: any = result
             this.idParam = resultTemp.id
 
             this.activityCategoryService.getById(this.idParam).subscribe(res => {
@@ -44,7 +44,7 @@ export class AdminActivityCategoryUpdate implements OnDestroy, OnInit {
         })
     }
 
-    onUpdate() : void {
+    onUpdate(): void {
         this.isLoading = true
         this.activityCategoryService.update(this.update).subscribe(result => {
             this.router.navigateByUrl('/admin/activity-category')

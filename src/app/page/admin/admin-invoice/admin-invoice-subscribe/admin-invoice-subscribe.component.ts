@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
+import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 import { ShowSubscriptions } from "src/app/dto/subscription/show-subscriptions";
 import { SubscriptionService } from "src/app/service/subscription.service";
 
@@ -9,10 +10,10 @@ import { SubscriptionService } from "src/app/service/subscription.service";
 })
 
 export class AdminInvoiceSubscribeComponent implements OnInit, OnDestroy {
-    constructor(private subscriptionService : SubscriptionService) {}
+    constructor(private subscriptionService: SubscriptionService) { }
 
-    subscription : ShowSubscriptions = {
-        data : []
+    subscription: ShowSubscriptions = {
+        data: []
     }
 
     startPage: number = 0
@@ -20,22 +21,34 @@ export class AdminInvoiceSubscribeComponent implements OnInit, OnDestroy {
     totalData: number = 0
     loading: boolean = true
     query?: string
-    subscriptionSubs? : Subscription
+    subscriptionSubs?: Subscription
 
-    initData() : void {
-        this.subscriptionService.getAllByValidate().subscribe(result => {
+    initData(): void {
+        this.subscriptionService.getAllByValidate(this.startPage, this.maxPage).subscribe(result => {
             this.subscription = result
         })
     }
 
     ngOnInit(): void {
-        this.initData()
+        // this.initData()
     }
 
-    getData(startPage: number = this.startPage, maxPage: number = this.maxPage): void {
+    loadData(event: LazyLoadEvent) {
+        this.getData(event.first, event.rows, event.globalFilter)
+    }
+
+    getData(startPage: number = this.startPage, maxPage: number = this.maxPage, query?: string): void {
         this.loading = true;
         this.startPage = startPage
         this.maxPage = maxPage
+
+        this.subscriptionSubs = this.subscriptionService.getAllByValidate(this.startPage, this.maxPage).subscribe(
+            result => {
+                const resultData: any = result
+                this.subscription.data = result.data
+                this.loading = false
+                this.totalData = resultData.countData
+            })
     }
 
     ngOnDestroy(): void {

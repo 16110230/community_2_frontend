@@ -11,33 +11,33 @@ import { UpdateSubscriptionReq } from "../dto/subscription/update-subscription-r
 import { UpdateResDto } from "../dto/update-res-dto";
 
 @Injectable({
-    providedIn : 'root'
+    providedIn: 'root'
 })
 export class SubscriptionService {
 
-    constructor(private http : HttpClient) {}
+    constructor(private http: HttpClient) { }
 
-    getAll() : Observable<ShowSubscriptions> {
+    getAll(): Observable<ShowSubscriptions> {
         return this.http.get<ShowSubscriptions>(`${BASE_URL}/subscriptions`)
     }
 
-    getAllByValidate() : Observable<ShowSubscriptions> {
-        return this.http.get<ShowSubscriptions>(`${BASE_URL}/subscriptions/validate`)
+    getAllByValidate(startPage: number, maxPage: number): Observable<ShowSubscriptions> {
+        return this.http.get<ShowSubscriptions>(`${BASE_URL}/subscriptions/validate?startPage=${startPage}&maxPage=${maxPage}`)
     }
 
-    getById(id : string) : Observable<ShowSubscriptionById> {
+    getById(id: string): Observable<ShowSubscriptionById> {
         return this.http.get<ShowSubscriptionById>(`${BASE_URL}/subscriptions/${id}`)
     }
 
-    insert(data : InsertSubscriptionReq) : Observable<InsertResDto> {
+    insert(data: InsertSubscriptionReq): Observable<InsertResDto> {
         return this.http.post<InsertResDto>(`${BASE_URL}/subscriptions`, data)
     }
 
-    update(data : UpdateSubscriptionReq) : Observable<UpdateResDto> {
+    update(data: UpdateSubscriptionReq): Observable<UpdateResDto> {
         return this.http.put<UpdateResDto>(`${BASE_URL}/subscriptions`, data)
     }
 
-    delete(id : number) : Observable<DeleteResDto> {
+    delete(id: number): Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/subscriptions/${id}`)
     }
 }
