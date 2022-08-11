@@ -3,12 +3,11 @@
         <side-bar-custom></side-bar-custom>
     </div>
     
-    <!-- end of sidebar -->
     <div class="flex-1">
         <div class="m-5">
             <p-card >  
                 <h4 class="mb-5">Course Invoices</h4>              
-                <p-table [value]="invoices.data" responsiveLayout="scroll">
+                <p-table [value]="invoices.data" responsiveLayout="scroll" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true" [rows]="maxPage" [totalRecords]="totalData" [loading]="loading" [rowsPerPageOptions]="[5, 10]" tyleClass="p-datatable-gridlines">     
                     <ng-template pTemplate="header">
                         <tr>
                             <th>No</th>

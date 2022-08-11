@@ -7,18 +7,20 @@ import { ActivityTypeService } from "src/app/service/activity-type.service";
     selector: "app-admin-activity-type-create",
     templateUrl: "./admin-activity-type-create.component.html"
 })
-export class AdminActivityTypeCreate{
+export class AdminActivityTypeCreate {
 
     constructor(
-        private activityTypeService : ActivityTypeService,
+        private activityTypeService: ActivityTypeService,
         private router: Router,
     ) { }
 
     insert: InsertActyivityTypeReq = {
-        typeName : "",
-        typeCode : "",
-        isActive : false
+        typeName: "",
+        typeCode: "",
+        isActive: false
     }
+
+    isLoading: boolean = false
 
     onSubmit() {
         this.activityTypeService.insert(this.insert).subscribe(result => {

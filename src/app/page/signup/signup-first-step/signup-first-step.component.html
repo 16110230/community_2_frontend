@@ -1,6 +1,6 @@
 <div class="flex justify-content-center align-items-center" [ngStyle]="{'min-height': '100vh'}">
     <div [ngStyle]="{'width': '75%'}">
-        <form (ngSubmit)="submit()">
+        <form (ngSubmit)="submit()" ngNativeValidate>
             <span class="icon-round mr-2 mb-3" [ngStyle]="{'background-color': 'var(--blue-500)'}">
                 <i class="pi pi-upload text-white"></i>
             </span>
@@ -9,23 +9,23 @@
             <div class="mt-2 w-full">
                 <label for="username">User Name</label><span class="text-red-500">*</span>
             </div>
-            <input class="mt-2 w-full" type="text" name="username" id="username" [(ngModel)]="username" pInputText />
+            <input class="mt-2 w-full" type="text" name="username" id="username" [(ngModel)]="username" pInputText minlength="6" maxlength="10" required/>
 
             <div class="mt-2 w-full">
                 <label for="fullName">Full Name</label><span class="text-red-500">*</span>
             </div>
-            <input class="mt-2 w-full" type="text" name="fullName" id="fullName" [(ngModel)]="fullName" pInputText />
+            <input class="mt-2 w-full" type="text" name="fullName" id="fullName" [(ngModel)]="fullName" pInputText minlength="4" maxlength="35" required/>
 
             <div class="mt-2 w-full">
                 <label for="email">Email</label><span class="text-red-500">*</span>
             </div>
-            <input class="mt-2 w-full" type="text" name="email" id="email" [(ngModel)]="email" pInputText />
+            <input class="mt-2 w-full" type="text" name="email" id="email" [(ngModel)]="email" pInputText minlength="15" maxlength="30" required/>
 
             <div class="mt-2 w-full">
                 <label for="userPassword">Password</label><span class="text-red-500">*</span>
             </div>
             <input class="mt-2 w-full" type="password" name="userPassword" id="userPassword" [(ngModel)]="userPassword"
-                pInputText />
+                pInputText minlength="6" maxlength="10" required/>
 
             <button class="mt-4 w-full" pButton type="submit" label="NEXT"></button>
         </form>

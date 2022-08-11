@@ -39,7 +39,7 @@ export class MemberProfileChangePassword {
 
     submit = () : void => {
         if(this.confirmNewPassword === this.data.newPassword) {
-            this.userService.changePassword(this.data).subscribe(res => { this.router.navigateByUrl('/member/profiles') })
+            this.userService.changePassword(this.data).subscribe(res => { this.router.navigateByUrl('/home/profiles') })
         }
     }
 }
