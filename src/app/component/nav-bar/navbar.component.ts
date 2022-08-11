@@ -32,6 +32,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
         ]
     }
 
+    premiumMenu : {} = {
+        label: 'Subscriptions',
+        routerLink: '/home/subscriptions',
+        icon : 'pi pi-star text-yellow-500'
+    }
+
     notLoggedIn : {} = {
         label: 'Login',
         routerLink: '/login'
@@ -57,16 +63,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 label: 'Activities',
                 routerLink: '/home/activities',
                 icon : 'pi pi-ticket text-red-500'
-            },
-            {
-                label: 'Subscriptions',
-                routerLink: '/home/subscriptions',
-                icon : 'pi pi-star text-yellow-500'
             }
         ]
-
-        if(this.loginService.getData()) this.items.push(this.loggedIn)
+        
+        if(this.loginService.getData()) {
+            if(!this.loginService.getData()?.data.prem) this.items.push(this.premiumMenu)
+            
+            this.items.push(this.loggedIn)
+        }
         else this.items.push(this.notLoggedIn)
+
     }
 
     ngOnDestroy(): void {

@@ -3,4 +3,5 @@ export interface LoginResDataDto {
     roleCode : string
     token : string
     refreshToken : string
+    prem : boolean
 }
