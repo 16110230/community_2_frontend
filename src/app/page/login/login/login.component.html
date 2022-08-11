@@ -15,7 +15,7 @@
     <div class="sm:col-6 col-12 p-0" [ngStyle]="{'min-height': '100vh'}" >
         <div class="flex justify-content-center align-items-center" [ngStyle]="{'min-height': '100vh'}">
             <div [ngStyle]="{'width': '75%'}">
-            <form (ngSubmit)="login()">
+            <form (ngSubmit)="login()" ngNativeValidate>
                 <span class="icon-round mr-2 mb-3" [ngStyle]="{'background-color': 'var(--blue-500)'}">
                     <i class="pi pi-sign-in text-white"></i>
                 </span>
@@ -25,13 +25,13 @@
                     <label for="username">Username</label>
                 </div>
                 
-                <input class="mt-2" type="text" [ngStyle]="{'width': '100%'}" name="username" id="username" pInputText [(ngModel)]="loginReq.username" />
+                <input class="mt-2" type="text" [ngStyle]="{'width': '100%'}" name="username" id="username" pInputText [(ngModel)]="loginReq.username" required/>
 
                 <div class="mt-2">
                     <label class="mt-2" for="password">Password</label>
                 </div>
                                 
-                <input class="mt-2" type="password" [ngStyle]="{'width': '100%'}" name="password" id="password" pInputText [(ngModel)]="loginReq.userPassword"/>
+                <input class="mt-2" type="password" [ngStyle]="{'width': '100%'}" name="password" id="password" pInputText [(ngModel)]="loginReq.userPassword" required/>
 
                 <button class="mt-4" pButton type="submit" [ngStyle]="{'width': '100%'}" label="SIGN IN" ></button>
                 

@@ -1,6 +1,6 @@
 <div class="flex justify-content-center align-items-center" [ngStyle]="{'min-height': '100vh'}">
     <div [ngStyle]="{'width': '75%'}">
-        <form (ngSubmit)="submit()">
+        <form (ngSubmit)="submit()" ngNativeValidate>
             <span class="icon-round mr-2 mb-3" [ngStyle]="{'background-color': 'var(--blue-500)'}">
                 <i class="pi pi-file text-white"></i>
             </span>
@@ -10,7 +10,7 @@
                 <label for="verify">Verify Your Code</label>
             </div>
             <input class="mt-2" type="text" [ngStyle]="{'width': '100%'}" name="verificationCode" id="verify"
-               [(ngModel)]="code" pInputText />
+               [(ngModel)]="code" pInputText required/>
 
             <button class="mt-4" pButton type="submit" [ngStyle]="{'width': '100%'}" label="Submit"></button>
         </form>

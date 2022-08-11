@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
 import { COURSE } from "src/app/constant/constant";
+import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 import { ShowActivityInvoices } from "src/app/dto/activity-invoice/show-activity-invoices";
 import { ActivityInvoiceService } from "src/app/service/activity-invoice.service";
 
@@ -8,11 +9,11 @@ import { ActivityInvoiceService } from "src/app/service/activity-invoice.service
     selector: "app-admin-invoice-course",
     templateUrl: "./admin-invoice-course.component.html"
 })
-export class AdminInvoiceCourseComponent implements OnInit, OnDestroy {
-    constructor(private activityInvoiceService : ActivityInvoiceService) {}
+export class AdminInvoiceCourseComponent implements OnDestroy {
+    constructor(private activityInvoiceService: ActivityInvoiceService) { }
 
-    invoices : ShowActivityInvoices = {
-        data : []
+    invoices: ShowActivityInvoices = {
+        data: []
     }
 
     startPage: number = 0
@@ -20,12 +21,16 @@ export class AdminInvoiceCourseComponent implements OnInit, OnDestroy {
     totalData: number = 0
     loading: boolean = true
     query?: string
-    invoiceSubs? : Subscription
+    invoiceSubs?: Subscription
 
-    initData() : void {
+    initData(): void {
         this.activityInvoiceService.getAllByType(this.startPage, this.maxPage, COURSE).subscribe(result => {
             this.invoices = result
         })
+    }
+
+    loadData(event: LazyLoadEvent) {
+        this.getData(event.first, event.rows, event.globalFilter)
     }
 
     getData(startPage: number = this.startPage, maxPage: number = this.maxPage, query?: string): void {
@@ -40,13 +45,12 @@ export class AdminInvoiceCourseComponent implements OnInit, OnDestroy {
                 this.invoices.data = resultData.data
                 this.loading = false
                 this.totalData = resultData.countData
-                console.log(result)
             },
         )
     }
 
     ngOnInit(): void {
-        this.initData()
+        // this.initData()
     }
 
     ngOnDestroy(): void {

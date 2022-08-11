@@ -11,25 +11,26 @@ import { ActivityTypeService } from "src/app/service/activity-type.service";
 export class AdminActivityTypeUpdate implements OnInit, OnDestroy {
 
     constructor(
-        private activateRoute : ActivatedRoute,
-        private activityTypeService : ActivityTypeService,
+        private activateRoute: ActivatedRoute,
+        private activityTypeService: ActivityTypeService,
         private router: Router
     ) { }
 
-    update : UpdateActivityTypeReq = {
-        id : "",
-        typeName : "",
-        typeCode : "",
-        isActive : false,
-        version : 0
+    update: UpdateActivityTypeReq = {
+        id: "",
+        typeName: "",
+        typeCode: "",
+        isActive: false,
+        version: 0
     }
 
-    idParam! : number
-    activityTypeSubs? : Subscription
+    idParam!: number
+    activityTypeSubs?: Subscription
+    isLoading: boolean = false
 
     ngOnInit(): void {
         this.activateRoute.params.subscribe(result => {
-            const resultTemp : any = result
+            const resultTemp: any = result
             this.idParam = resultTemp.id
 
             this.activityTypeService.getById(this.idParam).subscribe(res => {
@@ -42,7 +43,7 @@ export class AdminActivityTypeUpdate implements OnInit, OnDestroy {
         })
     }
 
-    onUpdate() : void { 
+    onUpdate(): void {
         this.activityTypeService.update(this.update).subscribe(result => {
             this.router.navigateByUrl('/admin/activity-type')
         })
