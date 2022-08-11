@@ -21,12 +21,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
         items: [
             {
                 label: 'Profiles',
-                icon: 'pi pi-fw pi-user',
+                icon: 'pi pi-fw pi-user text-blue-600',
                 routerLink: '/home/profiles'
             },
             {
                 label: 'Logout',
-                icon:'pi pi-fw pi-power-off',
+                icon:'pi pi-fw pi-power-off text-red-500',
                 routerLink: '/logout'
             }
         ]
@@ -45,19 +45,23 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.items = [
             {
                 label: 'Home',
-                routerLink: '/home'
+                routerLink: '/home',
+                icon : 'pi pi-home text-blue-500'
             },
             {
                 label: 'Articles',
-                routerLink: '/home/articles'
+                routerLink: '/home/articles',
+                icon : 'pi pi-book text-teal-500'
             },
             {
                 label: 'Activities',
-                routerLink: '/home/activities'
+                routerLink: '/home/activities',
+                icon : 'pi pi-ticket text-red-500'
             },
             {
                 label: 'Subscriptions',
-                routerLink: '/home/subscriptions'
+                routerLink: '/home/subscriptions',
+                icon : 'pi pi-star text-yellow-500'
             }
         ]
 

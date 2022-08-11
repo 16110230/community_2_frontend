@@ -69,7 +69,10 @@
                 <div class="col-12 p-0 mb-2" *ngFor="let data of articlesData">
                     <div class="article-card">
                         <div class="article-card-header">
-                            <img class="article-pic mb-3" src="https://i.pinimg.com/originals/93/42/1e/93421e8db0859ecb02642b9b5f59aa5d.png" alt="article-header-pic">
+                            <img class="article-pic" *ngIf="data.file === null" src="../../../../../assets/img/default-picture.jpg"
+                            alt="">
+                            <img class="article-pic" *ngIf="data.file !== null" [src]="'http://localhost:1221/files/' + data.file" alt="">
+                            
                             <div class="article-card-header-title px-3">
                                 <h5>{{data.threadTitle}}</h5>
                             </div>
