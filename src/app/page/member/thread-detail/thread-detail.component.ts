@@ -62,6 +62,8 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
     polling : string  = POLLING
     localStorage = JSON.parse(localStorage.getItem('data') || '{}')
     nameUser = this.localStorage.data.username
+    imageSource : string = ''
+    imageViewFull : boolean = false
 
     constructor(
         private activateRoute : ActivatedRoute,
@@ -172,6 +174,19 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
         })
     }
 
+    viewImage(src: string) {
+        this.imageViewFull = !this.imageViewFull
+        this.imageSource = src
+    }
+
+    closeViewImage() {
+        this.imageSource = ""
+        this.imageViewFull = !this.imageViewFull
+    }
+
+    goToArticle = (id : string) : void => {
+        this.router.navigateByUrl(`/home/articles/${id}`)
+    }
 
     ngOnInit(): void {
         this.initData()

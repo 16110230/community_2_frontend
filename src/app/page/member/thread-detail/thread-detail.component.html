@@ -4,10 +4,9 @@
             <div class="content-home">
                 <p-card styleClass="mb-3">
                     <div class="content-card-header flex flex-row px-4 mb-3">
-                        <img class="content-card-header-pic" *ngIf="thread.data.userFile === null"
-                            src="../../../../../assets/img/blank-profile.jpg" alt="">
-                        <img class="content-card-header-pic" *ngIf="thread.data.userFile !== null" src="{{thread.data.userFile}}"
-                            alt="">
+                                <img class="content-card-header-pic" *ngIf="thread.data.userFile === null" src="../../../../../assets/img/default-picture.jpg"
+                                alt="Profil Picture">
+                                <img class="content-card-header-pic" *ngIf="thread.data.userFile !== null" [src]="'http://localhost:1221/files/' + thread.data.userFile" alt="Profil Picture">
                         <div class="content-card-header-dtl ml-3 flex flex-column justify-content-center">
                             <div class="header-details mt-3">
                                 <h4>{{thread.data.threadTitle}}</h4>
@@ -16,7 +15,18 @@
                         </div>
                     </div>
 
-                    <div class="content-card-body mt-2 px-4">
+                    <div class="grid mt-2 px-3" *ngIf="thread.data.file">
+                        <div class="col-9 content-card-body">
+                            <p>
+                                {{thread.data.threadContent}}
+                            </p>
+                        </div>
+                        <a class="col-3 thread-pic" (click)="viewImage('http://localhost:1221/files/' + thread.data.file)">
+                            <img [src]="'http://localhost:1221/files/' + thread.data.file" alt="">
+                        </a>
+                    </div>
+
+                    <div class="content-card-body mt-2 px-4"  *ngIf="!thread.data.file">
                         <p>
                             {{thread.data.threadContent}}
                         </p>
@@ -65,7 +75,9 @@
                     <div class="comment-section mb-3" *ngFor="let data of threadDetailsData">
                         <div class="comment-section-header">
                             <div class="comment-prof-pic flex flex-row">
-                                <img src="https://mmc.tirto.id/image/2020/02/12/billie-eilish-ap--2_ratio-16x9.jpg" alt="prof-pic">
+                                <img class="content-card-header-pic" *ngIf="data.userFile === null" src="../../../../../assets/img/default-picture.jpg"
+                                alt="Profil Picture">
+                                <img class="content-card-header-pic" *ngIf="data.userFile !== null" [src]="'http://localhost:1221/files/' + data.userFile" alt="Profil Picture">
                                 <div class="flex flex-column justify-content-center ml-2">
                                     <span class="comment-full-name">{{data.userName}}</span>
                                     <span class="comment-time">{{data.createdAt|timeAgo}}</span>
@@ -82,7 +94,9 @@
                         <form (ngSubmit)="onSubmit()">
                             <div class="comment-section-header">
                                 <div class="comment-prof-pic flex flex-row">
-                                    <img src="https://media.thetab.com/blogs.dir/90/files/2022/06/screenshotter-theumbrellaacademye8weddingattheendoftheworld-2231-e1656342363954-1024x742.jpg" alt="prof-pic">
+                                <img class="content-card-header-pic" *ngIf="thread.data.userFile === null" src="../../../../../assets/img/default-picture.jpg"
+                                alt="Profil Picture">
+                                <img class="content-card-header-pic" *ngIf="thread.data.userFile !== null" [src]="'http://localhost:1221/files/' + thread.data.userFile" alt="Profil Picture">
                                     <div class="flex flex-column justify-content-between ml-2">
                                         <span class="comment-full-name">You</span>
                                         <input class="comment-input" type="text" placeholder="Leave your thoughts here..." [(ngModel)]="insert.threadDesc" name="threadDesc">
@@ -104,11 +118,11 @@
                     <span>Articles</span>
                 </div>
                 <div class="col-12 p-0 mb-2" *ngFor="let data of articlesData">
-                    <div class="article-card">
+                    <div class="article-card" (click)="goToArticle(data.id)">
                         <div class="article-card-header">
-                            <img class="article-pic" *ngIf="data.file === null" src="../../../../../assets/img/default-picture.jpg"
-                            alt="">
-                            <img class="article-pic" *ngIf="data.file !== null" [src]="'http://localhost:1221/files/' + data.file" alt="">
+                            <img class="article-pic mb-3" *ngIf="data.file === null" src="../../../../../assets/img/default-picture.jpg"
+                            alt="Profil Picture">
+                            <img class="article-pic mb-3" *ngIf="data.file !== null" [src]="'http://localhost:1221/files/' + data.userFile" alt="Profil Picture">
                             <div class="article-card-header-title px-3">
                                 <h5>{{data.threadTitle}}</h5>
                             </div>
@@ -123,4 +137,10 @@
             </div>
         </div>
     </div>
+</div>
+<div *ngIf="imageViewFull" id="thread-image-view">
+    <div id="image-view-btn-close" (click)="closeViewImage()">
+        <span>X</span>
+    </div>
+    <img [src]="imageSource" alt="">
 </div>

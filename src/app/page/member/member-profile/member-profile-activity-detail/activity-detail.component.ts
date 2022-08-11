@@ -1,3 +1,4 @@
+import { formatDate } from "@angular/common";
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
@@ -106,11 +107,10 @@ export class MemberProfileActivityDetailComponent {
             const resultTemp : any = result
             this.idParam = resultTemp.id
 
-            console.log(this.idParam)
-            console.log(this.startDate)
-            console.log(this.endDate)
+            const startDateFormated = formatDate(this.startDate, `yyyy-MM-dd`, "en")
+            const endDateFormated = formatDate(this.endDate, `yyyy-MM-dd`, "en")
             
-            this.activityInvoiceService.getReport(this.idParam, this.startDate, this.endDate).subscribe()
+            this.activityInvoiceService.getReport(this.idParam, startDateFormated , endDateFormated).subscribe()
         })
     }
 }
