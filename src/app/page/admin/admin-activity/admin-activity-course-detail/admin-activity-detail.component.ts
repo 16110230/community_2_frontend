@@ -37,6 +37,7 @@ export class AdminActivityCourseDetailComponent implements OnInit, OnDestroy {
             version: 0,
             createdAt: "",
             fullName: "",
+            userFile : ""
         }
 
     }

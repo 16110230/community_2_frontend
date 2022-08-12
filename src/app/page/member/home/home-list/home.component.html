@@ -101,7 +101,7 @@
                                 <div class="grid mt-2" *ngIf="data.file">
                                     <div class="col-9 content-card-body">
                                         <p>
-                                            {{data.threadContent}}
+                                            {{trimCharSubs(data.threadContent)}}
                                         </p>
                                     </div>
                                     <a class="col-3 thread-pic">

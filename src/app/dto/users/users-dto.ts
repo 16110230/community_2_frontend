@@ -10,7 +10,7 @@ export interface UsersDto {
     industryName : string
     position : string
     positionName : string
-    file : string
+    file? : string
     isActive : boolean
     version : number
     fileName : string

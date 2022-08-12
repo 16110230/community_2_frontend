@@ -11,7 +11,8 @@ import { UsersService } from "src/app/service/users.service";
 
 @Component({
     selector : 'app-member-profile-like',
-    templateUrl : './member-profile-like.component.html'
+    templateUrl : './member-profile-like.component.html',
+    styleUrls : ['../../../home/home.component.css']
 })
 export class MemberProfileLikeComponent implements OnInit, OnDestroy {
 

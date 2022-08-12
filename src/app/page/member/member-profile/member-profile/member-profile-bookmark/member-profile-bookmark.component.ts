@@ -11,7 +11,8 @@ import { UsersService } from "src/app/service/users.service";
 
 @Component({
     selector : 'app-member-profile-bookmark',
-    templateUrl : './member-profile-bookmark.component.html'
+    templateUrl : './member-profile-bookmark.component.html',
+    styleUrls : ['../../../home/home.component.css']
 })
 export class MemberProfileBookmarkComponent implements OnInit, OnDestroy {
 

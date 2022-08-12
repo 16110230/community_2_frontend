@@ -37,7 +37,8 @@ export class ActivityDetailsRegisterComponent {
             isActive: false,
             version: 0,
             createdAt : "",
-            fullName : ""
+            fullName : "",
+            userFile : ""
         }
     }
 

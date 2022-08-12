@@ -30,6 +30,7 @@ import {DialogModule} from 'primeng/dialog';
 import { MemberProfileThreadComponent } from "./member-profile/member-profile-thread/member-profile-thread.component";
 import { MemberProfileBookmarkComponent } from "./member-profile/member-profile-bookmark/member-profile-bookmark.component";
 import { MemberProfileLikeComponent } from "./member-profile/member-profile.like/member-profile-like.component";
+import { CalendarModule } from "primeng/calendar";
 
 @NgModule({
     imports: [
@@ -52,7 +53,7 @@ import { MemberProfileLikeComponent } from "./member-profile/member-profile.like
         InfiniteScrollModule,
         CalendarModule,
         ConfirmDialogModule,
-        DialogModule
+        DialogModule,
         TabMenuModule
     ],
     declarations: [

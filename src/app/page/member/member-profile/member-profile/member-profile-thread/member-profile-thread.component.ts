@@ -11,7 +11,8 @@ import { UsersService } from "src/app/service/users.service";
 
 @Component({
     selector : 'app-member-profile-thread',
-    templateUrl : './member-profile-thread.component.html'
+    templateUrl : './member-profile-thread.component.html',
+    styleUrls : ['../../../home/home.component.css']
 })
 export class MemberProfileThreadComponent implements OnInit, OnDestroy {
 

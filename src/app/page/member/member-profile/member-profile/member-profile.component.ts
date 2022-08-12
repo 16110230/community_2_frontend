@@ -15,7 +15,7 @@ import { UsersService } from "src/app/service/users.service";
     templateUrl: "./member-profile.component.html",
     styleUrls: ['../../home/home.component.css']
 })
-export class MemberProfileComponent {
+export class MemberProfileComponent implements OnInit {
 
     constructor(
         private router: Router,
@@ -76,7 +76,7 @@ export class MemberProfileComponent {
     }
 
     ngOnInit(): void {
-        // this.initData(this.startPage, this.maxPage)
+        this.initData(this.startPage, this.maxPage)
         this.items = [
             {label : 'Threads'},
             {label : 'Bookmark'},
@@ -91,21 +91,21 @@ export class MemberProfileComponent {
     //     this.profSubs?.unsubscribe();
     // }
 
-    // initData = (startPage: number, maxPage: number): void => {
-    //     this.threadService.getAllProfile(startPage, maxPage)
-    //         .subscribe(res => {
-    //             this.threads = res
-    //         })
+    initData = (startPage: number, maxPage: number): void => {
+        this.threadService.getAllProfile(startPage, maxPage)
+            .subscribe(res => {
+                this.threads = res
+            })
 
-    //     this.userService.getUserProfile()
-    //         .subscribe(res => {
-    //             this.user = res
-    //             if (res.data.file) this.profilePic = `http://localhost:1221/files/${res.data.file}`
-    //         })
+        this.userService.getUserProfile()
+            .subscribe(res => {
+                this.user = res
+                if (res.data.file) this.profilePic = `http://localhost:1221/files/${res.data.file}`
+            })
 
-    //     this.getBookmarkData(this.bookmarkStartPage, this.bookmarkMaxPage)
-    //     this.getLikeData(this.likeStartPage, this.likeMaxPage)
-    // }
+        // this.getBookmarkData(this.bookmarkStartPage, this.bookmarkMaxPage)
+        // this.getLikeData(this.likeStartPage, this.likeMaxPage)
+    }
 
     goToEditProfile() {
         this.router.navigateByUrl('/home/profiles/edit')

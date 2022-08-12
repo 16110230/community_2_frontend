@@ -108,9 +108,15 @@ export class MemberProfileActivityComponent {
     }
 
     display: boolean = false;
+    displayIncome: boolean = false;
+
 
     showDialog() {
         this.display = true;
+    }
+
+    showDialogIncome() {
+        this.displayIncome = true;
     }
 
     download(id : string, startDate: string, endDate: string) {
