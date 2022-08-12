@@ -106,4 +106,7 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
         return (offset < 0 ? "+" : "-") + ("00" + Math.floor(o / 60)).slice(-2) + ":" + ("00" + (o % 60)).slice(-2);
     }
     
+    goToArticle = (id: string): void => {
+        this.router.navigateByUrl(`/home/articles/${id}`)
+    }
 }

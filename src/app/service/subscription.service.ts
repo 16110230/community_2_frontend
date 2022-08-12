@@ -52,7 +52,7 @@ export class SubscriptionService {
 
     getAllApproved(startPage: number, maxPage: number): Observable<ShowSubscriptions> {
         return this.http.get<ShowSubscriptions>(`${BASE_URL}/subscriptions/approved?startPage=${startPage}&maxPage=${maxPage}`)
-   
+    }
     userSubs(): Observable<ShowCheckSubs> {
         return this.http.get<ShowCheckSubs>(`${BASE_URL}/subscriptions/user-subs`)
     }
