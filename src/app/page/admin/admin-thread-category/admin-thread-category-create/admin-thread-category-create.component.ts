@@ -30,6 +30,10 @@ export class AdminThreadCategoryCreateComponent implements OnDestroy {
             this.router.navigateByUrl('/admin/thread-category')
             this.isLoading = false
         })
+
+        setTimeout(() => {
+            this.isLoading = false
+        }, 1000)
     }
 
     goTo() {

@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     imageSource : string = ''
     imageViewFull : boolean = false
     query : string = ''
+    isSkeleton : boolean = false
 
     constructor(
         private threadService: ThreadService,
@@ -70,22 +71,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     initData(startPage: number, maxPage: number, query: string): void {
-        if(this.loginService.getData()){
+        this.isSkeleton = true
+        if(this.loginService.getData()) {
             this.token = this.data.data.token
             this.threadService.getAllUser(startPage, maxPage, query).subscribe((result) => { 
                 this.threads = result
                 this.threadsData = result.data
             })
-        }else{
+        } else {
             this.threadService.getAllNoLogin(startPage, maxPage, query).subscribe((result) => { 
                 this.threads = result
                 this.threadsData = result.data
             })
         }
-        // this.threadService.getAllUser(startPage, maxPage).subscribe((result) => {
-        //     this.threads = result
-        //     this.threadsData = result.data
-        // })
         this.threadService.getAllArticles().subscribe((result) => {
             this.articles = result
             this.articlesData = result.data
@@ -176,7 +174,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     goToSubscription = () : void => {
-        this.router.navigateByUrl('/home/subscriptions')
+        if(this.isLogin) {
+            this.router.navigateByUrl('/home/subscriptions')
+        }
     }
 
     viewImage(src: string) {

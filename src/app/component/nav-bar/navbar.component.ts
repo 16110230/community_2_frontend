@@ -16,21 +16,33 @@ export class NavbarComponent implements OnInit, OnDestroy {
     navSubs? : Subscription
     items! : MenuItem[]
 
-    loggedIn : {} = {
-        icon: 'pi pi-fw pi-user',
-        items: [
-            {
-                label: 'Profiles',
-                icon: 'pi pi-fw pi-user text-blue-600',
-                routerLink: '/home/profiles'
-            },
-            {
-                label: 'Logout',
-                icon:'pi pi-fw pi-power-off text-red-500',
-                routerLink: '/logout'
-            }
-        ]
-    }
+    loggedIn = [
+        {
+            label: 'Articles',
+            routerLink: '/home/articles',
+            icon : 'pi pi-book text-teal-500'
+        },
+        {
+            label: 'Activities',
+            routerLink: '/home/activities',
+            icon : 'pi pi-ticket text-red-500'
+        },
+        {
+            icon: 'pi pi-fw pi-user',
+            items: [
+                {
+                    label: 'Profiles',
+                    icon: 'pi pi-fw pi-user text-blue-600',
+                    routerLink: '/home/profiles'
+                },
+                {
+                    label: 'Logout',
+                    icon:'pi pi-fw pi-power-off text-red-500',
+                    routerLink: '/logout'
+                }
+            ]
+        }
+    ]
 
     premiumMenu : {} = {
         label: 'Subscriptions',
@@ -53,23 +65,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 label: 'Home',
                 routerLink: '/home',
                 icon : 'pi pi-home text-blue-500'
-            },
-            {
-                label: 'Articles',
-                routerLink: '/home/articles',
-                icon : 'pi pi-book text-teal-500'
-            },
-            {
-                label: 'Activities',
-                routerLink: '/home/activities',
-                icon : 'pi pi-ticket text-red-500'
             }
         ]
         
         if(this.loginService.getData()) {
             if(!this.loginService.getData()?.data.prem) this.items.push(this.premiumMenu)
             
-            this.items.push(this.loggedIn)
+            this.loggedIn.forEach(res => this.items.push(res))
         }
         else this.items.push(this.notLoggedIn)
 
