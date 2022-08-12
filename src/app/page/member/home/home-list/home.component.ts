@@ -26,10 +26,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     polling: string = POLLING
     buttonDis: boolean = false
     data: any = this.loginService.getData()
-    token? : string = ""
-    isPremium : boolean = false
-    isLogin : boolean = false
-    isClear : boolean = false
+    token?: string = ""
+    isPremium: boolean = false
+    isLogin: boolean = false
+    isClear: boolean = false
 
     insert: InsertThreadActivityReq = {
         thread: "",
@@ -44,10 +44,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     subs?: Subscription
     startPage: number = 0
     maxPage: number = 5
-    imageSource : string = ''
-    imageViewFull : boolean = false
-    query : string = ''
-    isSkeleton : boolean = false
+    imageSource: string = ''
+    imageViewFull: boolean = false
+    query: string = ''
+    isSkeleton: boolean = false
 
     constructor(
         private threadService: ThreadService,
@@ -58,12 +58,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit(): void {
-        if (this.loginService.getData()) {
-            this.token = this.data.data.token
-            this.isPremium = this.data.data.prem 
-            this.isLogin = true 
-        } 
-        this.initData(this.startPage, this.maxPage, this.query)
+        this.isSkeleton = true
+
+        setTimeout(() => {
+            if (this.loginService.getData()) {
+                this.token = this.data.data.token
+                this.isPremium = this.data.data.prem
+                this.isLogin = true
+            }
+            this.initData(this.startPage, this.maxPage, this.query)
+            this.isSkeleton = false
+        }, 1000)
     }
 
     ngOnDestroy(): void {
@@ -71,17 +76,18 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     initData(startPage: number, maxPage: number, query: string): void {
-        this.isSkeleton = true
-        if(this.loginService.getData()) {
+        if (this.loginService.getData()) {
             this.token = this.data.data.token
-            this.threadService.getAllUser(startPage, maxPage, query).subscribe((result) => { 
+            this.threadService.getAllUser(startPage, maxPage, query).subscribe((result) => {
                 this.threads = result
                 this.threadsData = result.data
+                this.isSkeleton = false
             })
         } else {
-            this.threadService.getAllNoLogin(startPage, maxPage, query).subscribe((result) => { 
+            this.threadService.getAllNoLogin(startPage, maxPage, query).subscribe((result) => {
                 this.threads = result
                 this.threadsData = result.data
+                this.isSkeleton = false
             })
         }
         this.threadService.getAllArticles().subscribe((result) => {
@@ -94,7 +100,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.insert.thread = data
         this.insert.threadActivityCategory = LIKE
 
-        if(this.isLogin) {
+        if (this.isLogin) {
             this.threadActivityServcie.insert(
                 this.insert
             ).subscribe(result => {
@@ -107,7 +113,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.insert.thread = data
         this.insert.threadActivityCategory = LIKE
 
-        if(this.isLogin) {
+        if (this.isLogin) {
             this.threadActivityServcie.deleteByThreadId(
                 this.insert
             ).subscribe(result => {
@@ -120,7 +126,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.insert.thread = data
         this.insert.threadActivityCategory = BOOKMARK
 
-        if(this.isLogin) {
+        if (this.isLogin) {
             this.threadActivityServcie.insert(
                 this.insert
             ).subscribe(result => {
@@ -133,7 +139,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.insert.thread = data
         this.insert.threadActivityCategory = BOOKMARK
 
-        if(this.isLogin) {
+        if (this.isLogin) {
             this.threadActivityServcie.deleteByThreadId(
                 this.insert
             ).subscribe(result => {
@@ -173,8 +179,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.maxPage += this.maxPage
     }
 
-    goToSubscription = () : void => {
-        if(this.isLogin) {
+    goToSubscription = (): void => {
+        if (this.isLogin) {
             this.router.navigateByUrl('/home/subscriptions')
         }
     }
@@ -189,18 +195,18 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.imageViewFull = !this.imageViewFull
     }
 
-    search = () : void => {
+    search = (): void => {
         this.isClear = true
         this.initData(this.startPage, this.maxPage, this.query)
     }
 
-    clear = () : void => {
+    clear = (): void => {
         this.isClear = false
         this.query = ''
         this.initData(this.startPage, this.maxPage, this.query)
     }
 
-    goToArticle = (id : string) : void => {
+    goToArticle = (id: string): void => {
         this.router.navigateByUrl(`/home/articles/${id}`)
     }
 }

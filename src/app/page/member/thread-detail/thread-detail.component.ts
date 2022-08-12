@@ -62,7 +62,7 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
     polling : string  = POLLING
     localStorage = JSON.parse(localStorage.getItem('data') || '{}')
     nameUser = this.localStorage.data.username
-    imageSource : string = ''
+    imageSource? : string
     imageViewFull : boolean = false
     isLoading: boolean = false
 
@@ -170,7 +170,6 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
 
     insertPol(childId : any):void{
         this.insertPolling.pollingDetails = childId
-        console.log(childId);
         
         this.userPollingService.insert(
             this.insertPolling
