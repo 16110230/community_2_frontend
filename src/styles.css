@@ -75,7 +75,6 @@ table {
   min-height: 110px;
   border-radius: 15px;
   box-shadow: 1px 4px 5px #00000088;
-  cursor: pointer;
   padding: 20px;
 }
 
@@ -93,6 +92,7 @@ table {
     rgb(0, 120, 232) 0%,
     rgb(75, 159, 255) 100%
   );
+  cursor: pointer;
 }
 .card-custom-icon {
   text-align: center;
@@ -270,4 +270,3 @@ a {
   justify-content: center;
   align-items: center;
 }
-

@@ -45,7 +45,11 @@ export class ActivityInvoiceService {
         return this.http.get<ShowActivityInvoices>(`${BASE_URL}/activity-invoices/user?startPage=${startPage}&maxPage=${maxPage}`)
     }
 
-    getReport(id: string, startDate: string, endDate: string): Observable<ShowActivityInvoices>{
+    getReport(id: string, startDate: string, endDate: string): Observable<ShowActivityInvoices> {
         return this.http.get<ShowActivityInvoices>(`${BASE_URL}/activity-invoices/download?id=${id}&startDate=${startDate}&endDate=${endDate}`)
+    }
+
+    getAllByTypeAndUnApproved(startPage: number, maxPage: number, code: string): Observable<ShowActivityInvoices> {
+        return this.http.get<ShowActivityInvoices>(`${BASE_URL}/activity-invoices/type-unapproved?code=${code}&startPage=${startPage}&maxPage=${maxPage}`)
     }
 }
