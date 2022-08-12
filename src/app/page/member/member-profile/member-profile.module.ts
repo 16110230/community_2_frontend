@@ -22,15 +22,12 @@ import { MemberProfileChangePassword } from "./member-profile-change-password/me
 import { MemberProfileActivityComponent } from "./member-profile-activity/activity.component";
 import { MemberProfileTransactionComponent } from "./member-profile-transaction/transaction.component";
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
-import { HomeModule } from "../home/home.module";
-import { PipeModule } from "src/app/pipe/pipe.module";
 import { MemberProfileActivityDetailComponent } from "./member-profile-activity-detail/activity-detail.component";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { DialogModule } from 'primeng/dialog';
-import { MemberProfileThreadComponent } from "./member-profile/member-profile-thread/member-profile-thread.component";
-import { MemberProfileBookmarkComponent } from "./member-profile/member-profile-bookmark/member-profile-bookmark.component";
-import { MemberProfileLikeComponent } from "./member-profile/member-profile.like/member-profile-like.component";
 import { CalendarModule } from "primeng/calendar";
+import { PipeModule } from "src/app/pipe/pipe.module";
+import { HomeModule } from "../home/home.module";
 
 @NgModule({
     imports: [
