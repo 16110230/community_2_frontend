@@ -84,16 +84,17 @@ export class HomeComponent implements OnInit, OnDestroy {
                 this.threads = result
                 this.threadsData = result.data
             })
+            this.subscription.userSubs().subscribe((result) => {
+                this.userSub = result
+                this.isPremium = this.userSub.data.isPremium
+            })
         } else {
             this.threadService.getAllNoLogin(startPage, maxPage, query).subscribe((result) => { 
                 this.threads = result
                 this.threadsData = result.data
             })
         }
-        this.subscription.userSubs().subscribe((result) => {
-            this.userSub = result
-            this.isPremium = this.userSub.data.isPremium
-        })
+
         this.threadService.getAllArticles().subscribe((result) => {
             this.articles = result
             this.articlesData = result.data
