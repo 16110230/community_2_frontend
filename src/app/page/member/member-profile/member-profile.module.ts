@@ -26,7 +26,7 @@ import { HomeModule } from "../home/home.module";
 import { PipeModule } from "src/app/pipe/pipe.module";
 import { MemberProfileActivityDetailComponent } from "./member-profile-activity-detail/activity-detail.component";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
-import { DialogModule } from 'primeng/dialog';
+import {DialogModule} from 'primeng/dialog';
 import { CalendarModule } from "primeng/calendar";
 
 @NgModule({

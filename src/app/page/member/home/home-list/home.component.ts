@@ -2,11 +2,14 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { BOOKMARK, LIKE, POLLING, PREMIUM, REGULAR } from "src/app/constant/constant";
+import { checkSubs } from "src/app/dto/subscription/check-subs";
+import { ShowCheckSubs } from "src/app/dto/subscription/show-check-subs";
 import { InsertThreadActivityReq } from "src/app/dto/thread-activity/insert-thread-activity-req";
 import { ShowThreads } from "src/app/dto/thread/show-threads";
 import { ThreadDto } from "src/app/dto/thread/thread-dto";
 import { InsertUserPollingReq } from "src/app/dto/user-polling/insert-user-polling";
 import { LoginService } from "src/app/service/login.service";
+import { SubscriptionService } from "src/app/service/subscription.service";
 import { ThreadActivityService } from "src/app/service/thread-activity.service";
 import { ThreadService } from "src/app/service/thread.service";
 import { UserPollingService } from "src/app/service/user-polling.service";
@@ -21,6 +24,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     threadsData: ThreadDto[] = []
     articles: ShowThreads = {} as ShowThreads
     articlesData: ThreadDto[] = []
+    userSub: ShowCheckSubs = {} as ShowCheckSubs
+    userSubData?: boolean
     premium: string = PREMIUM
     reguler: string = REGULAR
     polling: string = POLLING
@@ -54,6 +59,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         private threadActivityServcie: ThreadActivityService,
         private userPollingService: UserPollingService,
         private loginService: LoginService,
+        private subscription: SubscriptionService,
         private router: Router
     ) { }
 
@@ -83,6 +89,10 @@ export class HomeComponent implements OnInit, OnDestroy {
                 this.threadsData = result.data
                 this.isSkeleton = false
             })
+            this.subscription.userSubs().subscribe((result) => {
+                this.userSub = result
+                this.isPremium = this.userSub.data.isPremium
+            })
         } else {
             this.threadService.getAllNoLogin(startPage, maxPage, query).subscribe((result) => {
                 this.threads = result
@@ -90,6 +100,7 @@ export class HomeComponent implements OnInit, OnDestroy {
                 this.isSkeleton = false
             })
         }
+
         this.threadService.getAllArticles().subscribe((result) => {
             this.articles = result
             this.articlesData = result.data

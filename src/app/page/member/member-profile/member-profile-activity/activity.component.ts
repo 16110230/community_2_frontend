@@ -118,6 +118,6 @@ export class MemberProfileActivityComponent {
         const startDateFormated = formatDate(this.startDate, `yyyy-MM-dd`, "en")
         const endDateFormated = formatDate(this.endDate, `yyyy-MM-dd`, "en")
         
-        this.activityInvoiceService.getReport(id, startDateFormated , endDateFormated).subscribe()
+        this.activityInvoiceService.getReport(id, startDateFormated , endDateFormated)
     }
 }
