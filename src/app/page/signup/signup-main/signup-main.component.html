@@ -1,7 +1,7 @@
-<div class="grid" [ngStyle]="{'min-height': '95vh'}">
+<div class="grid" [ngStyle]="{'height': '95vh'}">
     <div class="sm:col-6 col-12" id="login" >
         
-        <div class="flex justify-content-center align-items-center" id="container-quote" [ngStyle]="{'min-height': '100vh'}">
+        <div class="flex justify-content-center align-items-center" id="container-quote" [ngStyle]="{'min-height': '95vh'}">
             <span class="text-white text-5xl" >
                 Selamat datang di komunitas Lawencon
             </span>            
@@ -13,7 +13,7 @@
 
     </div>
 
-    <div class="sm:col-6 col-12">
+    <div class="sm:col-6 col-12 p-0">
         <app-signup-st (submit)="changeComponent()" *ngIf="menu == 'first'"></app-signup-st>
         <app-signup-nd (submit)="changeComponent()" *ngIf="menu == 'second'"></app-signup-nd>
         <app-signup-last (submit)="changeComponent()" *ngIf="menu == 'last'"></app-signup-last>

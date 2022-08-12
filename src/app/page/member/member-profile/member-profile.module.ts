@@ -13,7 +13,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
-import {TabMenuModule} from 'primeng/tabmenu';
+import { TabMenuModule } from 'primeng/tabmenu';
 
 import { MemberProfileRouting } from "./member-profile.routing";
 import { MemberProfileComponent } from "./member-profile/member-profile.component";
@@ -27,9 +27,6 @@ import { PipeModule } from "src/app/pipe/pipe.module";
 import { MemberProfileActivityDetailComponent } from "./member-profile-activity-detail/activity-detail.component";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
 import {DialogModule} from 'primeng/dialog';
-import { MemberProfileThreadComponent } from "./member-profile/member-profile-thread/member-profile-thread.component";
-import { MemberProfileBookmarkComponent } from "./member-profile/member-profile-bookmark/member-profile-bookmark.component";
-import { MemberProfileLikeComponent } from "./member-profile/member-profile.like/member-profile-like.component";
 import { CalendarModule } from "primeng/calendar";
 
 @NgModule({
@@ -62,10 +59,7 @@ import { CalendarModule } from "primeng/calendar";
         MemberProfileChangePassword,
         MemberProfileActivityComponent,
         MemberProfileTransactionComponent,
-        MemberProfileActivityDetailComponent,
-        MemberProfileThreadComponent,
-        MemberProfileBookmarkComponent,
-        MemberProfileLikeComponent
+        MemberProfileActivityDetailComponent
     ],
     exports: [
         MemberProfileComponent,
@@ -73,10 +67,7 @@ import { CalendarModule } from "primeng/calendar";
         MemberProfileChangePassword,
         MemberProfileActivityComponent,
         MemberProfileTransactionComponent,
-        MemberProfileActivityDetailComponent,
-        MemberProfileThreadComponent,
-        MemberProfileBookmarkComponent,
-        MemberProfileLikeComponent
+        MemberProfileActivityDetailComponent
     ]
 })
 export class MemberProfileModule { }

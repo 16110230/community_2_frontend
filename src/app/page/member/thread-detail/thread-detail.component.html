@@ -33,13 +33,13 @@
                     </div>
 
                     <div *ngIf="thread.data.threadCategoryName == polling">
-                        <div class="flex flex-column " *ngFor="let polling of thread.data.polling?.details">
+                        <div class="flex flex-column align-items-center" *ngFor="let polling of thread.data.polling?.details">
                             <button pButton pRipple label={{polling.pollingDetailsName}} type="button" 
-                            class="p-button-rounded p-button-primary flex-grow-1 mt-3"
+                            class="p-button-rounded p-button-primary flex-grow-1 mt-3 w-5"
                             (click)="insertPol(polling.id)" *ngIf="thread.data.polling!.header.isPolling == false">
                             </button> 
-                            <button pButton pRipple label={{polling.pollingDetailsName}} type="button" 
-                            class="p-button-rounded p-button-danger flex-grow-1 mt-3"
+                            <button pButton pRipple [label]="polling.pollingDetailsName + ' (' + polling.countVote + ' votes)'" type="button" 
+                            class="p-button-rounded p-button-danger flex-grow-1 mt-3 w-5"
                             *ngIf="thread.data.polling!.header.isPolling == true" [disabled]="true">
                             </button>                                                
                         </div>
@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                             <div class="flex flex-row justify-content-end mr-4">
-                                <button pButton pRipple class="p-button-sm p-button-info p-button-rounded mt-3" type="submit" label="Post"></button>
+                                <button pButton pRipple class="p-button-sm p-button-info p-button-rounded mt-3" type="submit" label="Post" [loading]="isLoading"></button>
                             </div>
                         </form>
                     </div>

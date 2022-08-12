@@ -1,8 +1,8 @@
 <div class="container-home" infinite-scroll (scrolled)="onScroll()">
     <div class="grid px-7 pt-2">
         <div class="lg:col-9 xs:col-12 py-0">
-            <div class="flex flex-row justify-content-between mb-2">
-                <button pButton pRipple class="p-button-sm p-button-rounded p-button-info" label="Thread" routerLink="/home/create">
+            <div *ngIf="isLogin" class="flex flex-row justify-content-between mb-2">
+                <button *ngIf="isLogin" pButton pRipple class="p-button-sm p-button-rounded p-button-info" label="Thread" routerLink="/home/new-thread">
                     <i class="pi pi-plus mr-2"></i>
                 </button>
 
@@ -13,12 +13,22 @@
                             </i>
                             <input type="text" pInputText placeholder="Search" [(ngModel)]="query" name="query" />
                         </span>
-                        <!-- <input pInputText class="px-4 py-2" placeholder="Search......" [(ngModel)]="query" name="query" /> -->
+                    </div>
+                </form>
+            </div>
+            <div *ngIf="!isLogin" class="mb-2">
+                <form (ngSubmit)="search()">
+                    <div class="w-14.5rem flex flex-row-reverse">
+                        <span class="p-input-icon-right container-search">
+                            <i class="pi pi-times" (click)="clear()" style="cursor: pointer;" *ngIf="isClear">
+                            </i>
+                            <input type="text" pInputText placeholder="Search" [(ngModel)]="query" name="query" />
+                        </span>
                     </div>
                 </form>
             </div>
             <div>
-                <div class="content-home">
+                <div class="content-home m-0 p-0">
                     <div *ngFor="let data of threadsData">
                         <p-card styleClass="mb-3" *ngIf="data.threadCategoryName === reguler">
                             <div class="content-card-header flex flex-row px-4 mb-3">
@@ -78,7 +88,7 @@
                             </div>
                         </p-card>
     
-                        <p-card styleClass="my-3" *ngIf="data.threadCategoryName === premium">
+                        <p-card styleClass="mb-3" *ngIf="data.threadCategoryName === premium">
                             <div class="content-card-header flex flex-row px-4 mb-3">
                                 <img class="content-card-header-pic" *ngIf="data.userFile === null" src="../../../../../assets/img/default-picture.jpg"
                                 alt="">
@@ -101,7 +111,7 @@
                                 <div class="grid mt-2" *ngIf="data.file">
                                     <div class="col-9 content-card-body">
                                         <p>
-                                            {{data.threadContent}}
+                                            {{trimCharSubs(data.threadContent)}}
                                         </p>
                                     </div>
                                     <a class="col-3 thread-pic">
