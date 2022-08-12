@@ -74,7 +74,9 @@ export class AdminIndustryComponent implements OnDestroy {
         this.deleteSubs = this.industryService
             .delete(this.isDeleted)
             .subscribe(result => {
-                this.initData()
+                if (this.maxPage != 5) this.initData()
+                else this.getData(this.startPage, this.maxPage, this.query)
+                this.loading = false
             })
     }
 

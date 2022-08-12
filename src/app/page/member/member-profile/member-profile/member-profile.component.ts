@@ -15,7 +15,7 @@ import { UsersService } from "src/app/service/users.service";
     templateUrl: "./member-profile.component.html",
     styleUrls: ['../../home/home.component.css']
 })
-export class MemberProfileComponent {
+export class MemberProfileComponent implements OnInit {
 
     constructor(
         private router: Router,
@@ -43,6 +43,7 @@ export class MemberProfileComponent {
     likeThreadSub?: Subscription
     //------------------------
 
+    indexTab : number = 0
     startPage: number = 0
     maxPage: number = 2
     profSubs?: Subscription
@@ -76,36 +77,27 @@ export class MemberProfileComponent {
     }
 
     ngOnInit(): void {
-        // this.initData(this.startPage, this.maxPage)
-        this.items = [
-            {label : 'Threads'},
-            {label : 'Bookmark'},
-            {label : 'Like'}
-        ]
-
+        this.initData(this.startPage, this.maxPage)
     }
 
     items! : MenuItem[]
 
-    // ngOnDestroy(): void {
-    //     this.profSubs?.unsubscribe();
-    // }
+    ngOnDestroy(): void {
+        this.profSubs?.unsubscribe();
+    }
 
-    // initData = (startPage: number, maxPage: number): void => {
-    //     this.threadService.getAllProfile(startPage, maxPage)
-    //         .subscribe(res => {
-    //             this.threads = res
-    //         })
+    initData = (startPage: number, maxPage: number): void => {
+        this.threadService.getAllProfile(startPage, maxPage)
+            .subscribe(res => {
+                this.threads = res
+            })
 
-    //     this.userService.getUserProfile()
-    //         .subscribe(res => {
-    //             this.user = res
-    //             if (res.data.file) this.profilePic = `http://localhost:1221/files/${res.data.file}`
-    //         })
-
-    //     this.getBookmarkData(this.bookmarkStartPage, this.bookmarkMaxPage)
-    //     this.getLikeData(this.likeStartPage, this.likeMaxPage)
-    // }
+        this.userService.getUserProfile()
+            .subscribe(res => {
+                this.user = res
+                if (res.data.file) this.profilePic = `http://localhost:1221/files/${res.data.file}`
+            })
+    }
 
     goToEditProfile() {
         this.router.navigateByUrl('/home/profiles/edit')
@@ -121,91 +113,91 @@ export class MemberProfileComponent {
         this.router.navigateByUrl(`home/thread-detail/${id}`)
     )
 
-    // like(data: string): void {
-    //     this.insert.thread = data
-    //     this.insert.threadActivityCategory = LIKE
+    like(data: string): void {
+        this.insert.thread = data
+        this.insert.threadActivityCategory = LIKE
 
-    //     this.threadActivityService.insert(
-    //         this.insert
-    //     ).subscribe(result => {
-    //         this.initData(this.startPage, this.maxPage)
-    //     })
-    // }
+        this.threadActivityService.insert(
+            this.insert
+        ).subscribe(result => {
+            this.initData(this.startPage, this.maxPage)
+        })
+    }
 
-    // unlike(data: string): void {
-    //     this.insert.thread = data
-    //     this.insert.threadActivityCategory = LIKE
-    //     this.threadActivityService.deleteByThreadId(
-    //         this.insert
-    //     ).subscribe(result => {
-    //         this.initData(this.startPage, this.maxPage)
-    //     })
-    // }
+    unlike(data: string): void {
+        this.insert.thread = data
+        this.insert.threadActivityCategory = LIKE
+        this.threadActivityService.deleteByThreadId(
+            this.insert
+        ).subscribe(result => {
+            this.initData(this.startPage, this.maxPage)
+        })
+    }
 
-    // bookmark(data: string): void {
-    //     this.insert.thread = data
-    //     this.insert.threadActivityCategory = BOOKMARK
-    //     this.threadActivityService.insert(
-    //         this.insert
-    //     ).subscribe(result => {
-    //         this.initData(this.startPage, this.maxPage)
-    //     })
-    // }
+    bookmark(data: string): void {
+        this.insert.thread = data
+        this.insert.threadActivityCategory = BOOKMARK
+        this.threadActivityService.insert(
+            this.insert
+        ).subscribe(result => {
+            this.initData(this.startPage, this.maxPage)
+        })
+    }
 
-    // unBookmark(data: string): void {
-    //     this.insert.thread = data
-    //     this.insert.threadActivityCategory = BOOKMARK
-    //     this.threadActivityService.deleteByThreadId(
-    //         this.insert
-    //     ).subscribe(result => {
-    //         this.initData(this.startPage, this.maxPage)
-    //     })
-    // }
+    unBookmark(data: string): void {
+        this.insert.thread = data
+        this.insert.threadActivityCategory = BOOKMARK
+        this.threadActivityService.deleteByThreadId(
+            this.insert
+        ).subscribe(result => {
+            this.initData(this.startPage, this.maxPage)
+        })
+    }
 
-    // // thread
-    // onScrollThread(): void {
-    //     this.initData(this.startPage, this.maxPage + 2)
-    //     this.maxPage += this.maxPage
-    // }
-    // //----------------------------
+    // thread
+    onScrollThread(): void {
+        this.initData(this.startPage, this.maxPage + 2)
+        this.maxPage += this.maxPage
+    }
+    //----------------------------
 
-    // // bookmark
-    // getBookmarkData(bookmarkStartPage: number = this.bookmarkStartPage, bookamrkMaxPage: number = this.bookmarkMaxPage): void {
+    // bookmark
+    getBookmarkData(bookmarkStartPage: number = this.bookmarkStartPage, bookamrkMaxPage: number = this.bookmarkMaxPage): void {
 
-    //     this.bookmarkThreadSub = this.threadService.getByBookmark(bookmarkStartPage, bookamrkMaxPage).subscribe(
-    //         result => {
-    //             const resultData: any = result
-    //             this.bookmarkThreads.data = resultData.data
-    //             this.bookmarkTotalData = resultData.count
-    //         },
-    //     )
-    // }
+        this.bookmarkThreadSub = this.threadService.getByBookmark(bookmarkStartPage, bookamrkMaxPage).subscribe(
+            result => {
+                const resultData: any = result
+                this.bookmarkThreads.data = resultData.data
+                this.bookmarkTotalData = resultData.count
+            },
+        )
+    }
 
-    // onScrollBookmark(): void {
-    //     this.getBookmarkData(this.bookmarkStartPage, this.bookmarkMaxPage + 2)
-    //     this.bookmarkMaxPage += this.bookmarkMaxPage
+    onScrollBookmark(): void {
+        this.getBookmarkData(this.bookmarkStartPage, this.bookmarkMaxPage + 2)
+        this.bookmarkMaxPage += this.bookmarkMaxPage
 
-    // }
-    // //----------------------
-
-    // // like
-    // getLikeData(likeStartPage: number = this.likeStartPage, likeMaxPage: number = this.likeMaxPage): void {
-
-    //     this.likeThreadSub = this.threadService.getByLike(likeStartPage, likeMaxPage).subscribe(
-    //         result => {
-    //             const resultData: any = result
-    //             this.likeThreads.data = resultData.data
-    //             this.likeTotalData = resultData.count
-    //         }
-    //     )
-    // }
-
-    // onScrollLike(): void {
-    //     this.getLikeData(this.likeStartPage, this.likeMaxPage + 2)
-    //     this.likeMaxPage += this.likeMaxPage
-
-    // }
+    }
     //----------------------
+
+    // like
+    getLikeData(likeStartPage: number = this.likeStartPage, likeMaxPage: number = this.likeMaxPage): void {
+
+        this.likeThreadSub = this.threadService.getByLike(likeStartPage, likeMaxPage).subscribe(
+            result => {
+                const resultData: any = result
+                this.likeThreads.data = resultData.data
+                this.likeTotalData = resultData.count
+            }
+        )
+    }
+
+    onScrollLike(): void {
+        this.getLikeData(this.likeStartPage, this.likeMaxPage + 2)
+        this.likeMaxPage += this.likeMaxPage
+
+    }
+    
 
     threadPage : string = 'first'
     bookmarkPage : string = 'second'
@@ -216,5 +208,18 @@ export class MemberProfileComponent {
         this.threadPage
         this.bookmarkPage
         this.likePage
+    }
+
+    tabThread = (event : any) : void => {
+        if(event.index === 0) {
+            this.initData(this.startPage, this.maxPage)
+            this.indexTab = 0
+        } else if(event.index === 1) {
+            this.getBookmarkData(this.bookmarkStartPage, this.bookmarkMaxPage)
+            this.indexTab = 1
+        } else if(event.index === 2) {
+            this.getLikeData(this.likeStartPage, this.likeMaxPage)
+            this.indexTab = 2
+        } 
     }
 }

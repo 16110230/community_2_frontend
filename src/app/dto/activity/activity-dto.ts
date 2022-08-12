@@ -17,5 +17,6 @@ export interface ActivityDto {
     isActive?: boolean
     version?: number
     createdAt : string
-    fullName : string
+    fullName : string,
+    userFile : string
 }

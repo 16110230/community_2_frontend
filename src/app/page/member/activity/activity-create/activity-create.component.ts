@@ -5,10 +5,13 @@ import { Subscription } from "rxjs";
 import { ShowActivityCategories } from "src/app/dto/activity-category/show-activity-categories";
 import { ShowActivityTypes } from "src/app/dto/activity-type/show-activity-types";
 import { InsertActivityReq } from "src/app/dto/activity/insert-activity-req";
+import { ShowThreads } from "src/app/dto/thread/show-threads";
+import { ThreadDto } from "src/app/dto/thread/thread-dto";
 import { ActivityCategoryService } from "src/app/service/activity-category.service";
 import { ActivityTypeService } from "src/app/service/activity-type.service";
 import { ActivityService } from "src/app/service/activity.service";
 import { FileService } from "src/app/service/file.service";
+import { ThreadService } from "src/app/service/thread.service";
 
 @Component({
     selector: 'app-activity-new',
@@ -17,8 +20,13 @@ import { FileService } from "src/app/service/file.service";
 })
 export class ActivityCreateComponent implements OnInit, OnDestroy {
 
-    constructor(private activityTypeService: ActivityTypeService, private activityService: ActivityService,
-        private router: Router, private fileService: FileService, private activityCategoryService: ActivityCategoryService) { }
+    constructor(private activityTypeService: ActivityTypeService, 
+        private activityService: ActivityService,
+        private router: Router, 
+        private fileService: FileService, 
+        private threadService: ThreadService,
+        private activityCategoryService: ActivityCategoryService
+        ) { }
 
     activitySubs?: Subscription
 
@@ -44,6 +52,8 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
         data: []
     }
 
+    articles: ShowThreads = {} as ShowThreads
+    articlesData: ThreadDto[] = []
     type: string = ''
     category: string = ''
     startDate: string = ''
@@ -60,6 +70,11 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
 
         this.activityCategoryService.getAll().subscribe(res => {
             this.categories = res
+        })
+
+        this.threadService.getAllArticles().subscribe((result) => {
+            this.articles = result
+            this.articlesData = result.data
         })
     }
 
@@ -91,4 +106,7 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
         return (offset < 0 ? "+" : "-") + ("00" + Math.floor(o / 60)).slice(-2) + ":" + ("00" + (o % 60)).slice(-2);
     }
     
+    goToArticle = (id: string): void => {
+        this.router.navigateByUrl(`/home/articles/${id}`)
+    }
 }

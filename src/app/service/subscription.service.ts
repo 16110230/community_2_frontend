@@ -5,6 +5,7 @@ import { BASE_URL } from "../constant/constant";
 import { DeleteResDto } from "../dto/delete-res-dto";
 import { InsertResDto } from "../dto/insert-res-dto";
 import { InsertSubscriptionReq } from "../dto/subscription/insert-subscription.req";
+import { ShowCheckSubs } from "../dto/subscription/show-check-subs";
 import { ShowSubscriptionById } from "../dto/subscription/show-subscription-by-id";
 import { ShowSubscriptions } from "../dto/subscription/show-subscriptions";
 import { UpdateSubscriptionReq } from "../dto/subscription/update-subscription-req";
@@ -39,5 +40,20 @@ export class SubscriptionService {
 
     delete(id: number): Observable<DeleteResDto> {
         return this.http.delete<DeleteResDto>(`${BASE_URL}/subscriptions/${id}`)
+    }
+
+    getAllByUserId(startPage: number, maxPage: number): Observable<ShowSubscriptions> {
+        return this.http.get<ShowSubscriptions>(`${BASE_URL}/subscriptions/user?startPage=${startPage}&maxPage=${maxPage}`)
+    }
+
+    getAllUnApproved(startPage: number, maxPage: number): Observable<ShowSubscriptions> {
+        return this.http.get<ShowSubscriptions>(`${BASE_URL}/subscriptions/unapproved?startPage=${startPage}&maxPage=${maxPage}`)
+    }
+
+    getAllApproved(startPage: number, maxPage: number): Observable<ShowSubscriptions> {
+        return this.http.get<ShowSubscriptions>(`${BASE_URL}/subscriptions/approved?startPage=${startPage}&maxPage=${maxPage}`)
+    }
+    userSubs(): Observable<ShowCheckSubs> {
+        return this.http.get<ShowCheckSubs>(`${BASE_URL}/subscriptions/user-subs`)
     }
 }
