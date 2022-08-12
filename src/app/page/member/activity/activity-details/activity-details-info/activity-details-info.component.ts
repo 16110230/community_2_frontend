@@ -33,7 +33,8 @@ export class ActivityDetailsInfoComponent implements OnInit {
             isActive: false,
             version: 0,
             createdAt : "",
-            fullName : ""
+            fullName : "",
+            userFile : ""
         }
     }
     idParam! : string

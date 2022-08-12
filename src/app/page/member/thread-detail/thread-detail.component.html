@@ -4,8 +4,8 @@
             <div class="content-home">
                 <p-card styleClass="mb-3">
                     <div class="content-card-header flex flex-row px-4 mb-3">
-                                <img class="content-card-header-pic" *ngIf="!thread.data.userFile" src="../../../../../assets/img/default-picture.jpg"
-                                alt="Profil Picture">
+                                <img class="content-card-header-pic" *ngIf="!thread.data.userFile" src="../../../../../assets/img/default-picture.jpg">
+                                <img class="content-card-header-pic" *ngIf="!thread.data.userFile" src="../../../../../../assets/img/default-picture.jpg" alt="Profil Picture">
                                 <img class="content-card-header-pic" *ngIf="thread.data.userFile" [src]="'http://localhost:1221/files/' + thread.data.userFile" alt="Profil Picture">
                         <div class="content-card-header-dtl ml-3 flex flex-column justify-content-center">
                             <div class="header-details mt-3">
@@ -94,9 +94,15 @@
                         <form (ngSubmit)="onSubmit()">
                             <div class="comment-section-header">
                                 <div class="comment-prof-pic flex flex-row">
+
                                 <img class="content-card-header-pic" *ngIf="!thread.data.userFile" src="../../../../../assets/img/default-picture.jpg"
                                 alt="Profil Picture">
                                 <img class="content-card-header-pic" *ngIf="thread.data.userFile" [src]="'http://localhost:1221/files/' + thread.data.userFile" alt="Profil Picture">
+
+                                <img class="content-card-header-pic" *ngIf="!user.data.file" src="../../../../../assets/img/default-picture.jpg"
+                                alt="Profil Picture">
+                                <img class="content-card-header-pic" *ngIf="user.data.file" [src]="'http://localhost:1221/files/' + user.data.file" alt="Profil Picture">
+
                                     <div class="flex flex-column justify-content-between ml-2">
                                         <span class="comment-full-name">You</span>
                                         <input class="comment-input" type="text" placeholder="Leave your thoughts here..." [(ngModel)]="insert.threadDesc" name="threadDesc">

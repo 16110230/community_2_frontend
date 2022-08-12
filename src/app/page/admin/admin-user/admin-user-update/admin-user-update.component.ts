@@ -25,6 +25,7 @@ export class AdminUserUpdateComponent implements OnInit {
         id : "",
         fullName : "",
         username : "",
+        email : "",
         company : "",
         companyName : "",
         industry : "",
@@ -54,7 +55,7 @@ export class AdminUserUpdateComponent implements OnInit {
                 this.update.positionName = res.data.positionName
                 this.update.version = res.data.version
                 this.update.isActive = res.data.isActive
-                this.email = res.data.email
+                this.update.email = res.data.email
                 if(res.data.file != null) {
                     this.file = `${BASE_URL}/files/${res.data.file}`
                 }

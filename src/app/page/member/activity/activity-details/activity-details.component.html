@@ -11,33 +11,21 @@
                 <div class="title mb-4 pt-3">
                     <span>Articles</span>
                 </div>
-                <div class="col-12 p-0 mb-2">
-        
-                    <div class="article-card">
+                <div class="col-12 p-0 mb-2" *ngFor="let data of articlesData">
+                    <div class="article-card" (click)="goToArticle(data.id)">
                         <div class="article-card-header">
-                            <img class="article-pic mb-3" src="https://i.pinimg.com/originals/93/42/1e/93421e8db0859ecb02642b9b5f59aa5d.png" alt="article-header-pic">
+                            
+                            <img class="article-pic" *ngIf="data.file === null" src="../../../../../assets/img/default-picture.jpg"
+                            alt="">
+                            <img class="article-pic" *ngIf="data.file !== null" [src]="'http://localhost:1221/files/' + data.file" alt="">
+                            
                             <div class="article-card-header-title px-3">
-                                <h5>5 Fungsi Java Yang Perlu Diketahui</h5>
+                                <h5 class="white-space-nowrap overflow-hidden text-overflow-ellipsis">{{data.threadTitle}}</h5>
                             </div>
                         </div>
                         <div class="article-card-content p-3">
-                            <p>Fungsi dari garbage collector mampu mengumpulkan “sampah” secara otomatis. Hal ini akan membuat programmer tidak perlu 
-                                dibebani dengan adanya memori yang rusak.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 p-0">
-                    <div class="article-card">
-                        <div class="article-card-header">
-                            <img class="article-pic mb-3" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.png" alt="article-header-pic">
-                            <div class="article-card-header-title px-3">
-                                <h5>Tips menggunakan Hooks pada ReactJS</h5>
-                            </div>
-                        </div>
-                        <div class="article-card-content p-3">
-                            <p>Hooks merupakan fitur yang backwards-compatible. Laman ini menyediakan ikhtisar mengenai Hooks untuk pengguna React yang 
-                                berpengalaman. Laman ini merupakan ikhtisar yang singkat.
+                            <p class="white-space-nowrap overflow-hidden text-overflow-ellipsis">
+                                {{data.threadContent}}
                             </p>
                         </div>
                     </div>
