@@ -62,10 +62,7 @@ import { CalendarModule } from "primeng/calendar";
         MemberProfileChangePassword,
         MemberProfileActivityComponent,
         MemberProfileTransactionComponent,
-        MemberProfileActivityDetailComponent,
-        MemberProfileThreadComponent,
-        MemberProfileBookmarkComponent,
-        MemberProfileLikeComponent
+        MemberProfileActivityDetailComponent
     ],
     exports: [
         MemberProfileComponent,
@@ -73,10 +70,7 @@ import { CalendarModule } from "primeng/calendar";
         MemberProfileChangePassword,
         MemberProfileActivityComponent,
         MemberProfileTransactionComponent,
-        MemberProfileActivityDetailComponent,
-        MemberProfileThreadComponent,
-        MemberProfileBookmarkComponent,
-        MemberProfileLikeComponent
+        MemberProfileActivityDetailComponent
     ]
 })
 export class MemberProfileModule { }

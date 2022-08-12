@@ -62,8 +62,9 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
     polling : string  = POLLING
     localStorage = JSON.parse(localStorage.getItem('data') || '{}')
     nameUser = this.localStorage.data.username
-    imageSource : string = ''
+    imageSource? : string
     imageViewFull : boolean = false
+    isLoading: boolean = false
 
     constructor(
         private activateRoute : ActivatedRoute,
@@ -99,7 +100,9 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
     }
 
     trimChar(data : string) : string{
-        let result : string = data.substr(0, 120)+"...";
+        let result : string = data
+        if(data.length > 120) 
+        result = data.substr(0, 120)+"...";
         return result;
     }
 
@@ -109,6 +112,7 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
     }
 
     onSubmit() : void {
+        this.isLoading = true
         this.activateRoute.params.subscribe(result => {
             const resultTemp : any = result
             this.idParam = resultTemp.id 
@@ -118,6 +122,7 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
                 ).subscribe(result => {
                     this.initData()
                     this.insert.threadDesc = ''
+                    this.isLoading = false
             })
         })
        
@@ -165,7 +170,6 @@ export class ThreadDetailComponent implements OnInit, OnDestroy{
 
     insertPol(childId : any):void{
         this.insertPolling.pollingDetails = childId
-        console.log(childId);
         
         this.userPollingService.insert(
             this.insertPolling
