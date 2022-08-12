@@ -36,6 +36,7 @@ export class AdminActivityEventDetailComponent {
             version: 0,
             createdAt: "",
             fullName: "",
+            userFile : ""
         }
 
     }

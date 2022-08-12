@@ -15,7 +15,7 @@ import { UsersService } from "src/app/service/users.service";
     templateUrl: "./member-profile.component.html",
     styleUrls: ['../../home/home.component.css']
 })
-export class MemberProfileComponent {
+export class MemberProfileComponent implements OnInit {
 
     constructor(
         private router: Router,

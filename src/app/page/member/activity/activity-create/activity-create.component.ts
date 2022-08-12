@@ -71,6 +71,7 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
         this.activityCategoryService.getAll().subscribe(res => {
             this.categories = res
         })
+
         this.threadService.getAllArticles().subscribe((result) => {
             this.articles = result
             this.articlesData = result.data
@@ -103,10 +104,6 @@ export class ActivityCreateComponent implements OnInit, OnDestroy {
     getTimeZone() {
         var offset = new Date().getTimezoneOffset(), o = Math.abs(offset);
         return (offset < 0 ? "+" : "-") + ("00" + Math.floor(o / 60)).slice(-2) + ":" + ("00" + (o % 60)).slice(-2);
-    }
-
-    goToArticle = (id : string) : void => {
-        this.router.navigateByUrl(`/home/articles/${id}`)
     }
     
 }
