@@ -48,4 +48,8 @@ export class ActivityInvoiceService {
     getReport(id: string, startDate: string, endDate: string): void{
        window.open(`${BASE_URL}/activity-invoices/download?id=${id}&startDate=${startDate}&endDate=${endDate}`, '_blank')
     }
+
+    getAllByTypeAndUnApproved(startPage: number, maxPage: number, code: string): Observable<ShowActivityInvoices> {
+        return this.http.get<ShowActivityInvoices>(`${BASE_URL}/activity-invoices/type-unapproved?code=${code}&startPage=${startPage}&maxPage=${maxPage}`)
+    }
 }

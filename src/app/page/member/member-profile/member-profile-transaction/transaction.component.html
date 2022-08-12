@@ -89,8 +89,7 @@
                 </div>
                 <p-tabView>
                     <p-tabPanel header="Activity">
-                        <p-table [value]="invoices.data" responsiveLayout="scroll" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true" [rows]="invoiceMaxPage" [totalRecords]="invoiceTotalData" [loading]="invoiceLoading" [rowsPerPageOptions]="[5, 10]" tyleClass="p-datatable-gridlines"> 
-                        <!-- <p-table [value]="invoices.data" >  -->
+                        <p-table [value]="invoices.data" responsiveLayout="scroll" [lazy]="true" (onLazyLoad)="loadInvoiceData($event)" responsiveLayout="scroll" [paginator]="true" [rows]="invoiceMaxPage" [totalRecords]="invoiceTotalData" [loading]="invoiceLoading" [rowsPerPageOptions]="[5, 10]" tyleClass="p-datatable-gridlines">                         
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th>No</th>
@@ -121,27 +120,41 @@
                             </ng-template>
                         </p-table>                           
                     </p-tabPanel>
-                    <p-tabPanel header="Subscribtion">
-                        <!-- <p-table [value]="invoices" responsiveLayout="scroll">
+                    <p-tabPanel header="Subscription">
+                        <p-table [value]="subscriptions.data" responsiveLayout="scroll" [lazy]="true" (onLazyLoad)="loadSubscribeData($event)" responsiveLayout="scroll" [paginator]="true" [rows]="subscribeMaxPage" [totalRecords]="subscribeTotalData" [loading]="subscribeLoading" [rowsPerPageOptions]="[5, 10]" tyleClass="p-datatable-gridlines"> 
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th>No</th>
                                     <th>Invoice</th>
                                     <th>Category</th>
                                     <th>Order Date</th>
-                                    <th>Amount</th>                                
+                                    <th>Expired Date</th>
+                                    <th>Amount</th> 
+                                    <th>Status</th>                                
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-i="rowIndex" let-data>
                                 <tr>
                                     <td>{{i+1}}</td>
-                                    <td>{{data.id}}</td>
-                                    <td>{{data.activityName}}</td>
-                                    <td>{{data.orderDate}}</td>
-                                    <td>{{data.amount}}</td> 
+                                    <td>{{data.subscriptionCode}}</td>
+                                    <td>{{data.subscriptionCategory}}</td>
+                                    <td>{{data.orderDate | date:'medium'}}</td>
+                                    <td>
+                                        {{data.expiredData | date:'medium'}}
+                                    </td>
+                                    <td>{{data.amount | currency:'Rp'}}</td> 
+                                    <td *ngIf="data.isApproved;">
+                                        <b><span class="invoice-status-succsess-custom" >APPROVED</span></b>
+                                    </td> 
+                                    <td *ngIf="data.isApproved===false ;">
+                                        <b><span class="invoice-status-reject-custom" >REJECTED</span></b>
+                                    </td> 
+                                    <td *ngIf="data.isApproved === null;">
+                                       <b><span class="invoice-status-pending-custom" >PENDING</span></b>
+                                    </td>
                                 </tr>
                             </ng-template>
-                        </p-table>   -->
+                        </p-table>  
                     </p-tabPanel>                
                 </p-tabView>
             </p-card>        

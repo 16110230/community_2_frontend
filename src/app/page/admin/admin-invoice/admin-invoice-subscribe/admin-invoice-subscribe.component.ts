@@ -24,7 +24,7 @@ export class AdminInvoiceSubscribeComponent implements OnInit, OnDestroy {
     subscriptionSubs?: Subscription
 
     initData(): void {
-        this.subscriptionService.getAllByValidate(this.startPage, this.maxPage).subscribe(result => {
+        this.subscriptionService.getAllApproved(this.startPage, this.maxPage).subscribe(result => {
             this.subscription = result
         })
     }
@@ -42,7 +42,7 @@ export class AdminInvoiceSubscribeComponent implements OnInit, OnDestroy {
         this.startPage = startPage
         this.maxPage = maxPage
 
-        this.subscriptionSubs = this.subscriptionService.getAllByValidate(this.startPage, this.maxPage).subscribe(
+        this.subscriptionSubs = this.subscriptionService.getAllApproved(this.startPage, this.maxPage).subscribe(
             result => {
                 const resultData: any = result
                 this.subscription.data = result.data

@@ -6,6 +6,8 @@ import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 import { ShowUserById } from "src/app/dto/users/show-user-by-id";
 import { ActivityInvoiceService } from "src/app/service/activity-invoice.service";
 import { UsersService } from "src/app/service/users.service";
+import { SubscriptionService } from "src/app/service/subscription.service";
+import { ShowSubscriptions } from "src/app/dto/subscription/show-subscriptions";
 
 @Component({
     selector: "app-member-transaction",
@@ -16,7 +18,8 @@ export class MemberProfileTransactionComponent implements OnInit, OnDestroy {
     constructor(
         private router: Router,
         private userService: UsersService,
-        private activityInvoiceService: ActivityInvoiceService
+        private activityInvoiceService: ActivityInvoiceService,
+        private subscriptionsService: SubscriptionService
     ) { }
 
     profSubs?: Subscription
@@ -51,6 +54,15 @@ export class MemberProfileTransactionComponent implements OnInit, OnDestroy {
     invoiceSub?: Subscription
     //-------------------
 
+    // Subscription 
+    subscribeStartpage: number = 0
+    subscribeMaxPage: number = 5
+    subscribeTotalData: number = 0
+    subscribeLoading: boolean = true
+    subscriptions: ShowSubscriptions = { data: [] }
+    subscribeSub?: Subscription
+    //-------------------
+
     ngOnInit() {
         this.inidData()
         // this.getInvoiceData(this.invoiceStartpage, this.invoiceMaxPage);
@@ -58,6 +70,8 @@ export class MemberProfileTransactionComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.profSubs?.unsubscribe()
+        this.invoiceSub?.unsubscribe()
+        this.subscribeSub?.unsubscribe()
     }
 
     inidData() {
@@ -66,10 +80,6 @@ export class MemberProfileTransactionComponent implements OnInit, OnDestroy {
                 this.user = res
                 if (res.data.file) this.profilePic = `http://localhost:1221/files/${res.data.file}`
             })
-    }
-
-    loadData(event: LazyLoadEvent) {
-        this.getData(event.first, event.rows, event.globalFilter)
     }
 
     getData(startPage: number = this.invoiceStartpage, maxPage: number = this.invoiceMaxPage, query?: string): void {
@@ -98,15 +108,38 @@ export class MemberProfileTransactionComponent implements OnInit, OnDestroy {
     }
 
     // invoice activity
-    getInvoiceData(invoiceStartpage: number, invoiceMaxPage: number) {
+    loadInvoiceData(event: LazyLoadEvent) {
+        this.getInvoiceData(event.first, event.rows, event.globalFilter)
+    }
+
+    getInvoiceData(invoiceStartpage: number = this.invoiceStartpage, invoiceMaxPage: number = this.invoiceMaxPage, query?: string) {
 
         this.invoiceSub = this.activityInvoiceService.getByIdUserId(invoiceStartpage, invoiceMaxPage).subscribe(
             result => {
                 const resultData: any = result
                 this.invoices.data = resultData.data
-                this.invoiceTotalData = resultData.count
+                this.invoiceTotalData = resultData.countData
+                this.invoiceLoading = false
             }
         )
     }
     //--------------------
+
+    // subscription 
+    loadSubscribeData(event: LazyLoadEvent) {
+        this.getSubscribeData(event.first, event.rows, event.globalFilter)
+    }
+
+    getSubscribeData(subscribeStartpage: number = this.subscribeStartpage, subscribeMaxPage: number = this.subscribeMaxPage, query?: string) {
+
+        this.subscribeSub = this.subscriptionsService.getAllByUserId(subscribeStartpage, subscribeMaxPage).subscribe(
+            result => {
+                const resultData: any = result
+                this.subscriptions.data = resultData.data
+                this.subscribeTotalData = resultData.countData
+                this.subscribeLoading = false
+            }
+        )
+    }
+    // -------------------
 }

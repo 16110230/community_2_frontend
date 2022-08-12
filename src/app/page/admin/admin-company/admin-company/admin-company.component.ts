@@ -74,7 +74,9 @@ export class AdminCompanyComponent implements OnDestroy {
         this.deleteSubscription = this.companyService
             .delete(this.isDeleted)
             .subscribe((_) => {
-                this.initData()
+                if (this.maxPage != 5) this.initData()
+                else this.getData(this.startPage, this.maxPage, this.query)
+                this.loading = false
             })
     }
 

@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 import { COURSE } from "src/app/constant/constant";
-import { ShowActivityInvoiceById } from "src/app/dto/activity-invoice/show-activity-invoice-by-id";
+import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 import { ShowActivityInvoices } from "src/app/dto/activity-invoice/show-activity-invoices";
 import { UpdateActivityInvoiceReq } from "src/app/dto/activity-invoice/update-activity-invoice-req";
 import { ActivityInvoiceService } from "src/app/service/activity-invoice.service";
@@ -10,62 +10,93 @@ import { ActivityInvoiceService } from "src/app/service/activity-invoice.service
     selector: "app-admin-invoice-course-pending",
     templateUrl: "./admin-invoice-course-pending.component.html"
 })
-export class AdminInvoiceCoursePendingComponent implements OnInit {
+export class AdminInvoiceCoursePendingComponent implements OnDestroy {
+    constructor(
+        private activityInvoiceService: ActivityInvoiceService
+    ) { }
 
-    constructor(private activityInvoiceService : ActivityInvoiceService, private activateRoute : ActivatedRoute) {}
+    startPage: number = 0
+    maxPage: number = 5
+    totalData: number = 0
+    loading: boolean = true
+    query?: string
+
+    invoices: ShowActivityInvoices = {} as ShowActivityInvoices
+    invoiceSub?: Subscription
 
     imageSource = ""
     imageViewFull = false
-    invoices : ShowActivityInvoices = {
-        data : []
+
+    update: UpdateActivityInvoiceReq = {
+        id: "",
+        isApproved: false,
+        version: 0
     }
 
-    update : UpdateActivityInvoiceReq = {
-        id : "",
-        isApproved : false,
-        version : 0
-    }
+    idParam!: string
+    updateSub?: Subscription
 
-    idParam! : string
-
-    initData() : void {
-        this.activityInvoiceService.getAll().subscribe(result => {
-            this.invoices.data = result.data.filter(res=> {return res.activityType === COURSE })
+    initData(): void {
+        this.loading = true;
+        this.activityInvoiceService.getAllByTypeAndUnApproved(this.startPage, this.maxPage, COURSE).subscribe(result => {
+            const resultData: any = result
+            this.invoices.data = result.data
+            this.loading = false
         })
     }
 
-    ngOnInit(): void {
-        this.initData()
+    loadData(event: LazyLoadEvent) {
+        this.getData(event.first, event.rows, event.globalFilter)
     }
 
-    onValidate(id : string) : void {
+    getData(startPage: number = this.startPage, maxPage: number = this.maxPage, query?: string): void {
+        this.loading = true;
+        this.startPage = startPage
+        this.maxPage = maxPage
+        this.query = query
+
+        this.invoiceSub = this.activityInvoiceService.getAllByTypeAndUnApproved(startPage, maxPage, COURSE).subscribe(
+            result => {
+                const resultData: any = result
+                this.invoices.data = resultData.data
+                this.totalData = resultData.countData
+                this.loading = false
+            },
+        )
+    }
+
+    onValidate(id: string): void {
         this.idParam = id
 
-        this.activityInvoiceService.getById(this.idParam).subscribe(res => {
-            
+        this.updateSub = this.activityInvoiceService.getById(this.idParam).subscribe(res => {
+
             this.update.id = id
             this.update.isApproved = true
             this.update.isActive = res.data.isActive
             this.update.version = res.data.version
 
             this.activityInvoiceService.update(this.update).subscribe(result => {
-                this.initData()
+                if (this.maxPage != 5) this.initData()
+                else this.getData(this.startPage, this.maxPage, this.query)
+                this.loading = false
             })
         })
     }
 
-    onRejected(id : string) : void {
+    onRejected(id: string): void {
         this.idParam = id
 
-        this.activityInvoiceService.getById(this.idParam).subscribe(res => {
-            
+        this.updateSub = this.activityInvoiceService.getById(this.idParam).subscribe(res => {
+
             this.update.id = id
             this.update.isApproved = false
             this.update.isActive = res.data.isActive
             this.update.version = res.data.version
 
             this.activityInvoiceService.update(this.update).subscribe(result => {
-                this.initData()
+                if (this.maxPage != 5) this.initData()
+                else this.getData(this.startPage, this.maxPage, this.query)
+                this.loading = false
             })
         })
     }
@@ -78,5 +109,10 @@ export class AdminInvoiceCoursePendingComponent implements OnInit {
     closeViewImage() {
         this.imageSource = ""
         this.imageViewFull = !this.imageViewFull
+    }
+
+    ngOnDestroy() {
+        this.invoiceSub?.unsubscribe()
+        this.updateSub?.unsubscribe()
     }
 }

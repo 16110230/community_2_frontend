@@ -26,7 +26,7 @@ export class AdminUserRoleComponent implements OnDestroy {
     totalData: number = 0
     loading: boolean = true
     query?: string
-    isLoading : boolean = false
+    isLoading: boolean = false
 
     roles: ShowUserRoles = {} as ShowUserRoles
     userRoleSub?: Subscription
@@ -76,8 +76,9 @@ export class AdminUserRoleComponent implements OnDestroy {
         this.deleteSubs = this.userRoleService
             .delete(this.isDeleted)
             .subscribe(result => {
-                this.initData()
-                this.isLoading = false
+                if (this.maxPage != 5) this.initData()
+                else this.getData(this.startPage, this.maxPage, this.query)
+                this.loading = false
             })
     }
 
