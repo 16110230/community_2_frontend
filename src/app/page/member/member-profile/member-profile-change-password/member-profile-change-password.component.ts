@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { MessageService } from "primeng/api";
 import { UpdatePasswordReq } from "src/app/dto/users/update-password-req";
 import { UsersService } from "src/app/service/users.service";
 
@@ -21,7 +22,8 @@ export class MemberProfileChangePassword {
 
     constructor(
         private router: Router,
-        private userService : UsersService
+        private userService : UsersService,
+        private messageService : MessageService
     ) { }
 
     goToEditProfile() {
@@ -40,6 +42,11 @@ export class MemberProfileChangePassword {
     submit = () : void => {
         if(this.confirmNewPassword === this.data.newPassword) {
             this.userService.changePassword(this.data).subscribe(res => { this.router.navigateByUrl('/home/profiles') })
+        } else {
+            this.messageService.add({
+                severity: 'error',
+                detail: 'Your confirm password did not match!'
+            })
         }
     }
 }
