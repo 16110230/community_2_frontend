@@ -2,10 +2,11 @@
     <div class="article-details-header w-full">
         <div class="flex flex-row">
             <div class="prof-pic">
-                <img [src]="'http://localhost:1221/files/' + activity.data.userFile" alt="prof-pic">
+                <img *ngIf="!activity.data.userFile" src="../../../../../assets/img/blank-profile.jpg"  alt="">
+                <img *ngIf="activity.data.userFile" [src]="'http://localhost:1221/files/' + activity.data.userFile" alt="">
             </div>
     
-            <div class="flex flex-column py-2 ml-5 justify-content-between">
+            <div class="flex flex-column py-2 ml-3 justify-content-between">
                 <div class="activity-owner">
                     <span>{{activity.data.fullName}}</span>
                 </div>

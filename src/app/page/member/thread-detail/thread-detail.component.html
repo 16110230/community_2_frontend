@@ -1,16 +1,20 @@
 <div class="container">
     <div class="grid px-7 pt-5">
-        <div class="lg:col-9 xs:col-12">
+        <div class="lg:col-9 xs:col-12 p-0 m-0">
+            <button pButton pRipple type="button" icon="pi pi-chevron-left" 
+            class="p-button-rounded p-button-danger p-button-outlined mb-2" routerLink="/home"></button>
             <div class="content-home">
                 <p-card styleClass="mb-3">
                     <div class="content-card-header flex flex-row px-4 mb-3">
-                                <img class="content-card-header-pic" *ngIf="!thread.data.userFile" src="../../../../../assets/img/default-picture.jpg">
-                                <img class="content-card-header-pic" *ngIf="!thread.data.userFile" src="../../../../../../assets/img/default-picture.jpg" alt="Profil Picture">
-                                <img class="content-card-header-pic" *ngIf="thread.data.userFile" [src]="'http://localhost:1221/files/' + thread.data.userFile" alt="Profil Picture">
+                        <img class="content-card-header-pic" *ngIf="!thread.data.userFile"
+                            src="../../../../../../assets/img/default-picture.jpg" alt="Profil Picture">
+                        <img class="content-card-header-pic" *ngIf="thread.data.userFile"
+                            [src]="'http://localhost:1221/files/' + thread.data.userFile" alt="Profil Picture">
                         <div class="content-card-header-dtl ml-3 flex flex-column justify-content-center">
                             <div class="header-details mt-3">
                                 <h4>{{thread.data.threadTitle}}</h4>
-                                <span class="header-date">Upload {{thread.data.createdAt|timeAgo}} by {{thread.data.userName}}</span>
+                                <span class="header-date">Upload {{thread.data.createdAt|timeAgo}} by
+                                    {{thread.data.userName}}</span>
                             </div>
                         </div>
                     </div>
@@ -21,27 +25,30 @@
                                 {{thread.data.threadContent}}
                             </p>
                         </div>
-                        <a class="col-3 thread-pic" (click)="viewImage('http://localhost:1221/files/' + thread.data.file)">
+                        <a class="col-3 thread-pic"
+                            (click)="viewImage('http://localhost:1221/files/' + thread.data.file)">
                             <img [src]="'http://localhost:1221/files/' + thread.data.file" alt="">
                         </a>
                     </div>
 
-                    <div class="content-card-body mt-2 px-4"  *ngIf="!thread.data.file">
+                    <div class="content-card-body mt-2 px-4" *ngIf="!thread.data.file">
                         <p>
                             {{thread.data.threadContent}}
                         </p>
                     </div>
 
                     <div *ngIf="thread.data.threadCategoryName == polling">
-                        <div class="flex flex-column align-items-center" *ngFor="let polling of thread.data.polling?.details">
-                            <button pButton pRipple label={{polling.pollingDetailsName}} type="button" 
-                            class="p-button-rounded p-button-primary flex-grow-1 mt-3 w-5"
-                            (click)="insertPol(polling.id)" *ngIf="thread.data.polling!.header.isPolling == false">
-                            </button> 
-                            <button pButton pRipple [label]="polling.pollingDetailsName + ' (' + polling.countVote + ' votes)'" type="button" 
-                            class="p-button-rounded p-button-danger flex-grow-1 mt-3 w-5"
-                            *ngIf="thread.data.polling!.header.isPolling == true" [disabled]="true">
-                            </button>                                                
+                        <div class="flex flex-column align-items-center"
+                            *ngFor="let polling of thread.data.polling?.details">
+                            <button pButton pRipple label={{polling.pollingDetailsName}} type="button"
+                                class="p-button-rounded p-button-primary flex-grow-1 mt-3 w-5"
+                                (click)="insertPol(polling.id)" *ngIf="thread.data.polling!.header.isPolling == false">
+                            </button>
+                            <button pButton pRipple
+                                [label]="polling.pollingDetailsName + ' (' + polling.countVote + ' votes)'"
+                                type="button" class="p-button-rounded p-button-danger flex-grow-1 mt-3 w-5"
+                                *ngIf="thread.data.polling!.header.isPolling == true" [disabled]="true">
+                            </button>
                         </div>
                     </div>
 
@@ -49,8 +56,10 @@
                         <div class="grid flex flex-row justify-content-between">
                             <div class="activity-left flex flex-row align-items-center">
                                 <a class="mr-2">
-                                    <span class="pi pi-heart" *ngIf="!thread.data.isLike" (click)="like(thread.data.id)"></span>
-                                            <span class="pi pi-heart-fill icon-like-filled" *ngIf="thread.data.isLike" (click)="unlike(thread.data.id)"></span>
+                                    <span class="pi pi-heart" *ngIf="!thread.data.isLike"
+                                        (click)="like(thread.data.id)"></span>
+                                    <span class="pi pi-heart-fill icon-like-filled" *ngIf="thread.data.isLike"
+                                        (click)="unlike(thread.data.id)"></span>
                                 </a>
                                 <span class="mr-3">{{thread.data.countLike}}</span>
                                 <div class="mr-2">
@@ -62,8 +71,10 @@
                             <div class="activity-right flex flex-row align-items-center">
                                 <div class="flex flex-row justify-content-between">
                                     <a class="mr-2">
-                                        <span class="pi pi-bookmark" *ngIf="!thread.data.isBookmark" (click)="bookmark(thread.data.id)"></span>
-                                        <span class="pi pi-bookmark-fill icon-bookmark-filled" *ngIf="thread.data.isBookmark" (click)="unBookmark(thread.data.id)"></span>
+                                        <span class="pi pi-bookmark" *ngIf="!thread.data.isBookmark"
+                                            (click)="bookmark(thread.data.id)"></span>
+                                        <span class="pi pi-bookmark-fill icon-bookmark-filled"
+                                            *ngIf="thread.data.isBookmark" (click)="unBookmark(thread.data.id)"></span>
                                     </a>
                                 </div>
                             </div>
@@ -75,9 +86,10 @@
                     <div class="comment-section mb-3" *ngFor="let data of threadDetailsData">
                         <div class="comment-section-header">
                             <div class="comment-prof-pic flex flex-row">
-                                <img class="content-card-header-pic" *ngIf="!data.userFile" src="../../../../../assets/img/default-picture.jpg"
-                                alt="Profil Picture">
-                                <img class="content-card-header-pic" *ngIf="data.userFile" [src]="'http://localhost:1221/files/' + data.userFile" alt="Profil Picture">
+                                <img class="content-card-header-pic" *ngIf="!data.userFile"
+                                    src="../../../../../assets/img/default-picture.jpg" alt="Profil Picture">
+                                <img class="content-card-header-pic" *ngIf="data.userFile"
+                                    [src]="'http://localhost:1221/files/' + data.userFile" alt="Profil Picture">
                                 <div class="flex flex-column justify-content-center ml-2">
                                     <span class="comment-full-name">{{data.userName}}</span>
                                     <span class="comment-time">{{data.createdAt|timeAgo}}</span>
@@ -95,22 +107,28 @@
                             <div class="comment-section-header">
                                 <div class="comment-prof-pic flex flex-row">
 
-                                <img class="content-card-header-pic" *ngIf="!thread.data.userFile" src="../../../../../assets/img/default-picture.jpg"
-                                alt="Profil Picture">
-                                <img class="content-card-header-pic" *ngIf="thread.data.userFile" [src]="'http://localhost:1221/files/' + thread.data.userFile" alt="Profil Picture">
+                                    <img class="content-card-header-pic" *ngIf="!thread.data.userFile"
+                                        src="../../../../../assets/img/default-picture.jpg" alt="Profil Picture">
+                                    <img class="content-card-header-pic" *ngIf="thread.data.userFile"
+                                        [src]="'http://localhost:1221/files/' + thread.data.userFile"
+                                        alt="Profil Picture">
 
-                                <img class="content-card-header-pic" *ngIf="!user.data.file" src="../../../../../assets/img/default-picture.jpg"
-                                alt="Profil Picture">
-                                <img class="content-card-header-pic" *ngIf="user.data.file" [src]="'http://localhost:1221/files/' + user.data.file" alt="Profil Picture">
+                                    <img class="content-card-header-pic" *ngIf="!user.data.file"
+                                        src="../../../../../assets/img/default-picture.jpg" alt="Profil Picture">
+                                    <img class="content-card-header-pic" *ngIf="user.data.file"
+                                        [src]="'http://localhost:1221/files/' + user.data.file" alt="Profil Picture">
 
                                     <div class="flex flex-column justify-content-between ml-2">
                                         <span class="comment-full-name">You</span>
-                                        <input class="comment-input" type="text" placeholder="Leave your thoughts here..." [(ngModel)]="insert.threadDesc" name="threadDesc">
+                                        <input class="comment-input" type="text"
+                                            placeholder="Leave your thoughts here..." [(ngModel)]="insert.threadDesc"
+                                            name="threadDesc">
                                     </div>
                                 </div>
                             </div>
                             <div class="flex flex-row justify-content-end mr-4">
-                                <button pButton pRipple class="p-button-sm p-button-info p-button-rounded mt-3" type="submit" label="Post" [loading]="isLoading"></button>
+                                <button pButton pRipple class="p-button-sm p-button-info p-button-rounded mt-3"
+                                    type="submit" label="Post" [loading]="isLoading"></button>
                             </div>
                         </form>
                     </div>
@@ -126,9 +144,10 @@
                 <div class="col-12 p-0 mb-2" *ngFor="let data of articlesData">
                     <div class="article-card" (click)="goToArticle(data.id)">
                         <div class="article-card-header">
-                            <img class="article-pic mb-3" *ngIf="!data.file" src="../../../../../assets/img/default-picture.jpg"
-                            alt="Profil Picture">
-                            <img class="article-pic mb-3" *ngIf="data.file" [src]="'http://localhost:1221/files/' + data.file" alt="Profil Picture">
+                            <img class="article-pic mb-3" *ngIf="!data.file"
+                                src="../../../../../assets/img/default-picture.jpg" alt="Profil Picture">
+                            <img class="article-pic mb-3" *ngIf="data.file"
+                                [src]="'http://localhost:1221/files/' + data.file" alt="Profil Picture">
                             <div class="article-card-header-title px-3">
                                 <h5>{{data.threadTitle}}</h5>
                             </div>
