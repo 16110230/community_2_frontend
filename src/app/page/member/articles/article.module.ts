@@ -5,13 +5,15 @@ import { CardModule } from "primeng/card";
 import { CommonModule } from "@angular/common";
 import { ArticleDetailComponent } from "./article-detail/article-detail.component";
 import { PipeModule } from "src/app/pipe/pipe.module";
+import { ButtonModule } from "primeng/button";
 
 @NgModule({
     imports: [
         ArticleRouting,
         CardModule,
         CommonModule,
-        PipeModule
+        PipeModule,
+        ButtonModule
     ],
     declarations: [
         ArticleListComponent,
