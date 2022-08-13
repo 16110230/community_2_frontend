@@ -63,9 +63,13 @@
                                     <i class="icon-activity pi pi-clock"></i>
                                     {{data.startedAt | date : 'H:mm'}} - {{data.endedAt| date : 'H:mm'}}
                                 </p>
-                                <p>
+                                <p *ngIf="data.fee != 0">
                                     <i class="icon-activity pi pi-money-bill"></i>
                                     {{data.fee | customCurrency}}
+                                </p>
+                                <p *ngIf="data.fee == 0">
+                                    <i class="icon-activity pi pi-money-bill"></i>
+                                    {{'0' | customCurrency}}
                                 </p>
                             </div>
                             <div class="article-card-content px-3 pb-3">
