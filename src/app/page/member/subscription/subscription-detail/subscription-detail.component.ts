@@ -1,22 +1,28 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Subscription } from "rxjs";
 import { ShowSubsCategoryById } from "src/app/dto/subs-category/show-subs-category-by-id";
 import { InsertSubscriptionReq } from "src/app/dto/subscription/insert-subscription.req";
 import { ShowSubscriptionById } from "src/app/dto/subscription/show-subscription-by-id";
+import { ShowThreads } from "src/app/dto/thread/show-threads";
+import { ThreadDto } from "src/app/dto/thread/thread-dto";
 import { FileService } from "src/app/service/file.service";
 import { SubsCategoryService } from "src/app/service/subs-category.service";
 import { SubscriptionService } from "src/app/service/subscription.service";
+import { ThreadService } from "src/app/service/thread.service";
 
 @Component({
     selector: 'app-details-subscription',
     templateUrl: './subscription-detail.component.html',
     styleUrls : [
-        '../../activity/activity.component.css'
+        '../../activity/activity.component.css',
+        '../../home/home.component.css'
     ]
 })
 export class SubscriptionDetailComponent implements OnInit, OnDestroy {
     constructor(private subscriptionService : SubscriptionService, private activateRoute : ActivatedRoute, 
-        private fileService : FileService, private router : Router, private subsCategoryService : SubsCategoryService) {}
+        private fileService : FileService, private router : Router, private subsCategoryService : SubsCategoryService,
+        private threadService : ThreadService) {}
 
     subscription : ShowSubsCategoryById = {
         data : {
@@ -37,6 +43,9 @@ export class SubscriptionDetailComponent implements OnInit, OnDestroy {
     }
 
     idParam! : string
+    articles: ShowThreads = {} as ShowThreads
+    articlesData: ThreadDto[] = []
+    detailSubs? : Subscription
 
     initData() :void {
         this.activateRoute.params.subscribe(result => {
@@ -47,6 +56,11 @@ export class SubscriptionDetailComponent implements OnInit, OnDestroy {
             this.subsCategoryService.getById(this.idParam).subscribe(result => {
                 this.subscription = result
             })
+        })
+
+        this.threadService.getAllArticles().subscribe((result) => {
+            this.articles = result
+            this.articlesData = result.data
         })
     }
 
@@ -68,6 +82,10 @@ export class SubscriptionDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        
+        this.detailSubs?.unsubscribe()
+    }
+
+    goToArticle = (id : string) : void => {
+        this.router.navigateByUrl(`/home/articles/${id}`)
     }
 }
