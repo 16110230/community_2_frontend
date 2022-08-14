@@ -2,10 +2,11 @@
     <div class="article-details-header w-full">
         <div class="flex flex-row">
             <div class="prof-pic">
-                <img [src]="'http://localhost:1221/files/' + activity.data.userFile" alt="prof-pic">
+                <img *ngIf="!activity.data.userFile" src="../../../../../assets/img/blank-profile.jpg"  alt="">
+                <img *ngIf="activity.data.userFile" [src]="'http://localhost:1221/files/' + activity.data.userFile" alt="">
             </div>
     
-            <div class="flex flex-column py-2 ml-5 justify-content-between">
+            <div class="flex flex-column py-2 ml-3 justify-content-between">
                 <div class="activity-owner">
                     <span>{{activity.data.fullName}}</span>
                 </div>
@@ -20,10 +21,19 @@
             <div class="col-12 px-0 details-title">
                 <span>{{activity.data.activityTitle}}</span>
             </div>
-            <div class="col-12 px-0 details-body">
-                <p>
-                    {{activity.data.activityContent}}
-                </p>
+            <div class="col-12">
+                <div class="grid">
+                    <div class="col-9 px-0 details-body">
+                        <p>
+                            {{activity.data.activityContent}}
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <a class="thread-pic" (click)="viewImage('http://localhost:1221/files/' + activity.data.file)">
+                            <img class="w-full" [src]="'http://localhost:1221/files/' + activity.data.file" alt="">
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -32,3 +42,10 @@
         <button pButton pRipple type="submit" class="p-button-sm p-button-success" label="Register"></button>
     </div>
 </form>
+
+<div *ngIf="imageViewFull" id="activity-image-view">
+    <div id="image-activity-view-btn-close" (click)="closeViewImage()">
+        <span class="text-white">X</span>
+    </div>
+    <img [src]="imageSource" alt="">
+</div>

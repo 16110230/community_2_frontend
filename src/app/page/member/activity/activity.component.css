@@ -46,3 +46,38 @@ ol > li {
     padding: 2px 5px 2px 5px;
     border-radius: 10px;
 }
+
+.details-pic > img {
+    height: 20vh;
+    object-fit: cover;
+}
+
+#activity-image-view {
+    transition: 0.5s;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#image-activity-view-btn-close {
+    position: absolute;
+    top: 5%;
+    right: 2%;
+  
+    width: 3%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 2px solid white;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    cursor: pointer;
+}

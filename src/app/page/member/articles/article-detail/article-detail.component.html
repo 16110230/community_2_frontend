@@ -1,5 +1,9 @@
-<div class="container px-5 py-3">
-    <p-card styleClass="px-8">
+<div class="container px-5 py-2">
+    <div class="mx-5">
+        <button pButton pRipple type="button" icon="pi pi-chevron-left" 
+        class="p-button-rounded p-button-danger p-button-outlined mb-2" routerLink="/home/articles"></button>
+    </div>
+    <p-card styleClass="mx-5">
         <div class="article-detail-header mb-3">
             <img class="content-card-header-pic" *ngIf="thread.data.file === null"
                 src="../../../../../assets/img/default-picture.jpg" alt="">

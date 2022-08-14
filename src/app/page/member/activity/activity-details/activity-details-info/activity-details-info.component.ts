@@ -38,6 +38,8 @@ export class ActivityDetailsInfoComponent implements OnInit {
         }
     }
     idParam! : string
+    imageSource: string = ''
+    imageViewFull: boolean = false
 
     initData() :void {
         this.activateRoute.params.subscribe(result => {
@@ -56,5 +58,15 @@ export class ActivityDetailsInfoComponent implements OnInit {
 
     submit() : void {
         this.newEvent.emit()
+    }
+
+    viewImage(src: string) {
+        this.imageViewFull = !this.imageViewFull
+        this.imageSource = src
+    }
+
+    closeViewImage() {
+        this.imageSource = ""
+        this.imageViewFull = !this.imageViewFull
     }
 }

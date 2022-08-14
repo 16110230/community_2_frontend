@@ -1,7 +1,9 @@
 <div class="container">
     <div class="grid px-7">
         <div class="col-9">
-            <p-card styleClass="mt-3">
+            <button pButton pRipple type="button" icon="pi pi-chevron-left" 
+            class="p-button-rounded p-button-danger p-button-outlined mb-2" routerLink="/home/subscriptions"></button>
+            <p-card>
                 <form class="invoice-card px-4" (ngSubmit)="submit()">
                     <div class="invoice-header">
                         <span class="block details-title mb-2">{{subscription.data.description}}</span>
@@ -27,6 +29,32 @@
                     </div>
                 </form>
             </p-card>
+        </div>
+        <div class="col-3">
+            <div class="grid">
+                <div class="title mb-4 pt-2">
+                    <span>Articles</span>
+                </div>
+                <div class="col-12 p-0 mb-2" *ngFor="let data of articlesData">
+                    <div class="article-card" (click)="goToArticle(data.id)">
+                        <div class="article-card-header">
+                            
+                            <img class="article-pic" *ngIf="data.file === null" src="../../../../../assets/img/default-picture.jpg"
+                            alt="">
+                            <img class="article-pic" *ngIf="data.file !== null" [src]="'http://localhost:1221/files/' + data.file" alt="">
+                            
+                            <div class="article-card-header-title px-3">
+                                <h5 class="white-space-nowrap overflow-hidden text-overflow-ellipsis">{{data.threadTitle}}</h5>
+                            </div>
+                        </div>
+                        <div class="article-card-content p-3">
+                            <p class="white-space-nowrap overflow-hidden text-overflow-ellipsis">
+                                {{data.threadContent}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
