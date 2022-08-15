@@ -126,4 +126,12 @@ export class MemberProfileActivityComponent {
         
         this.activityInvoiceService.getReport(id, startDateFormated , endDateFormated)
     }
+
+    downloadProfit(id : string, startDate: string, endDate: string) {
+
+        const startDateFormated = formatDate(this.startDate, `yyyy-MM-dd`, "en")
+        const endDateFormated = formatDate(this.endDate, `yyyy-MM-dd`, "en")
+        
+        this.activityInvoiceService.getReportInvoice(id, startDateFormated , endDateFormated)
+    }
 }
