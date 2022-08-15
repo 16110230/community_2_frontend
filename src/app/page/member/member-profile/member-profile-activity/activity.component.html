@@ -113,9 +113,9 @@
                                 <a (click)="showDialog()" style="cursor: pointer;">
                                     <i class="pi pi-users" style="font-size:16px;color: blue;"></i>                                    
                                 </a>
-                                <a (click)="showDialogIncome()" style="cursor: pointer;" class="ml-2">
+                                <!-- <a (click)="showDialogIncome()" style="cursor: pointer;" class="ml-2">
                                     <i class="pi pi-money-bill" style="font-size:16px; color:green;"></i>                                    
-                                </a>  
+                                </a>   -->
                                 <p-dialog [style]="{'width' : '800px', 'height' : '800px'}" header="Report Register List" [(visible)]="display">
                                     <form ngNativeValidate (ngSubmit)="download(data.id, startDate, endDate)">
                                         <div class="row-date">
@@ -140,7 +140,7 @@
                                     </form>
                                 </p-dialog>
                                 <p-dialog [style]="{'width' : '800px', 'height' : '800px'}" header="Report Income" [(visible)]="displayIncome">
-                                    <form ngNativeValidate (ngSubmit)="download(data.id, startDate, endDate)">
+                                    <form ngNativeValidate (ngSubmit)="downloadProfit(data.id, startDate, endDate)">
                                         <div class="row-date">
                                             <div class="grid">
                                                 <div class="lg:col-12 sm:col-12">
